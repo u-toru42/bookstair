@@ -51,7 +51,10 @@ BookStair
 ## スケジュール
 
 * 企画〜技術調査：11/30 〆切
-* README〜ER図作成：12/5 〆切
-* メイン機能実装：12/6 - 1/10
+* README〜ER図作成：12/7 〆切
+* メイン機能実装：12/8 - 1/10
 * β版をRUNTEQ内リリース（MVP）：1/10 〆切
 * 本番リリース：1/24
+
+## 画面遷移図
+[Figma](https://www.figma.com/file/1SjZ7MiiANkYElYjA7tSHa/%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E5%90%8D%3ABookStair(%E4%BB%AE%E5%90%8D)?node-id=0%3A1&t=xrEuekoiAxH4J1AD-1)
