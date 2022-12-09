@@ -21,8 +21,8 @@ erDiagram
   books ||--o{ book_authors :"一つの書籍は複数の著者を持つ"
   book_authors }o--|| authors :"一つの書籍は複数の著者を持つ"
   
-  books ||--o{ taggings :"一つの書籍は複数のタグを持つ(中間テーブルあり)"
-  taggings }o--|| tags :"一つの書籍は複数のタグを持つ(中間テーブルあり)"
+  books ||--o{ taggings :"一つの書籍は複数のタグを持つ"
+  taggings }o--|| tags :"一つの書籍は複数のタグを持つ"
 
   users {
     integer id "PK"
