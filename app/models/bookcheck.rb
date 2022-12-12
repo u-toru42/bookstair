@@ -1,0 +1,2 @@
+class Bookcheck < ApplicationRecord
+end

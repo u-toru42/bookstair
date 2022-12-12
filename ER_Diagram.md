@@ -1,5 +1,8 @@
 ```mermaid
+
 erDiagram
+  users ||--|| bookshelf_boards : "一人のユーザーは一つの本棚掲示板を持つ"
+  bookshelf_boards ||--o{ bookshelf_follows :"一つの本棚掲示板は複数の本棚のフォローを持つ"
 
   users ||--o{ bookmarks :"一人のユーザーは複数のお気に入り書籍を登録する"
   bookmarks }o--|| books :"一人のユーザーは複数のお気に入り書籍を持つ"
@@ -10,7 +13,6 @@ erDiagram
   users ||--o{ reviews :"一人のユーザーは複数のレビューを投稿する"
   reviews }o--|| books :"一つの書籍は複数のレビューを持つ"
   
-  users ||--o{ bookshelf_follows :"一人のユーザーは複数の本棚をフォローする"
   bookshelf_follows }o--|| bookshelves :"一人のユーザーは複数の本棚をフォローする" 
 
   bookshelves ||--o{ bookshelf_lines : "一つの本棚は複数の棚を持つ"
@@ -34,9 +36,16 @@ erDiagram
     timestamp deleted_at
   }
 
-  bookshelf_follows {
+  bookshelf_boards {
     integer id "PK"
     integer user_id "null:false(FK)"
+    integer bookshelf_follow_id "null:false(FK)"
+    timestamp created_at
+    timestamp deleted_at
+  }
+
+  bookshelf_follows {
+    integer id "PK"
     integer bookshelf_id "null:false(FK)"
     timestamp created_at
     timestamp deleted_at

@@ -1,0 +1,2 @@
+class BookshelfFollow < ApplicationRecord
+end

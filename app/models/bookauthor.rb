@@ -1,0 +1,2 @@
+class Bookauthor < ApplicationRecord
+end
