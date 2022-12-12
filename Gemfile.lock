@@ -93,6 +93,7 @@ GEM
     debug (1.7.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    diffy (3.4.2)
     erubi (1.11.0)
     execjs (2.8.1)
     ffi (1.15.5)
@@ -178,6 +179,9 @@ GEM
     reline (0.3.1)
       io-console (~> 0.5)
     rexml (3.2.5)
+    ridgepole (1.2.0)
+      activerecord (>= 5.1, < 7.1)
+      diffy
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -248,6 +252,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)
+  ridgepole
   selenium-webdriver
   slim-rails
   sprockets-rails
