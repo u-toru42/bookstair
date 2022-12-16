@@ -1,2 +1,0 @@
-class Bookshelf < ApplicationRecord
-end

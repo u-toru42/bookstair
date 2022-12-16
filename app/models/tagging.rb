@@ -1,2 +1,0 @@
-class Tagging < ApplicationRecord
-end
