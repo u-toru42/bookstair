@@ -1,0 +1,16 @@
+<% if @books.present? %>
+  <% @books.each do |book| %>
+    <div class="book-line">
+    <!-- book.item_urlを書籍情報ページに飛ばして、book.item_urlを書籍情報のリンク貼り付けに利用する -->
+      <p class="book-image"><img><%= link_to (image_tag(book.medium_image_url, size: "112x162")), book.item_url %></p>
+      <p class="isdn"><%= hidden_field_tag :isbn, book.isbn %></p>
+      <p class="bookmark-btn">      
+        <%= form_with url: books_path do |f| %>
+        <%#= form_with model: @books do |f| %>
+          <%= f.submit 'ブックマーク', class: 'btn btn-xs btn-active btn-primary' %>
+        <% end %>
+      </p>
+      <p class="title-line"><%= (book.title).gsub(/(\s|　)+/, ' ')%></p>
+    </div>
+  <% end %>
+<% end %>

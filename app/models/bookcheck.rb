@@ -1,2 +1,0 @@
-class Bookcheck < ApplicationRecord
-end

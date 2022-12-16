@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html data-theme="forest">
+  <head>
+    <title>Bookshelf</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application.tailwind.css", "data-turbo-track": "reload" %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  </head>
+
+  <body data-turbolinks="false" class="background">
+
+    <div class="container">
+      <%= yield %>
+      
+      <div class="text-success">
+        <%= flash[:notice] %>
+      </div>
+      <div class="text-danger">
+        <%= flash[:danger] %>
+      </div>
+    </div>
+  </body>
+</html>

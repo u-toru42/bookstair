@@ -1,0 +1,11 @@
+<div class='search'>
+  <div id="search-box" class="search-box">
+    <%= form_tag('/', method: :get) do %>
+      <%= text_field_tag :book, "",  id: "book_search", name: "search", placeholder: "キーワードを打ち込んでください", style: "width: 400px;", value: params[:search], class: "textarea textarea-bordered" %>
+      <button title="検索" type="submit" class="btn btn-accent">検索</button>
+    <% end %>
+  </div>
+  <div id='book_list' class='book_list'>
+    <%= render partial: 'book_list' %>
+  </div>
+</div>
