@@ -16,13 +16,16 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+# gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
+
+# Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
+gem "tailwindcss-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
@@ -71,7 +74,10 @@ group :test do
   gem "webdrivers"
 end
 
-gem 'slim-rails'
-gem 'html2slim'
-gem 'bootstrap'
 gem 'ridgepole'
+gem 'rakuten_web_service'
+gem 'dotenv-rails'
+gem 'faraday'
+gem 'cssbundling-rails'
+gem 'jsbundling-rails'
+gem "rails_heroicon"
