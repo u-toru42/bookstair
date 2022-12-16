@@ -1,2 +1,0 @@
-class BookshelfFollow < ApplicationRecord
-end

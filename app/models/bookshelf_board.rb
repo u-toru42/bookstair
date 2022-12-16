@@ -1,2 +1,0 @@
-class BookshelfBoard < ApplicationRecord
-end
