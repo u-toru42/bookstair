@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # root to: 'books#search'
   root to: 'boards#index'
 
-  get 'books/search', to: "books#search"
+  get 'search', to: "books#search"
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
