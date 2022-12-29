@@ -7,7 +7,7 @@ ruby "3.1.3"
 gem "rails", "~> 7.0.4"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+# gem "sprockets-rails"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
@@ -80,4 +80,7 @@ gem 'dotenv-rails'
 gem 'faraday'
 gem 'cssbundling-rails'
 gem 'jsbundling-rails'
-gem "rails_heroicon"
+gem 'rails_heroicon'
+gem 'sorcery'
+gem 'pry-byebug'
+gem 'propshaft'

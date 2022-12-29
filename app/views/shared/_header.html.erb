@@ -16,7 +16,8 @@
           </a>
 
           <div class="dropdown-menu dropdown-menu-right">
-            <%= link_to '掲示板一覧', '#', class: 'dropdown-item' %>
+            <%= link_to '検索', '/books/search', class: 'dropdown-item' %>
+            <%= link_to '掲示板一覧', '/', class: 'dropdown-item' %>
             <%= link_to '掲示板作成', '#', class: 'dropdown-item' %>
           </div>
         </li>
@@ -34,7 +35,7 @@
             <div class="dropdown-divider"></div>
             <%= link_to 'プロフィール', '#', class: 'dropdown-item' %>
 
-            <%= link_to 'ログアウト', logout_path, class: 'dropdown-item', method: :delete %>
+            <%= button_to 'ログアウト', logout_path, class: 'dropdown-item', method: :delete %>
           </div>
         </li>
       </ul>
