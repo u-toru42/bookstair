@@ -115,11 +115,11 @@ create_table "tags", force: :cascade do |t|
   t.datetime "updated_at", null: false
 end
 
-create_table "users", force: :cascade do |t|
+create_table :users do |t|
   t.string :email, null: false, index: { unique: true }
   t.string :crypted_password
   t.string :salt
-  t.string :name, presence: true, length: { maximum: 255 }
+  t.string :user_name, presence: true, length: { maximum: 255 }
 
   t.timestamps null: false
 end

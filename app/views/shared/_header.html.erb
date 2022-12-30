@@ -31,7 +31,9 @@
             <%#= image_tag 'sample', size: '40x40', class: 'rounded-circle mr15'%>
           </a>
           <div class="dropdown-menu dropdown-menu-right">
-            <div class="dropdown-item">らんてっく たろう</div>
+            <div class="dropdown-item">
+              <%= current_user.decorate.user_name %>
+            </div>
             <div class="dropdown-divider"></div>
             <%= link_to 'プロフィール', '#', class: 'dropdown-item' %>
 
