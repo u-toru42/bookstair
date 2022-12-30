@@ -1,0 +1,13 @@
+---
+ja:
+  users:
+    new:
+      user_name: "ユーザー名"
+      email: "メール"
+      password: "パスワード"
+      password_confirmation: "パスワード確認"
+    create:
+      user_name: "ユーザー名"
+      email: "メール"
+      password: "パスワード"
+      password_confirmation: "パスワード確認"
