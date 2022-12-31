@@ -23,13 +23,17 @@ class BooksController < ApplicationController
   def index; end
 
   def search
-    if params[:search].nil?
+    if params[:title_search].nil? && params[:author_search].nil?
       return
-    elsif params[:search].blank?
+    elsif params[:title_search].blank? && params[:author_search].blank?
       flash.now[:danger] = '検索キーワードが入力されていません'
       return
-    elsif params[:search]
-      @books = RakutenWebService::Books::Book.search(title: params[:search])
+    elsif params[:title_search] && (params[:author_search].nil? || params[:author_search].blank?)
+      @books = RakutenWebService::Books::Book.search(title: params[:title_search])
+    elsif params[:author_search] && (params[:title_search].nil? || params[:title_search].blank?)
+      @books = RakutenWebService::Books::Book.search(author: params[:author_search])
+    elsif params[:author_search] && params[:title_search]
+      @books = RakutenWebService::Books::Book.search(title: params[:title_search], author: params[:author_search])
     end
   end
 
