@@ -11,3 +11,10 @@ ja:
       email: "メール"
       password: "パスワード"
       password_confirmation: "パスワード確認"
+  user_sessions:
+    new:
+      user_name: "ユーザー名"
+      email: "メール"
+      password: "パスワード"
+      password_confirmation: "パスワード確認"
+      login: "ログイン"
