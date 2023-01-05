@@ -37,7 +37,7 @@
             <div class="dropdown-divider"></div>
             <%= link_to 'プロフィール', '#', class: 'dropdown-item' %>
 
-            <%= button_to 'ログアウト', logout_path, class: 'dropdown-item', method: :delete %>
+            <%= link_to 'ログアウト', logout_path, class: 'dropdown-item', data: { turbo_method: :delete } %>
           </div>
         </li>
       </ul>
