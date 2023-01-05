@@ -1,16 +1,33 @@
 <% if @books.present? %>
-  <% @books.each do |book| %>
+  <% @books&.each do |book| %>
     <div class="book-line">
     <!-- book.item_urlを書籍情報ページに飛ばして、book.item_urlを書籍情報のリンク貼り付けに利用する -->
-      <p class="book-image"><img><%= link_to (image_tag(book.medium_image_url, size: "112x162")), book.item_url %></p>
-      <p class="isdn"><%= hidden_field_tag :isbn, book.isbn %></p>
-      <p class="bookmark-btn">      
-        <%= form_with url: books_path, local: true do |f| %>
-        <%#= form_with model: @books do |f| %>
-          <%= f.submit 'ブックマーク', class: 'btn btn-xs btn-active btn-primary' %>
-        <% end %>
+      <p class="book-image">
+        <img><%= link_to (image_tag(book.medium_image_url, size: "112x162")), book.item_url %>
       </p>
-      <p class="title-line"><%= (book.title).gsub(/(\s|　)+/, ' ')%></p>
+      <p class="book-data">
+        <%= (book.title).gsub(/(\s|　)+/, ' ').gsub("／", "/") %><br>
+        <% (book.author).gsub(/(\s|　)+/, ' ').gsub("／", "/").split("/").each do |i| %>
+          <%= i %><br>
+        <% end %>
+      <p>
+      
+      <%= form_with model: @book, local: true, id: "new_book" do |f| %>
+        <%= f.hidden_field :title %>
+        <%= f.hidden_field :salesDate %>
+        <%= f.hidden_field :mediumImageUrl %>
+        <%= f.hidden_field :itemUrl %>
+      <% end %>
+
+      <%# set_rakuten_book_params(rakuten_book)["author"]&.each do |author| %>
+        <%#= hidden_field_tag 'book[author][]', author %>
+      <%# end %>
+
+
+      <%= button_tag type: "f.submit" do %>
+        <i class='btn btn-xs btn-active btn-primary'>ブックマーク</i>
+      <% end %>
+      </p>
     </div>
   <% end %>
 <% end %>
