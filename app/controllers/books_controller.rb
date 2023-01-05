@@ -1,26 +1,9 @@
 class BooksController < ApplicationController
-  def bookmark
-    @books = []
-    @title = params[:title]
-    if @title.present?
-      results = RakutenWebServices::Books::Book.search({
-        title: @title,
-      })
-
-      results.each do |result|
-        book = Book.new(read(result))
-        @books << book
-      end
-    end
-
-    @books.each do |book|
-      unless Book.all.include?(book)
-        book.save
-      end
-    end
-  end
+  def create; end
   
   def index; end
+
+  def show; end
 
   def search
     if params[:title_search].nil? && params[:author_search].nil?
@@ -30,25 +13,38 @@ class BooksController < ApplicationController
       return
     elsif params[:title_search] && (params[:author_search].nil? || params[:author_search].blank?)
       @books = RakutenWebService::Books::Book.search(title: params[:title_search])
+      
+      url = "https://app.rakuten.co.jp/services/api/BooksBook/Search"
+      text = params[:title_search]
+      res = Faraday.get(url, q: text, langRestrict: 'ja', maxResults: 20)
+      @rakuten_books = JSON.parse(res.body)
+
     elsif params[:author_search] && (params[:title_search].nil? || params[:title_search].blank?)
       @books = RakutenWebService::Books::Book.search(author: params[:author_search])
+      
+      url = "https://app.rakuten.co.jp/services/api/BooksBook/Search"
+      text = params[:author_search]
+      res = Faraday.get(url, q: text, langRestrict: 'ja', maxResults: 20)
+      @rakuten_books = JSON.parse(res.body)
+    
     elsif params[:author_search] && params[:title_search]
       @books = RakutenWebService::Books::Book.search(title: params[:title_search], author: params[:author_search])
+
+      url = "https://app.rakuten.co.jp/services/api/BooksBook/Search"
+      text = params[:title_search] && params[:author_search]
+        res = Faraday.get(url, q: text, langRestrict: 'ja', maxResults: 20)
+      @rakuten_books = JSON.parse(res.body)
     end
   end
 
-  private
+  private  
 
-  def read(result)
-    title = result['title']
-    url = result['itemUrl']
-    isbn = result['isbn']
-    image_url = result['mediumImageUrl'].gsub('?_ex=112x162', '')
-    {
-      title: title,
-      url: url,
-      isbn: isbn,
-      image_url: image_url,
-    }
+  def book_params
+    params.require(:book).permit(:title, :author, :sales_date, :medium_image_url, :item_url, :isbn)
   end
+
+  def authors_params
+    params.require(:book).permit(authors: [])
+  end
+  
 end
