@@ -7,5 +7,5 @@ class Book < ApplicationRecord
     true
     rescue StandardError
       false
-end
+  end
 end
