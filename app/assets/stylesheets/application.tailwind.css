@@ -2,64 +2,128 @@
 @tailwind components;
 @tailwind utilities;
 
-.header {
-  background-color: black;
+header {
+  background-image: url("wood.png");
 }
-
-.top-wrapper {
-  height: calc(100vh - 134px);
-  position: relative;
-  background-position: center;
-}
-
-.top-inner-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
+@media screen and (min-width: 920px) {
+h1 {
   text-align: center;
-  font-size: 3rem;
-  color: white;
+  padding: 20px 0px 16px;
+}
 
-  @media screen and (max-width: 767px) {
-    font-size: 2.0rem;
-  }
+header nav {
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  z-index: 100;
+  color: #7c5d48;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: space-around;
+  /* width: 920px; */
+  margin: 0 auto;
+  padding: 10px 20px;  
+}
+
+header nav ul li {
+  margin: 0 20px;
+}
+
+header nav ul li a:hover {
+  text-decoration: underline;
+}
+
+main {
+  flex-basis: 920px;
+}
+
+aside {
+  flex-basis: 204px;
+}
+
+aside nav {
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 16);
+  padding: 24px 28px;
+  margin-bottom: 24px;
+}
+
+aside nav h2 {
+  margin-bottom: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #7c5d48;
+}
+
+aside nav ul {
+  font-size: 14px;
 }
 
 .search {
-  background-image: url("shelf.jpg");
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center center;
+  width: 920px;
+  margin: 0 auto 50px;
+  justify-content: space-around;
 }
 
 .search-box {
-  display: flex;
-  justify-content: center;
   margin: 20px;
+  /* padding: 20px; */
 }
 
 .book_list {
   display: flex;
   flex-flow: wrap row;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-evenly;
+  align-items: flex-start;
 }
 
 .book-line {
-  width: 31%;
+  width: 50%;
   margin: 0;
-  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
 }
 
 .book-image {
   margin: 5px;
   padding: 0;
-  width: 112px;
-  height: 162px;
+  object-fit: cover;
+  margin-bottom: 28px;
 }
 
+.book-data {
+  flex-basis: 200px;
+  margin: 5px;
+  padding: 10px;
+  overflow: hidden;
+  white-space: pre-spaces;
+  text-overflow: ellipsis;
+  background-image: url("wood.png");
+}
+
+.book-title {
+  flex-basis: 200px;
+  margin: 5px;
+  padding: 10px;
+  overflow: hidden;
+  white-space: pre-spaces;
+  text-overflow: ellipsis;
+  background-image: url("wood.png");
+}
+
+.book-author {
+  flex-basis: 200px;
+  margin: 5px;
+  padding: 10px;
+  overflow: hidden;
+  white-space: pre-spaces;
+  text-overflow: ellipsis;
+  background-image: url("wood.png");
+}
 .btn-xs {
   margin: 5px;
   padding: 5px;
@@ -68,16 +132,70 @@
   justify-content: space-evenly;
 }
 
-.book-data {
-  margin: 0 10px;
-  padding: 10px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  background-image: url("wood.png");
+.form-group {
   color: #000000;
 }
 
-* {
-  font-family: 'Noto Sans JP', sans-serif;
+.text-center {
+  color: #000000;
+}
+
+.form-group {
+  background-color: #efe8d9;
+  padding: 20px;
+  width: 600px;
+  margin: 0 auto;
+}
+
+.form-control {
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+  width: 100%;
+  margin-top: 5px;
+  padding: 4px 8px;
+}
+
+.actions {
+  padding-bottom: 60px;
+  width: 600px;
+  margin: 0 auto;
+}
+
+body {
+  background-image: url("shelf.jpg");
+  font-size: 16px;
+  max-width: 100%;
+  /* font-family: 'Noto Sans JP', sans-serif; */
+  /* color: #000000; */
+}
+
+footer {
+  background-image: url("wood.png");
+}
+
+}
+
+/* モバイルデバイスの見え方 */
+
+@media screen and (max-width:640px) {
+  .search {
+    width: 100%;
+    margin: 0 auto 50px;
+    display: flex;
+  }
+  
+  .search-box {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+  }
+
+
+  .book_list {
+    display: block;
+  }
+
+  header nav ul form {
+    width: 100%;
+  }
 }
