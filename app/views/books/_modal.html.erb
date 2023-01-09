@@ -1,25 +1,10 @@
-<!-- _modal.html.erb -->
-<!-- Modal Container -->
-<div
-  data-target="modal.container"
-  data-action="click->modal#closeBackground keyup@window->modal#closeWithKeyboard"
-  class="fixed inset-0 flex items-center justify-center hidden overflow-y-auto bg-gray-300 bg-opacity-50"
-  style="z-index: 9999;"
->
-  <div class="relative w-full max-h-screen max-w-2lg">
-    <div class="bg-white shadow-xl">
-      <div class="p-8">
-        <h2 class="mb-4 text-xl">モーダルウィンドウ</h2>
-        <p class="mb-4">テストモーダル.</p>
-        <div class="flex flex-wrap items-center justify-end mt-6">
-          <button
-            class="px-4 py-2 text-white bg-blue-600 hover:bg-blue-700"
-            data-action="click->modal#close"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<p>
+  <input type="radio" name="status" value="未読" checked="checked">未読
+  <input type="radio" name="status" value="読書中">読書中
+  <input type="radio" name="status" value="読み終わった">読み終わった
+</p>
+<p>
+  <input type="radio" name="status" value="完全に理解した" checked="checked">完全に理解した
+  <input type="radio" name="status" value="何もわからない">何もわからない
+  <input type="radio" name="status" value="ちょっとわかる">ちょっとわかる
+</p>
