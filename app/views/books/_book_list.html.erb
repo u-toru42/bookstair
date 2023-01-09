@@ -3,29 +3,25 @@
     <div class="book-line">
     <!-- book.item_urlを書籍情報ページに飛ばして、book.item_urlを書籍情報のリンク貼り付けに利用する -->
       <p class="book-image">
-        <img><%= link_to (image_tag(book.medium_image_url, size: "112x162")), book.item_url %>
+        <img><%= link_to (image_tag(book.medium_image_url, style: "width: 100px; height: 161px;display: inline-block;")), book.item_url %>
       </p>
       <p class="book-data">
-        <%= (book.title).gsub(/(\s|　)+/, ' ').gsub("／", "/") %><br>
-        <% (book.author).gsub(/(\s|　)+/, ' ').gsub("／", "/").split("/").each do |i| %>
+        <%= (book.title).gsub(/(\s|　)+/, ' ').gsub("／", "/").tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z') %><br><br>
+        <% book.author.gsub(/(\s|　)+/, ' ').gsub("／", "/").tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z').split("/").each do |i| %>
           <%= i %><br>
         <% end %>
+        <%#= (book.item_caption).gsub(/(\s|　)+/, ' ').gsub("／", "/").tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z') %>
+        <i class="btn btn-xs btn-active btn-primary">読みたいに追加</i>
+      </p>
       <p>
-      
       <%= form_with model: @book, local: true, id: "new_book" do |f| %>
         <%= f.hidden_field :title %>
         <%= f.hidden_field :salesDate %>
         <%= f.hidden_field :mediumImageUrl %>
         <%= f.hidden_field :itemUrl %>
-      <% end %>
-
-      <%# set_rakuten_book_params(rakuten_book)["author"]&.each do |author| %>
-        <%#= hidden_field_tag 'book[author][]', author %>
-      <%# end %>
-
-
-      <%= button_tag type: "f.submit" do %>
-        <i class='btn btn-xs btn-active btn-primary'>ブックマーク</i>
+        <% button_tag type: "f.submit" do %>
+          <i class="btn btn-xs btn-active btn-primary">読みたいに追加</i>
+        <% end %>
       <% end %>
       </p>
     </div>
