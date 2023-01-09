@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="forest">
+<html data-theme="autumn">
   <head>
     <title>Bookshelf</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,13 +7,13 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application.tailwind.css" %>
+    <!--
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    -->
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <%#= javascript_include_tag "application" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%#= stylesheet_link_tag "application" %>
   </head>
 
   <body data-turbolinks="false">
@@ -23,10 +23,11 @@
       <% else %>
         <%= render 'shared/before_login_header' %>
       <% end %>
-      
+      <main>
       <%= yield %>
+      </main>
+      <%= render 'shared/sidebar' %>
       <%= render 'shared/footer' %>
-      
       <div class="text-success">
         <%= flash[:notice] %>
       </div>
