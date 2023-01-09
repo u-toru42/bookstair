@@ -1,17 +1,16 @@
 <div class='search'>
   <div id="search-box" class="search-box">
     <%= form_with url: search_books_path, local: true, method: :get do |f| %>
-      <%= f.search_field :title_search, id: "title_search", value: params[:title_search], placeholder: "書籍名", class: "textarea textarea-bordered", size: 40 %>
-      <%= f.search_field :author_search, id: "author_search", value: params[:author_search], placeholder: "著者名", class: "textarea textarea-bordered", size: 40 %>
+      <%= f.search_field :title_search, value: params[:title_search], placeholder: "書籍名", class: "textarea textarea-bordered", size: 40 %>
+      <%= f.search_field :author_search, value: params[:author_search], placeholder: "著者名", class: "textarea textarea-bordered", size: 40 %>
       <button title="検索" type="submit" class="btn btn-accent">検索</button>
     <% end %>
   </div>
   <div id='book_list' class='book_list'>
     <%= render partial: 'book_list' %>
   </div>
-</div>
-<!-- モーダルウィンドゥ準備 -->
-<div data-controller="hello">
-  <input type="text">
-  <button>Greet</button>
+  <!-- モーダルウィンドゥ準備 -->
+  <div id='modal' class='modal'>
+    <%= render partial: 'modal' %>
+  </div>
 </div>
