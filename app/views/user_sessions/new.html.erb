@@ -1,22 +1,22 @@
-<div class="container">
-	<div class="row">
-		<div class=" col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-			<h1><%= t('.login') %></h1>
-      <%= form_with url: login_path, local: true do |f| %>
-        <div class="form-group">
-          <%= f.label (t '.email') %>
-          <%= f.text_field :email, class: 'form-control' %>
-        </div><div class="form-group">
-          <%= f.label (t '.password') %>
-          <%= f.password_field :password, class: 'form-control' %>
-        </div><div class="actions">
-          <%= f.submit (t '.login'), class: 'btn btn-primary' %>
+<header>
+  <div>
+    <h1><%= t('.login') %></h1>
+    <%= form_with url: login_path, local: true do |f| %>
+      <div class="form-group">
+        <div class="form">
+        <%= f.label (t '.email') %>
+        <%= f.text_field :email, class: 'form-control' %>
+        <%= f.label (t '.password') %>
+        <%= f.password_field :password, class: 'form-control' %>
         </div>
-      <% end %>
-      <div class='text-center'>
-        <%= link_to '登録ページへ', new_user_path %>
-        <a href="#">パスワードをお忘れの方はこちら</a>
-			</div>
-		</div>
-	</div>
-</div>
+      </div>
+      <div class="actions">
+        <%= f.submit (t '.login'), class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+    <div class='text-center'>
+      <%= link_to '登録ページへ', new_user_path %>
+      <a href="#">パスワードをお忘れの方はこちら</a>
+    </div>
+  </div>
+</header>
