@@ -83,4 +83,5 @@ production:
   <<: *default
   database: bookstair_production
   username: bookstair
-  password: <%= ENV["BOOKSTAIR_DATABASE_PASSWORD"] %>
+  password: <%= ENV["qn1uotfeWWut55pzhVnX1CIW"] %>
+  url: <%= ENV['postgresql://clcpheuvp005ibxqud9lpaas2:qn1uotfeWWut55pzhVnX1CIW@clcpheuvr28952bxqua213vbki:5432/clcpheuvr005kbxquatmqcamw'] %>
