@@ -61,5 +61,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   # Herokuデプロイ時にBlocked hostエラーが出る件を参考に追加
-  config.host.clear
+  # config.host.clear
 end
