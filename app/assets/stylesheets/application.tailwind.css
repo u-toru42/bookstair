@@ -103,6 +103,7 @@ aside nav ul {
   white-space: pre-spaces;
   text-overflow: ellipsis;
   background-image: url("wood.png");
+  color: #000000;
 }
 
 .book-title {
