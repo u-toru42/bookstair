@@ -55,7 +55,7 @@ class BooksController < ApplicationController
   private  
 
   def book_params
-    params.require(:book).permit(:title, :sales_date, :medium_image_url, :item_url, :isbn)
+    params.require(:book).permit(:title, :sales_date, :large_image_url, :item_url, :isbn)
   end
 
   def author_params
@@ -67,7 +67,7 @@ class BooksController < ApplicationController
     author = result["author"]
     item_url = result["itemUrl"]
     isbn = result["isbn"]
-    image_url = result["mediumImageUrl"].gsub('?_ex=120x120', '')
+    image_url = result["largeImageUrl"].gsub('?_ex=200x200', '')
     item_caption = result["itemCaption"]
     {
       title: title,
