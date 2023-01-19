@@ -7,22 +7,18 @@
       </p>
       <p class="book-data">
         <%= (book.title).gsub(/(\s|　)+/, ' ').gsub("／", "/").tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z') %>
-        <%# book.author.gsub(/(\s|　)+/, ' ').gsub("／", "/").tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z').split("/").each do |i| %>
-          <%#= i %>
-        <%# end %>
-        <%#= (book.item_caption).gsub(/(\s|　)+/, ' ').gsub("／", "/").tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z') %>
-        <i class="btn btn-xs btn-active btn-primary">読みたいに追加</i>
       </p>
-      <p>
-      <%= form_with model: @book, local: true, id: "new_book" do |f| %>
-        <%= f.hidden_field :title %>
-        <%= f.hidden_field :salesDate %>
-        <%= f.hidden_field :largeImageUrl %>
-        <%= f.hidden_field :itemUrl %>
-        <% button_tag type: "f.submit" do %>
-          <i class="btn btn-xs btn-active btn-primary">読みたいに追加</i>
+      <p class="book-check">
+        <%= form_with model: book, local: true do |f| %>
+          <%= f.hidden_field :title, id: 'book_title' %>
+          <%= f.hidden_field :author, id: 'book_author' %>
+          <%= f.hidden_field :salesDate, id: 'book_sales_date' %>
+          <%= f.hidden_field :largeImageUrl, id: 'book_large_image_url' %>
+          <%= f.hidden_field :itemUrl, id: 'book_item_url' %>
+          <%= button_tag type: "f.submit" do %>
+            <i class="btn btn-xs btn-primary">よみたいに追加</i>
+          <% end %>
         <% end %>
-      <% end %>
       </p>
     </div>
   <% end %>
