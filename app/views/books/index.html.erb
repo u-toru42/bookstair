@@ -1,0 +1,15 @@
+<h1>読みたい本の一覧</h1>
+<% if @books.present? %>
+  <% @books&.each do |book| %>
+    <div class="book-line">
+    <!-- book.item_urlを書籍情報ページに飛ばして、book.item_urlを書籍情報のリンク貼り付けに利用する -->
+      <p class="book-image">
+        <%= image_tag(book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;") %>
+      </p>
+      <p class="book-data">
+      <!-- 正規表現の加工はHelperに処理を渡す -->
+        <%= (book.title).gsub(/(\s|　)+/, ' ').gsub("／", "/").tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z') %>
+      </p>
+    </div>
+  <% end %>
+<% end %>
