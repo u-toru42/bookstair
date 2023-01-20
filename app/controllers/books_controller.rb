@@ -1,18 +1,19 @@
 class BooksController < ApplicationController
   
-  def create
-    @book = Book.find_or_initialize_by(isbn: params[:isbn])
-
-    unless @book.persisted?
-      results = RakutenWebService::Books::Book.search(isbn: @book.isbn)
-      @book = Book.new(read(results.first))
-      @book.save
-    end
+  def new
+    @book = Book.new
   end
   
-  def index; end
-
-  def show; end
+  def create
+    # binding.pry
+    @book = Book.create(params.permit(:title, :author, :sales_date, :large_image_url, :item_url, :isbn))
+    # @book.save!
+    redirect_to books_path, notice: "#{@book[:title]}を保存しました。"
+  end
+  
+  def index
+    @books = Book.all
+  end
 
   def search
     if params[:title_search].nil? && params[:author_search].nil?
@@ -27,29 +28,6 @@ class BooksController < ApplicationController
     elsif params[:author_search] && params[:title_search]
       @books = RakutenWebService::Books::Book.search(title: params[:title_search], author: params[:author_search])
     end
-    # # ここで空の配列を作ります
-    # @books = []
-    # @title = params[:title]
-    # if @title.present?
-    #   #この部分でresultsに楽天APIから取得したデータ（jsonデータ）を格納します。
-    #   #今回は書籍のタイトルを検索して、一致するデータを格納するように設定しています。
-    #   results = RakutenWebService::Books::Book.search({
-    #     title: @title,
-    #   })
-    #   #この部分で「@books」にAPIからの取得したJSONデータを格納していきます。
-    #   #read(result)については、privateメソッドとして、設定しております。
-    #   results.each do |result|
-    #     book = Book.new(read(result))
-    #     @books << book
-    #   end
-    # end
-    # #「@books」内の各データをそれぞれ保存していきます。
-    # #すでに保存済の本は除外するためにunlessの構文を記載しています。
-    # @books.each do |book|
-    #   unless Book.all.include?(book)
-    #     book.save
-    #   end
-    # end
   end
 
   private  
