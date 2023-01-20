@@ -5,7 +5,7 @@
         <li><a><%= link_to 'Topページ', '/', class: 'dropdown-item' %></a></li>
         <li><a><%= link_to '書籍検索', '/books/search', class: 'dropdown-item' %></a></li>
         <li><a><%= link_to '本棚作成', '#', class: 'dropdown-item' %></a></li>
-        <li><a><%= link_to '本棚一覧', '#', class: 'nav-link' %></a></li>
+        <li><a><%= link_to '本棚一覧', '/books/index', class: 'nav-link' %></a></li>
         <li><a><%= link_to 'プロフィール', '#', class: 'dropdown-item' %></a></li>
         <li><a><%= link_to 'ログアウト', logout_path, class: 'dropdown-item', data: { turbo_method: :delete } %></a></li>
       </ul>
