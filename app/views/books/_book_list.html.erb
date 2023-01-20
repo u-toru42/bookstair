@@ -6,15 +6,17 @@
         <img><%= link_to (image_tag(book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;")), book.item_url %>
       </p>
       <p class="book-data">
+      <!-- 正規表現の加工はHelperに処理を渡す -->
         <%= (book.title).gsub(/(\s|　)+/, ' ').gsub("／", "/").tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z') %>
       </p>
       <p class="book-check">
-        <%= form_with model: book, local: true do |f| %>
-          <%= f.hidden_field :title, id: 'book_title' %>
-          <%= f.hidden_field :author, id: 'book_author' %>
-          <%= f.hidden_field :salesDate, id: 'book_sales_date' %>
-          <%= f.hidden_field :largeImageUrl, id: 'book_large_image_url' %>
-          <%= f.hidden_field :itemUrl, id: 'book_item_url' %>
+        <%= form_with url: books_path, local: true do |f| %>
+          <%= f.hidden_field :title, value: book.title %>
+          <%= f.hidden_field :author, value: book.author %>
+          <%= f.hidden_field :sales_date, value: book.sales_date %>
+          <%= f.hidden_field :large_image_url, value: book.large_image_url %>
+          <%= f.hidden_field :item_url, value: book.item_url %>
+          <%= f.hidden_field :isbn, value: book.isbn %>
           <%= button_tag type: "f.submit" do %>
             <i class="btn btn-xs btn-primary">よみたいに追加</i>
           <% end %>

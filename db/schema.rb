@@ -14,126 +14,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_05_110825) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "authors", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "book_authors", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "book_id"
-    t.bigint "author_id"
-    t.index ["author_id"], name: "index_book_authors_on_author_id"
-    t.index ["book_id"], name: "index_book_authors_on_book_id"
-  end
-
-  create_table "bookchecks", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "bookshelf_line_id"
-    t.bigint "book_id"
-    t.index ["book_id"], name: "index_bookchecks_on_book_id"
-    t.index ["bookshelf_line_id"], name: "index_bookchecks_on_bookshelf_line_id"
-  end
-
-  create_table "bookmarks", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.bigint "book_id"
-    t.index ["book_id"], name: "index_bookmarks_on_book_id"
-    t.index ["user_id"], name: "index_bookmarks_on_user_id"
-  end
-
-  create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.string "author"
-    t.string "sales_date"
-    t.string "image_url"
-    t.string "item_url"
-    t.string "isbn"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "bookshelf_boards", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.bigint "bookshelf_follow_id"
-    t.index ["bookshelf_follow_id"], name: "index_bookshelf_boards_on_bookshelf_follow_id"
-    t.index ["user_id"], name: "index_bookshelf_boards_on_user_id"
-  end
-
-  create_table "bookshelf_follows", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "bookshelf_board_id"
-    t.bigint "bookshelf_id"
-    t.index ["bookshelf_board_id"], name: "index_bookshelf_follows_on_bookshelf_board_id"
-    t.index ["bookshelf_id"], name: "index_bookshelf_follows_on_bookshelf_id"
-  end
-
-  create_table "bookshelf_lines", force: :cascade do |t|
-    t.string "title"
-    t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "bookshelf_id"
-    t.index ["bookshelf_id"], name: "index_bookshelf_lines_on_bookshelf_id"
-  end
-
-  create_table "bookshelves", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.bigint "book_id"
-    t.index ["book_id"], name: "index_comments_on_book_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.integer "status"
-    t.integer "comprehension"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.bigint "book_id"
-    t.index ["book_id"], name: "index_reviews_on_book_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
-  end
-
-  create_table "taggings", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "tag_id"
-    t.bigint "book_id"
-    t.index ["book_id"], name: "index_taggings_on_book_id"
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
     t.string "salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "user_name"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
