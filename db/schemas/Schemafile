@@ -34,9 +34,9 @@ end
 create_table "books", force: :cascade do |t|
   t.string :title
   t.string :author
-  t.string :sales_date
-  t.string :image_url
-  t.string :item_url
+  t.text :sales_date
+  t.text :large_image_url
+  t.text :item_url
   t.string :isbn
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
