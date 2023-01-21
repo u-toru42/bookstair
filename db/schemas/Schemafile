@@ -7,18 +7,14 @@ end
 create_table "book_authors", force: :cascade do |t|
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
-  t.bigint "book_id"
   t.bigint "author_id"
   t.index ["author_id"], name: "index_book_authors_on_author_id"
-  t.index ["book_id"], name: "index_book_authors_on_book_id"
 end
 
 create_table "bookchecks", force: :cascade do |t|
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
   t.bigint "bookshelf_line_id"
-  t.bigint "book_id"
-  t.index ["book_id"], name: "index_bookchecks_on_book_id"
   t.index ["bookshelf_line_id"], name: "index_bookchecks_on_bookshelf_line_id"
 end
 
@@ -26,18 +22,16 @@ create_table "bookmarks", force: :cascade do |t|
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
   t.bigint "user_id"
-  t.bigint "book_id"
-  t.index ["book_id"], name: "index_bookmarks_on_book_id"
   t.index ["user_id"], name: "index_bookmarks_on_user_id"
 end
 
-create_table "books", force: :cascade do |t|
+create_table "books", id: false do |t|
+  t.bigint :isbn, primary_key: true
   t.string :title
   t.string :author
   t.text :sales_date
   t.text :large_image_url
   t.text :item_url
-  t.string :isbn
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
 end
@@ -80,8 +74,6 @@ create_table "comments", force: :cascade do |t|
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
   t.bigint "user_id"
-  t.bigint "book_id"
-  t.index ["book_id"], name: "index_comments_on_book_id"
   t.index ["user_id"], name: "index_comments_on_user_id"
 end
 
@@ -91,17 +83,15 @@ create_table "reviews", force: :cascade do |t|
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
   t.bigint "user_id"
-  t.bigint "book_id"
-  t.index ["book_id"], name: "index_reviews_on_book_id"
+  t.string "isbn", references: "books", renamed_from: "isbn_id", null: false
   t.index ["user_id"], name: "index_reviews_on_user_id"
 end
+add_foreign_key "reviews", "books", column: "isbn", primary_key: "isbn"
 
 create_table "taggings", force: :cascade do |t|
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
   t.bigint "tag_id"
-  t.bigint "book_id"
-  t.index ["book_id"], name: "index_taggings_on_book_id"
   t.index ["tag_id"], name: "index_taggings_on_tag_id"
 end
 
