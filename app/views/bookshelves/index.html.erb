@@ -1,7 +1,30 @@
-<div class="shelf-wapper">
-  <div class="shelf-area">
-    <div id="front" class="shelf-inner clearFix" style="804px;">
-    </div>
+<div class="d-flex">
+  <h1>掲示板一覧</h1>
+  <div class="ml-auto">
+    <%= link_to "新規作成", new_bookshelf_path, class: "btn" %>
   </div>
-  <div class="shelf-footer"></div>
 </div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>id</th>
+      <th>本棚名</th>
+      <th>作成者</th>
+      <th>作成日時</th>
+      <th>更新日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bookshelves.each do |bookshelf| %>
+      <tr>
+        <td><%= bookshelf.id %></td>
+        <td><%= bookshelf.title %></td>
+        <td><%#= 投稿者のuser_id %></td>
+        <td><%= bookshelf.created_at.to_s(:datetime_jp) %></td>
+        <td><%= bookshelf.updated_at.to_s(:datetime_jp) %></td>
+        <td><%= link_to '詳細', bookshelf, class: "btn" %></td>
+        <td><%= button_to '削除', bookshelf, method: :delete, remote: :true, form: { data: { turbo_confirm: "「#{bookshelf.title}」を削除しますか?" } }, class: "btn btn-error" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

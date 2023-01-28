@@ -1,0 +1,8 @@
+<div class="d-flex">
+  <h1>本棚作成</h1>
+  <div class="ml-auto">
+    <%= link_to "本棚一覧", bookshelves_path, class:"btn" %>
+  </div>
+</div>
+
+<%= render partial: "form", locals: { bookshelf: @bookshelf } %>

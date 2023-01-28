@@ -1,5 +1,13 @@
 ---
 ja:
+  defaults:
+    login: 'ログイン'
+    register: '登録'
+    logout: 'ログアウト'
+    message:
+      require_login: 'ログインしてください'
+      created: "%{item}を作成しました"
+      not_created: "%{item}を作成できませんでした"
   users:
     new:
       user_name: "ユーザー名"

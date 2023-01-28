@@ -1,10 +1,10 @@
 module ApplicationHelper
-  def rakuten_book_thumbnail(book)
-    book['largeImageUrl'] == "https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/noimage_01.gif?_ex=120x120" ? 'no_image.png' : book['largeImageUrl']
+  def set_rakuten_book_params(word)
+    #volumeInfoの中が必要な項目のみになるようsliceを使って絞りこむ
+    word.gsub(/(\s|　)+/, ' ').gsub("／", "/").tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')
   end
 
-  def set_rakuten_book_params(book)
-    #volumeInfoの中が必要な項目のみになるようsliceを使って絞りこむ
-    book['item'].slice('title', 'author', 'salesDate', 'largeImageUrl', 'itemUrl', 'isbn')
+  def set_rakuten_book_author_params(word)
+    word.gsub(/(\s|　)+/, ' ').gsub("／", "/").tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z').split("/")
   end
 end

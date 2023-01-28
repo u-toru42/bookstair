@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root to: 'books#index'
+  root to: 'bookshelves#index'
 
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :books do
     collection { get :search } #このルーティングを追加
   end
+
+  resources :bookshelves, only: %i[index new create show edit update destroy]
 
   resources :users, only: %i[new create]
 end
