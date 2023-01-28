@@ -5,10 +5,12 @@
 header {
   background-image: url("wood.png");
 }
-@media screen and (min-width: 920px) {
+/* @media screen and (min-width: 920px) { */
 h1 {
   text-align: center;
   padding: 20px 0px 16px;
+  background-color: #302E29;
+  color: #ffffff;
 }
 
 header nav {
@@ -37,17 +39,18 @@ header nav ul li a:hover {
 }
 
 main {
-  flex-basis: 920px;
+  /* flex-basis: 920px; */
+  height: 100%;
 }
 
 aside {
-  flex-basis: 204px;
+  /* flex-basis: 204px; */
 }
 
 aside nav {
   border-radius: 16px;
   /* background-color: #ffffff; */
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 16);
+  /* box-shadow: 0px 0px 8px rgba(0, 0, 0, 16); */
   padding: 24px 28px;
   margin-bottom: 24px;
 }
@@ -55,7 +58,7 @@ aside nav {
 aside nav h2 {
   margin-bottom: 18px;
   font-size: 22px;
-  font-weight: bold;
+  /* font-weight: bold; */
   /* color: #7c5d48; */
 }
 
@@ -63,15 +66,9 @@ aside nav ul {
   font-size: 14px;
 }
 
-.search {
-  width: 920px;
-  margin: 0 auto 50px;
-  justify-content: space-around;
-}
-
 .search-box {
-  margin: 20px;
-  /* padding: 20px; */
+  /* margin: 20px; */
+  padding: 20px;
 }
 
 .book_list {
@@ -82,7 +79,7 @@ aside nav ul {
 }
 
 .book-line {
-  /* width: 33%; */
+  width: 50%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -111,25 +108,6 @@ aside nav ul {
   /* color: #000000; */
 }
 
-.book-title {
-  flex-basis: 200px;
-  margin: 5px;
-  padding: 10px;
-  overflow: hidden;
-  white-space: pre-spaces;
-  text-overflow: ellipsis;
-  background-image: url("wood.png");
-}
-
-.book-author {
-  flex-basis: 200px;
-  margin: 5px;
-  padding: 10px;
-  overflow: hidden;
-  white-space: pre-spaces;
-  text-overflow: ellipsis;
-  background-image: url("wood.png");
-}
 .btn-xs {
   margin: 5px;
   padding: 5px;
@@ -149,7 +127,7 @@ aside nav ul {
 .form-group {
   /* background-color: #efe8d9; */
   padding: 20px;
-  width: 600px;
+  /* width: 600px; */
   margin: 0 auto;
 }
 
@@ -162,20 +140,29 @@ aside nav ul {
 }
 
 .actions {
-  padding-bottom: 60px;
-  width: 600px;
+  /* padding-bottom: 60px; */
+  /* width: 600px; */
   margin: 0 auto;
 }
 
-body {
+.search {
   background-image: url("shelf.jpg");
   font-size: 16px;
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
-  /* max-width: 100%; */
+  min-height: 1000px;
   /* font-family: 'Noto Sans JP', sans-serif; */
   /* color: #000000; */
+}
+
+.bookshelf {
+  background-image: url("shelf.jpg");
+  font-size: 16px;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  min-height: 1000px;
 }
 
 footer {
@@ -207,13 +194,35 @@ footer nav ul li a:hover {
   text-decoration: underline;
 }
 
-
-
+.tos {
+  background-color: #302E29;
+  color: #ffffff;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  padding: 10px 20px;
 }
+
+.privacy {
+  background-color: #302E29;
+  color: #ffffff;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.flash {
+  background-image: url("shelf.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+}
+
+
+/* } */
 
 /* モバイルデバイスの見え方 */
 
-@media screen and (max-width:640px) {
+/* @media screen and (max-width:640px) {
   .search {
     width: 100%;
     margin: 0 auto 50px;
@@ -234,4 +243,4 @@ footer nav ul li a:hover {
   header nav ul form {
     width: 100%;
   }
-}
+} */

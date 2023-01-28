@@ -7,4 +7,7 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true, presence: true
   validates :user_name, presence: true, length: { maximum: 255 }
+
+  has_many :books, through: :bookshelves
+  has_many :bookshelves, dependent: :destroy
 end
