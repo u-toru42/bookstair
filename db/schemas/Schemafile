@@ -1,28 +1,10 @@
-create_table "authors", force: :cascade do |t|
-  t.string "name"
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-end
+create_table :users do |t|
+  t.string :email, null: false, index: { unique: true }
+  t.string :crypted_password
+  t.string :salt
+  t.string :user_name, presence: true, length: { maximum: 255 }
 
-create_table "book_authors", force: :cascade do |t|
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "author_id"
-  t.index ["author_id"], name: "index_book_authors_on_author_id"
-end
-
-create_table "bookchecks", force: :cascade do |t|
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "bookshelf_line_id"
-  t.index ["bookshelf_line_id"], name: "index_bookchecks_on_bookshelf_line_id"
-end
-
-create_table "bookmarks", force: :cascade do |t|
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "user_id"
-  t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  t.timestamps null: false
 end
 
 create_table "books", id: false do |t|
@@ -36,76 +18,23 @@ create_table "books", id: false do |t|
   t.datetime "updated_at", null: false
 end
 
-create_table "bookshelf_boards", force: :cascade do |t|
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "user_id"
-  t.bigint "bookshelf_follow_id"
-  t.index ["bookshelf_follow_id"], name: "index_bookshelf_boards_on_bookshelf_follow_id"
-  t.index ["user_id"], name: "index_bookshelf_boards_on_user_id"
-end
-
-create_table "bookshelf_follows", force: :cascade do |t|
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "bookshelf_board_id"
-  t.bigint "bookshelf_id"
-  t.index ["bookshelf_board_id"], name: "index_bookshelf_follows_on_bookshelf_board_id"
-  t.index ["bookshelf_id"], name: "index_bookshelf_follows_on_bookshelf_id"
-end
-
-create_table "bookshelf_lines", force: :cascade do |t|
-  t.string "title"
-  t.integer "position"
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "bookshelf_id"
-  t.index ["bookshelf_id"], name: "index_bookshelf_lines_on_bookshelf_id"
-end
-
 create_table "bookshelves", force: :cascade do |t|
-  t.string "name"
+  t.string :title
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
-end
-
-create_table "comments", force: :cascade do |t|
-  t.text "content"
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "user_id"
-  t.index ["user_id"], name: "index_comments_on_user_id"
+  # t.bigint :user_id
+  # t.bigint :isbn, references: "books", renamed_from: "isbn_id", null: false
+  # t.index ["user_id"], name: "index_bookshelves_on_user_id"
 end
 
 create_table "reviews", force: :cascade do |t|
-  t.integer "status"
-  t.integer "comprehension"
+  t.integer :status
+  t.integer :comprehension
+  t.text :body, null: false
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
   t.bigint "user_id"
-  t.string "isbn", references: "books", renamed_from: "isbn_id", null: false
+  t.bigint "isbn", references: "books", renamed_from: "isbn_id", null: false
   t.index ["user_id"], name: "index_reviews_on_user_id"
 end
 add_foreign_key "reviews", "books", column: "isbn", primary_key: "isbn"
-
-create_table "taggings", force: :cascade do |t|
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "tag_id"
-  t.index ["tag_id"], name: "index_taggings_on_tag_id"
-end
-
-create_table "tags", force: :cascade do |t|
-  t.string "name"
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-end
-
-create_table :users do |t|
-  t.string :email, null: false, index: { unique: true }
-  t.string :crypted_password
-  t.string :salt
-  t.string :user_name, presence: true, length: { maximum: 255 }
-
-  t.timestamps null: false
-end
