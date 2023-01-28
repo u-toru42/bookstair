@@ -3,14 +3,12 @@
     <div>
       <ul>
         <li><a><%= link_to 'ログイン', login_path %></a></li>
-        <li><a><%= link_to '読みたい本の一覧', '/books/', class: 'dropdown-item' %></a></li>
         <li><a><%= link_to '書籍検索', '/books/search', class: 'dropdown-item' %></a></li>
-        <li><a><%= link_to '本棚作成', '#', class: 'dropdown-item' %></a></li>
-        <li><a><%= link_to '本棚一覧', '#', class: 'nav-link' %></a></li>
+        <li><a><%= link_to '読みたい本の一覧', '/books/', class: 'dropdown-item' %></a></li>
+        <li><a><%= link_to 'マイ本棚', '/bookshelves/', class: 'nav-link' %></a></li>
+        <li><a><%= link_to '本棚検索', '/bookshelves/', class: 'nav-link' %></a></li>
         <li><a><%= link_to 'プロフィール', '#', class: 'dropdown-item' %></a></li>
       </ul>
-        </li>
-			</ul>
     </div>
   </nav>
 </header>

@@ -7,18 +7,19 @@
       </p>
       <p class="book-data">
       <!-- 正規表現の加工はHelperに処理を渡す -->
-        <%= (book.title).gsub(/(\s|　)+/, ' ').gsub("／", "/").tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z') %>
+        <%= set_rakuten_book_params(book.title) %>
+        <%= set_rakuten_book_author_params(book.author) %>
       </p>
       <p class="book-check">
         <%= form_with url: books_path, local: true do |f| %>
-          <%= f.hidden_field :title, value: book.title %>
-          <%= f.hidden_field :author, value: book.author %>
-          <%= f.hidden_field :sales_date, value: book.sales_date %>
-          <%= f.hidden_field :large_image_url, value: book.large_image_url %>
-          <%= f.hidden_field :item_url, value: book.item_url %>
-          <%= f.hidden_field :isbn, value: book.isbn %>
+          <%= f.hidden_field :title, value: set_rakuten_book_params(book.title) %>
+          <%= f.hidden_field :author, value: set_rakuten_book_author_params(book.author) %>
+          <%= f.hidden_field :sales_date, value: set_rakuten_book_params(book.sales_date) %>
+          <%= f.hidden_field :large_image_url, value: set_rakuten_book_params(book.large_image_url) %>
+          <%= f.hidden_field :item_url, value: set_rakuten_book_params(book.item_url) %>
+          <%= f.hidden_field :isbn, value: set_rakuten_book_params(book.isbn) %>
           <%= button_tag type: "f.submit" do %>
-            <i class="btn btn-xs btn-primary">よみたいに追加</i>
+            <i class="btn btn-xs btn-primary">本棚に追加</i>
           <% end %>
         <% end %>
       </p>
