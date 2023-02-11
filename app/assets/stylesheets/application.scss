@@ -1,17 +1,17 @@
 // @import "bulma";
 
 header {
-  background-image: url("wood.png");
+  // background-image: url("wood.png");
   // background-size: cover;
   width: 100vw;
 }
 
 /* @media screen and (min-width: 920px) { */
-h1 {
+h3 {
   text-align: center;
   padding: 20px 0px 16px;
-  background-color: #302E29;
-  color: #ffffff;
+  // background-color: #302E29;
+  // color: #ffffff;
 }
 
 header nav {
@@ -38,6 +38,7 @@ header nav ul li a:hover {
 
 main {
   height: 100%;
+  background-color: #F4F5F7;
 }
 
 aside {
@@ -84,13 +85,17 @@ aside nav ul {
 }
 
 .book-data {
-  height: 200px;
+  height: 100px;
   margin: 5px;
   padding: 10px;
   overflow: hidden;
   white-space: normal;
   text-overflow: ellipsis;
-  background-image: url("wood.png");
+  // background-image: url("wood.png");
+}
+
+.show-book-data {
+  // background-image: url("wood.png");
 }
 
 .btn-xs {
@@ -125,7 +130,7 @@ aside nav ul {
 }
 
 .search {
-  background-image: url("shelf.jpg");
+  // background-image: url("shelf.jpg");
   font-size: 16px;
   background-size: cover;
   background-attachment: fixed;
@@ -134,7 +139,7 @@ aside nav ul {
 }
 
 .bookshelf {
-  background-image: url("shelf.jpg");
+  // background-image: url("shelf.jpg");
   font-size: 16px;
   background-size: cover;
   background-attachment: fixed;
@@ -143,7 +148,7 @@ aside nav ul {
 }
 
 footer {
-  background-image: url("wood.png");
+  // background-image: url("wood.png");
 }
 
 footer nav {
@@ -185,7 +190,7 @@ footer nav ul li a:hover {
 }
 
 .flash {
-  background-image: url("shelf.jpg");
+  // background-image: url("shelf.jpg");
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;

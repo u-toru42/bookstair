@@ -1,21 +1,38 @@
 <div class="search">
-  <h1>読みたい本の一覧</h1>
+  <h3>本棚内の書籍</h3>
   <div>
     <%= render "flash" %>
   </div>
-  <% if @books.present? %>
-    <% @books&.each do |book| %>
-      <div class="book-line">
-      <!-- book.item_urlを書籍情報ページに飛ばして、book.item_urlを書籍情報のリンク貼り付けに利用する -->
-        <p class="book-image">
-          <%= image_tag(book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;") %>
-        </p>
-        <p class="book-data">
-        <!-- 正規表現の加工はHelperに処理を渡す -->
-          <%= set_rakuten_book_params(book.title) %>
-        </p>
-        <%= button_to "読みたい本から削除", book, method: :delete, params: {isbn: book.isbn}, remote: :true, form: { data: { turbo_confirm: "「#{book.title}」を削除しますか?" } }, class: "btn btn-xs btn-danger" %>
-      </div>
-    <% end %>
-  <% end %>
+  <table>
+    <thead class="table">
+      <tr>
+        <th>サムネイル</th>
+        <th>書籍名</th>
+        <th>詳細</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody class="show-book-data">
+      <% if @books.present? %>
+        <% @books&.each do |book| %>
+          <!-- book.item_urlを書籍情報ページに飛ばして、book.item_urlを書籍情報のリンク貼り付けに利用する -->
+          <tr>
+            <td>
+              <span><%= image_tag(book.large_image_url, style: "width: 100px; height: 125px;display: inline-block;") %></span>
+            </td>
+            <td>
+              <!-- 正規表現の加工はHelperに処理を渡す -->
+              <%= set_rakuten_book_params(book.title) %><br><br>
+              <%= set_rakuten_book_params(book.author) %>
+            </td>
+            <td><%= link_to "しおりを見てみる", book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "button is-info" %></td>
+            <td><%= button_to "読みたい本から削除", book, method: :delete, params: {isbn: book.isbn}, remote: :true, form: { data: { turbo_confirm: "「#{book.title}」を削除しますか?" } }, class: "button is-danger" %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="pagination is-justify-content-center">
+  <%= paginate @books %>
 </div>
