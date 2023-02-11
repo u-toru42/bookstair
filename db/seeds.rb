@@ -6,7 +6,19 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 if Rails.env == "development"
+<<<<<<< Updated upstream
   (1..50).each do |i|
     Bookshelf.create(title: "タイトル#{i}")
   end
+=======
+  (1..100).each do |i|
+    Bookshelf.create(title: "タイトル#{i}")
+  end
+  
+  Tag.create([
+    { name: "入門" },
+    { name: "実践" },
+    { name: "達人" },
+  ])
+>>>>>>> Stashed changes
 end
