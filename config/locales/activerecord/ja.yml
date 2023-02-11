@@ -1,0 +1,11 @@
+---
+ja:
+  activerecord:
+    models:
+      bookshelf: "本棚"
+    attributes:
+      bookshelf:
+        title: "本棚名"
+      comment:
+        name: "投稿者"
+        comment: "コメント"
