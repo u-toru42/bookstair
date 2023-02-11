@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   root to: 'bookshelves#index'
 
   get 'login', to: 'user_sessions#new'
@@ -19,6 +20,8 @@ Rails.application.routes.draw do
   resources :books do
     collection { get :search } #このルーティングを追加
 =======
+=======
+>>>>>>> Stashed changes
   # get 'mypage', to: 'users#me' 
   root to: 'books#index'
   # root "home#top"
@@ -35,6 +38,9 @@ Rails.application.routes.draw do
   }
   devise_scope :user do
     post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   end
   
@@ -50,11 +56,15 @@ Rails.application.routes.draw do
   resources :bookshelves, only: %i[index new create show edit update destroy]
 
   # resources :users, only: %i[new create]
+<<<<<<< Updated upstream
 
 <<<<<<< Updated upstream
   resources :bookshelves, only: %i[index new create show edit update destroy]
 
   resources :users, only: %i[new create]
 =======
+>>>>>>> Stashed changes
+=======
+
 >>>>>>> Stashed changes
 end
