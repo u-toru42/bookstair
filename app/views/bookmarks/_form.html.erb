@@ -1,0 +1,15 @@
+<%= render "shared/error_messages" %>
+
+<div class="card">
+  <p class="card-content">コメント記入</p>
+  <div class="is-normal">
+  <%= form_with model: @bookmarks, url: [@book, @bookmark], local: true do |f| %>
+    <div>
+      <%= f.hidden_field :book_isbn %>
+      <%= f.label :comment %>
+      <%= f.text_area :body, class: "textarea" %>
+    </div>
+    <%= f.submit "コメントする", class: "button is-primary" %>
+  <% end %>
+  </div>
+</div>
