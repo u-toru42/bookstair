@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 create_table "authors", force: :cascade do |t|
   t.string "name"
   t.datetime "created_at", null: false
@@ -87,11 +88,92 @@ create_table "tags", force: :cascade do |t|
   t.datetime "updated_at", null: false
 end
 
+=======
+>>>>>>> Stashed changes
 create_table :users do |t|
-  t.string :email, null: false, index: { unique: true }
-  t.string :crypted_password
-  t.string :salt
-  t.string :user_name, presence: true, length: { maximum: 255 }
+  ## Database authenticatable
+  t.string :email,              null: false, default: ""
+  t.string :encrypted_password, null: false, default: ""
+
+  ## Recoverable
+  t.string   :reset_password_token
+  t.datetime :reset_password_sent_at
+
+  ## Rememberable
+  t.datetime :remember_created_at
+
+  ## Trackable
+  # t.integer  :sign_in_count, default: 0, null: false
+  # t.datetime :current_sign_in_at
+  # t.datetime :last_sign_in_at
+  # t.string   :current_sign_in_ip
+  # t.string   :last_sign_in_ip
+
+  ## Confirmable
+  # t.string   :confirmation_token
+  # t.datetime :confirmed_at
+  # t.datetime :confirmation_sent_at
+  # t.string   :unconfirmed_email # Only if using reconfirmable
+
+  ## Lockable
+  # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
+  # t.string   :unlock_token # Only if unlock strategy is :email or :both
+  # t.datetime :locked_at
+
 
   t.timestamps null: false
 end
+add_index "users", "email",                using: :btree
+add_index "users", "reset_password_token", using: :btree
+# add_index :users, :confirmation_token,   unique: true
+# add_index :users, :unlock_token,         unique: true
+
+create_table "books", id: false do |t|
+  t.bigint :isbn, primary_key: true
+  t.string :title
+  t.string :author
+  t.text :sales_date
+  t.text :large_image_url
+  t.text :item_url
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
+create_table "bookshelves", force: :cascade do |t|
+  t.string :title
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+  # t.bigint :user_id
+  # t.bigint :isbn, references: "books", renamed_from: "isbn_id", null: false
+  # t.index ["user_id"], name: "index_bookshelves_on_user_id"
+end
+
+create_table "comments", force: :cascade do |t|
+  t.belongs_to "bookshelf", null: false, foreign_key: true
+  t.references "book", null: false
+  t.belongs_to "user", foreign_key: true 
+  t.text :body, null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+add_foreign_key "comments", "bookshelves", column: "bookshelf_id"
+add_foreign_key "comments", "books", column: "isbn", primary_key: :isbn
+add_foreign_key "comments", "users", column: "user_id"
+# add_foreign_key "comments", "bookshelves", name: "comment_ibfk_1", column: "bookshelf_id"
+
+create_table "tags", force: :cascade do |t|
+  t.string :name, null: false
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+
+create_table :bookshelf_tag_relations, force: :cascade do |t|
+  t.belongs_to "bookshelf", null: false, forein_key: true
+  t.belongs_to "tag", null: false, forein_key: true
+  t.datetime "created_at", null: false
+  t.datetime "updated_at", null: false
+end
+add_foreign_key "bookshelf_tag_relations", "bookshelves", column: "bookshelf_id"
+# add_foreign_key "bookshelf_tag_relations", "bookshelves", name: "bookshelf_tag_relations_on_bookshelf_ibfk_1"
+add_foreign_key "bookshelf_tag_relations", "tags", column: "tag_id"
+# add_foreign_key "bookshelf_tag_relations", "tags", name: "bookshelf_tag_relations_on_tag_ibfk_1"

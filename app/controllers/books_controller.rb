@@ -1,6 +1,10 @@
 class BooksController < ApplicationController
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -21,7 +25,11 @@ class BooksController < ApplicationController
     # button_toのvalueがidになっているがisbnに変換することは可能か
     book = Book.find_by(isbn: params[:isbn])
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     book.destroy
+=======
+    book.delete
+>>>>>>> Stashed changes
 =======
     book.delete
 >>>>>>> Stashed changes
@@ -46,7 +54,10 @@ class BooksController < ApplicationController
       @books = RakutenWebService::Books::Book.search(title: params[:title_search], author: params[:author_search])
     end
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
   end
 
   def show
@@ -58,6 +69,9 @@ class BooksController < ApplicationController
     # @comment = @book.comments.build(user_id: current_user.id) if current_user
     # @comment = Comment.new(isbn: params[:isbn])
     # binding.irb
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   end
 
