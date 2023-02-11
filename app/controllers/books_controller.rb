@@ -1,5 +1,9 @@
 class BooksController < ApplicationController
+<<<<<<< Updated upstream
   
+=======
+
+>>>>>>> Stashed changes
   def new
     @book = Book.new
   end
@@ -16,7 +20,11 @@ class BooksController < ApplicationController
   def destroy
     # button_toのvalueがidになっているがisbnに変換することは可能か
     book = Book.find_by(isbn: params[:isbn])
+<<<<<<< Updated upstream
     book.destroy
+=======
+    book.delete
+>>>>>>> Stashed changes
     redirect_to books_path, danger: "「#{book[:title]}」を削除しました。", status: :see_other
   end
   
@@ -37,6 +45,20 @@ class BooksController < ApplicationController
     elsif params[:author_search] && params[:title_search]
       @books = RakutenWebService::Books::Book.search(title: params[:title_search], author: params[:author_search])
     end
+<<<<<<< Updated upstream
+=======
+  end
+
+  def show
+    @book = Book.find_by!(isbn: params[:isbn])
+    @comment = Comment.new
+    @comments = @book.comments.includes(:user).order(created_at: :desc)
+    # @book = Book.includes(:user).find_by!(isbn: params[:isbn])
+    # @comments = @book.comments.all
+    # @comment = @book.comments.build(user_id: current_user.id) if current_user
+    # @comment = Comment.new(isbn: params[:isbn])
+    # binding.irb
+>>>>>>> Stashed changes
   end
 
   private  
