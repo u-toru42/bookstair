@@ -32,16 +32,6 @@ class User < ApplicationRecord
     end
   end
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  validates :email, uniqueness: true, presence: true
-  validates :user_name, presence: true, length: { maximum: 255 }
-
-  has_many :books, through: :bookshelves
-  has_many :bookshelves, dependent: :destroy
-=======
-=======
->>>>>>> Stashed changes
   has_many :books, dependent: :destroy
   has_many :comments, dependent: :destroy
 
@@ -52,8 +42,4 @@ class User < ApplicationRecord
   def own?(object)
     id == object.user_id
   end
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 end

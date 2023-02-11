@@ -1,7 +1,7 @@
 <div class="search">
   <div id="search-box" class="search-box">
     <div class="field is-horizontal">
-      <div class="field-body">
+        <div class="field-body">
           <div class="field">
             <%= form_with url: search_books_path, local: true, method: :get do |f| %>
             <p class="control is-expanded">
@@ -18,15 +18,8 @@
       </div>
     </div>
   </div>
+  <div><%= render "flash" %></div>
   <div id='book_list' class='book_list'>
     <%= render partial: 'book_list' %>
   </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 </div>
-=======
-</div>
->>>>>>> Stashed changes
-=======
-</div>
->>>>>>> Stashed changes
