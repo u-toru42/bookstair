@@ -2,12 +2,23 @@
   <nav>
     <div>
       <ul>
+<<<<<<< Updated upstream
         <li><a><%= link_to 'ログイン', login_path %></a></li>
         <li><a><%= link_to '書籍検索', '/books/search', class: 'dropdown-item' %></a></li>
         <li><a><%= link_to '読みたい本の一覧', '/books/', class: 'dropdown-item' %></a></li>
         <li><a><%= link_to 'マイ本棚', '/bookshelves/', class: 'nav-link' %></a></li>
         <li><a><%= link_to '本棚検索', '/bookshelves/', class: 'nav-link' %></a></li>
         <li><a><%= link_to 'プロフィール', '#', class: 'dropdown-item' %></a></li>
+=======
+        <li><a><%= link_to 'ログイン', new_user_session_path %></a></li>
+        <li><a><%= link_to 'ゲストログイン', users_guest_sign_in_path, data: { turbo_method: :post } %></a></li>
+        <li><a><%= link_to '新規登録', new_user_registration_path %></a></li>
+        <li><a><%= link_to '書籍検索', '/books/search', class: 'nav-link' %></a></li>
+        <li><a><%= link_to '読みたい本の一覧', '/books/', class: 'nav-link' %></a></li>
+        <li><a><%= link_to 'マイしおり', '/bookshelves/', class: 'nav-link' %></a></li>
+        <li><a><%= link_to 'しおり検索', '/bookshelves/', class: 'nav-link' %></a></li>
+        <li><a><%= link_to 'プロフィール', '#', class: 'nav-link' %></a></li>
+>>>>>>> Stashed changes
       </ul>
     </div>
   </nav>

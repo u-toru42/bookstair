@@ -48,6 +48,7 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'rails-flog', require: 'flog'
 end
 
 group :development do
@@ -66,11 +67,9 @@ gem 'rakuten_web_service'
 gem 'dotenv-rails'
 gem 'faraday'
 gem 'rails_heroicon'
-gem 'sorcery'
 gem 'pry-byebug'
 gem 'propshaft'
 gem 'rails-i18n'
 gem 'draper'
 gem 'kaminari'
 gem 'rails-i18n'
-gem 'high_voltage', '~> 3.1'
