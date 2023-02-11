@@ -6,14 +6,6 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 if Rails.env == "development"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  (1..50).each do |i|
-    Bookshelf.create(title: "タイトル#{i}")
-  end
-=======
-=======
->>>>>>> Stashed changes
   (1..100).each do |i|
     Bookshelf.create(title: "タイトル#{i}")
   end
@@ -23,8 +15,4 @@ if Rails.env == "development"
     { name: "実践" },
     { name: "達人" },
   ])
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 end
