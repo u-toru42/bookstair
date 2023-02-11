@@ -1,6 +1,6 @@
 <% if @books.present? %>
   <% @books&.each do |book| %>
-    <div class="book-line is-family-sans-serif">
+    <div class="book-line is-family-sans-serif box">
     <!-- book.item_urlを書籍情報ページに飛ばして、book.item_urlを書籍情報のリンク貼り付けに利用する -->
       <p class="book-image">
         <img><%= link_to (image_tag(book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;")), book.item_url %>
@@ -20,7 +20,7 @@
           <%= f.hidden_field :large_image_url, value: set_rakuten_book_params(book.large_image_url) %>
           <%= f.hidden_field :item_url, value: set_rakuten_book_params(book.item_url) %>
           <%= f.hidden_field :isbn, value: set_rakuten_book_params(book.isbn) %>
-          <%= button_tag type: "f.submit" do %>
+          <%= link_to type: "f.submit" do %>
             <button class="button is-success">本棚に追加</button>
           <% end %>
         <% end %>
