@@ -2,6 +2,7 @@
   <nav>
     <div>
       <ul>
+<<<<<<< Updated upstream
         <li><a><%= link_to 'Topページ', '/', class: 'dropdown-item' %></a></li>
         <li><a><%= link_to '書籍検索', '/books/search', class: 'dropdown-item' %></a></li>
         <li><a><%= link_to '読みたい本の一覧', '/books/', class: 'dropdown-item' %></a></li>
@@ -9,6 +10,15 @@
         <li><a><%= link_to '本棚検索', '/bookshelves/', class: 'nav-link' %></a></li>
         <li><a><%= link_to 'プロフィール', '#', class: 'dropdown-item' %></a></li>
         <li><a><%= link_to 'ログアウト', logout_path, class: 'dropdown-item', data: { turbo_method: :delete } %></a></li>
+=======
+        <li><a><%= link_to 'Topページ', '/', class: 'nav-link' %></a></li>
+        <li><a><%= link_to '書籍検索', '/books/search', class: 'nav-link' %></a></li>
+        <li><a><%= link_to '読みたい本の一覧', '/books/', class: 'nav-link' %></a></li>
+        <li><a><%= link_to 'マイしおり', '/bookshelves/', class: 'nav-link' %></a></li>
+        <li><a><%= link_to 'しおり検索', '/bookshelves/', class: 'nav-link' %></a></li>
+        <li><a><%= link_to 'プロフィール', '/', class: 'nav-link' %></a></li>
+        <li><a><%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %></a></li>
+>>>>>>> Stashed changes
       </ul>
     </div>
   </nav>

@@ -1,14 +1,21 @@
 <% if @books.present? %>
   <% @books&.each do |book| %>
-    <div class="book-line">
+    <div class="book-line is-family-sans-serif">
     <!-- book.item_urlを書籍情報ページに飛ばして、book.item_urlを書籍情報のリンク貼り付けに利用する -->
       <p class="book-image">
         <img><%= link_to (image_tag(book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;")), book.item_url %>
       </p>
       <p class="book-data">
       <!-- 正規表現の加工はHelperに処理を渡す -->
+<<<<<<< Updated upstream
         <%= set_rakuten_book_params(book.title) %>
         <%= set_rakuten_book_author_params(book.author) %>
+=======
+        <%= set_rakuten_book_params(book.title) %><br><br>
+        <% set_rakuten_book_author_params(book.author).each do |i| %>
+          <%= i %><br>
+        <% end %>
+>>>>>>> Stashed changes
       </p>
       <p class="book-check">
         <%= form_with url: books_path, local: true do |f| %>
@@ -19,7 +26,11 @@
           <%= f.hidden_field :item_url, value: set_rakuten_book_params(book.item_url) %>
           <%= f.hidden_field :isbn, value: set_rakuten_book_params(book.isbn) %>
           <%= button_tag type: "f.submit" do %>
+<<<<<<< Updated upstream
             <i class="btn btn-xs btn-primary">本棚に追加</i>
+=======
+            <button class="button is-success">本棚に追加</button>
+>>>>>>> Stashed changes
           <% end %>
         <% end %>
       </p>

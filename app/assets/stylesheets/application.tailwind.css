@@ -1,7 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
 
+<<<<<<< Updated upstream
 header {
   background-image: url("wood.png");
 }
@@ -244,3 +245,5 @@ footer nav ul li a:hover {
     width: 100%;
   }
 } */
+=======
+>>>>>>> Stashed changes
