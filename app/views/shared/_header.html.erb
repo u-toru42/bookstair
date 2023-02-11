@@ -1,30 +1,58 @@
 <header>
+<<<<<<< HEAD
   <nav>
     <div>
       <ul>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        <li><a><%= link_to 'Topページ', '/', class: 'dropdown-item' %></a></li>
-        <li><a><%= link_to '書籍検索', '/books/search', class: 'dropdown-item' %></a></li>
-        <li><a><%= link_to '読みたい本の一覧', '/books/', class: 'dropdown-item' %></a></li>
-        <li><a><%= link_to 'マイ本棚', '/bookshelves/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to '本棚検索', '/bookshelves/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'プロフィール', '#', class: 'dropdown-item' %></a></li>
-        <li><a><%= link_to 'ログアウト', logout_path, class: 'dropdown-item', data: { turbo_method: :delete } %></a></li>
-=======
-=======
->>>>>>> Stashed changes
         <li><a><%= link_to 'Topページ', '/', class: 'nav-link' %></a></li>
         <li><a><%= link_to '書籍検索', '/books/search', class: 'nav-link' %></a></li>
-        <li><a><%= link_to '読みたい本の一覧', '/books/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'マイしおり', '/bookshelves/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'しおり検索', '/bookshelves/', class: 'nav-link' %></a></li>
+        <li><a><%= link_to 'マイ本棚', '/books/', class: 'nav-link' %></a></li>
+        <li><a><%= link_to 'マイしおり', '/bookmarks/', class: 'nav-link' %></a></li>
+        <li><a><%= link_to 'しおり検索', '/bookmarks/', class: 'nav-link' %></a></li>
         <li><a><%= link_to 'プロフィール', '/', class: 'nav-link' %></a></li>
         <li><a><%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %></a></li>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
 =======
->>>>>>> Stashed changes
+  <nav class="navbar navbar-expand-lg navigation navbar-light bg-light">
+
+    <%= link_to root_path, class: 'navbar-brand' do %>
+      <%#= image_tag 'logo.png' %>
+    <% end %>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="ml-auto navbar-nav main-nav align-items-center">
+        <li class="nav-item dropdown dropdown-slide">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            掲示板
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right">
+            <%= link_to '検索', '/books/search', class: 'dropdown-item' %>
+            <%= link_to '掲示板一覧', '/', class: 'dropdown-item' %>
+            <%= link_to '掲示板作成', '#', class: 'dropdown-item' %>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to 'ブックマーク一覧', '#', class: 'nav-link' %>
+        </li>
+
+        <li class="nav-item dropdown dropdown-slide">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="header-profile">
+            <%#= image_tag 'sample', size: '40x40', class: 'rounded-circle mr15'%>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="dropdown-item">
+              <%= current_user.decorate.user_name %>
+            </div>
+            <div class="dropdown-divider"></div>
+            <%= link_to 'プロフィール', '#', class: 'dropdown-item' %>
+
+            <%= button_to 'ログアウト', logout_path, class: 'dropdown-item', method: :delete %>
+          </div>
+        </li>
+>>>>>>> 200e31c (ログイン機能実装(ログアウト機能が未完成))
       </ul>
     </div>
   </nav>

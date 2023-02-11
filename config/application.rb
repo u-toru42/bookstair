@@ -19,7 +19,7 @@ require "action_cable/engine"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Bookstair
+module Myapptest
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
@@ -31,12 +31,15 @@ module Bookstair
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+<<<<<<< HEAD
 
     # Don't generate system test files.
     config.generators.system_tests = nil
     # タイムゾーンをTokyo（日本）にする
     config.time_zone = "Tokyo"
     # デフォルトのロケールを日本にする
+=======
+>>>>>>> 06b00fa (i18n、decorator、ユーザー名絡む名をname->user_nameに変更)
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
   end

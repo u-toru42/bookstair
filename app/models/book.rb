@@ -12,10 +12,11 @@
 #  updated_at      :datetime         not null
 #
 class Book < ApplicationRecord
-  self.primary_key = 'isbn'
-  validates :isbn, uniqueness: { scope: :isbn }
-  def to_param
-    isbn.to_s
+  self.primary_key = "isbn"
+  has_many :comments, dependnet: :destroy
+  has_many :bookmarks, dependent: :destroy
+
+  def bookmarked_by?(user)
+    bookmarks.where(user_id: user).exists?
   end
-  has_many :comments, dependent: :destroy
 end

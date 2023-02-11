@@ -21,25 +21,21 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :validatable
-
-    def self.guest
-      find_or_create_by!(email: "guest@example.com") do |user|
-        user.password = SecureRandom.urlsafe_base64
-    end
-  end
-
-  has_many :books, dependent: :destroy
+<<<<<<< HEAD
   has_many :comments, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+=======
+  authenticates_with_sorcery!
 
-  def my_comment?(comment)
-    self == comment.user
-  end
+  validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
+  validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
+  validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
-  def own?(object)
-    id == object.user_id
-  end
+  validates :email, uniqueness: true, presence: true
+<<<<<<< HEAD
+  validates :name, presence: true, length: { maximum: 255 }
+>>>>>>> 200e31c (ログイン機能実装(ログアウト機能が未完成))
+=======
+  validates :user_name, presence: true, length: { maximum: 255 }
+>>>>>>> 06b00fa (i18n、decorator、ユーザー名絡む名をname->user_nameに変更)
 end

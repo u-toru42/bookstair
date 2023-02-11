@@ -1,5 +1,6 @@
 ---
 ja:
+<<<<<<< HEAD
   defaults:
     login: 'ログイン'
     register: '登録'
@@ -8,6 +9,8 @@ ja:
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"
       not_created: "%{item}を作成できませんでした"
+=======
+>>>>>>> 06b00fa (i18n、decorator、ユーザー名絡む名をname->user_nameに変更)
   users:
     new:
       user_name: "ユーザー名"
@@ -18,6 +21,7 @@ ja:
       user_name: "ユーザー名"
       email: "メール"
       password: "パスワード"
+<<<<<<< HEAD
       password_confirmation: "パスワード確認"
   user_sessions:
     new:
@@ -45,3 +49,6 @@ ja:
         title: "本棚名"
       destroy:
         title: "本棚名"
+=======
+      password_confirmation: "パスワード確認"
+>>>>>>> 06b00fa (i18n、decorator、ユーザー名絡む名をname->user_nameに変更)

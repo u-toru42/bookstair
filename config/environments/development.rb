@@ -59,10 +59,18 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+<<<<<<< HEAD
+<<<<<<< HEAD
 
   # Herokuデプロイ時にBlocked hostエラーが出る件を参考に追加
   # config.host.clear
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
+=======
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+>>>>>>> a73e54e (ログアウト機能(button_toにて実装))
+=======
+  # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+>>>>>>> 06b00fa (i18n、decorator、ユーザー名絡む名をname->user_nameに変更)
 end

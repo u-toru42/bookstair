@@ -1,18 +1,8 @@
 <header>
+<<<<<<< HEAD
   <nav>
     <div>
       <ul>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        <li><a><%= link_to 'ログイン', login_path %></a></li>
-        <li><a><%= link_to '書籍検索', '/books/search', class: 'dropdown-item' %></a></li>
-        <li><a><%= link_to '読みたい本の一覧', '/books/', class: 'dropdown-item' %></a></li>
-        <li><a><%= link_to 'マイ本棚', '/bookshelves/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to '本棚検索', '/bookshelves/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'プロフィール', '#', class: 'dropdown-item' %></a></li>
-=======
-=======
->>>>>>> Stashed changes
         <li><a><%= link_to 'ログイン', new_user_session_path %></a></li>
         <li><a><%= link_to 'ゲストログイン', users_guest_sign_in_path, data: { turbo_method: :post } %></a></li>
         <li><a><%= link_to '新規登録', new_user_registration_path %></a></li>
@@ -21,11 +11,25 @@
         <li><a><%= link_to 'マイしおり', '/bookshelves/', class: 'nav-link' %></a></li>
         <li><a><%= link_to 'しおり検索', '/bookshelves/', class: 'nav-link' %></a></li>
         <li><a><%= link_to 'プロフィール', '#', class: 'nav-link' %></a></li>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
       </ul>
+=======
+  <nav class="navbar navbar-expand-lg navigation navbar-light bg-light">
+
+    <%= link_to root_path, class: 'navbar-brand' do %>
+      <%#= image_tag 'logo.png' %>
+		<% end %>
+
+    <button class='navbar-toggler' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
+			<span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="ml-auto navbar-nav main-nav align-items-center">
+        <li class="nav-item">
+          <%= link_to 'ログイン', login_path ,class: 'nav-link' %>
+        </li>
+			</ul>
+>>>>>>> 200e31c (ログイン機能実装(ログアウト機能が未完成))
     </div>
   </nav>
 </header>
