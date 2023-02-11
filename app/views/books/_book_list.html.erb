@@ -7,21 +7,10 @@
       </p>
       <p class="book-data">
       <!-- 正規表現の加工はHelperに処理を渡す -->
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        <%= set_rakuten_book_params(book.title) %>
-        <%= set_rakuten_book_author_params(book.author) %>
-=======
-=======
->>>>>>> Stashed changes
         <%= set_rakuten_book_params(book.title) %><br><br>
         <% set_rakuten_book_author_params(book.author).each do |i| %>
           <%= i %><br>
         <% end %>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
       </p>
       <p class="book-check">
         <%= form_with url: books_path, local: true do |f| %>
@@ -32,15 +21,7 @@
           <%= f.hidden_field :item_url, value: set_rakuten_book_params(book.item_url) %>
           <%= f.hidden_field :isbn, value: set_rakuten_book_params(book.isbn) %>
           <%= button_tag type: "f.submit" do %>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            <i class="btn btn-xs btn-primary">本棚に追加</i>
-=======
             <button class="button is-success">本棚に追加</button>
->>>>>>> Stashed changes
-=======
-            <button class="button is-success">本棚に追加</button>
->>>>>>> Stashed changes
           <% end %>
         <% end %>
       </p>
