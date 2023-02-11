@@ -3,12 +3,15 @@ class BookshelvesController < ApplicationController
 
   def index
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     @bookshelves = Bookshelf.all
   end
 
   def new
     @bookshelf = Bookshelf.new
 =======
+=======
+>>>>>>> Stashed changes
     @bookshelves = params[:tag_id].present? ? Tag.find(params[:tag_id]).bookshelves : Bookshelf.all
     @bookshelves = @bookshelves.page(params[:page]).per(10)
     # binding.irb 
@@ -16,11 +19,15 @@ class BookshelvesController < ApplicationController
 
   def new
     @bookshelf = Bookshelf.new(flash[:bookshelf])
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   end
 
   def create
     @bookshelf = Bookshelf.new(bookshelf_params)
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     @bookshelf.save!
     redirect_to bookshelves_url, notice: "本棚を保存しました"
@@ -28,6 +35,8 @@ class BookshelvesController < ApplicationController
 
   def show; end
 =======
+=======
+>>>>>>> Stashed changes
     if @bookshelf.save
       redirect_to bookshelves_url, notice: "「#{@bookshelf.title}」の本棚を作成しました。"
     else
@@ -41,15 +50,21 @@ class BookshelvesController < ApplicationController
     # @comment = @bookshelf.comments.new
     @comment = Comment.new(bookshelf_id: @bookshelf.id)
   end
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
   def edit; end
 
   def update
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     @bookshelf.update(bookshelf_params)
     redirect_to @bookshelf, notice: "本棚を更新しました"
 =======
+=======
+>>>>>>> Stashed changes
     if @bookshelf.update(bookshelf_params)
       redirect_to @bookshelf, notice: "本棚を更新しました"
     else
@@ -57,6 +72,9 @@ class BookshelvesController < ApplicationController
       flash[:error_messages] = @bookshelf.errors.full_messages
       redirect_back fallback_location: edit_bookshelf_path
     end
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   end
 
@@ -69,7 +87,11 @@ class BookshelvesController < ApplicationController
 
   def bookshelf_params
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     params.require(:bookshelf).permit(:title)
+=======
+    params.require(:bookshelf).permit(:title, tag_ids: [])
+>>>>>>> Stashed changes
 =======
     params.require(:bookshelf).permit(:title, tag_ids: [])
 >>>>>>> Stashed changes

@@ -1,10 +1,13 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div class="d-flex">
   <h1>掲示板一覧</h1>
   <div class="ml-auto">
     <%= link_to "新規作成", new_bookshelf_path, class: "btn" %>
   </div>
 =======
+=======
+>>>>>>> Stashed changes
 <div class="bookshelf">
   <h1>掲示板一覧</h1>
 </div>
@@ -19,6 +22,9 @@
     }
   %>
 <% end %>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 </div>
 <table class="table">
@@ -27,7 +33,11 @@
       <th>id</th>
       <th>本棚名</th>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <th>作成者</th>
+=======
+      <th>タグ</th>
+>>>>>>> Stashed changes
 =======
       <th>タグ</th>
 >>>>>>> Stashed changes
@@ -41,6 +51,7 @@
         <td><%= bookshelf.id %></td>
         <td><%= bookshelf.title %></td>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <td><%#= 投稿者のuser_id %></td>
         <td><%= bookshelf.created_at.to_s(:datetime_jp) %></td>
         <td><%= bookshelf.updated_at.to_s(:datetime_jp) %></td>
@@ -51,6 +62,8 @@
   </tbody>
 </table>
 =======
+=======
+>>>>>>> Stashed changes
         <td>
           <% bookshelf.tags.each do |tag| %>
             <span class="tag is-info"><%= tag.name %></span>
@@ -69,5 +82,9 @@
 </div>
 <div class="pagination is-justify-content-center">
   <%= paginate @bookshelves %>
+<<<<<<< Updated upstream
+</div>
+>>>>>>> Stashed changes
+=======
 </div>
 >>>>>>> Stashed changes
