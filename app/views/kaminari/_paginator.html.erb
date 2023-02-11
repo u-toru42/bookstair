@@ -14,11 +14,10 @@ The container tag
 
 <%= paginator.render do %>
   <nav class="pagination is-rounded is-centered">
-    <ul><%= first_page_tag %></ul>
-    <ul><%= last_page_tag %></ul>
-    <%= prev_page_tag %>
-    <%= next_page_tag %>
+    <%= prev_page_tag unless current_page.first? %>
+    <%= next_page_tag unless current_page.last? %>
     <ul class="pagination-list">
+      <%= first_page_tag unless current_page.first? %>
       <% each_page do |page| %>
         <% if page.display_tag? %>
           <%= page_tag page %>
@@ -26,7 +25,7 @@ The container tag
           <%= gap_tag %>
         <% end %>
       <% end %>
+      <%= last_page_tag unless current_page.last? %>
     </ul>
   </nav>
 <% end %>
-</div>
