@@ -30,11 +30,11 @@ class BooksController < ApplicationController
       flash.now.notice = '検索キーワードが入力されていません'
       return
     elsif params[:title_search] && (params[:author_search].nil? || params[:author_search].blank?)
-      @books = RakutenWebService::Books::Book.search(title: params[:title_search])
+      @books = RakutenWebService::Books::Book.search(title: params[:title_search], booksGenreId: "001005")
     elsif params[:author_search] && (params[:title_search].nil? || params[:title_search].blank?)
-      @books = RakutenWebService::Books::Book.search(author: params[:author_search])
+      @books = RakutenWebService::Books::Book.search(author: params[:author_search], booksGenreId: "001005")
     elsif params[:author_search] && params[:title_search]
-      @books = RakutenWebService::Books::Book.search(title: params[:title_search], author: params[:author_search])
+      @books = RakutenWebService::Books::Book.search(title: params[:title_search], author: params[:author_search], booksGenreId: "001005")
     end
   end
 

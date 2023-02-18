@@ -23,10 +23,11 @@
             <td>
               <!-- 正規表現の加工はHelperに処理を渡す -->
               <%= set_rakuten_book_params(book.title) %><br><br>
-              <%= set_rakuten_book_params(book.author) %>
+              <%= set_rakuten_book_params(book.author) %><br><br>
+              <%= book.item_price %>
             </td>
             <td><%= link_to "しおりを見てみる", book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "button is-info" %></td>
-            <td><%= button_to "読みたい本から削除", book, method: :delete, params: {isbn: book.isbn}, remote: :true, form: { data: { turbo_confirm: "「#{book.title}」を削除しますか?" } }, class: "button is-danger" %></td>
+            <td><%= button_to "気になる本から削除", book, method: :delete, params: {isbn: book.isbn}, remote: :true, form: { data: { turbo_confirm: "「#{book.title}」を削除しますか?" } }, class: "button is-danger" %></td>
           </tr>
         <% end %>
       <% end %>

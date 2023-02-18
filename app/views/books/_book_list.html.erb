@@ -9,8 +9,9 @@
       <!-- 正規表現の加工はHelperに処理を渡す -->
         <%= set_rakuten_book_params(book.title) %><br><br>
         <% set_rakuten_book_author_params(book.author).each do |i| %>
-          <%= i %><br>
-        <% end %>
+          <%= i %>
+        <% end %><br>
+        <%= number_to_currency(book.item_price, format: "%u%n", unit: "￥") %>
       </p>
       <p class="book-check">
         <%= form_with url: books_path, local: true do |f| %>
@@ -20,9 +21,8 @@
           <%= f.hidden_field :large_image_url, value: set_rakuten_book_params(book.large_image_url) %>
           <%= f.hidden_field :item_url, value: set_rakuten_book_params(book.item_url) %>
           <%= f.hidden_field :isbn, value: set_rakuten_book_params(book.isbn) %>
-          <%= link_to type: "f.submit" do %>
-            <button class="button is-success">本棚に追加</button>
-          <% end %>
+          <%= f.hidden_field :item_price, value: book.item_price %>
+          <%= f.submit "本棚に登録する", class: :"button is-primary" %>
         <% end %>
       </p>
     </div>
