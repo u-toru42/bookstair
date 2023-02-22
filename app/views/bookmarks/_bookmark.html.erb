@@ -1,11 +1,28 @@
-<div class="card">
-  <div class="card-content">
-    <div class="content">
-      <div>
-        <span><%= @bookmark.body %></span>
-        <span><%#= comment.created_at.to_s(:datetime_jp) %></span>
-        <span><%#= link_to '削除', @comment, method: :delete, remote: :true, class: "button is-danger", data: { turbo_method: :delete, turbo_confirm: "「#{@comment.body}」を削除しますか?" } %></span>
-      </div>
+<tr id="bookmark-<%= bookmark.id %>">
+	<td>
+		<h3 class="badge badge-info">
+			<!-- メールアドレスをユーザー名に変えて、リンクを貼ると直良 -->
+			<%= bookmark.user.decorate.user_name %>
+		</h3>	
+		<div id="js-bookmark-<%= bookmark.id %>" class="card">
+      <%= simple_format(bookmark.headline) %>
+      <%= simple_format(bookmark.body) %>
     </div>
-  </div>
-</div>
+	</td>
+  <% if current_user.own?(bookmark) %>
+    <td class="action">
+			<ul class="list-inline justify-content-center" style="float: right;">
+        <li class="list-inline-item">
+					<a href="#" class='js-edit-bookmark-button' data-bookmark-id="<%= bookmark.id %>">
+						<button>編集</button>
+          </a>
+				</li>
+				<li class="list-inline-item">
+					<a href="#" class='js-delete-bookmark-button' data-bookmark-id="<%= bookmark.id %>">
+						<button>削除</button>
+					</a>
+				</li>
+			</ul>
+		</td>
+  <% end %>
+</tr>

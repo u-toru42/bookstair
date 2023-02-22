@@ -1,15 +1,13 @@
-<%= render "shared/error_messages" %>
-
+<%#= render 'shared/error_messages', object: f.object %>
 <div class="card">
-  <p class="card-content">コメント記入</p>
+  <p class="card-content">しおりを書いてみる</p>
   <div class="is-normal">
-  <%= form_with model: @bookmarks, url: [@book, @bookmark], local: true do |f| %>
-    <div>
-      <%= f.hidden_field :book_isbn %>
-      <%= f.label :comment %>
-      <%= f.text_area :body, class: "textarea" %>
-    </div>
-    <%= f.submit "コメントする", class: "button is-primary" %>
+  <%= form_with model: bookmark, url: [book, bookmark], local: true do |f| %>
+    <%= f.label :headline %>
+    <%= f.text_area :headline, id: 'js-new-bookmark-body', class: "textarea" %>
+    <%= f.label :body %>
+    <%= f.text_area :body, id: 'js-new-bookmark-body', class: "textarea" %>
+    <%= f.submit "しおりを挟む", class: "btn btn-primary" %>
   <% end %>
   </div>
 </div>

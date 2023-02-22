@@ -40,8 +40,8 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find_by!(isbn: params[:isbn])
-    @comment = Comment.new
-    @comments = @book.comments.includes(:user).order(created_at: :desc)
+    @bookmark = Bookmark.new
+    @bookmarks = @book.bookmarks.includes(:user).order(created_at: :desc)
   end
 
   private  

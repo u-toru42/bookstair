@@ -10,6 +10,6 @@ class UserDecorator < ApplicationDecorator
   #     end
   #   end
   def user_name
-    "#{object.user_name}"
+    "#{object.name}"
   end
 end

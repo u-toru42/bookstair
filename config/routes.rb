@@ -4,8 +4,8 @@
 Rails.application.routes.draw do
   # devise_for :users
   # get 'books/search'
-  get 'comments/create'
-  get 'comments/destroy'
+  # get 'bookmarks/create'
+  # get 'bookmarks/destroy'
 
   # Defines the root path route ("/")
   # root "articles#index"
@@ -19,21 +19,20 @@ Rails.application.routes.draw do
   #   passwords: "users/passwords",
   #   confirmations: "users/confirmations"
   # }
-  devise_for :users, controllers: {
-    registrations: "users/registrations",
-    passwords: "users/passwords"
-  }
+  devise_for :users
+  
   devise_scope :user do
     post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
   
   resources :books, param: :isbn, constraints: { code: /\d+/ } do
     collection { get :search }
-    resources :bookmarks, only: %i[create destroy]
+    resources :bookmarks, only: %i[create destroy], shallow:true
   end
+  # resources :books, only: [:index, :create, :show]
   # resources :books, only: %i[search show], param: :isbn, constraints: { code: /\d+/ } do
   # resources :books, only: %i[search show], param: :isbn do
-  #   resources :comments, only: %i[create destroy]
+  #   resources :bookmarks, only: %i[create destroy]
   # end
 
   resources :bookshelves, only: %i[index new create show edit update destroy]

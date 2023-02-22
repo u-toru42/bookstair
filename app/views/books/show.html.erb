@@ -1,3 +1,4 @@
+<% content_for(:title, @book.title) %>
 <div class="search content">
   <div class="book-line box">
   <!-- book.item_urlを書籍情報ページに飛ばして、book.item_urlを書籍情報のリンク貼り付けに利用する -->
@@ -9,7 +10,11 @@
       <%= set_rakuten_book_params(@book.title) %><br><br>
       <%= set_rakuten_book_params(@book.author) %>
     </p>
-    <%= link_to "しおりを作る", @book, class: "button is-info" %>
-    <%= button_to "読みたい本から削除", @book, method: :delete, params: {isbn: @book.isbn}, remote: :true, form: { data: { turbo_confirm: "「#{@book.title}」を削除しますか?" } }, class: "button is-danger" %>
+    <%#= button_to "読みたい本から削除", @book, method: :delete, params: {isbn: @book.isbn}, remote: :true, form: { data: { turbo_confirm: "「#{@book.title}」を削除しますか?" } }, class: "button is-danger" %>
   </div>
+  <!-- コメントフォーム -->
+  <%= render 'bookmarks/form', { book: @book, bookmark: @bookmark } %>
+  
+  <!-- コメントエリア -->
+  <%= render 'bookmarks/bookmarks', { bookmarks: @bookmarks } %>
 </div>
