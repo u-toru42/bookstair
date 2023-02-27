@@ -6,6 +6,7 @@ class BookmarksController < ApplicationController
     else
       redirect_to book_path(bookmark.book), danger: t('defaults.message.created', item: Bookmark.model_name.human)
     end
+    # binding.irb
   end
 
   def destroy
@@ -18,6 +19,6 @@ class BookmarksController < ApplicationController
   private
 
   def bookmark_params
-    params.require(:bookmark).permit(:headline, :body).merge(book_isbn: params[:book_isbn])
+    params.require(:bookmark).permit(:headline, :body, :page, :chapter, :link, :created_at, tag_ids: []).merge(book_isbn: params[:book_isbn])
   end
 end

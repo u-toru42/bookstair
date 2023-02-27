@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   end
   
   def create
-    @book = Book.create(params.permit(:title, :author, :sales_date, :large_image_url, :item_url, :isbn))
+    @book = Book.create(params.permit(:title, :author, :sales_date, :large_image_url, :item_url, :isbn, :item_price, :item_caption))
     if @book.valid?
       redirect_to books_path, notice: "「#{@book[:title]}」を保存しました。"
     else
@@ -42,12 +42,26 @@ class BooksController < ApplicationController
     @book = Book.find_by!(isbn: params[:isbn])
     @bookmark = Bookmark.new
     @bookmarks = @book.bookmarks.includes(:user).order(created_at: :desc)
+    if params[:tag_ids]
+      @bookmarks = []
+      params[:tag_ids].each do |key, value|
+        if value == "1"
+          tag_bookmarks = Tag.find_by(name: key).bookmarks
+          @bookmarks = @bookmarks.empty? ? tag_bookmarks : @bookmarks & tag_bookmarks
+        end
+      end
+    end
+    if params[:tag].blank?
+      return
+    else
+      Tag.create(name: params[:tag])
+    end
   end
 
   private  
 
   def book_params
-    params.require(:book).permit(:title, :sales_date, :large_image_url, :item_url, :isbn)
+    params.require(:book).permit(:title, :sales_date, :large_image_url, :item_url, :isbn, :item_price, :item_caption)
   end
 
   def author_params

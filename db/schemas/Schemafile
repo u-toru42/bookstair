@@ -45,20 +45,26 @@ create_table "books", id: false do |t|
   t.text :sales_date
   t.text :large_image_url
   t.text :item_url
+  t.text :item_caption
   t.string :item_price
+
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
 end
 
-# create_table "comments", force: :cascade do |t|
-#   t.belongs_to "user", foreign_key: true 
-#   t.references "book_isbn", renamed_from: "book_id", null: false
-#   t.text :body, null: false
-#   t.datetime "created_at", null: false
-#   t.datetime "updated_at", null: false
+# create_table "tags", force: :cascade  do |t|
+#   t.string :name
+
+#   t.timestamps
 # end
-# # rename_column "comments", "book_isbn_id", "book_isbn"
-# add_foreign_key "comments", "books", column: "book_isbn", primary_key: "isbn"
-# # add_index "comments", ["books_isbn"], name: "isbn", using: :btree
-# # add_foreign_key "comments", "books", name: "comment_ibfk_1"
-# add_foreign_key "comments", "users", column: "user_id"
+
+# create_table "bookmark_tag_relations", force: :cascade do |t|
+#   t.bigint "bookmark_id"
+#   t.bigint "tag_id"
+
+#   t.timestamps
+# end
+# add_index "bookmark_tag_relation", ["bookmark_id"], name: "bookmark_tag_ind", using: :btree
+# add_foreign_key "bookmark_tag_relation", "bookmark", name: "bookmark_tag_ibfk_1"
+# add_index "bookmark_tag_relation", ["tag_id"], name: "bookmark_tag_ind2", using: :btree
+# add_foreign_key "bookmark_tag_relation", "tag", name: "bookmark_tag_ibfk_2"

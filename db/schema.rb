@@ -10,15 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_21_011809) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_27_014203) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmark_tag_relations", force: :cascade do |t|
+    t.bigint "bookmark_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bookmark_id"], name: "index_bookmark_tag_relations_on_bookmark_id"
+    t.index ["tag_id"], name: "index_bookmark_tag_relations_on_tag_id"
+  end
 
   create_table "bookmarks", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "book_isbn", null: false
     t.text "headline", null: false
     t.text "body", null: false
+    t.text "page"
+    t.text "chapter", null: false
+    t.text "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_isbn"], name: "index_bookmarks_on_book_isbn"
@@ -31,7 +43,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_21_011809) do
     t.text "sales_date"
     t.text "large_image_url"
     t.text "item_url"
+    t.text "item_caption"
     t.string "item_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,6 +68,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_21_011809) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token"
   end
 
+  add_foreign_key "bookmark_tag_relations", "bookmarks"
+  add_foreign_key "bookmark_tag_relations", "tags"
   add_foreign_key "bookmarks", "books", column: "book_isbn", primary_key: "isbn"
   add_foreign_key "bookmarks", "users"
 end
