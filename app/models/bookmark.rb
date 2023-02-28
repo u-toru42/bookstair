@@ -30,7 +30,7 @@ class Bookmark < ApplicationRecord
   has_many :tags, through: :bookmark_tag_relations
 
   validates :headline, presence: true, length: { maximum: 15 }
-  validates :body, presence: true, length: { maximum: 105 }
+  validates :body, presence: true, length: { maximum: 3000 }
   validates :page, allow_blank: true, length: { maximum: 9999 }
   validates :chapter, allow_blank: true, length: { maximum: 9999 }, numericality: {only_integer: true}
   validates :link, allow_blank: true, numericality: {only_integer: true}

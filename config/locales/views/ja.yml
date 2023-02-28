@@ -33,15 +33,5 @@ ja:
       previous: "前のページ"
       next: "次のページ"
       truncate: "..."
-  activerecord:
-    bookshelves:
-      new:
-        title: "本棚名"
-      edit:
-        title: "本棚名"
-      create:
-        title: "本棚名"
-      show:
-        title: "本棚名"
-      destroy:
-        title: "本棚名"
+  bookmarks:
+    headline: "しおりの題名"

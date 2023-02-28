@@ -1,15 +1,26 @@
-<header>
-  <nav>
+<header class="p-10 footer bg-neutral-content">
+  <div class="flex-1 md:flex md:items-center md:gap-12">
+    <a class="block text-teal-600" href="/">
+      <span class="sr-only">Home</span>
+      <img><%= image_tag "favicon.ico", class: "h-8", viewBox: "0 0 28 24", fill: "none" %>
+    </a>
+  </div>
+  <div>
+    <span class="footer-title"><%= link_to '書籍検索', '/books/search', class: 'nav-link' %></span> 
+  </div> 
+  <div>
+    <span class="footer-title"><%= link_to '本棚を見てみる', '/books/', class: 'nav-link' %></span> 
+  </div>
+  <% if user_signed_in? %>
     <div>
-      <ul>
-        <li><a><%= link_to 'Topページ', '/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to '書籍検索', '/books/search', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'マイ本棚', '/books/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'マイしおり', '/bookmarks/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'しおり検索', '/bookmarks/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'プロフィール', '/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %></a></li>
-      </ul>
+      <span class="footer-title"><p class="badge badge-primary"><%= current_user.name %></p>でログインしています。</span> 
     </div>
-  </nav>
+    <div>
+      <span class="footer-title"><%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %></span> 
+    </div>
+  <% else %>
+    <div>
+      <span class="footer-title">ログインしていません。</span> 
+    </div>
+  <% end %>
 </header>
