@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/toru/.asdf/installs/nodejs/16.19.0/bin/node /Users/toru/.asdf/installs/yarn/1.22.19/bin/yarn.js build:css --watch
+  /Users/toru/.asdf/installs/nodejs/16.19.0/bin/node /Users/toru/.asdf/installs/yarn/1.22.19/bin/yarn.js build --watch
 
 PATH: 
   /Users/toru/.asdf/plugins/nodejs/shims:/Users/toru/.asdf/installs/nodejs/16.19.0/bin:/Users/toru/.asdf/installs/yarn/1.22.19/bin:/Users/toru/.asdf/installs/ruby/3.1.3/bin:/Users/toru/.asdf/shims:/usr/local/opt/asdf/libexec/bin:/usr/local/opt/curl/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/toru/Documents/workspace/runteq/bookstairapp/package.json: Unexpected token / in JSON at position 568
+  SyntaxError: /Users/toru/Documents/workspace/runteq/bookstairapp/package.json: Unexpected token / in JSON at position 453
       at JSON.parse (<anonymous>)
       at /Users/toru/.asdf/installs/yarn/1.22.19/lib/cli.js:1629:59
       at Generator.next (<anonymous>)
@@ -30,17 +30,15 @@ npm manifest:
       "@hotwired/turbo-rails": "^7.2.4",
       "@popperjs/core": "^2.11.6",
       "autoprefixer": "^10.4.13",
-      "bootstrap": "^5.2.3",
-      "bootstrap-icons": "^1.10.3",
-      "daisyui": "^2.46.1",
+      "daisyui": "^2.50.2",
       "esbuild": "^0.17.5",
       "postcss": "^8.4.20",
       "sass": "^1.57.1",
       "tailwindcss": "^3.2.4"
     },
     "scripts": {
-      "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",
-      // "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css",
+      "dev": "tailwindcss -i tailwind_input.css -o app/assets/stylesheets/tailwind_dist.css --watch",
+      // "build:css": "sass ./app/assets/stylesheets/application.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",
       "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds"
     }
   }
@@ -204,7 +202,7 @@ Lockfile:
   
   "@popperjs/core@^2.11.6":
     version "2.11.6"
-    resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.6.tgz#cee20bd55e68a1720bdab363ecf0c821ded4cd45"
+    resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.6.tgz"
     integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
   
   "@rails/actioncable@^7.0":
@@ -261,16 +259,6 @@ Lockfile:
     resolved "https://registry.npmjs.org/binary-extensions/-/binary-extensions-2.2.0.tgz"
     integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
   
-  bootstrap-icons@^1.10.3:
-    version "1.10.3"
-    resolved "https://registry.yarnpkg.com/bootstrap-icons/-/bootstrap-icons-1.10.3.tgz#c587b078ca6743bef4653fe90434b4aebfba53b2"
-    integrity sha512-7Qvj0j0idEm/DdX9Q0CpxAnJYqBCFCiUI6qzSPYfERMcokVuV9Mdm/AJiVZI8+Gawe4h/l6zFcOzvV7oXCZArw==
-  
-  bootstrap@^5.2.3:
-    version "5.2.3"
-    resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.2.3.tgz#54739f4414de121b9785c5da3c87b37ff008322b"
-    integrity sha512-cEKPM+fwb3cT8NzQZYEu4HilJ3anCrWqh3CHAok1p9jXqMPsPTBhU25fBckEJHJ/p+tTxTFTsFQGM+gaHpi3QQ==
-  
   braces@^3.0.2, braces@~3.0.2:
     version "3.0.2"
     resolved "https://registry.npmjs.org/braces/-/braces-3.0.2.tgz"
@@ -315,7 +303,7 @@ Lockfile:
   
   color-convert@^2.0.1:
     version "2.0.1"
-    resolved "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz"
+    resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-2.0.1.tgz#72d3a68d598c9bdb3af2ad1e84f21d896abd4de3"
     integrity sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==
     dependencies:
       color-name "~1.1.4"
@@ -327,7 +315,7 @@ Lockfile:
   
   color-string@^1.9.0:
     version "1.9.1"
-    resolved "https://registry.npmjs.org/color-string/-/color-string-1.9.1.tgz"
+    resolved "https://registry.yarnpkg.com/color-string/-/color-string-1.9.1.tgz#4467f9146f036f855b764dfb5bf8582bf342c7a4"
     integrity sha512-shrVawQFojnZv6xM40anx4CkoDP+fZsw/ZerEMsW/pyzsRbElpsL/DBVW7q3ExxwusdNXI3lXpuhEZkzs8p5Eg==
     dependencies:
       color-name "^1.0.0"
@@ -335,7 +323,7 @@ Lockfile:
   
   color@^4.2:
     version "4.2.3"
-    resolved "https://registry.npmjs.org/color/-/color-4.2.3.tgz"
+    resolved "https://registry.yarnpkg.com/color/-/color-4.2.3.tgz#d781ecb5e57224ee43ea9627560107c0e0c6463a"
     integrity sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==
     dependencies:
       color-convert "^2.0.1"
@@ -343,7 +331,7 @@ Lockfile:
   
   css-selector-tokenizer@^0.8.0:
     version "0.8.0"
-    resolved "https://registry.npmjs.org/css-selector-tokenizer/-/css-selector-tokenizer-0.8.0.tgz"
+    resolved "https://registry.yarnpkg.com/css-selector-tokenizer/-/css-selector-tokenizer-0.8.0.tgz#88267ef6238e64f2215ea2764b3e2cf498b845dd"
     integrity sha512-Jd6Ig3/pe62/qe5SBPTN8h8LeUg/pT4lLgtavPf7updwwHpvFzxvOQBHYj2LZDMjUnBzgvIUSjRcf6oT5HzHFg==
     dependencies:
       cssesc "^3.0.0"
@@ -354,10 +342,10 @@ Lockfile:
     resolved "https://registry.npmjs.org/cssesc/-/cssesc-3.0.0.tgz"
     integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
   
-  daisyui@^2.46.1:
-    version "2.46.1"
-    resolved "https://registry.npmjs.org/daisyui/-/daisyui-2.46.1.tgz"
-    integrity sha512-i59+nLuzzPAVOhNhot3KLtt6stfYeCIPXs9uiLcpXjykpqxHfBA3W6hQWOUWPMwfqhyQd0WKub3sydtPGjzLtA==
+  daisyui@^2.50.2:
+    version "2.50.2"
+    resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-2.50.2.tgz#231bfffb9bcc9c7cd9ce47db0ddad6f25d5899b9"
+    integrity sha512-CzyTsqdkpP2Zwk5Fl+1pFfL7XewRn/COm4TyKx4DbdITpzADMe01j6YZRG/D0kAOyd7t4rXA3zvkqNc7Ak9ukQ==
     dependencies:
       color "^4.2"
       css-selector-tokenizer "^0.8.0"
@@ -439,7 +427,7 @@ Lockfile:
   
   fastparse@^1.1.2:
     version "1.1.2"
-    resolved "https://registry.npmjs.org/fastparse/-/fastparse-1.1.2.tgz"
+    resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.2.tgz#91728c5a5942eced8531283c79441ee4122c35a9"
     integrity sha512-483XLLxTVIwWK3QTrMGRqUfUpoOs/0hbQrl2oz4J0pAcm3A3bu84wxTFqGqkJzewCLdME38xJLJAxBABfQT8sQ==
   
   fastq@^1.6.0:
@@ -499,7 +487,7 @@ Lockfile:
   
   is-arrayish@^0.3.1:
     version "0.3.2"
-    resolved "https://registry.npmjs.org/is-arrayish/-/is-arrayish-0.3.2.tgz"
+    resolved "https://registry.yarnpkg.com/is-arrayish/-/is-arrayish-0.3.2.tgz#4574a2ae56f7ab206896fb431eaeed066fdf8f03"
     integrity sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==
   
   is-binary-path@~2.1.0:
@@ -632,7 +620,7 @@ Lockfile:
     dependencies:
       postcss-selector-parser "^6.0.10"
   
-  postcss-selector-parser@^6.0.10:
+  postcss-selector-parser@^6.0.10, postcss-selector-parser@^6.0.11:
     version "6.0.11"
     resolved "https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-6.0.11.tgz"
     integrity sha512-zbARubNdogI9j7WY4nQJBiNqQf3sLS3wCP4WfOidu+p28LofJqDH1tcXypGrcmMHhDk2t9wGhCsYe/+szLTy1g==
@@ -644,6 +632,15 @@ Lockfile:
     version "4.2.0"
     resolved "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz"
     integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
+  
+  postcss@^8.0.9:
+    version "8.4.21"
+    resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.21.tgz#c639b719a57efc3187b13a1d765675485f4134f4"
+    integrity sha512-tP7u/Sn/dVxK2NnruI4H9BG+x+Wxz6oeZ1cJ8P6G/PZY0IKk4k/63TDsQf2kQq3+qoJeLm2kIBUNlZe3zgb4Zg==
+    dependencies:
+      nanoid "^3.3.4"
+      picocolors "^1.0.0"
+      source-map-js "^1.0.2"
   
   postcss@^8.4.18, postcss@^8.4.20:
     version "8.4.20"
@@ -701,7 +698,7 @@ Lockfile:
   
   sass@^1.57.1:
     version "1.57.1"
-    resolved "https://registry.yarnpkg.com/sass/-/sass-1.57.1.tgz#dfafd46eb3ab94817145e8825208ecf7281119b5"
+    resolved "https://registry.npmjs.org/sass/-/sass-1.57.1.tgz"
     integrity sha512-O2+LwLS79op7GI0xZ8fqzF7X2m/m8WFfI02dHOdsK5R2ECeS5F62zrwg/relM1rjSLy7Vd/DiMNIvPrQGsA0jw==
     dependencies:
       chokidar ">=3.0.0 <4.0.0"
@@ -710,7 +707,7 @@ Lockfile:
   
   simple-swizzle@^0.2.2:
     version "0.2.2"
-    resolved "https://registry.npmjs.org/simple-swizzle/-/simple-swizzle-0.2.2.tgz"
+    resolved "https://registry.yarnpkg.com/simple-swizzle/-/simple-swizzle-0.2.2.tgz#a4da6b635ffcccca33f70d17cb92592de95e557a"
     integrity sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==
     dependencies:
       is-arrayish "^0.3.1"
@@ -725,7 +722,36 @@ Lockfile:
     resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
     integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
   
-  tailwindcss@^3, tailwindcss@^3.2.4:
+  tailwindcss@^3:
+    version "3.2.7"
+    resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.2.7.tgz#5936dd08c250b05180f0944500c01dce19188c07"
+    integrity sha512-B6DLqJzc21x7wntlH/GsZwEXTBttVSl1FtCzC8WP4oBc/NKef7kaax5jeihkkCEWc831/5NDJ9gRNDK6NEioQQ==
+    dependencies:
+      arg "^5.0.2"
+      chokidar "^3.5.3"
+      color-name "^1.1.4"
+      detective "^5.2.1"
+      didyoumean "^1.2.2"
+      dlv "^1.1.3"
+      fast-glob "^3.2.12"
+      glob-parent "^6.0.2"
+      is-glob "^4.0.3"
+      lilconfig "^2.0.6"
+      micromatch "^4.0.5"
+      normalize-path "^3.0.0"
+      object-hash "^3.0.0"
+      picocolors "^1.0.0"
+      postcss "^8.0.9"
+      postcss-import "^14.1.0"
+      postcss-js "^4.0.0"
+      postcss-load-config "^3.1.4"
+      postcss-nested "6.0.0"
+      postcss-selector-parser "^6.0.11"
+      postcss-value-parser "^4.2.0"
+      quick-lru "^5.1.1"
+      resolve "^1.22.1"
+  
+  tailwindcss@^3.2.4:
     version "3.2.4"
     resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.2.4.tgz"
     integrity sha512-AhwtHCKMtR71JgeYDaswmZXhPcW9iuI9Sp2LvZPo9upDZ7231ZJ7eA9RaURbhpXGVlrjX4cFNlB4ieTetEb7hQ==
@@ -783,3 +809,4 @@ Lockfile:
     version "1.10.2"
     resolved "https://registry.npmjs.org/yaml/-/yaml-1.10.2.tgz"
     integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
+g==

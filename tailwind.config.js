@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         image: "url('shelf.jpg')",
+        image: "url('wood.png')"
       },
     },
   },
