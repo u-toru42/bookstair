@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_014203) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bookmark_id"], name: "index_bookmark_tag_relations_on_bookmark_id"
+    t.index ["tag_id", "bookmark_id"], name: "index_bookmark_tag_relations_on_tag_id_and_bookmark_id", unique: true
     t.index ["tag_id"], name: "index_bookmark_tag_relations_on_tag_id"
   end
 
@@ -53,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_014203) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,30 +1,95 @@
+<!--
 <% if @books.present? %>
   <% @books&.each do |book| %>
-    <div class="book-line is-family-sans-serif box">
-    <!-- book.item_urlを書籍情報ページに飛ばして、book.item_urlを書籍情報のリンク貼り付けに利用する -->
-      <p class="book-image">
-        <img><%= link_to (image_tag(book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;")), book.item_url %>
-      </p>
-      <p class="book-data">
-      <!-- 正規表現の加工はHelperに処理を渡す -->
-        <%= set_rakuten_book_params(book.title) %><br><br>
-        <% set_rakuten_book_author_params(book.author).each do |i| %>
-          <%= i %>
-        <% end %><br>
-        <%= number_to_currency(book.item_price, format: "%u%n", unit: "￥") %>
-      </p>
-      <p class="book-check">
-        <%= form_with url: books_path, local: true do |f| %>
-          <%= f.hidden_field :title, value: set_rakuten_book_params(book.title) %>
-          <%= f.hidden_field :author, value: set_rakuten_book_author_params(book.author) %>
-          <%= f.hidden_field :sales_date, value: set_rakuten_book_params(book.sales_date) %>
-          <%= f.hidden_field :large_image_url, value: set_rakuten_book_params(book.large_image_url) %>
-          <%= f.hidden_field :item_url, value: set_rakuten_book_params(book.item_url) %>
-          <%= f.hidden_field :isbn, value: set_rakuten_book_params(book.isbn) %>
-          <%= f.hidden_field :item_price, value: book.item_price %>
-          <%= f.submit "本棚に登録する", class: :"button is-primary" %>
-        <% end %>
-      </p>
-    </div>
+    <article class="overflow-hidden border rounded-lg">
+
+      <div class="p-4 sm:p-6">
+      <%= link_to (image_tag(book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;")), book.item_url, class:"h-56 object-cover" %>
+        <a>
+          <h3 class="text-lg font-medium">
+            <p class="mt-0.5 text"><%= set_rakuten_book_params(book.title) %></p>
+              <% set_rakuten_book_author_params(book.author).each do |i| %>
+                <p class="mt-2 leading-relaxed text line-clamp-3"><%= i %><br>
+              <% end %>
+            <p class="py-6"><%= number_to_currency(book.item_price, format: "%u%n", unit: "￥") %></p>
+          </h3>
+        </a>
+
+        <p class="mt-2 text-sm leading-relaxed line-clamp-3">
+          <%= form_with url: books_path, local: true do |f| %>
+            <%= f.hidden_field :title, value: set_rakuten_book_params(book.title) %>
+            <%= f.hidden_field :author, value: set_rakuten_book_author_params(book.author) %>
+            <%= f.hidden_field :sales_date, value: set_rakuten_book_params(book.sales_date) %>
+            <%= f.hidden_field :large_image_url, value: set_rakuten_book_params(book.large_image_url) %>
+            <%= f.hidden_field :item_url, value: set_rakuten_book_params(book.item_url) %>
+            <%= f.hidden_field :isbn, value: set_rakuten_book_params(book.isbn) %>
+            <%= f.hidden_field :item_caption, value: set_rakuten_book_params(book.item_caption) %>
+            <%= f.hidden_field :item_price, value: book.item_price %>
+            <button><%= f.submit "本棚に登録する", class: :"btn btn-primary" %></button>
+          <% end %>
+        </p>
+      </div>
+    </article>
   <% end %>
 <% end %>
+-->
+
+
+<section>
+  <div class="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
+    <header>
+      <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">
+        検索結果
+      </h2>
+
+      <p class="max-w-md mt-4 text-gray-500">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
+        praesentium cumque iure dicta incidunt est ipsam, officia dolor fugit
+        natus?
+      </p>
+    </header>
+    <ul class="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
+<% if @books.present? %>
+  <% @books&.each do |book| %>
+      <li>
+        <a href="#" class="block overflow-hidden group">
+          <%= link_to (image_tag(book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;")), book.item_url, class:"h-56 object-cover" %>
+
+          <div class="relative pt-3 bg-white">
+            <h3
+              class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4"
+            >
+              <%= set_rakuten_book_params(book.title) %>
+            </h3>
+            
+            <h3
+              class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4"
+            >
+              <%= set_rakuten_book_params(book.author) %>
+            </h3>
+
+            <p class="mt-2">
+              <span class="sr-only"><%= number_to_currency(book.item_price, format: "%u%n", unit: "￥") %></span>
+
+              <p class="mt-2 text-sm leading-relaxed line-clamp-3">
+                <%= form_with url: books_path, local: true do |f| %>
+                  <%= f.hidden_field :title, value: set_rakuten_book_params(book.title) %>
+                  <%= f.hidden_field :author, value: set_rakuten_book_author_params(book.author) %>
+                  <%= f.hidden_field :sales_date, value: set_rakuten_book_params(book.sales_date) %>
+                  <%= f.hidden_field :large_image_url, value: set_rakuten_book_params(book.large_image_url) %>
+                  <%= f.hidden_field :item_url, value: set_rakuten_book_params(book.item_url) %>
+                  <%= f.hidden_field :isbn, value: set_rakuten_book_params(book.isbn) %>
+                  <%= f.hidden_field :item_caption, value: set_rakuten_book_params(book.item_caption) %>
+                  <%= f.hidden_field :item_price, value: book.item_price %>
+                  <button><%= f.submit "本棚に登録する", class: :"btn btn-primary" %></button>
+                <% end %>
+              </p>
+            </p>
+          </div>
+        </a>
+      </li>
+  <% end %>
+<% end %>
+    </ul>
+  </div>
+</section>

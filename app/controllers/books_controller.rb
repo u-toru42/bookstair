@@ -41,21 +41,12 @@ class BooksController < ApplicationController
   def show
     @book = Book.find_by!(isbn: params[:isbn])
     @bookmark = Bookmark.new
-    @bookmarks = @book.bookmarks.includes(:user).order(created_at: :desc)
-    if params[:tag_ids]
-      @bookmarks = []
-      params[:tag_ids].each do |key, value|
-        if value == "1"
-          tag_bookmarks = Tag.find_by(name: key).bookmarks
-          @bookmarks = @bookmarks.empty? ? tag_bookmarks : @bookmarks & tag_bookmarks
-        end
-      end
-    end
-    if params[:tag].blank?
-      return
+    bookmarks = if (tag_name = params[:tag_name])
+      Bookmark.with_tag(tag_name)
     else
-      Tag.create(name: params[:tag])
+      Bookmark.all
     end
+    @bookmarks = @book.bookmarks.includes(:user).order(created_at: :desc)
   end
 
   private  

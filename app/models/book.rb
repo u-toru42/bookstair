@@ -4,6 +4,7 @@
 #
 #  author          :string
 #  isbn            :bigint           not null, primary key
+#  item_caption    :text
 #  item_price      :string
 #  item_url        :text
 #  large_image_url :text

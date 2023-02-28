@@ -6,5 +6,6 @@ class CreateBookmarkTagRelations < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+    add_index :bookmark_tag_relations, [:tag_id, :bookmark_id], unique: true
   end
 end
