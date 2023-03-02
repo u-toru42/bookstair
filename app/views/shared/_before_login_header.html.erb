@@ -1,14 +1,18 @@
-<header>
-  <nav>
-    <div>
-      <ul>
-        <li><a><%= link_to 'ログイン', new_user_session_path %></a></li>
-        <li><a><%= link_to 'ゲストログイン', users_guest_sign_in_path, data: { turbo_method: :post } %></a></li>
-        <li><a><%= link_to '新規登録', new_user_registration_path %></a></li>
-        <li><a><%= link_to '書籍検索', '/books/search', class: 'nav-link' %></a></li>
-        <li><a><%= link_to '本棚を見てみる', '/books/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'プロフィール', '#', class: 'nav-link' %></a></li>
-      </ul>
-    </div>
-  </nav>
+<header class="p-10 footer bg-neutral-content">
+  <div class="flex-1 md:flex md:items-center md:gap-12">
+    <a class="block text-teal-600" href="/">
+      <span class="sr-only">Home</span>
+      <img><%= image_tag "favicon.ico", class: "h-8", viewBox: "0 0 28 24", fill: "none" %>
+    </a>
+  </div>
+  <div>
+    <span class="footer-title"><%= link_to '書籍検索', '/books/search', class: 'nav-link' %></span> 
+  </div> 
+  <div>
+    <span class="footer-title"><%= link_to '本棚を見てみる', '/books/', class: 'nav-link' %></span> 
+  </div>
+  <div>
+    <span class="footer-title">ログインしていません。</span> 
+  </div>
 </header>
+

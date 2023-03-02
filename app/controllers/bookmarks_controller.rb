@@ -5,7 +5,7 @@ class BookmarksController < ApplicationController
       redirect_to bookmark_path(bookmark), success: 'しおりを作成しました'
     else
       flash.now[:danger] = 'しおりを作成できませんでした'
-      render :new
+      render :show
     end
     # if bookmark.save
     #   redirect_to book_path(bookmark.book), success: t('defaults.message.created', item: Bookmark.model_name.human)

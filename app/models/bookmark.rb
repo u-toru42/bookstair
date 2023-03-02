@@ -33,9 +33,10 @@ class Bookmark < ApplicationRecord
   validates :body, presence: true, length: { maximum: 3000 }
   validates :page, allow_blank: true, length: { maximum: 9999 }
   validates :chapter, allow_blank: true, length: { maximum: 9999 }, numericality: {only_integer: true}
-  validates :link, allow_blank: true, numericality: {only_integer: true}
+  validates :link, allow_blank: true, length: { maximum: 100 }
 
   scope :with_tag, ->(tag_name) { joins(:tags).where(tags: { name: tag_name }) }
+  # scope :page_sort, -> {order(page: :asc)}
 
   def is_mine?(current_user)
     self.user == current_user

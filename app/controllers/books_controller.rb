@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_action :move_to_signed_in
+
   def new
     @book = Book.new
   end
@@ -46,10 +48,16 @@ class BooksController < ApplicationController
     else
       Bookmark.all
     end
-    @bookmarks = @book.bookmarks.includes(:user).order(created_at: :desc)
+    @bookmarks = @book.bookmarks.includes(:user).order(page: :asc)
   end
 
-  private  
+  private
+
+  def move_to_signed_in
+    unless user_signed_in?
+      redirect_to '/pages/about', info: "ログインすると使える機能です！"
+    end
+  end
 
   def book_params
     params.require(:book).permit(:title, :sales_date, :large_image_url, :item_url, :isbn, :item_price, :item_caption)

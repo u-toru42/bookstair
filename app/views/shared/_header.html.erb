@@ -11,16 +11,10 @@
   <div>
     <span class="footer-title"><%= link_to '本棚を見てみる', '/books/', class: 'nav-link' %></span> 
   </div>
-  <% if user_signed_in? %>
-    <div>
-      <span class="footer-title"><p class="badge badge-primary"><%= current_user.name %></p>でログインしています。</span> 
-    </div>
-    <div>
-      <span class="footer-title"><%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %></span> 
-    </div>
-  <% else %>
-    <div>
-      <span class="footer-title">ログインしていません。</span> 
-    </div>
-  <% end %>
+  <div>
+    <span class="footer-title"><p class="badge badge-primary"><%= current_user.name %></p>でログインしています。</span> 
+  </div>
+  <div>
+    <span class="footer-title"><%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %></span> 
+  </div>
 </header>
