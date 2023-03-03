@@ -11,8 +11,11 @@
   <div>
     <span class="footer-title"><%= link_to '本棚を見てみる', '/books/', class: 'nav-link' %></span> 
   </div>
-  <div>
-    <span class="footer-title">ログインしていません。</span> 
+  <div class="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-right">
+    <span class="text-sm font-medium">
+      <%= link_to '新規登録', new_user_registration_path, class: "block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring" %>
+    </span>
+    <span><%= link_to 'ログイン', new_user_session_path, class:"block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring" %></span>
   </div>
 </header>
 

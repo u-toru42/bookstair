@@ -39,13 +39,9 @@
     </div>
     <div class="flex flex-wrap justify-center gap-4 mt-8">
       <a>
-        <%= link_to 'ゲストログイン', users_guest_sign_in_path, data: { turbo_method: :post }, class: "block w-full px-12 py-3 text-sm font-medium text-white bg-red-600 rounded shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto" %>
+        <%= link_to 'ゲストログインしてみる', users_guest_sign_in_path, data: { turbo_method: :post }, class: "block w-full px-12 py-3 text-sm font-medium text-white bg-red-600 rounded shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto" %>
       </a>
 
-      <a>
-        <%= link_to '新規登録', new_user_registration_path, class: "block w-full px-12 py-3 text-sm font-medium text-white bg-red-600 rounded shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto" %>
-      </a>
-      <a><%= link_to 'ログイン', new_user_session_path, class: "block w-full px-12 py-3 text-sm font-medium text-white bg-red-600 rounded shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto" %></a>
     </div>
   </div>
 </section>
