@@ -25,6 +25,9 @@
       <% else %>
         <%= render 'shared/before_login_header' %>
       <% end %>
+      <div>
+        <%= render "flash" %>
+      </div>
       <main class="content">
         <%= yield %>
       </main>

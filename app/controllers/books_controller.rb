@@ -55,7 +55,7 @@ class BooksController < ApplicationController
 
   def move_to_signed_in
     unless user_signed_in?
-      redirect_to '/pages/about', info: "ログインすると使える機能です！"
+      redirect_to '/pages/about', info: "まずはログインしてみてください。"
     end
   end
 

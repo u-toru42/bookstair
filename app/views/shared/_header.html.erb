@@ -12,7 +12,7 @@
     <span class="footer-title"><%= link_to '本棚を見てみる', '/books/', class: 'nav-link' %></span> 
   </div>
   <div>
-    <span class="footer-title"><p class="badge badge-primary"><%= current_user.name %></p>でログインしています。</span> 
+    <span class="footer-title"><p class="badge badge-success"><%= current_user.name %></p>でログインしています。</span> 
   </div>
   <div>
     <span class="footer-title"><%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %></span> 

@@ -4,15 +4,12 @@ class BookmarksController < ApplicationController
     if bookmark.save_with_tags(tag_names: params.dig(:bookmark, :tag_names).split(',').uniq)
       redirect_to bookmark_path(bookmark), success: 'しおりを作成しました'
     else
-      flash.now[:danger] = 'しおりを作成できませんでした'
-      render :show
+      flash.now[:danger] = 'しおり作成失敗'
+      @book = Book.find_by!(isbn: params[:isbn])
     end
-    # if bookmark.save
-    #   redirect_to book_path(bookmark.book), success: t('defaults.message.created', item: Bookmark.model_name.human)
-    # else
-    #   redirect_to book_path(bookmark.book), danger: t('defaults.message.created', item: Bookmark.model_name.human)
-    # end
   end
+
+  def edit; end
   
   def update
     bookmark.assign_attributes(bookmark_params)
@@ -26,7 +23,7 @@ class BookmarksController < ApplicationController
 
   def destroy
     bookmark = Bookmark.find(params[:id])
-    Bookmark.delete!
+    bookmark.destroy
     redirect_to bookmark.book, success: 'しおりが削除されました'
   end
 

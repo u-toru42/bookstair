@@ -36,12 +36,9 @@
 
 
 <section>
-  <div class="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
-    <header>
-      <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">
-        検索結果
-      </h2>
-    </header>
+  <div class="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8 bg-[url('wood.png')]">
+    <h1 class="flex justify-center text-2xl font-bold sm:text-3xl">検索結果</h1>
+
     <ul class="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
 <% if @books.present? %>
   <% @books&.each do |book| %>
@@ -75,7 +72,7 @@
                   <%= f.hidden_field :isbn, value: set_rakuten_book_params(book.isbn) %>
                   <%= f.hidden_field :item_caption, value: set_rakuten_book_params(book.item_caption) %>
                   <%= f.hidden_field :item_price, value: book.item_price %>
-                  <button><%= f.submit "本棚に登録する", class: :"btn btn-primary" %></button>
+                  <button><%= f.submit "本棚に登録する", class: "btn btn-primary flex justify-center" %></button>
                 <% end %>
               </p>
             </p>

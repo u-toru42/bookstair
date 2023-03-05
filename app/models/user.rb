@@ -36,6 +36,6 @@ class User < ApplicationRecord
   end
 
   def own?(object)
-    id == object.user_id
+    object.user_id == id
   end
 end
