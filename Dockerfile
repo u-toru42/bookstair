@@ -3,7 +3,7 @@ ARG APP_NAME=bookstair
 #使いたいrubyのimage名に置き換えてください
 ARG RUBY_IMAGE=ruby:3.1.3
 #使いたいnodeのversionに置き換えてください(`15.14.0`ではなく`15`とか`16`とかのメジャーバージョン形式で書いてください)
-ARG NODE_VERSION='16'
+ARG NODE_VERSION='14'
 #インストールするbundlerのversionに置き換えてください
 ARG BUNDLER_VERSION=2.3.26
 
