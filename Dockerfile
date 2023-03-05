@@ -23,19 +23,11 @@ RUN mkdir /$APP_NAME
 WORKDIR /$APP_NAME
 
 # 別途インストールが必要なものがある場合は追加してください
-RUN set -x \
-  && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
-  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-  && apt-get update -qq \
-  && apt-get install -y --no-install-recommends \
-  build-essential \
-  libpq-dev libxslt-dev libxml2-dev \
-  nodejs yarn \
-  curl vim sudo cron \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* \
-  && rm -rf /var/cache/yum/*
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
+&& wget --quiet -O - /tmp/pubkey.gpg https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+&& echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+&& apt-get update -qq \
+&& apt-get install -y build-essential nodejs yarn
 
 RUN gem install bundler:$BUNDLER_VERSION
 
