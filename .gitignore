@@ -34,5 +34,3 @@
 !/app/assets/builds/.keep
 
 /node_modules
-/.env
-/config/initializers/devise.rb
