@@ -1,5 +1,5 @@
 #applicationのディレクトリ名で置き換えてください
-ARG APP_NAME=bookstairapp
+ARG APP_NAME=bookstair
 #使いたいrubyのimage名に置き換えてください
 ARG RUBY_IMAGE=ruby:3.1.3
 #使いたいnodeのversionに置き換えてください(`15.14.0`ではなく`15`とか`16`とかのメジャーバージョン形式で書いてください)
@@ -50,9 +50,9 @@ COPY package.json /$APP_NAME/package.json
 COPY . /$APP_NAME/
 
 RUN SECRET_KEY_BASE="$(bundle exec rake secret)" bin/rails assets:precompile assets:clean \
-  && yarn install --production --frozen-lockfile \
-  && yarn cache clean \
-  && rm -rf /$APP_NAME/node_modules /$APP_NAME/tmp/cache
+&& yarn install --production --frozen-lockfile \
+&& yarn cache clean \
+&& rm -rf /$APP_NAME/node_modules /$APP_NAME/tmp/cache
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh

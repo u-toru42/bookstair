@@ -99,6 +99,8 @@ GEM
     devise-i18n (1.11.0)
       devise (>= 4.9.0)
     diffy (3.4.2)
+    dockerfile-rails (1.2.5)
+      rails
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -162,6 +164,8 @@ GEM
       net-protocol
     nio4r (2.5.8)
     nokogiri (1.14.2-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.5)
@@ -256,6 +260,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   annotate
@@ -264,6 +269,7 @@ DEPENDENCIES
   debug
   devise
   devise-i18n
+  dockerfile-rails (>= 1.2)
   dotenv-rails
   draper
   faraday

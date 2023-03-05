@@ -76,3 +76,4 @@ gem 'high_voltage', '~> 3.1'
 gem 'annotate'
 gem 'devise'
 gem 'devise-i18n'
+gem "dockerfile-rails", ">= 1.2", :group => :development
