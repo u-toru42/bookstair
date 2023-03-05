@@ -41,7 +41,7 @@ COPY package.json /$APP_NAME/package.json
 
 COPY . /$APP_NAME/
 
-RUN SECRET_KEY_BASE="$(bundle exec rake secret)" bin/rails db:create assets:clean \
+RUN SECRET_KEY_BASE="$(bundle exec rake secret)" bin/rails db:create \
 && yarn install --production --frozen-lockfile \
 && yarn cache clean \
 && rm -rf /$APP_NAME/node_modules /$APP_NAME/tmp/cache
