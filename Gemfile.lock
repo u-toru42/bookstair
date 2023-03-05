@@ -99,8 +99,6 @@ GEM
     devise-i18n (1.11.0)
       devise (>= 4.9.0)
     diffy (3.4.2)
-    dockerfile-rails (1.2.5)
-      rails
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -269,7 +267,6 @@ DEPENDENCIES
   debug
   devise
   devise-i18n
-  dockerfile-rails (>= 1.2)
   dotenv-rails
   draper
   faraday
