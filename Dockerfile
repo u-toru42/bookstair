@@ -41,7 +41,7 @@ COPY package.json /$APP_NAME/package.json
 
 COPY . /$APP_NAME/
 
-RUN bin/rails assets:precompile assets:clean \
+RUN SECRET_KEY_BASE="$(bundle exec rake secret)" bin/rails assets:precompile assets:clean \
   && yarn install --production --frozen-lockfile \
   && yarn cache clean \
   && rm -rf /bookstair/node_modules /bookstair/tmp/cache
