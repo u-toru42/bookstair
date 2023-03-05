@@ -1,29 +1,82 @@
-<h2>Sign up</h2>
-
+<% content_for(:title, 'ユーザー登録') %>
 <%= form_with model: @user, url: registration_path(resource_name), local: true do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<section class="bg-white">
+  <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
+    <aside
+      class="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6"
+    >
+      <img
+        class="absolute inset-0 object-cover w-full h-full bg-[url('shelf.jpg')]"
+      />
+    </aside>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <main
+      aria-label="Main"
+      class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6"
+    >
+      <div class="max-w-xl lg:max-w-3xl">
+        <a class="block text-blue-600" href="/">
+          <%= image_tag "bookstair.png", class: "h-32 md:h-40" ,viewBox: "0 0 28 24", fill: "none" %>
+        </a>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        <h1
+          class="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
+        >
+          BOOKSTAIRへようこそ
+        </h1>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+        <form action="#" class="grid grid-cols-6 gap-6 mt-8">
+          <div class="col-span-6 sm:col-span-3">
+            <%= f.label :name, class: "block text-sm font-medium text-gray-700" %>
+          </div>
+
+            <%= f.text_field :name, autofocus: true, class: "w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
+          <div class="col-span-6">
+            <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
+          </div>
+
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
+          <div class="col-span-6 sm:col-span-3">
+              <%= f.label :password, class: "block text-sm font-medium text-gray-700" %>
+          </div>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> 文字以上で登録してください)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "new-password", class: "w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
+
+          <div class="col-span-6 sm:col-span-3">
+            <%= f.label :password_confirmation, class: "block text-sm font-medium text-gray-700" %>
+          </div>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
+
+          <div class="col-span-6">
+            <p class="text-sm text-gray-500">
+              ユーザー登録をもって
+              <a href="/pages/tos" class="text-gray-700 underline">
+                利用規約
+              </a>
+              および
+              <a href="/pages/privacy" class="text-gray-700 underline">プライバシーポリシー</a>のすべての条項に同意したものとみなします。
+            </p>
+          </div>
+
+          <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
+            <%= f.submit "ユーザー登録", class: "inline-block px-12 py-3 text-sm font-medium text-white transition bg-blue-600 border border-blue-600 rounded-md shrink-0 hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500" %>
+          </div>
+
+            <p class="mt-4 text-sm text-gray-500 sm:mt-0">
+              ユーザー登録済みですか?
+              <a class="text-gray-700 underline"><%= render "devise/shared/links" %></a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </main>
   </div>
+</section>
+
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%#= render "devise/shared/links" %>

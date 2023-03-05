@@ -1,27 +1,15 @@
-<<<<<<< HEAD
-<footer>
-  <nav>
-    <div>
-      <ul>
-        <li><a><%= link_to 'Bookstairとは', page_path('about') %></a></li>
-        <li><a><%= link_to '利用規約', page_path('tos') %></a></li>
-        <li><a><%= link_to 'プライバシーポリシー', page_path('privacy') %></a></li>
-        <li><a><%= link_to 'お問い合わせ', '#', class: 'nav-link' %></a></li>
-        <p><small>Copyright © 2022-2023. Bookstair</small></p>
-			</ul>
-    </div>
-  </nav>
-</footer> 
-=======
-<footer id='footer' class="footer-bottom">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6 col-12">
-        <div class="copyright">
-          <p>Copyright © 2022. Bookshelf</p>
-        </div>
-      </div>
-    </div>
+<footer class="p-10 footer bg-neutral-content">
+  <div>
+    <span class="footer-title"><%= link_to 'BOOKSTAIRとは', page_path('about') %></span> 
+  </div> 
+  <div>
+    <span class="footer-title"><%= link_to '利用規約', page_path('tos') %></span> 
+  </div> 
+  <div>
+    <span class="footer-title"><%= link_to 'プライバシーポリシー', page_path('privacy') %></span> 
   </div>
+  <div>
+    <span class="footer-title"><%= link_to 'お問い合わせ', '#', class: 'nav-link' %></span> 
+  </div>
+  <p><small>Copyright © 2022-2023. BOOKSTAIR</small></p>
 </footer>
->>>>>>> 200e31c (ログイン機能実装(ログアウト機能が未完成))

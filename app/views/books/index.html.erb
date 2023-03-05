@@ -1,21 +1,81 @@
-<div class="search">
-  <h1>読みたい本の一覧</h1>
-  <div>
-    <%= render "flash" %>
-  </div>
-  <% if @books.present? %>
-    <% @books&.each do |book| %>
-      <div class="book-line">
-      <!-- book.item_urlを書籍情報ページに飛ばして、book.item_urlを書籍情報のリンク貼り付けに利用する -->
-        <p class="book-image">
-          <%= image_tag(book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;") %>
-        </p>
-        <p class="book-data">
-        <!-- 正規表現の加工はHelperに処理を渡す -->
-          <%= set_rakuten_book_params(book.title) %>
-        </p>
-        <%= button_to "読みたい本から削除", book, method: :delete, params: {isbn: book.isbn}, remote: :true, form: { data: { turbo_confirm: "「#{book.title}」を削除しますか?" } }, class: "btn btn-xs btn-danger" %>
-      </div>
-    <% end %>
-  <% end %>
+<% content_for(:title, '本棚') %>
+
+<!--
+<div class="w-full overflow-x-auto trancate">
+  <table class="table w-full">
+    <thead>
+      <tr>
+        <th>サムネイル</th>
+        <th>タイトル</th>
+        <th>著者名</th>
+        <th>しおり</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @books.present? %>
+        <% @books&.each do |book| %>
+          <tr>
+            <td>
+              <span><%= image_tag(book.large_image_url, style: "width: 100px; height: 125px;display: inline-block;") %></span>
+            </td>
+            <td>
+              <%= set_rakuten_book_params(book.title) %>
+            </td>
+            <td>
+              <%= set_rakuten_book_params(book.author) %>
+            </td>
+            <td><%= link_to "しおりを見てみる", book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "btn btn-info" %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 </div>
+<div class="btn-group">
+  <%= paginate @books %>
+</div>
+-->
+
+
+<section class="bg-[url('shelf.jpg')]">
+  <div class="max-w-screen-xl px-4 py-8 mx-auto card sm:px-6 sm:py-12 lg:px-8">
+
+      <div class="lg:col-span-3 card-body">
+        <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <% if @books.present? %>
+          <% @books&.each do |book| %>
+          <li>
+            <a href="#" class="block overflow-hidden group">
+              <!--
+              <img
+                src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                alt=""
+                class="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
+              />
+              -->
+              <div class="bg-[url('wood.png')] p-5">
+                <%= link_to (image_tag(book.large_image_url)), book.item_url, class:"pl-20" %>
+                <%#= image_tag(book.large_image_url, class: "pl-20") %>
+              </div>
+
+              <div class="relative pt-3 bg-white">
+                <h3
+                  class="pl-3 text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4"
+                >
+                  <%= set_rakuten_book_params(book.title) %>
+                </h3>
+
+                <p class="mt-2">
+                  <span class="pl-3 text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4"><%= set_rakuten_book_params(book.author) %></span>
+                  <span class="pl-20 tracking-wider text-gray-900"><%= link_to "しおりを見てみる", book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "inline-block rounded border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 m-3"%></span>
+                </p>
+              </div>
+            </a>
+          </li>
+        <% end %>
+      <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

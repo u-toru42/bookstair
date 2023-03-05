@@ -1,13 +1,154 @@
-<div class="search">
-  <div class="book-line">
-  <!-- book.item_urlを書籍情報ページに飛ばして、book.item_urlを書籍情報のリンク貼り付けに利用する -->
-    <p class="book-image">
-    <%= image_tag(book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;") %>
-    </p>
-    <p class="book-data">
-    <!-- 正規表現の加工はHelperに処理を渡す -->
-      <%= set_rakuten_book_params(book.title) %>
-    </p>
-    <%= button_to "読みたい本から削除", book, method: :delete, params: {isbn: book.isbn}, remote: :true, form: { data: { turbo_confirm: "「#{book.title}」を削除しますか?" } }, class: "btn btn-xs btn-danger" %>
+<% content_for(:title, @book.title) %>
+<!--
+<section>
+  <div class="relative max-w-screen-xl px-4 py-8 mx-auto">
+    <div class="grid items-start grid-cols-1 gap-8 md:grid-cols-2">
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-1 bg-[url('wood.png')] p-10">
+        <div class="grid grid-cols-2 gap-4 lg:mt-4">
+          <%= image_tag(@book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;") %>
+        </div>
+      </div>
+
+      <div class="sticky top-0">
+
+        <div class="flex justify-between mt-8">
+          <div class="max-w-[35ch] space-y-2">
+            <h1 class="text-xl font-bold sm:text-2xl">
+              <%= link_to set_rakuten_book_params(@book.title), @book, method: :get, params: {isbn: @book.isbn}, remote: :true %>
+            </h1>
+
+            <p class="text-sm"><%= set_rakuten_book_params(@book.author) %></p>
+
+            <div class="-ml-0.5 flex">
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+
+              <svg
+                class="w-5 h-5 text-gray-200"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <p class="text-lg font-bold"><%= number_to_currency(@book.item_price, format: "%u%n", unit: "￥") %></p>
+        </div>
+
+        <div class="mt-4">
+          <div class="prose max-w-none">
+            <p>
+              <%= simple_format(@book.item_caption) %>
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+
+<div class="max-w-5xl px-4 py-8 mx-auto">
+  <section class="p-12 rounded-lg bg-[url('wood.png')] ">
+    <div class="grid grid-cols-1 gap-12 sm:grid-cols-3 sm:items-center">
+      <%#= image_tag(@book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;", class: "object-cover w-full rounded-lg aspect-square") %>
+      <%= link_to (image_tag(@book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;")), @book.item_url, class:"h-56 object-cover" %>
+
+      <blockquote class="sm:col-span-2">
+        <h1 class="text-xl font-bold sm:text-2xl">
+          <%= link_to set_rakuten_book_params(@book.title), @book, method: :get, params: {isbn: @book.isbn}, remote: :true %>
+        </h1>
+
+        <p class="text-md"><%= set_rakuten_book_params(@book.author) %></p>
+
+        <p class="text-lg font-bold"><%= number_to_currency(@book.item_price, format: "%u%n", unit: "￥") %></p>
+
+        <div class="mt-4">
+          <div class="prose max-w-none">
+            <p>
+              <%= simple_format(@book.item_caption) %>
+            </p>
+          </div>
+        </div>
+        <!--
+        <p class="text-xl font-medium card sm:text-2xl">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+          perspiciatis cumque neque ut nobis excepturi, quasi iure quisquam
+          autem alias.
+        </p>
+
+        <cite class="inline-flex items-center mt-8 not-italic">
+          <span class="hidden w-6 h-px bg-gray-400 sm:inline-block"></span>
+          <p class="text-sm text-gray-500 uppercase sm:ml-3">
+            <strong>Justin Harrison</strong>, Beatle Inc.
+          </p>
+        </cite>
+        -->
+      </blockquote>
+    </div>
+  </section>
+</div>
+
+
+
+<!-- コメントフォーム -->
+<%= render 'bookmarks/form', { book: @book, bookmark: @bookmark } %>
+
+<div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
+
+  <div class="card-footer">
+    <%= render @bookmark.tags %>
   </div>
 </div>
+
+<!-- コメントエリア -->
+<%= render 'bookmarks/bookmarks', { bookmarks: @bookmarks } %>
+

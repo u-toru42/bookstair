@@ -1,38 +1,37 @@
 <!DOCTYPE html>
-<html data-theme="forest">
+<html data-theme="corporate" lang="ja">
   <head>
-    <title>Bookshelf</title>
+    <meta charset="UTF-8">
+    <title><%= page_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application.tailwind.css" %>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <!--
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
-    <%#= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-    <%= javascript_include_tag "application" %>
-    <%#= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    -->
     <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body data-turbolinks="false">
-    <div class="container">
-      <% if logged_in? %>
+    <div>
+      <% if user_signed_in? %>
         <%= render 'shared/header' %>
       <% else %>
         <%= render 'shared/before_login_header' %>
       <% end %>
-      
-      <%= yield %>
+      <div>
+        <%= render "flash" %>
+      </div>
+      <main class="content">
+        <%= yield %>
+      </main>
       <%= render 'shared/footer' %>
-      
-      <div class="text-success">
-        <%= flash[:notice] %>
-      </div>
-      <div class="text-danger">
-        <%= flash[:danger] %>
-      </div>
     </div>
   </body>
 </html>

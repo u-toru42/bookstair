@@ -1,55 +1,12 @@
 class BooksController < ApplicationController
-  def bookmark
-    @books = []
-    @title = params[:title]
-    if @title.present?
-      results = RakutenWebServices::Books::Book.search({
-        title: @title,
-      })
+  before_action :move_to_signed_in
 
-      results.each do |result|
-        book = Book.new(read(result))
-        @books << book
-      end
-    end
-
-    @books.each do |book|
-      unless Book.all.include?(book)
-        book.save
-      end
-    end
-  end
-  
-  def index; end
-
-  def search
-    if params[:search].nil?
-      return
-    elsif params[:search].blank?
-      flash.now[:danger] = '検索キーワードが入力されていません'
-      return
-    elsif params[:search]
-      @books = RakutenWebService::Books::Book.search(title: params[:search])
-    end
-  end
-
-  private
-
-  def read(result)
-    title = result['title']
-    url = result['itemUrl']
-    isbn = result['isbn']
-    image_url = result['mediumImageUrl'].gsub('?_ex=112x162', '')
-    {
-      title: title,
-      url: url,
-      isbn: isbn,
-      image_url: image_url,
-    }
+  def new
+    @book = Book.new
   end
   
   def create
-    @book = Book.create(params.permit(:title, :author, :sales_date, :large_image_url, :item_url, :isbn))
+    @book = Book.create(params.permit(:title, :author, :sales_date, :large_image_url, :item_url, :isbn, :item_price, :item_caption))
     if @book.valid?
       redirect_to books_path, notice: "「#{@book[:title]}」を保存しました。"
     else
@@ -75,24 +32,35 @@ class BooksController < ApplicationController
       flash.now.notice = '検索キーワードが入力されていません'
       return
     elsif params[:title_search] && (params[:author_search].nil? || params[:author_search].blank?)
-      @books = RakutenWebService::Books::Book.search(title: params[:title_search])
+      @books = RakutenWebService::Books::Book.search(title: params[:title_search], booksGenreId: "001005")
     elsif params[:author_search] && (params[:title_search].nil? || params[:title_search].blank?)
-      @books = RakutenWebService::Books::Book.search(author: params[:author_search])
+      @books = RakutenWebService::Books::Book.search(author: params[:author_search], booksGenreId: "001005")
     elsif params[:author_search] && params[:title_search]
-      @books = RakutenWebService::Books::Book.search(title: params[:title_search], author: params[:author_search])
+      @books = RakutenWebService::Books::Book.search(title: params[:title_search], author: params[:author_search], booksGenreId: "001005")
     end
   end
 
   def show
     @book = Book.find_by!(isbn: params[:isbn])
-    @comment = Comment.new
-    @comments = @book.comments.includes(:user).order(created_at: :desc)
+    @bookmark = Bookmark.new
+    bookmarks = if (tag_name = params[:tag_name])
+      Bookmark.with_tag(tag_name)
+    else
+      Bookmark.all
+    end
+    @bookmarks = @book.bookmarks.includes(:user).order(page: :asc)
   end
 
-  private  
+  private
+
+  def move_to_signed_in
+    unless user_signed_in?
+      redirect_to '/pages/about', info: "まずはログインしてみてください。"
+    end
+  end
 
   def book_params
-    params.require(:book).permit(:title, :sales_date, :large_image_url, :item_url, :isbn)
+    params.require(:book).permit(:title, :sales_date, :large_image_url, :item_url, :isbn, :item_price, :item_caption)
   end
 
   def author_params

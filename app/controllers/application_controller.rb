@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
-<<<<<<< HEAD
   add_flash_types :success, :info, :warning, :danger
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   private
 
-=======
-  add_flash_types :success, :info, :warning, :danger  
->>>>>>> a73e54e (ログアウト機能(button_toにて実装))
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
 end

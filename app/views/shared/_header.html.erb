@@ -1,59 +1,20 @@
-<header>
-<<<<<<< HEAD
-  <nav>
-    <div>
-      <ul>
-        <li><a><%= link_to 'Topページ', '/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to '書籍検索', '/books/search', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'マイ本棚', '/books/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'マイしおり', '/bookmarks/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'しおり検索', '/bookmarks/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'プロフィール', '/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %></a></li>
-=======
-  <nav class="navbar navbar-expand-lg navigation navbar-light bg-light">
-
-    <%= link_to root_path, class: 'navbar-brand' do %>
-      <%#= image_tag 'logo.png' %>
-    <% end %>
-    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="ml-auto navbar-nav main-nav align-items-center">
-        <li class="nav-item dropdown dropdown-slide">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            掲示板
-          </a>
-
-          <div class="dropdown-menu dropdown-menu-right">
-            <%= link_to '検索', '/books/search', class: 'dropdown-item' %>
-            <%= link_to '掲示板一覧', '/', class: 'dropdown-item' %>
-            <%= link_to '掲示板作成', '#', class: 'dropdown-item' %>
-          </div>
-        </li>
-
-        <li class="nav-item">
-          <%= link_to 'ブックマーク一覧', '#', class: 'nav-link' %>
-        </li>
-
-        <li class="nav-item dropdown dropdown-slide">
-          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="header-profile">
-            <%#= image_tag 'sample', size: '40x40', class: 'rounded-circle mr15'%>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right">
-            <div class="dropdown-item">
-              <%= current_user.decorate.user_name %>
-            </div>
-            <div class="dropdown-divider"></div>
-            <%= link_to 'プロフィール', '#', class: 'dropdown-item' %>
-
-            <%= button_to 'ログアウト', logout_path, class: 'dropdown-item', method: :delete %>
-          </div>
-        </li>
->>>>>>> 200e31c (ログイン機能実装(ログアウト機能が未完成))
-      </ul>
-    </div>
-  </nav>
+<header class="p-10 footer bg-neutral-content">
+  <div class="flex-1 md:flex md:items-center md:gap-12">
+    <a class="block text-teal-600" href="/">
+      <span class="sr-only">Home</span>
+      <img><%= image_tag "favicon.ico", class: "h-8", viewBox: "0 0 28 24", fill: "none" %>
+    </a>
+  </div>
+  <div>
+    <span class="footer-title"><%= link_to '書籍検索', '/books/search', class: 'nav-link' %></span> 
+  </div> 
+  <div>
+    <span class="footer-title"><%= link_to '本棚を見てみる', '/books/', class: 'nav-link' %></span> 
+  </div>
+  <div>
+    <span class="footer-title"><p class="badge badge-success"><%= current_user.name %></p>でログインしています。</span> 
+  </div>
+  <div>
+    <span class="footer-title"><%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %></span> 
+  </div>
 </header>

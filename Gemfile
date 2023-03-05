@@ -15,20 +15,17 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-# gem "importmap-rails"
+# Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
+gem "jsbundling-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-# gem "turbo-rails"
+gem "turbo-rails"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-# gem "stimulus-rails"
+gem "stimulus-rails"
 
-# Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem "tailwindcss-rails"
-
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
+# Bundle and process CSS [https://github.com/rails/cssbundling-rails]
+gem "cssbundling-rails"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -65,29 +62,17 @@ group :development do
   # gem "spring"
 end
 
-group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
-  gem "webdrivers"
-end
-
 gem 'ridgepole'
 gem 'rakuten_web_service'
 gem 'dotenv-rails'
 gem 'faraday'
-gem 'cssbundling-rails'
-gem 'jsbundling-rails'
-<<<<<<< HEAD
-gem "rails_heroicon"
-=======
 gem 'rails_heroicon'
-gem 'sorcery'
 gem 'pry-byebug'
 gem 'propshaft'
-<<<<<<< HEAD
->>>>>>> a73e54e (ログアウト機能(button_toにて実装))
-=======
 gem 'rails-i18n'
 gem 'draper'
->>>>>>> 06b00fa (i18n、decorator、ユーザー名絡む名をname->user_nameに変更)
+gem 'kaminari'
+gem 'high_voltage', '~> 3.1'
+gem 'annotate'
+gem 'devise'
+gem 'devise-i18n'

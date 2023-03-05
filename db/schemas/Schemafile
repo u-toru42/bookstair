@@ -1,170 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-create_table "authors", force: :cascade do |t|
-  t.string "name"
-=======
-create_table "authors", force: :cascade do |t|
-  t.string "author"
->>>>>>> 2774d49 (Rails7とTailwindCSS、DaisyUIの実装)
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-end
-
-create_table "book_authors", force: :cascade do |t|
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "book_id"
-  t.bigint "author_id"
-  t.index ["author_id"], name: "index_book_authors_on_author_id"
-  t.index ["book_id"], name: "index_book_authors_on_book_id"
-end
-
-<<<<<<< HEAD
-=======
-create_table "bookauthors", force: :cascade do |t|
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-end
-
->>>>>>> 2774d49 (Rails7とTailwindCSS、DaisyUIの実装)
-create_table "bookchecks", force: :cascade do |t|
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "bookshelf_line_id"
-  t.bigint "book_id"
-  t.index ["book_id"], name: "index_bookchecks_on_book_id"
-  t.index ["bookshelf_line_id"], name: "index_bookchecks_on_bookshelf_line_id"
-end
-
-create_table "bookmarks", force: :cascade do |t|
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "user_id"
-  t.bigint "book_id"
-  t.index ["book_id"], name: "index_bookmarks_on_book_id"
-  t.index ["user_id"], name: "index_bookmarks_on_user_id"
-end
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-create_table "books", force: :cascade do |t|
-  t.string :title
-  t.string :author
-  t.text :sales_date
-  t.text :large_image_url
-  t.text :item_url
-=======
-create_table "books", id: false do |t|
-=======
-create_table "books", force: :cascade do |t|
->>>>>>> 200e31c (ログイン機能実装(ログアウト機能が未完成))
-  t.string :title
-  t.string :author
-  t.bigint :isbn
-  t.string :url
-  t.string :image_url
->>>>>>> 2774d49 (Rails7とTailwindCSS、DaisyUIの実装)
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-end
-
-<<<<<<< HEAD
-create_table "bookshelves", force: :cascade do |t|
-  t.string :title
-=======
-create_table "bookshelf_boards", force: :cascade do |t|
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "user_id"
-  t.bigint "bookshelf_follow_id"
-  t.index ["bookshelf_follow_id"], name: "index_bookshelf_boards_on_bookshelf_follow_id"
-  t.index ["user_id"], name: "index_bookshelf_boards_on_user_id"
-end
-
-create_table "bookshelf_follows", force: :cascade do |t|
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "bookshelf_board_id"
-  t.bigint "bookshelf_id"
-  t.index ["bookshelf_board_id"], name: "index_bookshelf_follows_on_bookshelf_board_id"
-  t.index ["bookshelf_id"], name: "index_bookshelf_follows_on_bookshelf_id"
-end
-
-create_table "bookshelf_lines", force: :cascade do |t|
-  t.string "title"
-  t.integer "position"
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "bookshelf_id"
-  t.index ["bookshelf_id"], name: "index_bookshelf_lines_on_bookshelf_id"
-end
-
-create_table "bookshelves", force: :cascade do |t|
-  t.string "name"
->>>>>>> 2774d49 (Rails7とTailwindCSS、DaisyUIの実装)
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-end
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-create_table "comments", force: :cascade do |t|
-=======
-create_table "comments", id: false do |t|
->>>>>>> 2774d49 (Rails7とTailwindCSS、DaisyUIの実装)
-=======
-create_table "comments", force: :cascade do |t|
->>>>>>> 200e31c (ログイン機能実装(ログアウト機能が未完成))
-  t.text "content"
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "user_id"
-  t.bigint "book_id"
-  t.index ["book_id"], name: "index_comments_on_book_id"
-  t.index ["user_id"], name: "index_comments_on_user_id"
-end
-<<<<<<< HEAD
-add_foreign_key "comments", "bookshelves", column: "bookshelf_id"
-add_foreign_key "comments", "books", column: "isbn", primary_key: :isbn
-add_foreign_key "comments", "users", column: "user_id"
-# add_foreign_key "comments", "bookshelves", name: "comment_ibfk_1", column: "bookshelf_id"
-=======
->>>>>>> 2774d49 (Rails7とTailwindCSS、DaisyUIの実装)
-
-create_table "reviews", force: :cascade do |t|
-  t.integer "status"
-  t.integer "comprehension"
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "user_id"
-  t.bigint "book_id"
-  t.index ["book_id"], name: "index_reviews_on_book_id"
-  t.index ["user_id"], name: "index_reviews_on_user_id"
-end
-
-create_table "taggings", force: :cascade do |t|
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  t.bigint "tag_id"
-  t.bigint "book_id"
-  t.index ["book_id"], name: "index_taggings_on_book_id"
-  t.index ["tag_id"], name: "index_taggings_on_tag_id"
-end
-
-create_table "tags", force: :cascade do |t|
-  t.string "name"
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-end
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
 create_table :users do |t|
   ## Database authenticatable
   t.string :email,              null: false, default: ""
   t.string :encrypted_password, null: false, default: ""
+  ## ユーザー名の登録追加
+  t.string :name, null: false, default: ""
 
   ## Recoverable
   t.string   :reset_password_token
@@ -206,69 +45,26 @@ create_table "books", id: false do |t|
   t.text :sales_date
   t.text :large_image_url
   t.text :item_url
+  t.text :item_caption
+  t.string :item_price
+
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
 end
 
-create_table "bookshelves", force: :cascade do |t|
-  t.string :title
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-  # t.bigint :user_id
-  # t.bigint :isbn, references: "books", renamed_from: "isbn_id", null: false
-  # t.index ["user_id"], name: "index_bookshelves_on_user_id"
-end
+# create_table "tags", force: :cascade  do |t|
+#   t.string :name
 
-create_table "comments", force: :cascade do |t|
-  t.belongs_to "bookshelf", null: false, foreign_key: true
-  t.references "book", null: false
-  t.belongs_to "user", foreign_key: true 
-  t.text :body, null: false
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-end
-add_foreign_key "comments", "bookshelves", column: "bookshelf_id"
-add_foreign_key "comments", "books", column: "isbn", primary_key: :isbn
-add_foreign_key "comments", "users", column: "user_id"
-# add_foreign_key "comments", "bookshelves", name: "comment_ibfk_1", column: "bookshelf_id"
+#   t.timestamps
+# end
 
-create_table "tags", force: :cascade do |t|
-  t.string :name, null: false
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-end
+# create_table "bookmark_tag_relations", force: :cascade do |t|
+#   t.bigint "bookmark_id"
+#   t.bigint "tag_id"
 
-create_table :bookshelf_tag_relations, force: :cascade do |t|
-  t.belongs_to "bookshelf", null: false, forein_key: true
-  t.belongs_to "tag", null: false, forein_key: true
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-end
-add_foreign_key "bookshelf_tag_relations", "bookshelves", column: "bookshelf_id"
-# add_foreign_key "bookshelf_tag_relations", "bookshelves", name: "bookshelf_tag_relations_on_bookshelf_ibfk_1"
-add_foreign_key "bookshelf_tag_relations", "tags", column: "tag_id"
-# add_foreign_key "bookshelf_tag_relations", "tags", name: "bookshelf_tag_relations_on_tag_ibfk_1"
-=======
-create_table "users", force: :cascade do |t|
-<<<<<<< HEAD
-  t.string "name"
-  t.string "email"
-  t.datetime "created_at", null: false
-  t.datetime "updated_at", null: false
-end
->>>>>>> 2774d49 (Rails7とTailwindCSS、DaisyUIの実装)
-=======
-=======
-create_table :users do |t|
->>>>>>> 06b00fa (i18n、decorator、ユーザー名絡む名をname->user_nameに変更)
-  t.string :email, null: false, index: { unique: true }
-  t.string :crypted_password
-  t.string :salt
-  t.string :user_name, presence: true, length: { maximum: 255 }
-
-  t.timestamps null: false
-end
-<<<<<<< HEAD
->>>>>>> 200e31c (ログイン機能実装(ログアウト機能が未完成))
-=======
->>>>>>> 06b00fa (i18n、decorator、ユーザー名絡む名をname->user_nameに変更)
+#   t.timestamps
+# end
+# add_index "bookmark_tag_relation", ["bookmark_id"], name: "bookmark_tag_ind", using: :btree
+# add_foreign_key "bookmark_tag_relation", "bookmark", name: "bookmark_tag_ibfk_1"
+# add_index "bookmark_tag_relation", ["tag_id"], name: "bookmark_tag_ind2", using: :btree
+# add_foreign_key "bookmark_tag_relation", "tag", name: "bookmark_tag_ibfk_2"

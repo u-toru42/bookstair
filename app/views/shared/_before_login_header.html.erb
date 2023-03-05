@@ -1,35 +1,22 @@
-<header>
-<<<<<<< HEAD
-  <nav>
-    <div>
-      <ul>
-        <li><a><%= link_to 'ログイン', new_user_session_path %></a></li>
-        <li><a><%= link_to 'ゲストログイン', users_guest_sign_in_path, data: { turbo_method: :post } %></a></li>
-        <li><a><%= link_to '新規登録', new_user_registration_path %></a></li>
-        <li><a><%= link_to '書籍検索', '/books/search', class: 'nav-link' %></a></li>
-        <li><a><%= link_to '読みたい本の一覧', '/books/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'マイしおり', '/bookshelves/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'しおり検索', '/bookshelves/', class: 'nav-link' %></a></li>
-        <li><a><%= link_to 'プロフィール', '#', class: 'nav-link' %></a></li>
-      </ul>
-=======
-  <nav class="navbar navbar-expand-lg navigation navbar-light bg-light">
-
-    <%= link_to root_path, class: 'navbar-brand' do %>
-      <%#= image_tag 'logo.png' %>
-		<% end %>
-
-    <button class='navbar-toggler' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
-			<span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="ml-auto navbar-nav main-nav align-items-center">
-        <li class="nav-item">
-          <%= link_to 'ログイン', login_path ,class: 'nav-link' %>
-        </li>
-			</ul>
->>>>>>> 200e31c (ログイン機能実装(ログアウト機能が未完成))
-    </div>
-  </nav>
+<header class="p-10 footer bg-neutral-content">
+  <div class="flex-1 md:flex md:items-center md:gap-12">
+    <a class="block text-teal-600" href="/">
+      <span class="sr-only">Home</span>
+      <img><%= image_tag "favicon.ico", class: "h-8", viewBox: "0 0 28 24", fill: "none" %>
+    </a>
+  </div>
+  <div>
+    <span class="footer-title"><%= link_to '書籍検索', '/books/search', class: 'nav-link' %></span> 
+  </div> 
+  <div>
+    <span class="footer-title"><%= link_to '本棚を見てみる', '/books/', class: 'nav-link' %></span> 
+  </div>
+  <div class="flex flex-col gap-4 mt-4 sm:mt-0 sm:flex-row sm:items-right">
+    <span class="text-sm font-medium">
+      <%= link_to '新規登録', new_user_registration_path, class: "block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring" %>
+    </span>
+    <span><%= link_to 'ログイン', new_user_session_path, class:"block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring" %></span>
+    <span><%= link_to 'ゲストログインしてみる', users_guest_sign_in_path, data: { turbo_method: :post }, class: "block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring" %></span>
+  </div>
 </header>
+
