@@ -1,20 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-.tos {
-  background-color: #302E29;
-  color: #ffffff;
-  justify-content: space-evenly;
-  margin: 0 auto;
-  padding: 10px 20px;
-}
-
-.privacy {
-  background-color: #302E29;
-  color: #ffffff;
-  justify-content: space-evenly;
-  margin: 0 auto;
-  padding: 10px 20px;
-}

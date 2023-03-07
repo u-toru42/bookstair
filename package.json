@@ -6,10 +6,10 @@
     "@popperjs/core": "^2.11.6",
     "autoprefixer": "^10.4.13",
     "daisyui": "^2.50.2",
-    "esbuild": "^0.17.5",
-    "postcss": "^8.4.20",
+    "esbuild": "^0.17.11",
+    "postcss": "^8.4.21",
     "sass": "^1.57.1",
-    "tailwindcss": "^3.2.4"
+    "tailwindcss": "^3.2.7"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
