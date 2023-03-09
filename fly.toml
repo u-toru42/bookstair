@@ -1,8 +1,9 @@
-# fly.toml file generated for bookstair on 2023-03-09T15:57:23+09:00
+# fly.toml file generated for bookstair on 2023-03-09T16:13:20+09:00
 
 app = "bookstair"
 kill_signal = "SIGINT"
 kill_timeout = 5
+primary_region = "nrt"
 processes = []
 
 [env]
