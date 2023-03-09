@@ -6,7 +6,6 @@ ARG RUBY_IMAGE=ruby:3.1.3
 ARG NODE_VERSION='16'
 #インストールするbundlerのversionに置き換えてください
 ARG BUNDLER_VERSION=2.3.26
-
 FROM $RUBY_IMAGE
 ARG APP_NAME
 ARG RUBY_VERSION
@@ -34,9 +33,7 @@ RUN gem install bundler:$BUNDLER_VERSION
 COPY Gemfile /$APP_NAME/Gemfile
 COPY Gemfile.lock /$APP_NAME/Gemfile.lock
 
-RUN bundle install \
-&& bundle exec rails css:install:tailwind \
-&& bundle exec rails javascript:install:esbuild
+RUN bundle install
 
 COPY yarn.lock /$APP_NAME/yarn.lock
 COPY package.json /$APP_NAME/package.json
