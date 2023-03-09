@@ -34,15 +34,15 @@ RUN gem install bundler:$BUNDLER_VERSION
 COPY Gemfile /$APP_NAME/Gemfile
 COPY Gemfile.lock /$APP_NAME/Gemfile.lock
 
-RUN bundle install
+RUN bundle install && bundle exec rails css:install:tailwind && bundle exec rails javascript:install:esbuild
 
+COPY tailwind.config.js /$APP_NAME/tailwind.config.js
 COPY yarn.lock /$APP_NAME/yarn.lock
 COPY package.json /$APP_NAME/package.json
 
 COPY . /$APP_NAME/
 
-RUN yarn build && yarn build:css && bin/rails assets:precompile assets:clean \
-&& yarn install --production --frozen-lockfile \
+RUN yarn install --production --frozen-lockfile \
 && yarn cache clean \
 && rm -rf /$APP_NAME/node_modules /$APP_NAME/tmp/cache
 
