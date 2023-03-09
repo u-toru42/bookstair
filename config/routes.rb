@@ -29,13 +29,7 @@ Rails.application.routes.draw do
     collection { get :search }
     resources :bookmarks, only: %i[create destroy], shallow:true
   end
-  # resources :books, only: [:index, :create, :show]
-  # resources :books, only: %i[search show], param: :isbn, constraints: { code: /\d+/ } do
-  # resources :books, only: %i[search show], param: :isbn do
   #   resources :bookmarks, only: %i[create destroy]
   # end
 
-  resources :bookshelves, only: %i[index new create show edit update destroy]
-
-  # resources :users, only: %i[new create]
 end
