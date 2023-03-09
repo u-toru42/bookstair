@@ -39,6 +39,8 @@ RUN bundle install \
 && bundle exec rails javascript:install:esbuild
 
 COPY tailwind.config.js /$APP_NAME/tailwind.config.js
+COPY /$APP_NAME/assets /$APP_NAME/assets
+COPY /$APP_NAME/javascript /$APP_NAME/javascript
 COPY yarn.lock /$APP_NAME/yarn.lock
 COPY package.json /$APP_NAME/package.json
 
