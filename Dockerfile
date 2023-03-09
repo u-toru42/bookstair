@@ -41,7 +41,7 @@ COPY package.json /$APP_NAME/package.json
 
 COPY . /$APP_NAME/
 
-RUN yarn install --production --frozen-lockfile \
+RUN yarn install \
 && yarn cache clean \
 && rm -rf /$APP_NAME/node_modules /$APP_NAME/tmp/cache
 
