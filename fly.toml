@@ -1,4 +1,4 @@
-# fly.toml file generated for bookstair on 2023-03-09T21:21:42+09:00
+# fly.toml file generated for bookstair on 2023-03-09T21:35:47+09:00
 
 app = "bookstair"
 kill_signal = "SIGINT"
