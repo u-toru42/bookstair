@@ -1,6 +1,6 @@
-# fly.toml file generated for boostair on 2023-03-09T20:39:24+09:00
+# fly.toml file generated for bookstair on 2023-03-09T21:21:42+09:00
 
-app = "boostair"
+app = "bookstair"
 kill_signal = "SIGINT"
 kill_timeout = 5
 primary_region = "nrt"
