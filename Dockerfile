@@ -41,10 +41,9 @@ COPY package.json /$APP_NAME/package.json
 
 COPY . /$APP_NAME/
 
-RUN yarn install \
+RUN yarn build && yarn build:css && bin/rails assets:precompile assets:clean \
+&& yarn install --production --frozen-lockfile \
 && yarn cache clean \
-&& yarn build \
-&& yarn build:css \
 && rm -rf /$APP_NAME/node_modules /$APP_NAME/tmp/cache
 
 COPY entrypoint.sh /usr/bin/
