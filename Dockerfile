@@ -44,6 +44,7 @@ RUN bundle install && bundle exec rails css:install:tailwind && bundle exec rail
 COPY yarn.lock /$APP_NAME/yarn.lock
 COPY package.json /$APP_NAME/package.json
 COPY tailwind.config.js /$APP_NAME/tailwind.config.js
+COPY app/assets/* /$APP_NAME/app/assets/*
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
