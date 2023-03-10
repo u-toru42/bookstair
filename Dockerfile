@@ -33,7 +33,7 @@ RUN gem install bundler:$BUNDLER_VERSION
 COPY Gemfile /$APP_NAME/Gemfile
 COPY Gemfile.lock /$APP_NAME/Gemfile.lock
 
-COPY . /$APP_NAME/
+COPY . .
 
 RUN yarn install \
 && yarn cache clean \
