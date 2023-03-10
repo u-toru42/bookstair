@@ -33,15 +33,15 @@ RUN gem install bundler:$BUNDLER_VERSION
 COPY Gemfile /$APP_NAME/Gemfile
 COPY Gemfile.lock /$APP_NAME/Gemfile.lock
 
-RUN bundle install
+RUN bundle install && bundle exec rails css:install:tailwind && bundle exec rails javascript:install:esbuild && yarn add daisyui
 
 COPY yarn.lock /$APP_NAME/yarn.lock
 COPY package.json /$APP_NAME/package.json
+COPY tailwind.config.js /$APP_NAME/tailwind.config.js
 
 COPY . /$APP_NAME/
 
-RUN SECRET_KEY_BASE="$(bundle exec rake secret)" bin/rails assets:precompile assets:clean \
-&& yarn install --production --frozen-lockfile \
+RUN yarn install \
 && yarn cache clean \
 && rm -rf /$APP_NAME/node_modules /$APP_NAME/tmp/cache
 
