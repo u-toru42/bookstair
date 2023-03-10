@@ -43,6 +43,7 @@ RUN bundle install && bundle exec rails css:install:tailwind && bundle exec rail
 
 COPY yarn.lock /$APP_NAME/yarn.lock
 COPY package.json /$APP_NAME/package.json
+COPY app/assets/images /$APP_NAME/app/assets/images
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
