@@ -42,10 +42,9 @@ COPY tailwind.config.js /$APP_NAME/tailwind.config.js
 COPY . /$APP_NAME/
 
 RUN yarn install \
+&& yarn build \
 && yarn cache clean \
 && rm -rf /$APP_NAME/node_modules /$APP_NAME/tmp/cache
-
-RUN bin/rails assets:precompile assets:clean
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
