@@ -45,7 +45,7 @@ COPY yarn.lock /$APP_NAME/yarn.lock
 COPY package.json /$APP_NAME/package.json
 COPY tailwind.config.js /$APP_NAME/tailwind.config.js
 
-RUN rails tmp:cache:clear && rails assets:precompile RAILS_ENV=production
+RUN yarn build
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
