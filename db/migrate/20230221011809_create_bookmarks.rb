@@ -1,12 +1,12 @@
 class CreateBookmarks < ActiveRecord::Migration[7.0]
   def change
     create_table :bookmarks do |t|
-      t.belongs_to :user, foreign_key: true 
+      t.belongs_to :user, foreign_key: true, null: false
       t.references :book_isbn, references: :books, null: false
       t.text :headline, null: false
       t.text :body, null: false
       t.text :page
-      t.text :chapter, null: false
+      t.text :chapter
       t.text :link
 
       t.timestamps

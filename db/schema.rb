@@ -25,12 +25,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_014203) do
   end
 
   create_table "bookmarks", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.bigint "book_isbn", null: false
     t.text "headline", null: false
     t.text "body", null: false
     t.text "page"
-    t.text "chapter", null: false
+    t.text "chapter"
     t.text "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

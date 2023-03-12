@@ -1,20 +1,29 @@
-<header class="p-10 footer bg-accent-content">
-  <div class="flex-1 md:flex md:items-center md:gap-12">
-    <a class="block text-teal-600" href="/">
-      <span class="sr-only">Home</span>
-      <img><%= image_tag asset_path("favicon.ico"), class: "h-8", viewBox: "0 0 28 24", fill: "none" %>
-    </a>
-  </div>
-  <div>
-    <span class="footer-title"><%= link_to '書籍検索', '/books/search', class: 'nav-link' %></span> 
-  </div> 
-  <div>
-    <span class="footer-title"><%= link_to '本棚を見てみる', '/books/', class: 'nav-link' %></span> 
-  </div>
-  <div>
-    <span class="footer-title"><p class="badge badge-success"><%= current_user.name %></p>でログインしています。</span> 
-  </div>
-  <div>
-    <span class="footer-title"><%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', data: { turbo_method: :delete } %></span> 
+<header aria-label="Page Header" class="bg-gray-100">
+  <div class="max-w-screen-xl px-4 py-8 mx-auto sm:py-12 sm:px-6 lg:px-8">
+    <div class="sm:flex sm:items-center sm:justify-between">
+      <div class="text-center sm:text-left">
+        <div class="flex-1 md:flex md:items-center md:gap-12">
+          <a class="block text-teal-600" href="/">
+            <span class="sr-only">Home</span>
+            <img><%= image_tag asset_path("favicon.ico"), class: "h-8", viewBox: "0 0 28 24", fill: "none" %>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4 mt-4 sm:mt-0 sm:flex-row sm:items-center">
+        <div>
+          <span class="footer-title"><%= link_to '書籍検索', '/books/search', class: 'nav-link' %></span> 
+        </div> 
+        <div>
+          <span class="footer-title"><%= link_to '本棚を見てみる', '/books/', class: 'nav-link' %></span> 
+        </div>
+        <div>
+          <span class="footer-title"><p class="rounded text-green border-green-500 bg-green-50 p-3"><%= current_user.name %></p>でログインしています。</span> 
+        </div>
+        <div>
+          <span class="footer-title"><%= link_to 'ログアウト', destroy_user_session_path, class: 'block px-5 py-3 text-sm font-medium text-white transition bg-green-600 rounded-lg hover:bg-green-700 focus:outline-none focus:ring', data: { turbo_method: :delete } %></span> 
+        </div>
+      </div>
+    </div>
   </div>
 </header>

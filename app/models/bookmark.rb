@@ -5,13 +5,13 @@
 #  id         :bigint           not null, primary key
 #  body       :text             not null
 #  book_isbn  :bigint           not null
-#  chapter    :text             not null
+#  chapter    :text
 #  headline   :text             not null
 #  link       :text
 #  page       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :bigint
+#  user_id    :bigint           not null
 #
 # Indexes
 #

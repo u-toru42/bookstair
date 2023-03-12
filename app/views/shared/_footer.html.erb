@@ -1,15 +1,24 @@
-<footer class="p-10 footer bg-accent-content">
-  <div>
-    <span class="footer-title"><%= link_to 'BOOKSTAIRとは', page_path('about') %></span> 
-  </div> 
-  <div>
-    <span class="footer-title"><%= link_to '利用規約', page_path('tos') %></span> 
-  </div> 
-  <div>
-    <span class="footer-title"><%= link_to 'プライバシーポリシー', page_path('privacy') %></span> 
+<footer aria-label="Site Footer" class="bg-gray-100">
+  <div
+    class="max-w-screen-xl px-4 mx-auto lg:px-4 p-5"
+  >
+
+    <div
+      class="grid grid-cols-1 gap-8 pt-8 border-t border-gray-100 sm:grid-cols-2 lg:grid-cols-4 lg:pt-4"
+    >
+      <p class="footer-title"><%= link_to 'BOOKSTAIRとは', page_path('about') %></p> 
+
+      <p class="footer-title"><%= link_to '利用規約', page_path('tos') %></p> 
+
+      <p class="footer-title"><%= link_to 'プライバシーポリシー', page_path('privacy') %></p> 
+
+      <p class="footer-title"><%= link_to 'お問い合わせ', '#', class: 'nav-link' %></p> 
+    </div>
+    
+    <div>
+      <p class="text-xs text-gray-500">
+        Copyright &copy; 2022-2023. BOOKSTAIR
+      </p>
+    </div>
   </div>
-  <div>
-    <span class="footer-title"><%= link_to 'お問い合わせ', '#', class: 'nav-link' %></span> 
-  </div>
-  <p><small>Copyright © 2022-2023. BOOKSTAIR</small></p>
 </footer>
