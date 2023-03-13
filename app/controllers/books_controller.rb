@@ -48,7 +48,7 @@ class BooksController < ApplicationController
     else
       Bookmark.all
     end
-    @bookmarks = @book.bookmarks.includes(:user).order(chapter: :asc).order(page: :asc)
+    @bookmarks = @book.bookmarks.includes(:user).order(chapter: :asc)
   end
 
   private
