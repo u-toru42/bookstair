@@ -1,11 +1,11 @@
 ---
 ja:
   defaults:
-    login: 'ログイン'
-    register: '登録'
-    logout: 'ログアウト'
+    login: "ログイン"
+    register: "登録"
+    logout: "ログアウト"
     message:
-      require_login: 'ログインしてください'
+      require_login: "ログインしてください"
       created: "%{item}を作成しました"
       not_created: "%{item}を作成できませんでした"
   users:
@@ -33,5 +33,3 @@ ja:
       previous: "前のページ"
       next: "次のページ"
       truncate: "..."
-  bookmarks:
-    headline: "しおりの題名"

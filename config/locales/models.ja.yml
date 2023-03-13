@@ -8,9 +8,9 @@ ja:
         password_confirmation: 確認用パスワード
         remember_me: 次回から自動的にログイン
       bookmark:
-        headline: しおりの題名
-        body: 本文
-        page: 該当ページ
-        chapter: チャプター
-        link: 参考文献
-        tag_names: タグ投稿
+        headline: しおりの題名(必須)
+        body: 本文(必須)
+        page: 該当ページ(任意)
+        chapter: チャプター(任意)
+        link: 参考文献(任意)
+        tag_names: タグ投稿(任意)
