@@ -7,9 +7,12 @@
       </p>
 
       <blockquote class="sm:col-span-2">
+        <p class="mt-2 p-3">
+          <%= render bookmark.tags %>
+        </p>
         <p class="mt-2 sm:mt-0 font-bold">
           <%= simple_format(bookmark.headline) %>
-        </a>
+        </p>
         <p class="mt-2 text-gray-700 text-lg">
           <%= simple_format(bookmark.body) %>
         </p>
@@ -52,10 +55,6 @@
             <%= link_to bookmark.link, bookmark.link %>
           </a>
         </p>
-
-        <div>
-          <%= render bookmark.tags %>
-        </div>
 
         <% if current_user.own?(bookmark) %>
           <div>
