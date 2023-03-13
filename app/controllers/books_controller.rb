@@ -22,7 +22,7 @@ class BooksController < ApplicationController
   end
   
   def index
-    @books = Book.all.order(created_at: :desc).page(params[:page]).per(10)
+    @books = Book.all.order(created_at: :desc)
   end
 
   def search
