@@ -11,6 +11,6 @@ ja:
         headline: しおりの題名(必須)
         body: 本文(必須)
         page: 該当ページ(任意)
-        chapter: チャプター(任意)
+        chapter: チャプター/第○章(任意)
         link: 参考文献(任意)
         tag_names: タグ投稿(任意)
