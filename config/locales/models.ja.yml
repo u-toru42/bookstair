@@ -11,7 +11,7 @@ ja:
         headline: しおりの題名(必須)
         body: 本文(必須)
         page: 該当ページ(任意)
+        review_star: 理解度チェック(必須)
         chapter: チャプター/第○章(任意)
-        review_star: 理解度チェック(任意)
         link: 参考文献(任意)
         tag_names: タグ投稿(任意)
