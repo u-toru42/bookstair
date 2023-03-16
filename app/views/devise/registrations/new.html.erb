@@ -2,13 +2,13 @@
 <%= form_with model: @user, url: registration_path(resource_name), local: true do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-<section class="bg-white">
+<section class="bg-slate-100">
   <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
     <aside
       class="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6"
     >
       <img
-        class="absolute inset-0 object-cover w-full h-full bg-[url('shelf.jpg')]"
+        class="absolute inset-0 object-cover w-full h-full bg-[url('shelf.png')]"
       />
     </aside>
 
@@ -17,9 +17,9 @@
       class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6"
     >
       <div class="max-w-xl lg:max-w-3xl">
-        <a class="block text-blue-600" href="/">
+        <p class="block text-blue-600 flex justify-center items-center">
           <%= image_tag asset_path("bookstair.png"), class: "h-32 md:h-40" ,viewBox: "0 0 28 24", fill: "none" %>
-        </a>
+        </p>
 
         <h1
           class="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
@@ -27,29 +27,30 @@
           BOOKSTAIRへようこそ
         </h1>
 
-        <form action="#" class="grid grid-cols-6 gap-6 mt-8">
+        <form action="#" class="grid grid-cols-6 gap-6 mt-8 m-6">
+          
           <div class="col-span-6 sm:col-span-3">
-            <%= f.label :name, class: "block text-sm font-medium text-gray-700" %>
+            <%= f.label :name, class: "block text font-medium text-gray-700" %>
+            <%= f.text_field :name, autofocus: true, class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
           </div>
 
-            <%= f.text_field :name, autofocus: true, class: "w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
           <div class="col-span-6">
             <%= f.label :email, class: "block text-sm font-medium text-gray-700" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
           </div>
 
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
           <div class="col-span-6 sm:col-span-3">
               <%= f.label :password, class: "block text-sm font-medium text-gray-700" %>
           </div>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> 文字以上で登録してください)</em>
               <% end %><br />
-              <%= f.password_field :password, autocomplete: "new-password", class: "w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
+              <%= f.password_field :password, autocomplete: "new-password", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
 
           <div class="col-span-6 sm:col-span-3">
             <%= f.label :password_confirmation, class: "block text-sm font-medium text-gray-700" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
           </div>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
 
           <div class="col-span-6">
             <p class="text-sm text-gray-500">

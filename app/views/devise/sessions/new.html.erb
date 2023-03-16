@@ -36,14 +36,13 @@
 -->
 
 <%= form_with model: @user, url: session_path(resource_name), local: true do |f| %>
-<section class="bg-white">
-  <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
+<section class="bg-slate-100">
+  <div class="lg:grid lg:max-h-screen lg:grid-cols-12">
     <section
       class="relative items-end h-32 bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6 flex justify-center items-center"
     >
       <img
-        alt="login"
-        class="absolute inset-0 object-cover w-full h-full bg-[url('shelf.jpg')]"
+        class="absolute inset-0 object-cover w-full h-full bg-[url('shelf.png')]"
       />
     </section>
 
@@ -52,7 +51,7 @@
       class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6"
     >
       <div class="max-w-xl lg:max-w-3xl">
-        <p class="block text-blue-600">
+        <p class="block text-blue-600 flex justify-center items-center">
           <%= image_tag asset_path("bookstair.png"), class: "h-32 md:h-40" ,viewBox: "0 0 28 24", fill: "none" %>
         </p>
         <h1
@@ -63,17 +62,17 @@
 
         <form action="#" class="grid grid-cols-6 gap-6 mt-8">
           <div class="col-span-6 sm:col-span-3">
-              <%= f.label :email %><br />
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
           </div>
 
           <div class="col-span-6 sm:col-span-3">
-              <%= f.label :password %><br />
-              <%= f.password_field :password, autocomplete: "w-full mt-1 text-sm text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "password", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
           </div>
 
           <div class="col-span-6">
-            <label for="MarketingAccept" class="flex gap-4">
+            <label for="MarketingAccept" class="flex gap-4 p-3">
               
               <% if devise_mapping.rememberable? %>
                 <div class="field">
