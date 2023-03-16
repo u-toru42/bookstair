@@ -55,7 +55,7 @@
           <%= image_tag asset_path("bookstair.png"), class: "h-32 md:h-40" ,viewBox: "0 0 28 24", fill: "none" %>
         </p>
         <h1
-          class="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
+          class="p-3 mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl"
           >
           BOOKSTAIRへようこそ
         </h1>
@@ -63,12 +63,12 @@
         <form action="#" class="grid grid-cols-6 gap-6 mt-8">
           <div class="col-span-6 sm:col-span-3">
             <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "hogehoge@example.com",  class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
           </div>
 
           <div class="col-span-6 sm:col-span-3">
             <%= f.label :password %><br />
-            <%= f.password_field :password, autocomplete: "password", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
+            <%= f.password_field :password, autocomplete: "password", placeholder: "password", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
           </div>
 
           <div class="col-span-6">
