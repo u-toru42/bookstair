@@ -1,6 +1,6 @@
 <% content_for(:title, @book.title) %>
 
-<div class="px-4 py-8 mx-auto bg-[url('shelf.png')] flex justify-center items-center">
+<div class="px-4 py-8 mx-auto bg-[url('shelf.png')] flex justify-center items-center border-2 border-gray-200">
   <section class="max-w-5xl p-12 rounded bg-[url('wood.png')]">
     <div class="grid grid-cols-1 gap-12 sm:grid-cols-3 sm:items-center">
       <%= link_to (image_tag(@book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;")), @book.item_url, class:"object-cover" %>
@@ -26,15 +26,15 @@
   </section>
 </div>
 
-<!-- コメントフォーム -->
-<%= render 'bookmarks/form', { book: @book, bookmark: @bookmark } %>
+<!-- しおり入力フォーム -->
+<div class="border-2 border-gray-200"><%= render 'bookmarks/form', { book: @book, bookmark: @bookmark } %>
 
-<div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
+<div>
   <div class="card-footer">
     <%= render @bookmark.tags %>
   </div>
 </div>
 
-<!-- コメントエリア -->
+<!-- しおりエリア -->
 <%= render 'bookmarks/bookmarks', { bookmarks: @bookmarks } %>
 
