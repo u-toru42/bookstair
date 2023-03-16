@@ -1,8 +1,8 @@
 <%= form_with model: bookmark, url: [book, bookmark], local: true do |f| %>
 
   <%= render 'shared/error_messages', object: f.object %>
-  <section class="bg-gray-100">
-    <div class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
+  <section class="bg-slate-100">
+    <div class="max-w-screen px-4 py-16 mx-auto sm:px-6 lg:px-8">
       <form class="grid grid-cols-6 gap-6 mt-8">
             
         <div class="col-span-6 sm:col-span-3">
@@ -16,8 +16,8 @@
         </div>
 
         <div class="col-span-6 sm:col-span-3">
-          <%= f.label :review_star, class: "py-2 block font-medium text-gray-700 flex justify-center items-center" %>
-          <%= f.select :review_star, {'未読': 0, '理解度☆':1, '理解度☆☆':2, '理解度☆☆☆':3, '理解度☆☆☆☆':4, '理解度☆☆☆☆☆':5}, { include_blank: '☆: 完全に理解した ... ☆☆☆☆☆: ちょっとわかる'}, { class: "w-full rounded-lg border-gray-200 p-3 text-sm" , required: true } %>
+          <%#= f.label :review_star, class: "py-2 block font-medium text-gray-700 flex justify-center items-center" %>
+          <%#= f.select :review_star, {'未読': 0, '理解度☆':1, '理解度☆☆':2, '理解度☆☆☆':3, '理解度☆☆☆☆':4, '理解度☆☆☆☆☆':5}, { include_blank: '☆: 完全に理解した ... ☆☆☆☆☆: ちょっとわかる'}, { class: "w-full rounded-lg border-gray-200 p-3 text-sm" , required: true } %>
         </div>
 
         <div class="col-span-6 sm:col-span-3">

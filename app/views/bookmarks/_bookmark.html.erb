@@ -1,17 +1,14 @@
-<article class="bg-white border-2 border-gray-200 rounded-xl">
+<article class="bg-slate-50 border-2 border-gray-200">
 <div class="max-w-5xl px-4 py-8 mx-auto">
-  <section class="p-8 rounded-lg bg-white-500">
+  <section class="p-8 rounded-lg">
     <div class="grid grid-cols-1 gap-12 sm:grid-cols-3 sm:items-center">
       <p class="block shrink-0">
         <%= image_tag asset_path("bookmark.png"), class: "object-cover rounded-md w-full" %>
       </p>
 
       <blockquote class="sm:col-span-2">
-        <p class="mt-2 p-3">
-          <%= render bookmark.tags %>
-        </p>
-        <p class="mt-2 sm:mt-0 font-bold">
-          <%= simple_format(bookmark.headline) %>
+        <p class="mt-2 sm:mt-0 underline-offset-auto">
+          <strong><%= simple_format(bookmark.headline) %></strong>
         </p>
         <p class="mt-2 text-gray-700 text-lg">
           <%= simple_format(bookmark.body) %>
@@ -27,56 +24,60 @@
         </cite>
         
         <div class="mt-2 sm:flex sm:items-center sm:gap-2">
-        <div class="flex items-center gap-1 text-gray-500">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-4 h-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
-            />
-          </svg>
-            <p class="hidden sm:block sm:text-xs sm:text-gray-500">
-              理解度: 
-              <p class="font-medium underline hover:text-gray-700">
-                <%= image_tag asset_path("star_#{bookmark.review_star}.png"), class: "h-6" %>
-              </p>
-            </p>
-          <% if bookmark.chapter.blank? %>
-            <p class="text-xs">チャプター指定なし</p>
-          <% else %>
-            <p class="text-xs">チャプター/第</p>
-              <%= bookmark.chapter %>
-            <p class="text-xs"> 章</p>
-          <% end %>
-        </div>
-
-        <div class="sm:flex sm:items-center">
-          <div class="flex items-center text-gray-500">
-            <p class="hidden sm:block sm:text-xs sm:text-gray-500">
-              参考書籍など: 
-              <% if !bookmark.link.blank? %>
+          <div class="flex items-center gap-1 text-gray-500">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
+              />
+            </svg>
+              <p class="hidden sm:block sm:text-xs sm:text-gray-500">
+                理解度: 
                 <p class="font-medium underline hover:text-gray-700">
-                  <%= link_to bookmark.link, bookmark.link %>
+                  <%#= image_tag asset_path("star_#{bookmark.review_star}.png"), class: "h-6" %>
                 </p>
-              <% end %>
-            </p>
+              </p>
+            <% if bookmark.chapter.blank? %>
+              <p class="text-xs">チャプター指定なし</p>
+            <% else %>
+              <p class="text-xs">チャプター/第</p>
+                <%= bookmark.chapter %>
+              <p class="text-xs"> 章</p>
+            <% end %>
           </div>
-        </div>
-      </blockquote>
 
-    </div>
-    <% if current_user.own?(bookmark) %>
-      <div class="flex justify-center items-center">
-        <button class="m-3 inline-block rounded border border-blue-600 bg-blue-600 px-3 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"><%= link_to '編集' %></button>
-        <button><%= link_to '削除', bookmark, method: :delete, remote: :true, data: { turbo_method: :delete, turbo_confirm: "「#{bookmark.headline}」を削除しますか?" }, class: "m-3 inline-block rounded border border-red-600 bg-red-600 px-3 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-red-600 focus:outline-none focus:ring active:text-red-500" %></button>
+          <div class="sm:flex sm:items-center">
+            <div class="flex items-center text-gray-500">
+              <p class="hidden sm:block sm:text-xs sm:text-gray-500">
+                参考書籍など: 
+                <% if !bookmark.link.blank? %>
+                  <p class="font-medium underline hover:text-gray-700">
+                    <%= link_to bookmark.link, bookmark.link %>
+                  </p>
+                <% end %>
+              </p>
+            </div>
+          </div>
+          <p class="mt-2 p-3">
+            <%= render bookmark.tags %>
+          </p>
+        </blockquote>
       </div>
-    <% end %>
-  </section>
-</div>
+      <% if current_user.own?(bookmark) %>
+        <div class="flex justify-center items-center">
+          <button class="m-3 inline-block rounded border border-blue-600 bg-blue-600 px-3 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"><%= link_to '編集' %></button>
+          <button><%= link_to '削除', bookmark, method: :delete, remote: :true, data: { turbo_method: :delete, turbo_confirm: "「#{bookmark.headline}」を削除しますか?" }, class: "m-3 inline-block rounded border border-red-600 bg-red-600 px-3 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-red-600 focus:outline-none focus:ring active:text-red-500" %></button>
+        </div>
+      <% end %>
+      </div>
+    </section>
+  </div>
+</article>
