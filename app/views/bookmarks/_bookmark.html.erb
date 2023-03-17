@@ -7,10 +7,10 @@
       </p>
 
       <blockquote class="sm:col-span-2">
-        <p class="mt-2 sm:mt-0 underline-offset-auto">
-          <strong><%= simple_format(bookmark.headline) %></strong>
+        <p class="mt-1 sm:mt-0">
+          <%= simple_format(bookmark.headline, class: "underline") %>
         </p>
-        <p class="mt-2 text-gray-700 text-lg">
+        <p class="mt-1 text-gray-700 text-lg">
           <%= simple_format(bookmark.body) %>
         </p>
 
@@ -73,7 +73,7 @@
       </div>
       <% if current_user.own?(bookmark) %>
         <div class="flex justify-center items-center">
-          <button class="m-3 inline-block rounded border border-blue-600 bg-blue-600 px-3 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"><%= link_to '編集' %></button>
+          <button class="m-3 inline-block rounded border border-blue-600 bg-blue-600 px-3 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"><%= link_to '編集', edit_bookmark_path(@book) %></button>
           <button><%= link_to '削除', bookmark, method: :delete, remote: :true, data: { turbo_method: :delete, turbo_confirm: "「#{bookmark.headline}」を削除しますか?" }, class: "m-3 inline-block rounded border border-red-600 bg-red-600 px-3 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-red-600 focus:outline-none focus:ring active:text-red-500" %></button>
         </div>
       <% end %>
