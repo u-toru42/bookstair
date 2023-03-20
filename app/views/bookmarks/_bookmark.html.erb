@@ -73,12 +73,14 @@
           </p>
         </blockquote>
       </div>
+      <!--
       <div class="bg-slate-800 text-gray-50 p-5 max-w-screen-xl rounded break-words">
         <p>
           <%#= simple_format(bookmark.body) %>
-          <%= markdown(bookmark.body) %>
+          <%#= markdown(bookmark.body) %>
         </p>
       </div>
+      -->
       <% if current_user.own?(bookmark) %>
         <div class="flex justify-center items-center">
           <!--
