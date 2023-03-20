@@ -1,12 +1,14 @@
+<%#= turbo_frame_tag "bookmark" do %>
+
 <article class="bg-slate-50 border-2 border-gray-200">
 <div class="max-w-5xl px-4 py-8 mx-auto">
   <section class="p-8 rounded-lg">
     <div class="grid grid-cols-1 gap-12 sm:grid-cols-3 sm:items-center">
-      <p class="block shrink-0">
+      <p class="block shrink-0 p-5">
         <%= image_tag asset_path("bookmark.png"), class: "object-cover rounded-md w-full" %>
       </p>
 
-      <blockquote class="sm:col-span-2">
+      <blockquote class="sm:col-span-2 break-words">
         <p class="mt-1 sm:mt-0">
           <%= simple_format(bookmark.headline, class: "font-semibold") %>
         </p>
@@ -71,13 +73,23 @@
           </p>
         </blockquote>
       </div>
+      <div class="bg-slate-800 text-gray-50 p-5 max-w-screen-xl rounded break-words">
+        <p>
+          <%#= simple_format(bookmark.body) %>
+          <%= markdown(bookmark.body) %>
+        </p>
+      </div>
       <% if current_user.own?(bookmark) %>
         <div class="flex justify-center items-center">
-          <button class="m-3 inline-block rounded border border-blue-600 bg-blue-600 px-3 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"><%= link_to '編集', edit_bookmark_path(@book) %></button>
-          <button><%= link_to '削除', bookmark, method: :delete, remote: :true, data: { turbo_method: :delete, turbo_confirm: "「#{bookmark.headline}」を削除しますか?" }, class: "m-3 inline-block rounded border border-red-600 bg-red-600 px-3 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-red-600 focus:outline-none focus:ring active:text-red-500" %></button>
+          <!--
+          <button class="m-3 inline-block rounded border border-blue-600 bg-blue-600 px-3 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"><%#= link_to '編集', edit_bookmark_path(@book, bookmark) %></button>
+          -->
+          <button><%= link_to 'しおりを削除する', bookmark, method: :delete, remote: :true, data: { turbo_method: :delete, turbo_confirm: "「#{bookmark.headline}」を削除しますか?" }, class: "m-3 inline-block rounded border border-red-600 bg-red-600 px-3 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-red-600 focus:outline-none focus:ring active:text-red-500" %></button>
         </div>
       <% end %>
       </div>
     </section>
   </div>
 </article>
+
+<%# end %>

@@ -1,4 +1,4 @@
-<%= form_with model: bookmark, url: [book, bookmark], local: true do |f| %>
+<%= form_with model: @bookmark, url: [@book, @bookmark],local: true do |f| %>
 
   <%= render 'shared/error_messages', object: f.object %>
   <section class="bg-slate-100">

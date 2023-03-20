@@ -22,7 +22,12 @@ class BooksController < ApplicationController
   end
   
   def index
-    @books = Book.all.order(created_at: :desc)
+    # @books = Book.all.order(created_at: :desc)
+    @search = Book.ransack(params[:q])
+
+    @search.sorts = 'created_at desc' if @search.sorts.empty?
+
+    @books = @search.result
   end
 
   def search
@@ -41,7 +46,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find_by!(isbn: params[:isbn])
+    @book = Book.find_by(isbn: params[:isbn])
     @bookmark = Bookmark.new
     bookmarks = if (tag_name = params[:tag_name])
       Bookmark.with_tag(tag_name)

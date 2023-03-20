@@ -218,6 +218,11 @@ GEM
     rake (13.0.6)
     rakuten_web_service (1.13.1)
       json (~> 2.3)
+    ransack (4.0.0)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
+    redcarpet (3.6.0)
     reline (0.3.2)
       io-console (~> 0.5)
     request_store (1.5.1)
@@ -228,6 +233,7 @@ GEM
     ridgepole (1.2.0)
       activerecord (>= 5.1, < 7.1)
       diffy
+    rouge (4.1.0)
     ruby2_keywords (0.0.5)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
@@ -283,7 +289,10 @@ DEPENDENCIES
   rails-i18n
   rails_heroicon
   rakuten_web_service
+  ransack
+  redcarpet
   ridgepole
+  rouge
   sprockets-rails
   stimulus-rails
   turbo-rails

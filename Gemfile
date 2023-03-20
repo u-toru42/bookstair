@@ -77,3 +77,6 @@ gem 'annotate'
 gem 'devise'
 gem 'devise-i18n'
 # gem "dockerfile-rails", ">= 1.2", :group => :development
+gem 'redcarpet'
+gem 'rouge'
+gem 'ransack'

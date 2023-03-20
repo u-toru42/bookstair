@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   
   resources :books, param: :isbn, constraints: { code: /\d+/ } do
     collection { get :search }
-    resources :bookmarks, only: %i[create destroy edit], shallow:true
+    resources :bookmarks, only: %i[create destroy edit update], shallow: true
   end
   #   resources :bookmarks, only: %i[create destroy]
   # end
