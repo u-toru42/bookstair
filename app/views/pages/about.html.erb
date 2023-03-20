@@ -1,5 +1,5 @@
 <section class="body-font bg-[url('shelf.jpg')]">
-  <div class="container px-5 py-24 mx-auto bg-shelf">
+  <div class="container px-5 py-24 mx-auto bg-shelf break-words">
     <div class="flex flex-col items-center pb-10 mx-auto mb-10 border-b border-gray-200 lg:w-3/5 sm:flex-row bg-[url('wood.png')] p-10 rounded-lg">
       <div class="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 text-indigo-500 bg-indigo-100 rounded-full sm:w-32 sm:h-32 sm:mr-10">
         <div fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 sm:w-16 sm:h-16" viewBox="0 0 24 24" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;">
@@ -7,14 +7,14 @@
         </div>
       </div>
       <div class="flex-grow mt-6 text-center sm:text-left sm:mt-0">
-        <h2 class="mb-2 text-lg font-medium text-gray-900 title-font font-bold">しおりを書いて、挟んでみる。</h2>
-        <p class="text-base leading-relaxed">BOOKSTAIRは技術書に関する投稿ができます。<br>コメント欄をしおりに見立て、お気に入りの解説のページ、難しい章、合わせて読むと嬉しい技術書。まだ本を買ってない人から、内容を十分に理解した人まで、誰でも利用できるサービスです。</p>
+        <h2 class="mb-2 text-lg font-medium text-gray-900 title-font font-bold">BOOKSTAIRはコンピュータ・ITの書籍専門の投稿サービスです。</h2>
+        <p class="text-base leading-relaxed">感想や見どころ、参考書籍やお気に入りのコードを、しおりとして投稿できます。</p>
       </div>
     </div>
     <div class="flex flex-col items-center pb-10 mx-auto mb-10 border-b border-gray-200 lg:w-3/5 sm:flex-row bg-[url('wood.png')] p-10 rounded-lg">
       <div class="flex-grow mt-6 text-center sm:text-left sm:mt-0">
-        <h2 class="mb-2 text-lg font-medium text-gray-900 title-font">ページごとのしおりを見ることができます。</h2>
-        <p class="text-base leading-relaxed">第○章が難しかった！ここがわからない！そんな疑問があれば投稿してみましょう。内容の理解が十分なつよつよエンジニアさんには、解説や参考書籍を書いていただけると、とても助かります。</p>
+        <h2 class="mb-2 text-lg font-medium text-gray-900 title-font">書籍詳細ページの下に、みんなの投稿がチャプター順で並びます。</h2>
+        <p class="text-base leading-relaxed">疑問に思った箇所があれば投稿してみましょう。同時にアドバイスや参考書籍も同じチャプターで投稿できます。</p>
       </div>
       <div class="inline-flex items-center justify-center flex-shrink-0 order-first w-20 h-20 text-indigo-500 bg-indigo-100 rounded-full sm:w-32 sm:order-none sm:h-32 sm:ml-10">
         <div fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 sm:w-16 sm:h-16" viewBox="0 0 24 24" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;">
@@ -35,9 +35,9 @@
     </div>
 
 
-    <div class="grid grid-cols-1 gap-4 mt-12 md:grid-cols-3 md:gap-8">
+    <div class="gap-4 mt-12 md:grid-cols-3 md:gap-8 flex justify-center items-center">
       <blockquote class="p-8 bg-[url('wood.png')] rounded-lg">
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-4 justify-center">
           <div class="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 text-indigo-500 bg-indigo-100 rounded-full sm:w-32 sm:h-32 sm:mr-10">
             <div fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 sm:w-16 sm:h-16" viewBox="0 0 24 24" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;">
               <%= image_tag asset_path("search.png") %>
@@ -52,42 +52,8 @@
         <p class="mt-4 text-black-500 line-clamp-2 sm:line-clamp-none">
           まずは技術書の題名や著者、気になる言語や技術を調べてみましょう。<br><button class="block w-full px-12 py-3 text-sm font-medium text-white bg-blue-600 rounded shadow hover:bg-blue-700 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto">「本棚に登録する」</button>を押せば、サービス共有の本棚に書籍が登録されます。
         </p>
-      </blockquote>
-
-      <blockquote class="p-8 bg-[url('wood.png')] rounded-lg">
-        <div class="flex items-center gap-4">
-          <div class="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 text-indigo-500 bg-indigo-100 rounded-full sm:w-32 sm:h-32 sm:mr-10">
-            <div fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 sm:w-16 sm:h-16" viewBox="0 0 24 24" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;">
-              <%= image_tag asset_path("check.png") %>
-            </div>
-          </div>
-
-          <div>
-            <p class="mt-1 text-lg font-medium text-black-700">感想、疑問やおすすめ書籍</p>
-          </div>
-        </div>
-
-        <p class="mt-4 text-black-500 line-clamp-2 sm:line-clamp-none">
-          本棚で気になる書籍を見つけたら、しおりを書いてみましょう。
-        </p>
-      </blockquote>
-
-      <blockquote class="p-8 bg-[url('wood.png')] rounded-lg">
-        <div class="flex items-center gap-4">
-          <div class="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 text-indigo-500 bg-indigo-100 rounded-full sm:w-32 sm:h-32 sm:mr-10">
-            <div fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 sm:w-16 sm:h-16" viewBox="0 0 24 24" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;">
-              <%= image_tag asset_path("buy_rakuten.png") %>
-            </div>
-          </div>
-
-          <div>
-            <p class="mt-1 text-lg font-medium text-black-700">楽天経由で技術書を買えます</p>
-          </div>
-        </div>
-
-        <p class="mt-4 text-black-500 line-clamp-2 sm:line-clamp-none">
-          書籍画像に楽天リンクが貼ってあるので、気になった技術書を購入することができます。
-        </p>
+        <p class="text-base leading-relaxed font-semibold">各技術書のサムネイルは楽天とリンクしておりますので、気になった本はすぐ買えます。</p><br>
+        <p class="h-screen w-screen flex justify-center items-center font-bold">Bon Voyage!<br>
       </blockquote>
     </div>
 
