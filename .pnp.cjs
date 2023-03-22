@@ -34,7 +34,8 @@ const RAW_RUNTIME_STATE =
           ["esbuild", "npm:0.17.11"],\
           ["postcss", "npm:8.4.21"],\
           ["sass", "npm:1.58.3"],\
-          ["tailwindcss", "virtual:0460f86c7587ee75dac643681550c044e8047ba46e219a5baac054fc0fea2d0af97a9bd3fe4b22de0884797215e0a1a4368bb60f9ef7087a69c4008789f4e032#npm:3.2.7"]\
+          ["tailwindcss", "virtual:0460f86c7587ee75dac643681550c044e8047ba46e219a5baac054fc0fea2d0af97a9bd3fe4b22de0884797215e0a1a4368bb60f9ef7087a69c4008789f4e032#npm:3.2.7"],\
+          ["tailwindcss-stimulus-components", "virtual:0460f86c7587ee75dac643681550c044e8047ba46e219a5baac054fc0fea2d0af97a9bd3fe4b22de0884797215e0a1a4368bb60f9ef7087a69c4008789f4e032#npm:3.0.4"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -460,7 +461,8 @@ const RAW_RUNTIME_STATE =
           ["esbuild", "npm:0.17.11"],\
           ["postcss", "npm:8.4.21"],\
           ["sass", "npm:1.58.3"],\
-          ["tailwindcss", "virtual:0460f86c7587ee75dac643681550c044e8047ba46e219a5baac054fc0fea2d0af97a9bd3fe4b22de0884797215e0a1a4368bb60f9ef7087a69c4008789f4e032#npm:3.2.7"]\
+          ["tailwindcss", "virtual:0460f86c7587ee75dac643681550c044e8047ba46e219a5baac054fc0fea2d0af97a9bd3fe4b22de0884797215e0a1a4368bb60f9ef7087a69c4008789f4e032#npm:3.2.7"],\
+          ["tailwindcss-stimulus-components", "virtual:0460f86c7587ee75dac643681550c044e8047ba46e219a5baac054fc0fea2d0af97a9bd3fe4b22de0884797215e0a1a4368bb60f9ef7087a69c4008789f4e032#npm:3.0.4"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -2156,6 +2158,28 @@ const RAW_RUNTIME_STATE =
         "packagePeers": [\
           "@types/postcss",\
           "postcss"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["tailwindcss-stimulus-components", [\
+      ["npm:3.0.4", {\
+        "packageLocation": "../../../../.yarn/berry/cache/tailwindcss-stimulus-components-npm-3.0.4-716f7e8634-9.zip/node_modules/tailwindcss-stimulus-components/",\
+        "packageDependencies": [\
+          ["tailwindcss-stimulus-components", "npm:3.0.4"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:0460f86c7587ee75dac643681550c044e8047ba46e219a5baac054fc0fea2d0af97a9bd3fe4b22de0884797215e0a1a4368bb60f9ef7087a69c4008789f4e032#npm:3.0.4", {\
+        "packageLocation": "./.yarn/__virtual__/tailwindcss-stimulus-components-virtual-1694747522/5/.yarn/berry/cache/tailwindcss-stimulus-components-npm-3.0.4-716f7e8634-9.zip/node_modules/tailwindcss-stimulus-components/",\
+        "packageDependencies": [\
+          ["tailwindcss-stimulus-components", "virtual:0460f86c7587ee75dac643681550c044e8047ba46e219a5baac054fc0fea2d0af97a9bd3fe4b22de0884797215e0a1a4368bb60f9ef7087a69c4008789f4e032#npm:3.0.4"],\
+          ["@hotwired/stimulus", "npm:3.2.1"],\
+          ["@types/hotwired__stimulus", null]\
+        ],\
+        "packagePeers": [\
+          "@hotwired/stimulus",\
+          "@types/hotwired__stimulus"\
         ],\
         "linkType": "HARD"\
       }]\

@@ -21,20 +21,25 @@
             </p>
           </div>
         </div>
+        <!-- しおり入力フォーム -->
+        <!-- <div class="border-2 border-gray-200"><%= render 'bookmarks/form', { book: @book, bookmark: @bookmark } %> -->
+        <div data-controller="modal" class="flex justify-center p-5">
+          <%= render 'bookmarks/modal', { book: @book, bookmark: @bookmark } %>
+        </div>
+
+        <div>
+          <div class="card-footer">
+            <%= render @bookmark.tags %>
+          </div>
+        </div>
       </blockquote>
     </div>
   </section>
 </div>
 
-<!-- しおり入力フォーム -->
-<div class="border-2 border-gray-200"><%= render 'bookmarks/form', { book: @book, bookmark: @bookmark } %>
-
-<div>
-  <div class="card-footer">
-    <%= render @bookmark.tags %>
-  </div>
-</div>
 
 <!-- しおりエリア -->
 <%= render 'bookmarks/bookmarks', { bookmarks: @bookmarks } %>
-
+<table id ="js-table-bookmark" class="table" data-controller="bookmarks">
+  <%= render 'bookmarks/bookmarks', { bookmarks: @bookmarks } %>
+</table>
