@@ -34,7 +34,7 @@ class BooksController < ApplicationController
     if params[:title_search].nil? && params[:author_search].nil?
       return
     elsif params[:title_search].blank? && params[:author_search].blank?
-      flash.now.notice = '検索キーワードが入力されていません'
+      flash.now[:notice] = '検索キーワードが入力されていません。'
       return
     elsif params[:title_search] && (params[:author_search].nil? || params[:author_search].blank?)
       @books = RakutenWebService::Books::Book.search(title: params[:title_search], booksGenreId: "001005")
