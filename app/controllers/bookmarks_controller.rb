@@ -32,7 +32,7 @@ class BookmarksController < ApplicationController
   private
 
   def bookmark_params
-    params.require(:bookmark).permit(:headline, :body, :chapter, :link, :review_star, :created_at).merge(book_isbn: params[:book_isbn])
+    params.require(:bookmark).permit(:headline, :body, :chapter, :link, :review_star, :code_block, :created_at).merge(book_isbn: params[:book_isbn])
   end
 
 end

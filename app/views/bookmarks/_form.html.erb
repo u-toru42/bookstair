@@ -16,8 +16,8 @@
         </div>
 
         <div class="col-span-6 sm:col-span-3">
-          <%#= f.label :review_star, class: "block font-medium text-gray-700 flex justify-center items-center" %>
-          <%#= f.select :review_star, {'未読': 0, '理解度☆':1, '理解度☆☆':2, '理解度☆☆☆':3, '理解度☆☆☆☆':4, '理解度☆☆☆☆☆':5}, { include_blank: '☆: 完全に理解した ... ☆☆☆☆☆: ちょっとわかる'}, { class: "w-full rounded-lg border-gray-200 p-3 text-sm" , required: true } %>
+          <%= f.label :review_star, class: "block font-medium text-gray-700 flex justify-center items-center" %>
+          <%= f.select :review_star, {'未読': 0, '理解度☆':1, '理解度☆☆':2, '理解度☆☆☆':3, '理解度☆☆☆☆':4, '理解度☆☆☆☆☆':5}, { include_blank: '☆: 完全に理解した ... ☆☆☆☆☆: ちょっとわかる'}, { class: "w-full rounded-lg border-gray-200 p-3 text-sm" , required: true } %>
         </div>
 
         <div class="col-span-6 sm:col-span-3">
@@ -26,8 +26,8 @@
         </div>
 
         <div class="col-span-6 sm:col-span-3">
-          <%#= f.label :code_block, class: "py-2 block font-medium text-gray-700 flex justify-center items-center" %>
-          <%#= f.text_area :code_block, placeholder: "コードを400文字まで入力できます。コードブロックで囲んでいただければMarkdown対応で表示されます。", id: 'js-new-bookmark-body', class: "w-full p-3 text-sm border-gray-200 rounded-lg", rows: "8" %>
+          <%= f.label :code_block, class: "py-2 block font-medium text-gray-700 flex justify-center items-center" %>
+          <%= f.text_area :code_block, placeholder: "コードを400文字まで入力できます。コードブロックで囲んでいただければMarkdown対応で表示されます。", id: 'js-new-bookmark-body', class: "w-full p-3 text-sm border-gray-200 rounded-lg", rows: "8" %>
         </div>
 
         <div class="col-span-6 sm:col-span-3">

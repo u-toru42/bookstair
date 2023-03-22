@@ -2,16 +2,18 @@
 #
 # Table name: bookmarks
 #
-#  id         :bigint           not null, primary key
-#  body       :text             not null
-#  book_isbn  :bigint           not null
-#  chapter    :text
-#  headline   :text             not null
-#  link       :text
-#  page       :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint           not null
+#  id          :bigint           not null, primary key
+#  body        :text             not null
+#  book_isbn   :bigint           not null
+#  chapter     :text
+#  code_block  :text
+#  headline    :text             not null
+#  link        :text
+#  page        :text
+#  review_star :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :bigint           not null
 #
 # Indexes
 #
@@ -33,6 +35,7 @@ class Bookmark < ApplicationRecord
   validates :body, presence: true, length: { maximum: 3000 }
   validates :chapter, allow_blank: true, length: { maximum: 9999 }, numericality: {only_integer: true}
   validates :link, allow_blank: true, length: { maximum: 100 }
+  validates :code_block, allow_blank: true, length: { maximum: 400 }
 
   scope :with_tag, ->(tag_name) { joins(:tags).where(tags: { name: tag_name }) }
 

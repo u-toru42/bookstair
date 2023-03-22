@@ -43,9 +43,7 @@
             </svg>
               <p class="hidden sm:block sm:text-xs sm:text-gray-500">
                 <!-- 理解度: -->
-                <p class="font-medium underline hover:text-gray-700">
-                  <%#= image_tag asset_path("star_#{bookmark.review_star}.png"), class: "h-6" %>
-                </p>
+                現在の理解度: <%= image_tag asset_path("star_#{bookmark.review_star}.png"), class: "h-6" %>
               </p>
             <% if bookmark.chapter.blank? %>
               <p class="text-xs">チャプター指定なし</p>
@@ -73,14 +71,16 @@
           </p>
         </blockquote>
       </div>
-      <!--
-      <div class="bg-slate-800 text-gray-50 p-5 max-w-screen-xl rounded break-words">
-        <p>
-          <%#= simple_format(bookmark.body) %>
-          <%#= markdown(bookmark.body) %>
+
+      <% if !bookmark.code_block.blank? %>
+        <p class="hidden sm:block sm:text-xs sm:text-gray-500 font-semibold flex justify-center items-center">
+          コードブロック
         </p>
-      </div>
-      -->
+        <div class="bg-slate-800 text-gray-50 p-5 max-w-screen-xl rounded break-words">
+          <%= markdown(bookmark.code_block) %>
+        </div>
+      <% end %>
+
       <% if current_user.own?(bookmark) %>
         <div class="flex justify-center items-center">
           <!--
