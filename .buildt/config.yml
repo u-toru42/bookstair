@@ -1,0 +1,30 @@
+name: bookstair
+id: 27f2f5a4-1abc-498a-8d87-33142bca69d2
+languages:
+  - JavaScript
+extensions:
+  - .js
+  - ._js
+  - .bones
+  - .cjs
+  - .es
+  - .es6
+  - .frag
+  - .gs
+  - .jake
+  - .javascript
+  - .jsb
+  - .jscad
+  - .jsfl
+  - .jslib
+  - .jsm
+  - .jspre
+  - .jss
+  - .jsx
+  - .mjs
+  - .njs
+  - .pac
+  - .sjs
+  - .ssjs
+  - .xsjs
+  - .xsjslib

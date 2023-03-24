@@ -8,30 +8,31 @@
     </p>
 
     <form class="max-w-md mx-auto mt-8 mb-0 space-y-4 rounded-lg">
-      <%= form_with url: search_books_path, local: true, method: :get do |f| %> 
+      <%= form_with url: search_books_path, local: true, method: :get, data: { controller: "autocomplete" } do |f| %>
         <div>
           <label
             for="Bookname"
             class="block px-3 py-2 overflow-hidden border border-gray-200 rounded-md shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
           >
             <span class="font-medium text-gray-700">書籍名</span>
-              <%= f.search_field :title_search, value: params[:title_search], placeholder: "例: Ruby, JavaScript, React...", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm", type: "text" %>
+            <%= f.search_field :title_search, value: params[:title_search], placeholder: "例: Ruby, JavaScript, React...", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm", type: "text", data: { target: "autocomplete.input" } %>
           </label>
         </div>
-
         <div>
           <label
             for="Bookauthor"
             class="block px-3 py-2 overflow-hidden border border-gray-200 rounded-md shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
           >
             <span class="font-medium text-gray-700">著者名</span>
-            <%= f.search_field :author_search, value: params[:author_search], placeholder: "例: 伊藤, 山田, まつもとゆきひろ...", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm", type: "text" %>
+            <%= f.search_field :author_search, value: params[:author_search], placeholder: "例: 伊藤, 山田, まつもとゆきひろ...", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm", type: "text", data: { target: "autocomplete.input" } %>
           </label>
         </div>
-        
+              
         <div class="flex flex-row-reverse items-center justify-between">
           <button title="検索" type="submit" class="inline-block w-full px-12 py-3 text-sm font-medium text-white bg-blue-600 rounded shadow hover:bg-blue-700 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto">検索</button>
         </div>
+
+        <ul data-autocomplete-target="results"></ul>
       <% end %>
     </form>
   </div>

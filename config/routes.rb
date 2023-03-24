@@ -26,10 +26,11 @@ Rails.application.routes.draw do
   end
   
   resources :books, param: :isbn, constraints: { code: /\d+/ } do
-    collection { get :search }
+    collection do 
+      get :search
+      get :autocomplete
+    end
     resources :bookmarks, only: %i[create destroy edit update], shallow: true
   end
-  #   resources :bookmarks, only: %i[create destroy]
-  # end
 
 end

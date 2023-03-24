@@ -17,4 +17,11 @@ module ApplicationHelper
 
     page_title.empty? ? base_title : page_title + ' | ' + base_title
   end
+
+  def qiita_tags
+    conn = Faraday.new(url: 'https://qiita.com')
+    response = conn.get '/api/v2/tags', { page: 1, per_page: 100 }
+    tags = JSON.parse(response.body)
+    tags.map { |tag| tag['name'] }
+  end
 end
