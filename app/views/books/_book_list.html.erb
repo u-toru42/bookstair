@@ -4,8 +4,10 @@
       <ul class="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
         <% @books&.each do |book| %>
           <li>
-            <a href="#" class="block overflow-hidden group">
-              <%= link_to (image_tag(book.large_image_url, style: "width: 200px; height: 250px; display: inline-block;")), book.item_url, class:"p-3 object-cover flex justify-center items-center" %>
+            <p class="block overflow-hidden group">
+              <p class="p-3 object-cover flex justify-center items-center">
+                <%= image_tag(book.large_image_url, style: "width: 200px; height: 250px; display: inline-block;") %>
+              </p>
 
               <div class="relative pt-3 bg-white rounded p-3">
                 <h3
@@ -20,7 +22,7 @@
                   <%= set_rakuten_book_params(book.author) %>
                 </h3>
 
-                <h3 class="mt-2 flex justify-center items-center">
+                <h3 class="mt-2 flex flex-col justify-center items-center">
 
                   <p class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
                     <%= form_with model: @book, url: books_path, local: true do |f| %>
@@ -32,8 +34,11 @@
                       <%= f.hidden_field :isbn, value: set_rakuten_book_params(book.isbn) %>
                       <%= f.hidden_field :item_caption, value: set_rakuten_book_params(book.item_caption) %>
                       <%= f.hidden_field :item_price, value: book.item_price %>
-                      <button><%= f.submit "本棚に登録する", class: "inline-block rounded border border-blue-600 bg-blue-600 px-12 py-3 font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 m-3" %></button>
+                      <button><%= f.submit "本棚に登録する", class: "inline-block rounded border border-blue-600 bg-blue-600 px-12 py-3 font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 m-3 mt-auto" %></button>
                     <% end %>
+                  </p>
+                  <p class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
+                    <button class="inline-block rounded border border-orange-600 bg-orange-600 px-12 py-3 font-medium text-white hover:bg-transparent hover:text-orange-600 focus:outline-none focus:ring active:text-orange-500 m-3 mt-auto"><%= link_to "楽天リンク", book.item_url %></button>
                   </p>
                 </h3>
               </div>

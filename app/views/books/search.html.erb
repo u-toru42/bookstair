@@ -1,6 +1,6 @@
 <% content_for(:title, '検索') %>
 
-<div class="min-h-screen bg-center bg-repeat bg-cover bg-[url('shelf.png')]" style="background-repeat: repeat;">
+<div class="min-h-screen bg-[url('shelf.png')]">
   <div class="p-3">
     <%= render partial: 'rss', locales: { populat_items: @popular_items } %>
   </div>
