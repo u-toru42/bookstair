@@ -1,6 +1,6 @@
 <% content_for(:title, '本棚') %>
 
-<section class="max-w-screen px-4 py-16 mx-auto sm:px-6 lg:px-8 bg-[url('shelf.jpg')]" style="height: 100vh; background-size: cover; background-position: center;">
+<section class="min-h-screen bg-[url('shelf.png')]">
   <div class="p-3">
     <%= render partial: 'rss', locales: { populat_items: @popular_items } %>
   </div>
