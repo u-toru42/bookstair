@@ -7,15 +7,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%#= stylesheet_link_tag "application.tailwind.css" %>
     <%= favicon_link_tag asset_path("favicon.ico") %>
-    <!--
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
-    -->
     <%= javascript_include_tag "/assets/application.js", "data-turbo-track": "reload", defer: true %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
   </head>
 
   <body data-turbolinks="false">
@@ -30,6 +25,7 @@
       </div>
       <main class="content">
         <%= yield %>
+        <%= javascript_tag 'application' %>
       </main>
       <%= render 'shared/footer' %>
     </div>

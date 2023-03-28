@@ -1,7 +1,7 @@
 <div class="p-5">
   <div data-controller="modal" data-modal-allow-background-close="false">
     <a href="#" data-action="click->modal#open" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">
-      <span>しおりを書いてみる</span>
+      <span>投稿</span>
     </a>
 
     <!-- Modal Container -->
@@ -43,7 +43,7 @@
 
                     <div class="col-span-6 sm:col-span-3">
                       <%= f.label :link, class: "py-2 block font-medium text-gray-700 flex justify-center items-center" %>
-                      <%= f.text_field :link, placeholder: "例: 参考になるブログや他の書籍があれば書いてみてください。", id: 'js-new-bookmark-body', class: "w-full rounded-lg border-gray-200 p-3 text-sm" %>
+                      <%= f.text_field :link, placeholder: "例: 参考になるブログや他の書籍", id: 'js-new-bookmark-body', class: "w-full rounded-lg border-gray-200 p-3 text-sm" %>
                     </div>
 
                     <div class="col-span-6 sm:col-span-3">

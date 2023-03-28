@@ -1,8 +1,10 @@
 class BooksController < ApplicationController
   before_action :move_to_signed_in
+  before_action :set_rss
 
   require 'faraday'
   require 'oj'
+  require 'feedjira'
 
   def new
     @book = Book.new
@@ -30,6 +32,11 @@ class BooksController < ApplicationController
     @search = Book.ransack(params[:q])
     @search.sorts = 'created_at desc' if @search.sorts.empty?
     @books = @search.result
+    # ヘッダーからドロップダウンリストを表示する
+    # @results = MyModel.search(params[:q])
+    # render json: @results.map { |result| { title: result.title, url: result.url } }
+    # ニュースフィード
+    @feeds = Feed.all
   end
 
   def search
@@ -78,7 +85,14 @@ class BooksController < ApplicationController
     @bookmarks = @book.bookmarks.includes(:user).order(chapter: :asc)
   end
 
+  require 'rss'
+
+  
   private
+
+  def set_rss
+    @feeds = Feed.all
+  end
 
   def move_to_signed_in
     unless user_signed_in?
@@ -87,11 +101,7 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :author, :sales_date, :large_image_url, :item_url, :isbn, :item_price, :item_caption)
-  end
-
-  def author_params
-    params.require(:book).permit(author: [])
+    params.permit(:title, :author, :sales_date, :large_image_url, :item_url, :isbn, :item_price, :item_caption)
   end
 
 end

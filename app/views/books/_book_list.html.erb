@@ -1,9 +1,6 @@
-<%#= turbo_frame_tag "book_isbn" do %>
-<section>
-  <% if @books.present? %>
-    <div class="max-w-screen px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8 bg-[url('wood.png')]">
-      <h1 class="flex justify-center text-2xl font-bold sm:text-3xl">検索結果</h1>
-
+<section data-controller="ajax">
+  <div id="search-result" class="mt-8">
+    <% if @books.present? %>
       <ul class="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
         <% @books&.each do |book| %>
           <li>
@@ -26,7 +23,7 @@
                 <h3 class="mt-2 flex justify-center items-center">
 
                   <p class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-                    <%= form_with url: books_path, local: true do |f| %>
+                    <%= form_with model: @book, url: books_path, local: true do |f| %>
                       <%= f.hidden_field :title, value: set_rakuten_book_params(book.title) %>
                       <%= f.hidden_field :author, value: set_rakuten_book_author_params(book.author) %>
                       <%= f.hidden_field :sales_date, value: set_rakuten_book_params(book.sales_date) %>
@@ -44,8 +41,6 @@
           </li>
         <% end %>
       </ul>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </section>
-
-<%# end %>

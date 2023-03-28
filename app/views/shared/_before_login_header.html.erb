@@ -1,30 +1,47 @@
 <header aria-label="Page Header" class="bg-gray-100">
-  <div class="max-w-screen px-4 py-8 mx-auto sm:py-12 sm:px-6 lg:px-8">
-    <div class="sm:flex sm:items-center sm:justify-between">
+  <div class="max-w-screen px-4 py-4 mx-auto sm:py-8 sm:px-6 lg:px-8">
+    <div class="flex flex-col justify-center items-center sm:flex-row sm:justify-between">
       <div class="text-center sm:text-left">
         <div class="flex-1 md:flex md:items-center md:gap-12">
           <a class="block text-teal-600" href="/">
-            <img><%= image_tag asset_path("bookstair_logo.png"), class: "ml-10 h-12", viewBox: "0 0 28 24", fill: "none" %>
+            <%= image_tag asset_path("bookstair_logo.png"), class: "h-12", viewBox: "0 0 28 24", fill: "none" %>
           </a>
         </div>
       </div>
 
-      <div class="flex flex-col gap-4 mt-4 sm:mt-0 sm:flex-row sm:items-center">
-        <a class="block text-teal-600 p-5" href="/books/search">
-          <img><%= image_tag asset_path("search_button.png"), class: "h-6 ml-5", viewBox: "0 0 28 24", fill: "none" %>
-        </a>
-        <div class="p-5">
-          <a class="block text-teal-600" href="/books/">
-            <img><%= image_tag asset_path("auto_book.png"), class: "h-6 ml-5", viewBox: "0 0 28 24", fill: "none" %>
-          </a>
-        </div>
-        <div class="flex flex-col gap-4 mt-4 sm:mt-0 sm:flex-row sm:items-right">
-          <button class="text-sm font-medium">
+      <div class="flex items-center gap-4 mt-4 sm:mt-0 sm:flex-row">
+        <form class="max-w-md mx-auto mt-2 mb-0 space-y-4 rounded-lg sm:flex-1" action="/books/search" method="get" data-controller="autocomplete">
+          <%= form_with url: nil, method: :get, data: { controller: "autocomplete" } do |f| %>
+            <div class="flex items-center">
+              <div class="flex-1">
+                <label for="Bookname" class="block px-3 py-2 overflow-hidden rounded-md shadow-sm focus-within:border-blue-600">
+                  <%= f.search_field :title_search, value: params[:title_search], placeholder: "検索: 書籍名", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm", type: "text", data: { target: "autocomplete.input" } %>
+                </label>
+              </div>
+              <div class="flex-1">
+                <label for="Bookauthor" class="block px-3 py-2 overflow-hidden rounded-md shadow-sm focus-within:border-blue-600">
+                  <%= f.search_field :author_search, value: params[:author_search], placeholder: "検索: 著者名", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm", type: "text", data: { target: "autocomplete.input" } %>
+                </label>
+              </div>
+              <div class="flex-none ml-2">
+                <%= f.button class: "bg-slate bg-no-repeat bg-center w-8 h-8 border border-slate-300 rounded-full", type: "submit" do %>
+                  <%= image_tag("search_button.png", alt: "検索") %>
+                <% end %>
+              </div>
+            </div>
+
+            <ul data-autocomplete-target="results"></ul>
+          <% end %>
+        </form>
+
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mt-4 sm:mt-0 flex-1">
+          <button class="text-sm font-medium flex-1">
             <%= link_to '新規登録', new_user_registration_path, class: "flex justify-center items-center block rounded-lg bg-green-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-green-700 focus:outline-none focus:ring" %>
           </button>
-          <button><%= link_to 'ログイン', new_user_session_path, class:"flex justify-center items-center block rounded-lg bg-green-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-green-700 focus:outline-none focus:ring" %></button>
-          <button><%= link_to 'ゲストログインしてみる', users_guest_sign_in_path, data: { turbo_method: :post }, class: "flex justify-center items-center block px-5 py-3 text-sm font-medium text-white transition bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring" %></button>
+          <button class="flex-1"><%= link_to 'ログイン', new_user_session_path, class:"flex justify-center items-center block rounded-lg bg-green-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-green-700 focus:outline-none focus:ring" %></button>
+          <button class="flex-1"><%= link_to 'ゲストログイン', users_guest_sign_in_path, data: { turbo_method: :post }, class: "flex justify-center items-center block px-5 py-3 text-sm font-medium text-white transition bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring" %></button>
         </div>
+
       </div>
     </div>
   </div>

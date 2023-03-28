@@ -1,17 +1,18 @@
 <% content_for(:title, '本棚') %>
 
-<section class="bg-[url('shelf.jpg')]">
+<section class="max-w-screen px-4 py-16 mx-auto sm:px-6 lg:px-8 bg-[url('shelf.jpg')]" style="height: 100vh; background-size: cover; background-position: center;">
+  <div class="p-3">
+    <%= render partial: 'rss', locales: { populat_items: @popular_items } %>
+  </div>
   <div class="max-w-screen-xl px-4 py-8 mx-auto card sm:px-6 sm:py-12 lg:px-8">
     <div class="lg:col-span-3 card-body">
-
+<!--
       <div class="max-w-lg mx-auto text-center card p-3 rounded bg-[url('wood.png')]">
         <h1 class="text-2xl font-bold sm:text-3xl">本棚内の検索</h1>
 
         <p class="mt-4 text-black-500">
           気になる技術書を検索してみよう
         </p>
-
-
 
         <form class="max-w-md mx-auto mt-8 mb-0 space-y-4 rounded">
           <%= search_form_for @search do |f| %>
@@ -49,7 +50,7 @@
           </div>
         </form>
       </div>
-
+-->
     <div class="p-10">
       <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <% if @books.present? %>
@@ -57,7 +58,9 @@
             <li>
               <a href="#" class="block overflow-hidden group rounded">
                 <div class="bg-[url('wood.png')] p-5">
-                  <%= link_to (image_tag(book.large_image_url)), book.item_url, class:"flex justify-center items-center" %>
+                  <p class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
+                    <%= link_to (image_tag(book.large_image_url)), book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "flex justify-center items-center" %>
+                  </p>
                 </div>
 
                 <div class="relative pt-3 bg-white rounded p-3">
@@ -73,11 +76,6 @@
                     <%= set_rakuten_book_params(book.author) %>
                   </h3>
 
-                  <h3 class="mt-2 flex justify-center items-center">
-                    <p class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-                      <button><%= link_to "しおりを見てみる", book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "inline-block rounded border border-blue-600 bg-blue-600 px-12 py-3 font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 m-3"%></button>
-                    </p>
-                  </h3>
                 </div>
               </a>
             </li>

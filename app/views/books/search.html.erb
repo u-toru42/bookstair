@@ -1,44 +1,11 @@
 <% content_for(:title, '検索') %>
-<div class="max-w-screen px-4 py-16 mx-auto sm:px-6 lg:px-8 bg-[url('shelf.jpg')]">
-  <div class="max-w-lg mx-auto text-center card p-3 rounded bg-[url('wood.png')]">
-    <h1 class="text-2xl font-bold sm:text-3xl">技術書の検索</h1>
 
-    <p class="mt-4 text-black-500">
-      気になる技術書を検索してみよう
-    </p>
-
-    <form class="max-w-md mx-auto mt-8 mb-0 space-y-4 rounded-lg">
-      <%= form_with url: search_books_path, local: true, method: :get, data: { controller: "autocomplete" } do |f| %>
-        <div>
-          <label
-            for="Bookname"
-            class="block px-3 py-2 overflow-hidden border border-gray-200 rounded-md shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
-          >
-            <span class="font-medium text-gray-700">書籍名</span>
-            <%= f.search_field :title_search, value: params[:title_search], placeholder: "例: Ruby, JavaScript, React...", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm", type: "text", data: { target: "autocomplete.input" } %>
-          </label>
-        </div>
-        <div>
-          <label
-            for="Bookauthor"
-            class="block px-3 py-2 overflow-hidden border border-gray-200 rounded-md shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
-          >
-            <span class="font-medium text-gray-700">著者名</span>
-            <%= f.search_field :author_search, value: params[:author_search], placeholder: "例: 伊藤, 山田, まつもとゆきひろ...", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm", type: "text", data: { target: "autocomplete.input" } %>
-          </label>
-        </div>
-              
-        <div class="flex flex-row-reverse items-center justify-between">
-          <button title="検索" type="submit" class="inline-block w-full px-12 py-3 text-sm font-medium text-white bg-blue-600 rounded shadow hover:bg-blue-700 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto">検索</button>
-        </div>
-
-        <ul data-autocomplete-target="results"></ul>
-      <% end %>
-    </form>
+<div class="min-h-screen bg-center bg-repeat bg-cover bg-[url('shelf.png')]" style="background-repeat: repeat;">
+  <div class="p-3">
+    <%= render partial: 'rss', locales: { populat_items: @popular_items } %>
   </div>
-</div>
 
-
-<div id='book_list' class='book_list'>
-  <%= render partial: 'book_list' %>
+  <div id='book_list' class='book_list'>
+    <%= render partial: 'book_list' %>
+  </div>
 </div>

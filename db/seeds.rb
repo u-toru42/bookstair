@@ -7,9 +7,5 @@
 #   Character.create(name: "Luke", movie: movies.first)
 if Rails.env == "development"
   
-  Tag.create([
-    { name: "入門" },
-    { name: "実践" },
-    { name: "達人" },
-  ])
+  
 end
