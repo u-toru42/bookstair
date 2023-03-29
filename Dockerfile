@@ -53,7 +53,8 @@ COPY yarn.lock /$APP_NAME/yarn.lock
 COPY package.json /$APP_NAME/package.json
 COPY tailwind.config.js /$APP_NAME/tailwind.config.js
 RUN bundle exec whenever --update-crontab
-RUN ["cron", "-f"]
+RUN bundle exec rails console
+CMD ["FetchFeedsJob.perform_now"]
 
 
 COPY entrypoint.sh /usr/bin/
