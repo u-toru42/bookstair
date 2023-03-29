@@ -1,31 +1,32 @@
 <section data-controller="ajax">
   <div id="search-result" class="mt-8">
     <% if @books.present? %>
-      <ul class="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
-        <% @books&.each do |book| %>
-          <li>
-            <p class="block overflow-hidden group">
-              <p class="p-3 object-cover flex justify-center items-center">
-                <%= image_tag(book.large_image_url, style: "width: 200px; height: 250px; display: inline-block;") %>
+      <% @books&.each do |book| %>
+        <div class="flex flex-wrap items-start gap-4 justify-center item-center">
+          <div class="bg-slate-50 rounded p-2">
+            <%= image_tag(book.large_image_url, style: "width: 150px; height: 225px; display: inline-block;") %>
+          </div>
+          <div class="w-1/2">
+            <div class="bg-slate-50 rounded p-3">
+              <p class="text-md font-semibold mb-2">
+                <%= set_rakuten_book_params(book.title) %>
               </p>
 
-              <div class="relative pt-3 bg-white rounded p-3">
-                <h3
-                  class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4 flex justify-center items-center"
-                >
-                  <%= set_rakuten_book_params(book.title) %>
-                </h3>
-                
-                <h3
-                  class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4 flex justify-center items-center"
-                >
-                  <%= set_rakuten_book_params(book.author) %>
-                </h3>
+              <p class="text-md mb-2"><%= set_rakuten_book_params(book.author) %></p>
 
-                <h3 class="mt-2 flex flex-col justify-center items-center">
-                
+              <p class="text-lg font-bold mb-2"><%= number_to_currency(book.item_price, format: "%u%n", unit: "￥") %></p>
 
-                  <p class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
+              <div class="mt-4">
+                <div class="prose max-w-none">
+                  <p class="mb-4">
+                    <%= simple_format(set_rakuten_book_params(book.item_caption)) %>
+                  </p>
+                </div>
+              </div>
+
+              <p class="mt-2 flex flex-row justify-center items-center">
+                <div class="flex flex-1">
+                  <p class="text-xs text-gray-700 underline mr-2">
                     <%= form_with model: @book, url: books_path, local: true do |f| %>
                       <%= f.hidden_field :title, value: set_rakuten_book_params(book.title) %>
                       <%= f.hidden_field :author, value: set_rakuten_book_author_params(book.author) %>
@@ -35,16 +36,14 @@
                       <%= f.hidden_field :isbn, value: set_rakuten_book_params(book.isbn) %>
                       <%= f.hidden_field :item_caption, value: set_rakuten_book_params(book.item_caption) %>
                       <%= f.hidden_field :item_price, value: book.item_price %>
-                      <button><%= f.submit "本棚に登録する", class: "inline-block rounded border border-blue-600 bg-blue-600 px-12 py-3 font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 m-3 mt-auto" %></button>
+                      <button><%= f.submit "本棚に登録する", class: "rounded border border-blue-600 bg-blue-600 px-3 py-3 font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 m-3 mt-auto" %></button>
                     <% end %>
                   </p>
-                  <p class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-                    <button class="inline-block rounded border border-orange-600 bg-orange-600 px-12 py-3 font-medium text-white hover:bg-transparent hover:text-orange-600 focus:outline-none focus:ring active:text-orange-500 m-3 mt-auto"><%= link_to "楽天で購入", book.item_url %></button>
-                  </p>
-                </h3>
-              </div>
-            </a>
-          </li>
+                  <p class="rounded border border-orange-600 bg-orange-600 px-3 py-3 font-medium text-white hover:bg-transparent hover:text-orange-600 focus:outline-none focus:ring active:text-orange-500 m-3 mt-auto"><%= link_to "楽天で購入", book.item_url %></p>
+                </div>
+              </p>
+            </div>
+          </div>
         <% end %>
       </ul>
     <% end %>
