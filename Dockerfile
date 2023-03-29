@@ -29,6 +29,11 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 && apt-get install -y build-essential nodejs yarn \
 && apt-get install -y cron
 
+RUN apt install -y --no-install-recommends \
+  git \
+  vim \ 
+  cron 
+
 RUN service cron start
 
 RUN gem install bundler:$BUNDLER_VERSION
@@ -48,6 +53,7 @@ COPY yarn.lock /$APP_NAME/yarn.lock
 COPY package.json /$APP_NAME/package.json
 COPY tailwind.config.js /$APP_NAME/tailwind.config.js
 RUN bundle exec whenever --update-crontab
+RUN cron -f
 
 
 COPY entrypoint.sh /usr/bin/
