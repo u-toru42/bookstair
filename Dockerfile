@@ -53,7 +53,7 @@ COPY yarn.lock /$APP_NAME/yarn.lock
 COPY package.json /$APP_NAME/package.json
 COPY tailwind.config.js /$APP_NAME/tailwind.config.js
 RUN bundle exec whenever --update-crontab
-RUN cron -f
+RUN ["cron", "-f"]
 
 
 COPY entrypoint.sh /usr/bin/
