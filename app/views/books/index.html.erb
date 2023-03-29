@@ -4,16 +4,87 @@
   <div class="p-3">
     <%= render partial: 'rss', locales: { populat_items: @popular_items } %>
   </div>
-  <div class="max-w-screen-xl px-4 py-8 mx-auto card sm:px-6 sm:py-12 lg:px-8">
-    <div class="lg:col-span-3 card-body">
+
+  <div class="max-w-lg mx-auto my-3 card p-3 rounded bg-[url('wood.png')]">
+    <%= search_form_for @search, html: {class: "max-w-md mx-auto mt-8 mb-0 space-y-4 rounded"} do |f| %>
+      <div class="flex flex-wrap -mx-2 mb-4">
+        <div class="w-full md:w-1/2 px-2">
+          <div class="relative">
+            <%= f.search_field :title_cont, placeholder: "本棚内: 書籍名", class: "block w-full p-3 py-2 pl-3 pr-3 text-sm leading-tight bg-white border border-gray-200 rounded-md appearance-none focus:outline-none focus:shadow-outline-blue focus:border-blue-600", type: "text" %>
+            <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+        </div>
+      <div class="w-full md:w-1/2 px-2">
+        <%= f.search_field :author_cont, placeholder: "本棚内: 著者名", class: "block w-full p-3 py-2 pl-3 pr-3 text-sm leading-tight bg-white border border-gray-200 rounded-md appearance-none focus:outline-none focus:shadow-outline-blue focus:border-blue-600", type: "text" %>
+        <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+        </label>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <button class="px-2 py-1 text-sm font-medium text-white bg-red-600 rounded shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"><%= link_to "クリア", books_path %></button>
+        <button class="px-2 py-1 text-sm font-medium text-white bg-blue-400 rounded shadow focus:outline-none focus:ring">
+          <%= f.submit "", class: "hidden" %>
+          <%= image_tag "search_button.png", onclick: "$(this).closest('form').submit();", class: "bg-no-repeat bg-center w-5 h-5 rounded-full" %>
+        </button>
+      </div>
+      
+    <% end %>
+    <div class="flex items-center justify-center">
+      <button class="p-3 m-3 text-sm font-sm text-white bg-sky-600 rounded shadow hover:bg-sky-700 focus:outline-none focus:ring active:bg-sky-500 sm:w-auto"><%= sort_link(@search, :title) %></button>
+      <button class="p-3 m-3 text-sm font-sm text-white bg-sky-600 rounded shadow hover:bg-sky-700 focus:outline-none focus:ring active:bg-sky-500 sm:w-auto"><%= sort_link(@search, :created_at) %></button>
+    </div>
+  </div>
+
+
+
+  <ul class="grid gap-4 mt-8 sm:grid-cols-2 lg:grid-cols-4">
+    <% if @books.present? %>
+      <% @books&.each do |book| %>
+        <li>
+          <p class="block overflow-hidden group">
+            <p class="p-3 object-cover flex justify-center items-center bg-[url('wood.png')]">
+              <%= link_to (image_tag(book.large_image_url)), book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "block group-hover:underline group-hover:underline-offset-4 flex justify-center items-center" %>
+            </p>
+
+            <div class="relative pt-3 bg-white rounded p-3">
+              <h3
+                class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4 flex justify-center items-center"
+              >
+                <%= set_rakuten_book_params(book.title) %>
+              </h3>
+              
+              <h3
+                class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4 flex justify-center items-center"
+              >
+                <%= set_rakuten_book_params(book.author) %>
+              </h3>
+
+              <h3 class="mt-2 flex flex-col justify-center items-center">
+                <p class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
+                  <!-- 何かのボタン -->
+                </p>
+                <p class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
+                  <button class="inline-block rounded border border-orange-600 bg-orange-600 px-12 py-3 font-medium text-white hover:bg-transparent hover:text-orange-600 focus:outline-none focus:ring active:text-orange-500 m-3 mt-auto"><%= link_to "楽天で購入", book.item_url %></button>
+                </p>
+              </h3>
+            </div>
+          </a>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</section>
+
+
+
 <!--
       <div class="max-w-lg mx-auto text-center card p-3 rounded bg-[url('wood.png')]">
         <h1 class="text-2xl font-bold sm:text-3xl">本棚内の検索</h1>
-
-        <p class="mt-4 text-black-500">
-          気になる技術書を検索してみよう
-        </p>
-
         <form class="max-w-md mx-auto mt-8 mb-0 space-y-4 rounded">
           <%= search_form_for @search do |f| %>
             <div>
@@ -51,37 +122,3 @@
         </form>
       </div>
 -->
-    <div class="p-10">
-      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <% if @books.present? %>
-          <% @books&.each do |book| %>
-            <li>
-              <a href="#" class="block overflow-hidden group rounded">
-                <div class="bg-[url('wood.png')] p-5">
-                  <p class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-                    <%= link_to (image_tag(book.large_image_url)), book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "flex justify-center items-center" %>
-                  </p>
-                </div>
-
-                <div class="relative pt-3 bg-white rounded p-3">
-                  <h3
-                    class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4 flex justify-center items-center"
-                  >
-                    <%= set_rakuten_book_params(book.title) %>
-                  </h3>
-                  
-                  <h3
-                    class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4 flex justify-center items-center"
-                  >
-                    <%= set_rakuten_book_params(book.author) %>
-                  </h3>
-
-                </div>
-              </a>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</section>

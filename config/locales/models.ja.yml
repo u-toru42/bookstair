@@ -8,8 +8,8 @@ ja:
         password_confirmation: 確認用パスワード
         remember_me: 次回から自動的にログイン
       book:
-        title: 書籍名で並び替え
-        created_at: 本棚登録日で並び替え
+        title: 書籍名順
+        created_at: 本棚登録日順
 
       bookmark:
         headline: しおりの題名(必須)
