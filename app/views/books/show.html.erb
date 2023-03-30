@@ -1,16 +1,16 @@
 <% content_for(:title, @book.title) %>
 
-<div class="px-4 py-8 mx-auto bg-[url('shelf.png')] flex justify-center items-center border-2 border-gray-200">
-  <section class="max-h-screen max-w-5xl p-12 rounded bg-[url('wood.png')]">
-    <div class="grid grid-cols-1 gap-12 sm:grid-cols-3 sm:items-center">
-      <%= link_to (image_tag(@book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;")), @book.item_url, class:"object-cover" %>
+<div class="px-4 py-8 mx-auto bg-[url('shelf.png')] flex justify-center items-center border-2 border-gray-200 text-sm">
+  <section class="max-h-screen max-w-5xl p-6 rounded bg-[url('wood.png')]">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:items-center">
+      <%= link_to (image_tag(@book.large_image_url, style: "width: 150px; height: 187px;display: inline-block;")), @book.item_url, class:"object-cover" %>
 
-      <blockquote class="sm:col-span-2">
+      <blockquote class="sm:col-span-2 bg-slate-50 rounded p-3">
         <h1 class="text-xl font-bold sm:text-2xl">
           <%= link_to set_rakuten_book_params(@book.title), @book, method: :get, params: {isbn: @book.isbn}, remote: :true %>
         </h1>
 
-        <p class="text-md"><%= set_rakuten_book_params(@book.author) %></p>
+        <p class="text-"><%= set_rakuten_book_params(@book.author) %></p>
 
         <p class="text-lg font-bold"><%= number_to_currency(@book.item_price, format: "%u%n", unit: "￥") %></p>
 
@@ -36,6 +36,7 @@
     </div>
   </section>
 </div>
+
 
 
 <!-- しおりエリア -->
