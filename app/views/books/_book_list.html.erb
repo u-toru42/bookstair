@@ -7,16 +7,16 @@
             <%= image_tag(book.large_image_url, style: "width: 150px; height: 225px; display: inline-block;") %>
           </div>
           <div class="w-1/2">
-            <div class="bg-slate-50 rounded p-3">
-              <p class="text-md font-semibold mb-2">
+            <div class="bg-slate-50 rounded p-2">
+              <p class="text-md font-semibold">
                 <%= set_rakuten_book_params(book.title) %>
               </p>
 
-              <p class="text-md mb-2"><%= set_rakuten_book_params(book.author) %></p>
+              <p class="text-md"><%= set_rakuten_book_params(book.author) %></p>
 
-              <p class="text-lg font-bold mb-2"><%= number_to_currency(book.item_price, format: "%u%n", unit: "￥") %></p>
+              <p class="text-lg font-bold"><%= number_to_currency(book.item_price, format: "%u%n", unit: "￥") %></p>
 
-              <div class="mt-4">
+              <div class="text-sm">
                 <div class="prose max-w-none">
                   <p class="mb-4">
                     <%= simple_format(set_rakuten_book_params(book.item_caption)) %>
