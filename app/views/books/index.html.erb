@@ -72,7 +72,7 @@
                 <div class="text-xs">
                   <div class="prose max-w-none">
                     <p class="mb-4">
-                      <%= simple_format(set_rakuten_book_params(book.item_caption)) %>
+                      <%= simple_format(truncate(set_rakuten_book_params(book.item_caption), length: 100)) %>
                     </p>
                   </div>
                 </div>
