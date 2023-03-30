@@ -76,12 +76,13 @@
                     </p>
                   </div>
                 </div>
+                <div class="py-1">
+                  <%= link_to book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "flex items-center" do %>
+                    <%= image_tag asset_path("bookmark_icon.png"), class: "h-3 mr-1" %>
+                    <span class="text-xs font-medium"><%= @bookmark_counts[book.id] %></span>
+                  <% end %>
+                </div>
 
-                <h3 class="mt-2 flex flex-col justify-center items-center">
-                  <p class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-                    <!-- 何かのボタン -->
-                  </p>
-                </h3>
               </div>
             </div>
           </div>
