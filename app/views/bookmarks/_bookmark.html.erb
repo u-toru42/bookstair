@@ -76,7 +76,7 @@
               %0a%0a&text=BOOKSTAIRでしおりを挟みました！%0a『#{ bookmark.book.title.truncate(40) }』
               %0a%0a&hashtags=BOOKSTAIR",
               target: '_blank' do %>
-              <p class="w-6 h-6"><%= image_tag asset_path("twitter_icon.png") %></p>
+              <p class="w-6 h-6"><%= image_tag "twitter_icon.png" %></p>
             <% end %>
           </div>
           <% if current_user.own?(bookmark) %>
