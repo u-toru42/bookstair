@@ -1,6 +1,6 @@
 <% content_for(:title, '本棚') %>
 
-<section class="min-h-screen bg-[url('shelf.png')]">
+<section class="min-h-screen bg-[url('shelf.png')] bg-repeat-y">
   <div class="p-3">
     <%= render partial: 'rss', locales: { populat_items: @popular_items } %>
   </div>
@@ -52,18 +52,18 @@
 
 
 
-  <ul class="grid gap-2 mt-4 sm:grid-cols-2 lg:grid-cols-4">
+  <ul class="grid gap-4 mt-4 sm:grid-cols-2 lg:grid-cols-4">
     <% if @books.present? %>
       <% @books&.each do |book| %>
         <li>
-          <div class="flex bg-[url('wood.png')] p-2 rounded">
+          <div class="flex bg-[url('wood.png')] p-2 rounded gap-2">
             <div class="w-1/2">
               <%= link_to (image_tag(book.large_image_url)), book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "block group-hover:underline group-hover:underline-offset-2 flex justify-center items-center" %>
             </div>
             <div class="w-1/2">
               <div class="relative bg-slate-50 rounded p-2">
                 <p class="text-sm text-gray-700 font-semibold group-hover:underline group-hover:underline-offset-2 flex">
-                  <%= set_rakuten_book_params(book.title) %>
+                  <%= truncate(set_rakuten_book_params(book.title), length: 36) %>
                 </p>
                 
                 <p class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-2 flex">
@@ -72,7 +72,7 @@
                 <div class="text-xs">
                   <div class="prose max-w-none">
                     <p class="mb-4">
-                      <%= simple_format(truncate(set_rakuten_book_params(book.item_caption), length: 100)) %>
+                      <%= simple_format(truncate(set_rakuten_book_params(book.item_caption), length: 60)) %>
                     </p>
                   </div>
                 </div>

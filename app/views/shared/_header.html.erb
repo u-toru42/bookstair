@@ -9,18 +9,18 @@
         </div>
       </div>
 
-      <div class="flex items-center gap-4 mt-4 sm:mt-0 sm:flex-row">
-        <form class="flex-grow max-w-md mx-auto mt-2 mb-0 space-y-4 rounded-lg sm:flex-1" action="/books/search" method="get" data-controller="autocomplete">
+      <div class="flex items-center">
+        <form class="flex-grow max-w-lg mx-auto mt-2 mb-0 space-y-4 rounded-lg sm:flex-1" action="/books/search" method="get" data-controller="autocomplete">
           <%= form_with url: nil, method: :get, data: { controller: "autocomplete" } do |f| %>
-            <div class="flex items-center">
+            <div class="flex items-center row-reverse">
               <div class="flex-1">
-                <label for="Bookname" class="block px-3 py-2 overflow-hidden rounded-md shadow-sm focus-within:border-blue-600">
-                  <%= f.search_field :title_search, value: params[:title_search], placeholder: "検索: 書籍名", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm", type: "text", data: { target: "autocomplete.input" } %>
+                <label for="Bookname" class="block px-3 py-2 overflow-hidden rounded-md shadow-sm focus-within:border-blue-600 dark:">
+                  <%= f.search_field :title_search, value: params[:title_search], placeholder: "検索: 書籍名", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm w-full", type: "text", data: { target: "autocomplete.input" } %>
                 </label>
               </div>
               <div class="flex-1">
                 <label for="Bookauthor" class="block px-3 py-2 overflow-hidden rounded-md shadow-sm focus-within:border-blue-600">
-                  <%= f.search_field :author_search, value: params[:author_search], placeholder: "検索: 著者名", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm", type: "text", data: { target: "autocomplete.input" } %>
+                  <%= f.search_field :author_search, value: params[:author_search], placeholder: "検索: 著者名", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm w-full", type: "text", data: { target: "autocomplete.input" } %>
                 </label>
               </div>
               <div class="flex-none p-2 items-center">
@@ -29,17 +29,16 @@
                 <% end %>
               </div>
             </div>
-
             <ul data-autocomplete-target="results"></ul>
           <% end %>
         </form>
 
-        <div class="p-2 flex items-center">
+        <div class="p-2 flex items-center flex-wrap">
           <%= link_to "/books/" do %>
             <%= image_tag asset_path("auto_book.png"), class: "h-6", viewBox: "0 0 28 24", fill: "none" %>
           <% end %>
         </div>
-        <div class="flex items-center">
+        <div class="flex items-center flex-wrap">
           <span class="mr-2 text-gray-600 font-medium">ログイン中:</span>
           <div class="flex items-center gap-2">
             <p class="text-gray-600 font-medium"><%= current_user.name %></p>
