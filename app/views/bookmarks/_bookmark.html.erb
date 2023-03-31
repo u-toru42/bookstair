@@ -71,8 +71,22 @@
           <p class="p-3">
             <%= render bookmark.tags %>
           </p>
-          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<%= bookmark.headline %>  >「<%= bookmark.book.title %>」" data-hashtags="BOOKSTAIR" data-show-count="false"></a>
-          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+          <div class="list-inline-item">
+            <%= link_to "https://twitter.com/share?url=#{request.url}
+              %0a%0a&text=BOOKSTAIRでしおりを挟みました！%0a『#{ bookmark.book.title.truncate(40) }』
+              %0a%0a&hashtags=BOOKSTAIR",
+              target: '_blank' do %>
+              <p class="w-6 h-6"><%= image_tag asset_path("twitter_icon.png") %></p>
+            <% end %>
+          </div>
+          <% if current_user.own?(bookmark) %>
+            <div class="flex justify-center items-center">
+              <!--
+              <button class="m-3 inline-block rounded border border-blue-600 bg-blue-600 px-3 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"><%#= link_to '編集', edit_bookmark_path(@book, bookmark) %></button>
+              -->
+              <button><%= link_to 'しおりを削除する', bookmark, method: :delete, remote: :true, data: { turbo_method: :delete, turbo_confirm: "「#{bookmark.headline}」を削除しますか?" }, class: "m-3 inline-block rounded border border-red-600 bg-red-600 px-2 py-2 text-xs font-medium text-white hover:bg-transparent hover:text-red-600 focus:outline-none focus:ring active:text-red-500" %></button>
+            </div>
+          <% end %>
         </blockquote>
       </div>
       <!--
@@ -83,14 +97,6 @@
         </p>
       </div>
       -->
-      <% if current_user.own?(bookmark) %>
-        <div class="flex justify-center items-center">
-          <!--
-          <button class="m-3 inline-block rounded border border-blue-600 bg-blue-600 px-3 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"><%#= link_to '編集', edit_bookmark_path(@book, bookmark) %></button>
-          -->
-          <button><%= link_to 'しおりを削除する', bookmark, method: :delete, remote: :true, data: { turbo_method: :delete, turbo_confirm: "「#{bookmark.headline}」を削除しますか?" }, class: "m-3 inline-block rounded border border-red-600 bg-red-600 px-3 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-red-600 focus:outline-none focus:ring active:text-red-500" %></button>
-        </div>
-      <% end %>
       </div>
     </section>
   </div>
