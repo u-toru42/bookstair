@@ -71,6 +71,7 @@
           <p class="p-3">
             <%= render bookmark.tags %>
           </p>
+          <!--
           <div class="list-inline-item">
             <%= link_to "https://twitter.com/share?url=#{request.url}
               %0a%0a&text=BOOKSTAIRでしおりを挟みました！%0a『#{ bookmark.book.title.truncate(40) }』
@@ -79,6 +80,7 @@
               <p class="w-6 h-6"><%= image_tag asset_path("twitter_icon.png") %></p>
             <% end %>
           </div>
+          -->
           <% if current_user.own?(bookmark) %>
             <div class="flex justify-center items-center">
               <!--
