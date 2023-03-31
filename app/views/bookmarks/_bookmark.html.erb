@@ -68,9 +68,11 @@
               </p>
             </div>
           </div>
-          <p class="mt-2 p-3">
+          <p class="p-3">
             <%= render bookmark.tags %>
           </p>
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="「<%= bookmark.book.title %>」に投稿しました！" data-hashtags="BOOKSTAIR" data-show-count="false"></a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
         </blockquote>
       </div>
       <!--
