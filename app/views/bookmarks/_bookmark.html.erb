@@ -32,16 +32,17 @@
     <div class="p-3">
       <%= render bookmark.tags %>
     </div>
-    <% if current_user.own?(bookmark) %>
-      <div class="flex justify-center items-center gap-4">
-        <%= link_to "https://twitter.com/share?url=#{request.url}%0a%0a&text=BOOKSTAIRに投稿しました！%0a『#{ bookmark.book.title.truncate(40) }』%0a%0a&hashtags=BOOKSTAIR",
-            target: '_blank', class: "w-6 h-6" do %>
-          <%= image_tag "twitter_icon.png", class: "w-full h-full object-cover" %>
-        <% end %>
+    <div class="flex justify-center items-center gap-4">
+      <% if current_user && current_user.own?(bookmark) %>
         <%= link_to bookmark, method: :delete, remote: :true, data: { turbo_method: :delete, turbo_confirm: "「#{bookmark.headline}」を削除しますか?" }, class: "w-8 h-8" do %>
           <%= image_tag "delete.png", class: "w-full h-full object-cover" %>
         <% end %>
-      </div>
-    <% end %>
+      <% end %>
+
+      <%= link_to "https://twitter.com/share?url=#{request.url}%0a%0a&text=BOOKSTAIRに投稿しました！%0a『#{ bookmark.book.title.truncate(40) }』%0a%0a&hashtags=BOOKSTAIR",
+          target: '_blank', class: "w-6 h-6" do %>
+        <%= image_tag "twitter_icon.png", class: "w-full h-full object-cover" %>
+      <% end %>
+    </div>
   </div>
 </section>
