@@ -1,8 +1,8 @@
 <div class="p-5">
   <div data-controller="modal" data-modal-allow-background-close="false">
-    <a href="#" data-action="click->modal#open" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">
-      <span>投稿</span>
-    </a>
+    <p data-action="click->modal#open" class="bg-slate bg-no-repeat bg-center w-20 h-20 border border-slate-300 rounded-full" style="background-image: url('<%= asset_path("bookmark.png") %>'); background-size: contain; background-repeat: no-repeat; background-position: center; border-radius: 10px;">
+    </p>
+    <span class="flex justify-center items-center">投稿</span>
 
     <!-- Modal Container -->
     <div data-modal-target="container" data-action="click->modal#closeBackground keyup@window->modal#closeWithKeyboard" class="hidden animated fadeIn fixed inset-0 overflow-y-auto flex items-center justify-center" style="z-index: 9999;">

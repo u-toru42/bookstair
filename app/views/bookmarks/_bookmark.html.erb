@@ -1,61 +1,39 @@
-<%#= turbo_frame_tag "bookmark" do %>
+<section class="flex justify-center items-center bg-slate-50 rounded border-2 border-gray-200 p-4">
+  <div class="bg-slate-50 border-2 border-gray-200 flex-1 p-4">
+    <div class="text-base font-semibold text-blue-500 overflow-wrap break-words max-w-[80ch]">
+      <%= bookmark.headline %>
+    </div>
+    <div class="text-base break-words max-w-[80ch] mb-2">
+      <%= simple_format(bookmark.body) %>
+    </div>
 
-<article class="bg-slate-50 border-2 border-gray-200 mx-auto w-full">
-  <div class="max-w-5xl px-4 py-8 mx-auto">
-    <section class="p-8 rounded-lg">
-      <div class="grid grid-cols-1 gap-12 sm:grid-cols-3 sm:items-center">
-        <p class="block shrink-0 p-5">
-          <%= image_tag asset_path("bookmark.png"), class: "object-cover rounded-md w-full" %>
-        </p>
-        
-        <div class="pt-8">
-          <div class="text-gray-600 text-lg font-semibold">
-            <%= bookmark.headline %>
-          </div>
-          <div class="text-gray-600">
-            <%= bookmark.body %>
-          </div>
-          <div class="grid grid-cols-2 gap-4 mt-2 text-gray-500 text-sm">
-            <div class="flex items-center">
-              <% if bookmark.chapter.blank? %>
-                <p class="text-xs">チャプター指定なし</p>
-              <% else %>
-                <p class="text-xs">チャプター/第<%= bookmark.chapter %>章</p>
-              <% end %>
-            </div>
-
-            <div class="flex items-center">
-              <% if !bookmark.link.blank? %>
-                <p class="text-xs hover:text-gray-700">
-                  おすすめ書籍・参考書籍など: <%= bookmark.link %>
-                </p>
-              <% end %>
-            </div>
-          </div>
-
-
-          <div class="p-3">
-            <%= render bookmark.tags %>
-          </div>
-          <div class="list-inline-item">
-            <% if current_user.own?(bookmark) %>
-              <div class="flex justify-center items-center gap-4">
-                <%= link_to "https://twitter.com/share?url=#{request.url}%0a%0a&text=BOOKSTAIRでしおりを挟みました！%0a『#{ bookmark.book.title.truncate(40) }』%0a%0a&hashtags=BOOKSTAIR",
-                    target: '_blank' do %>
-                  <div class="w-6 h-6">
-                    <%= image_tag "twitter_icon.png", class: "w-full h-full object-cover" %>
-                  </div>
-                <% end %>
-                <%= link_to bookmark, method: :delete, remote: :true, data: { turbo_method: :delete, turbo_confirm: "「#{bookmark.headline}」を削除しますか?" }, class: "" do %>
-                  <div class="w-8 h-8">
-                    <%= image_tag "delete.png", class: "w-full h-full object-cover" %>
-                  </div>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-        </div>
+    <div class="flex justify-between items-center mb-2">
+      <div class="text-xs">
+        <% if bookmark.chapter.blank? %>
+          チャプター指定なし
+        <% else %>
+          チャプター/第<%= bookmark.chapter %>章
+        <% end %>
       </div>
-    </section>
+      <% if !bookmark.link.blank? %>
+        <div class="text-xs hover:text-gray-700">
+          おすすめ書籍・参考書籍など: <%= bookmark.link %>
+        </div>
+      <% end %>
+    </div>
+    <div class="p-3">
+      <%= render bookmark.tags %>
+    </div>
+    <% if current_user.own?(bookmark) %>
+      <div class="flex justify-center items-center gap-4">
+        <%= link_to "https://twitter.com/share?url=#{request.url}%0a%0a&text=BOOKSTAIRに投稿しました！%0a『#{ bookmark.book.title.truncate(40) }』%0a%0a&hashtags=BOOKSTAIR",
+            target: '_blank', class: "w-6 h-6" do %>
+          <%= image_tag "twitter_icon.png", class: "w-full h-full object-cover" %>
+        <% end %>
+        <%= link_to bookmark, method: :delete, remote: :true, data: { turbo_method: :delete, turbo_confirm: "「#{bookmark.headline}」を削除しますか?" }, class: "w-8 h-8" do %>
+          <%= image_tag "delete.png", class: "w-full h-full object-cover" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-</article>
+</section>
