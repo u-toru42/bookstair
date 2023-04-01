@@ -6,6 +6,14 @@
     <div class="text-base break-words max-w-[80ch] mb-2">
       <%= simple_format(bookmark.body) %>
     </div>
+    <cite class="inline-flex items-center mt-8 not-italic mb-2">
+      <span class="hidden w-6 h-px bg-gray-400 sm:inline-block"></span>
+      <p class="text-sm text-gray-500 uppercase sm:ml-3">
+        <strong>
+          <%= bookmark.user.decorate.user_name %>
+        </strong>
+      </p>
+    </cite>
 
     <div class="flex justify-between items-center mb-2">
       <div class="text-xs">
