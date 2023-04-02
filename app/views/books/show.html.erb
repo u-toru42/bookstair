@@ -25,7 +25,7 @@
         </div>
         <div class="flex flex-col sm:flex-row items-center gap-4 justify-center mt-2">
           <%= link_to @book.item_url, target: '_blank', class: "flex flex-col items-center mt-2 sm:mt-0 sm:flex-row" do %>
-            <%= image_tag "rakuten_shop.png", class: "w-8 h-8 object-cover flex-shrink-0" %>
+            <%= image_tag "rakuten_shop.png", class: "w-8 h-8 object-cover flex-shrink-0", title: "楽天で購入" %>
           <% end %>
 
           <div data-controller="modal" class="flex justify-center mt-2">
