@@ -33,13 +33,19 @@
             <ul data-autocomplete-target="results"></ul>
           <% end %>
         </form>
+        <div class="p-2 flex items-center flex-wrap">
+          <%= link_to "/books/" do %>
+            <%= image_tag asset_path("library_book.png"), class: "h-6", viewBox: "0 0 28 24", fill: "none" %>
+            <span class="mb-2 text-xs">本棚</span> 
+          <% end %>
+        </div>
 
         <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mt-4 sm:mt-0 flex-1">
           <button class="text-sm font-medium flex-1">
             <%= link_to '新規登録', new_user_registration_path, class: "flex justify-center items-center block rounded-lg bg-green-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-green-700 focus:outline-none focus:ring" %>
           </button>
           <button class="flex-1"><%= link_to 'ログイン', new_user_session_path, class:"flex justify-center items-center block rounded-lg bg-green-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-green-700 focus:outline-none focus:ring" %></button>
-          <button class="flex-1"><%= link_to 'ゲストログイン', users_guest_sign_in_path, data: { turbo_method: :post }, class: "flex justify-center items-center block px-5 py-3 text-sm font-medium text-white transition bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring" %></button>
+          <button class="flex-1"><%= link_to 'ゲスト', users_guest_sign_in_path, data: { turbo_method: :post }, class: "flex justify-center items-center block px-5 py-3 text-sm font-medium text-white transition bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring" %></button>
         </div>
 
       </div>

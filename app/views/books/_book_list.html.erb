@@ -40,7 +40,7 @@
                         <button><%= f.submit "本棚に登録する", class: "rounded border border-blue-600 bg-blue-600 px-3 py-3 font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 m-3 mt-auto" %></button>
                       <% end %>
                     </p>
-                    <p class="rounded border border-orange-600 bg-orange-600 px-3 py-3 font-medium text-white hover:bg-transparent hover:text-orange-600 focus:outline-none focus:ring active:text-orange-500 m-3 mt-auto"><%= link_to "楽天で購入", book.item_url %></p>
+                    <p class="rounded border border-orange-600 bg-orange-600 px-3 py-3 font-medium text-white hover:bg-transparent hover:text-orange-600 focus:outline-none focus:ring active:text-orange-500 m-3 mt-auto"><%= link_to "楽天で購入", book.item_url, target: '_blank' %></p>
                   </div>
                 </div>
               </div>

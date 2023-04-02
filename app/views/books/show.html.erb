@@ -3,11 +3,13 @@
 <div class="p-4 bg-[url('shelf.png')] flex justify-center border-2 border-gray-200 text-sm">
   <section class="max-w-5xl p-6 rounded bg-[url('wood.png')]">
     <div class="grid grid-cols-1 gap-0 sm:grid-cols-3 sm:items-center">
-      <%= link_to (image_tag(@book.large_image_url, style: "width: 150px; height: 187px;display: inline-block;")), @book.item_url, class:"object-cover" %>
+      <div class="flex justify-center item-center">
+        <%= image_tag @book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;", class:"object-cover" %>
+      </div>
 
       <blockquote class="sm:col-span-2 bg-slate-50 rounded p-3">
         <h1 class="text-md font-semibold sm:text-2xl">
-          <%= link_to set_rakuten_book_params(@book.title), @book, method: :get, params: {isbn: @book.isbn}, remote: :true %>
+          <%= set_rakuten_book_params(@book.title) %>
         </h1>
 
         <p class="text-">著者: <%= set_rakuten_book_params(@book.author) %></p>
@@ -21,10 +23,14 @@
             </p>
           </div>
         </div>
-        <!-- しおり入力フォーム -->
-        <!-- <div class="border-2 border-gray-200"><%= render 'bookmarks/form', { book: @book, bookmark: @bookmark } %> -->
-        <div data-controller="modal" class="flex justify-center">
-          <%= render 'bookmarks/modal', { book: @book, bookmark: @bookmark } %>
+        <div class="flex items-center gap-4 item-center justify-center">
+          <%= link_to @book.item_url, target: '_blank', class: "flex flex-col items-center mt-2" do %>
+            <%= image_tag "rakuten_shop.png", class: "w-8 h-8 object-cover flex-shrink-0" %>
+            <span class="mb-2">楽天</span>
+          <% end %>
+          <div data-controller="modal" class="flex justify-center">
+            <%= render 'bookmarks/modal', { book: @book, bookmark: @bookmark } %>
+          </div>
         </div>
 
         <div>
