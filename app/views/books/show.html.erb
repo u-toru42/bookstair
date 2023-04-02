@@ -2,9 +2,9 @@
 
 <div class="p-4 bg-[url('shelf.png')] flex justify-center border-2 border-gray-200 text-sm">
   <section class="max-w-5xl p-6 rounded bg-[url('wood.png')]">
-    <div class="grid grid-cols-1 gap-0 sm:grid-cols-3 sm:items-center">
+    <div class="grid grid-cols-1 sm:grid-cols-3 sm:items-center">
       <div class="flex justify-center item-center">
-        <%= image_tag @book.large_image_url, style: "width: 200px; height: 250px;display: inline-block;", class:"object-cover" %>
+        <%= image_tag @book.large_image_url, style: "width: 200px; height: 250px; object-fit: contain;", class:"m-2" %>
       </div>
 
       <blockquote class="sm:col-span-2 bg-slate-50 rounded p-3">
