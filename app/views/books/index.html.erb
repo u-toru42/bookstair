@@ -1,7 +1,7 @@
 <% content_for(:title, '本棚') %>
 
 <section class="min-h-screen bg-[url('shelf.png')] bg-repeat-y">
-  <div class="p-3">
+  <div class="flex flex-col border border-gray-300 p-4">
     <%= render partial: 'rss', locales: { populat_items: @popular_items } %>
   </div>
 
@@ -91,46 +91,3 @@
     <% end %>
   </ul>
 </section>
-
-
-
-<!--
-      <div class="max-w-lg mx-auto text-center card p-3 rounded bg-[url('wood.png')]">
-        <h1 class="text-2xl font-bold sm:text-3xl">本棚内の検索</h1>
-        <form class="max-w-md mx-auto mt-8 mb-0 space-y-4 rounded">
-          <%= search_form_for @search do |f| %>
-            <div>
-              <label
-                for="Bookname"
-                class="block px-3 py-2 overflow-hidden border border-gray-200 rounded-md shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
-              >
-                <span class="font-medium text-gray-700"><%= f.label :title_cont, "書籍名" %></span>
-                  <%= f.search_field :title_cont, placeholder: "例: Ruby, JavaScript, React...", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm", type: "text" %>
-              </label>
-            </div>
-
-            <div>
-              <label
-                for="Bookauthor"
-                class="block px-3 py-2 overflow-hidden border border-gray-200 rounded-md shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600"
-              >
-                <span class="font-medium text-gray-700"><%= f.label :author_cont, "著者" %></span>
-                <%= f.search_field :author_cont, placeholder: "例: 伊藤, 山田, まつもとゆきひろ...", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm", type: "text" %>
-              </label>
-            </div>
-
-            <div class="flex items-center justify-between">
-              <button class="inline-block w-full px-12 py-3 text-sm font-medium text-white bg-red-600 rounded shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"><%= link_to "検索条件をクリア", books_path %></button>
-              <button class="inline-block w-full px-12 py-3 text-sm font-medium text-white bg-blue-600 rounded shadow hover:bg-blue-700 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto"><%= f.submit %></button>
-            </div>
-            
-            <div class="flex flex-row-reverse items-center justify-between">
-            </div>
-          <% end %>
-          <div class="flex items-center justify-center">
-            <button class="w-full p-3 m-3 text-sm font-medium text-white bg-sky-600 rounded shadow hover:bg-sky-700 focus:outline-none focus:ring active:bg-sky-500 sm:w-auto"><%= sort_link(@search, :title) %></button>
-            <button class="w-full p-3 m-3 text-sm font-medium text-white bg-sky-600 rounded shadow hover:bg-sky-700 focus:outline-none focus:ring active:bg-sky-500 sm:w-auto"><%= sort_link(@search, :created_at) %></button>
-          </div>
-        </form>
-      </div>
--->

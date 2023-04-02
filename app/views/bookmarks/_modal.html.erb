@@ -1,10 +1,13 @@
 <div>
   <div data-controller="modal" data-modal-allow-background-close="false">
-    <p data-action="click->modal#open"
-      class="w-8 h-8 bg-auto-book bg-center bg-no-repeat bg-contain cursor-pointer"
-      style="background-image: url('<%= asset_path("auto_book.png") %>');">
-    </p>
-    <span class="flex justify-center items-center">投稿</span>
+    <div class="flex justify-center items-center sm:items-start">
+      <p data-action="click->modal#open"
+        class="w-8 h-8 bg-auto-book bg-center bg-no-repeat bg-contain cursor-pointer mr-2 sm:mr-0 sm:mb-2"
+        style="background-image: url('<%= asset_path('auto_book.png') %>');"
+        title="投稿します"
+      ></p>
+      <span data-action="click->modal#open" class="text-md cursor-pointer">投稿する</span>
+    </div>
 
     <!-- Modal Container -->
     <div data-modal-target="container" data-action="click->modal#closeBackground keyup@window->modal#closeWithKeyboard" class="hidden animated fadeIn fixed inset-0 overflow-y-auto flex items-center justify-center" style="z-index: 9999;">
