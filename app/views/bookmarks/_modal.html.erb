@@ -1,12 +1,11 @@
 <div>
   <div data-controller="modal" data-modal-allow-background-close="false">
     <div class="flex justify-center items-center sm:items-start">
-      <p data-action="click->modal#open"
+      <span data-action="click->modal#open"
         class="w-8 h-8 bg-auto-book bg-center bg-no-repeat bg-contain cursor-pointer mr-2 sm:mr-0 sm:mb-2"
         style="background-image: url('<%= asset_path('auto_book.png') %>');"
-        title="投稿します"
-      ></p>
-      <span data-action="click->modal#open" class="text-md cursor-pointer">投稿する</span>
+        title="投稿する"
+      ></span>
     </div>
 
     <!-- Modal Container -->
