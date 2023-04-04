@@ -30,7 +30,7 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 && apt-get install -y cron
 
 # cronジョブを定義する
-RUN echo "* * * * * cd /$APP_NAME && bundle exec rails runner -e production 'FetchFeedsJob.perform_now'" >> /$APP_NAME/crontab.tmp \
+RUN echo "*/15 * * * * cd /$APP_NAME && bundle exec rails runner -e production 'FetchFeedsJob.perform_now'" >> /$APP_NAME/crontab.tmp \
 && echo "0 * * * * cd /$APP_NAME && bundle exec rails runner -e production 'UpdateFeedsJob.perform_now'" >> /$APP_NAME/crontab.tmp
 
 # crontabファイルにジョブを登録する
