@@ -29,14 +29,12 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 && apt-get install -y build-essential nodejs yarn \
 && apt-get install -y cron
 
-RUN apt install -y --no-install-recommends \
-  git \
-  vim \ 
-  cron 
+# cronジョブを定義する
+RUN echo "* * * * * cd /$APP_NAME && bundle exec rails runner -e production 'FetchFeedsJob.perform_now'" >> /$APP_NAME/crontab.tmp \
+&& echo "0 * * * * cd /$APP_NAME && bundle exec rails runner -e production 'UpdateFeedsJob.perform_now'" >> /$APP_NAME/crontab.tmp
 
-RUN service cron start
-
-RUN gem install bundler:$BUNDLER_VERSION
+# crontabファイルにジョブを登録する
+RUN crontab /$APP_NAME/crontab.tmp
 
 COPY Gemfile /$APP_NAME/Gemfile
 COPY Gemfile.lock /$APP_NAME/Gemfile.lock
@@ -47,17 +45,11 @@ RUN yarn install \
 && yarn cache clean \
 && rm -rf /$APP_NAME/node_modules /$APP_NAME/tmp/cache
 
-RUN bundle install && bundle lock --add-platform x86_64-linux && bundle exec rails css:install:tailwind && bundle exec rails javascript:install:esbuild
+RUN gem install bundler:$BUNDLER_VERSION && bundle install && bundle lock --add-platform x86_64-linux && bundle exec rails css:install:tailwind && bundle exec rails javascript:install:esbuild
 
 COPY yarn.lock /$APP_NAME/yarn.lock
 COPY package.json /$APP_NAME/package.json
 COPY tailwind.config.js /$APP_NAME/tailwind.config.js
-RUN bundle exec whenever --update-crontab
-RUN bundle exec rails console
-CMD ["FetchFeedsJob.perform_now"]
 
-
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
