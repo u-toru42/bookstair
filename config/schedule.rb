@@ -1,4 +1,4 @@
-require_relative "config/environment"
+require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 
 rails_env = ENV['RAILS_ENV'] || :development
 
