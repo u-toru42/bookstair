@@ -32,11 +32,23 @@ class BooksController < ApplicationController
     @search = Book.ransack(params[:q])
     @search.sorts = 'created_at desc' if @search.sorts.empty?
     @books = @search.result
-    # ヘッダーからドロップダウンリストを表示する
-    # @results = MyModel.search(params[:q])
-    # render json: @results.map { |result| { title: result.title, url: result.url } }
     # ニュースフィード
     @feeds = Feed.all
+
+    # ニュースフィード
+    @feed = Feed.where("title LIKE ?", "%#{@search}%")
+    
+    # トレンド
+    @trend_books = []
+    @books.each do |book|
+      if @feed.any? { |feed| feed.title.include?(book.title) }
+        @trend_books << book
+      end
+    end
+    @bookmark_counts = {}
+    @books.each do |book|
+      @bookmark_counts[book.id] = book.bookmarks.count
+    end
   end
 
   def search
@@ -83,6 +95,8 @@ class BooksController < ApplicationController
       Bookmark.all
     end
     @bookmarks = @book.bookmarks.includes(:user).order(chapter: :asc)
+    # screenshot = ScreenshotCapture::Screenshot.new(url: book_url(@book))
+    # @screenshot_url = screenshot.url
   end
 
   require 'rss'
