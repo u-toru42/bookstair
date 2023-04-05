@@ -34,6 +34,7 @@ class BooksController < ApplicationController
     @books = @search.result
     # ニュースフィード
     @feeds = Feed.all
+    @show_feeds = true
 
     # ニュースフィード
     @feed = Feed.where("title LIKE ?", "%#{@search}%")
@@ -69,6 +70,9 @@ class BooksController < ApplicationController
       @books = []
       flash.now[:notice] = "検索キーワードが入力されていません"
     end
+    # ニュースフィード
+    @feeds = Feed.all
+    @show_feeds = true
   end
 
   def autocomplete
@@ -95,6 +99,9 @@ class BooksController < ApplicationController
       Bookmark.all
     end
     @bookmarks = @book.bookmarks.includes(:user).order(chapter: :asc)
+    # ニュースフィード
+    @feeds = Feed.all
+    @show_feeds = true
     # screenshot = ScreenshotCapture::Screenshot.new(url: book_url(@book))
     # @screenshot_url = screenshot.url
   end

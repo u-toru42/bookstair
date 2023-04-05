@@ -1,9 +1,6 @@
 <% content_for(:title, '検索') %>
 
 <div class="min-h-screen bg-[url('shelf.png')] bg-repeat-y">
-  <div class="p-3">
-    <%= render partial: 'rss', locales: { populat_items: @popular_items } %>
-  </div>
 
   <div id='book_list' class='book_list'>
     <%= render partial: 'book_list' %>

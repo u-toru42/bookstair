@@ -13,21 +13,25 @@
 
   </head>
 
-  <body data-turbolinks="false">
-    <div>
-      <% if user_signed_in? %>
-        <%= render 'shared/header' %>
-      <% else %>
-        <%= render 'shared/before_login_header' %>
-      <% end %>
-      <div>
-        <%= render "flash" %>
-      </div>
+  <body data-turbolinks="false" class="max-h-screen">
+    <% if user_signed_in? %>
+      <%= render 'shared/header' %>
+    <% else %>
+      <%= render 'shared/before_login_header' %>
+    <% end %>
+    <div class="container mx-auto">
+      <%= render "flash" %>
+    </div>
+    <div class="flex">
+      <nav class="flex-shrink-0 w-1/5 bg-gray-800">
+        <!-- ナビゲーションバーのコンテンツをここに配置 -->
+        <%= render partial: 'shared/sidebar' %>
+      </nav>
       <main class="content">
+        <!-- メインのコンテンツをここに配置 -->
         <%= yield %>
         <%= javascript_tag 'application' %>
       </main>
-      <%= render 'shared/footer' %>
     </div>
   </body>
 </html>

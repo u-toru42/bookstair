@@ -1,93 +1,24 @@
 <% content_for(:title, '本棚') %>
 
-<section class="min-h-screen bg-[url('shelf.png')] bg-repeat-y">
-  <div class="flex flex-col border border-gray-300 p-4">
-    <%= render partial: 'rss', locales: { populat_items: @popular_items } %>
-  </div>
-
-  <div class="max-w-lg mx-auto my-3 card p-3 rounded bg-[url('wood.png')]">
-    <%= search_form_for @search, html: {class: "max-w-md mx-auto mt-8 mb-0 space-y-4 rounded"} do |f| %>
-      <div class="flex flex-wrap mx-2 mb-2">
-        <div class="w-full md:w-1/2 px-2">
-          <div class="relative">
-            <%= f.search_field :title_cont, placeholder: "本棚内: 書籍名", class: "block w-full p-2 py-2 pl-2 pr-2 text-sm leading-tight bg-white border border-gray-200 rounded-md appearance-none focus:outline-none focus:shadow-outline-blue focus:border-blue-600", type: "text" %>
-            <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
-              <i class="fas fa-search"></i>
+<section>
+  <div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl bg-[url('shelf.png')] bg-repeat-y">
+    <div class="grid w-full grid-cols-1 gap-6 mx-auto lg:grid-cols-3">
+      <% if @books.present? %>
+        <% @books&.each do |book| %>
+          <div class="p-6 border-2 border-gray-200 bg-slate-50">
+            <%= link_to (image_tag(book.large_image_url)), book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl mb-1 flex justify-center items-center" %>
+            <h2 class="mt-1 mb-1 text-xs font-semibold tracking-widest text-blue-600 uppercase"><%= truncate(set_rakuten_book_params(book.title), length: 36) %></h2>
+            <p class="mx-auto text-xs leading-relaxed text-gray-500">著者: <%= set_rakuten_book_params(book.author) %></p>
+            <p class="mx-auto text-sm leading-relaxed"><%= truncate(set_rakuten_book_params(book.item_caption), length: 100) %></p>
+            <div class="mt-4">
+              <%= link_to book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "flex items-center" do %>
+                <%= image_tag asset_path("bookmark_icon.png"), class: "h-4 mr-1" %>
+                <span class="text-xs font-medium"><%= @bookmark_counts[book.id] %></span>
+              <% end %>
             </div>
           </div>
-        </div>
-      <div class="w-full md:w-1/2 px-2">
-        <%= f.search_field :author_cont, placeholder: "本棚内: 著者名", class: "block w-full p-2 py-2 pl-2 pr-2 text-sm leading-tight bg-white border border-gray-200 rounded-md appearance-none focus:outline-none focus:shadow-outline-blue focus:border-blue-600", type: "text" %>
-        <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
-          <i class="fas fa-search"></i>
-        </div>
-      </div>
-        </label>
-      </div>
-
-      <div class="flex items-center justify-between">
-        <button class="px-2 py-1 text-sm font-medium text-white bg-red-600 rounded shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"><%= link_to "クリア", books_path %></button>
-        <button class="px-2 py-1 text-sm font-medium text-white bg-blue-400 rounded shadow focus:outline-none focus:ring">
-          <%= f.submit "", class: "hidden" %>
-          <%= image_tag "search_button.png", onclick: "$(this).closest('form').submit();", class: "bg-no-repeat bg-center w-5 h-5 rounded-full" %>
-        </button>
-      </div>
-      
-    <% end %>
-    <div class="flex items-center justify-center">
-      <button class="p-2 m-2 text-sm font-sm text-white bg-sky-600 rounded shadow hover:bg-sky-700 focus:outline-none focus:ring active:bg-sky-500 sm:w-auto"><%= sort_link(@search, :title) %></button>
-      <button class="p-2 m-2 text-sm font-sm text-white bg-sky-600 rounded shadow hover:bg-sky-700 focus:outline-none focus:ring active:bg-sky-500 sm:w-auto"><%= sort_link(@search, :created_at) %></button>
+        <% end %>
+      <% end %>
     </div>
   </div>
-
-  <% if @trend_books.present? %>
-    <h2>トレンド</h2>
-    <ul>
-      <% @trend_books.each do |book| %>
-        <li><%= book.title %></li>
-      <% end %>
-    </ul>
-  <% end %>
-
-
-
-
-  <ul class="grid gap-4 mt-4 sm:grid-cols-2 lg:grid-cols-4">
-    <% if @books.present? %>
-      <% @books&.each do |book| %>
-        <li>
-          <div class="flex bg-[url('wood.png')] p-2 rounded gap-2">
-            <div class="w-1/2">
-              <%= link_to (image_tag(book.large_image_url)), book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "block group-hover:underline group-hover:underline-offset-2 flex justify-center items-center" %>
-            </div>
-            <div class="w-1/2">
-              <div class="relative bg-slate-50 rounded p-2">
-                <p class="text-sm text-gray-700 font-semibold group-hover:underline group-hover:underline-offset-2 flex">
-                  <%= truncate(set_rakuten_book_params(book.title), length: 36) %>
-                </p>
-                
-                <p class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-2 flex">
-                  著者: <%= set_rakuten_book_params(book.author) %>
-                </p>
-                <div class="text-xs">
-                  <div class="prose max-w-none">
-                    <p class="mb-4">
-                      <%= simple_format(truncate(set_rakuten_book_params(book.item_caption), length: 60)) %>
-                    </p>
-                  </div>
-                </div>
-                <div class="py-1">
-                  <%= link_to book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "flex items-center" do %>
-                    <%= image_tag asset_path("bookmark_icon.png"), class: "h-4 mr-1" %>
-                    <span class="text-xs font-medium"><%= @bookmark_counts[book.id] %></span>
-                  <% end %>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
-  </ul>
 </section>
