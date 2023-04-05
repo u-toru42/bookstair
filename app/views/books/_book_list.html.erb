@@ -1,5 +1,5 @@
 <section data-controller="ajax" class="w-full h-full">
-  <div id="search-result" class="mt-8 grid grid-cols-1 gap-8">
+  <div id="search-result" class="grid grid-cols-1 gap-8">
     <% if @books.present? %>
       <% @books&.each do |book| %>
         <div class="flex flex-wrap items-start gap-2 p-3 justify-center item-center">
