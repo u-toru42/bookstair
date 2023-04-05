@@ -19,15 +19,15 @@
     <% else %>
       <%= render 'shared/before_login_header' %>
     <% end %>
-    <div class="container mx-auto">
-      <%= render "flash" %>
-    </div>
     <div class="flex">
       <nav class="flex-shrink-0 w-1/5 bg-gray-800">
         <!-- ナビゲーションバーのコンテンツをここに配置 -->
         <%= render partial: 'shared/sidebar' %>
       </nav>
       <main class="content">
+        <div class="container mx-auto">
+          <%= render "flash" %>
+        </div>
         <!-- メインのコンテンツをここに配置 -->
         <%= yield %>
         <%= javascript_tag 'application' %>
