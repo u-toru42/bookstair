@@ -10,7 +10,7 @@
     <%= favicon_link_tag asset_path("favicon.ico") %>
     <%= javascript_include_tag "/assets/application.js", "data-turbo-track": "reload", defer: true %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
   </head>
 
   <body data-turbolinks="false" class="max-h-screen">
@@ -20,10 +20,7 @@
       <%= render 'shared/before_login_header' %>
     <% end %>
     <div class="flex">
-      <nav class="flex-shrink-0 w-1/5 bg-gray-800">
-        <!-- ナビゲーションバーのコンテンツをここに配置 -->
-        <%= render partial: 'shared/sidebar' %>
-      </nav>
+
       <main class="content">
         <div class="container mx-auto">
           <%= render "flash" %>
@@ -31,6 +28,7 @@
         <!-- メインのコンテンツをここに配置 -->
         <%= yield %>
         <%= javascript_tag 'application' %>
+        <%= render partial: 'shared/sidebar_opener' %>
       </main>
     </div>
   </body>
