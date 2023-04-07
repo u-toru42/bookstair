@@ -53,8 +53,8 @@ COPY yarn.lock /$APP_NAME/yarn.lock
 COPY package.json /$APP_NAME/package.json
 COPY tailwind.config.js /$APP_NAME/tailwind.config.js
 
-RUN bundle exec whenever --update-crontab
-
+# Sidekiqを起動するためのコマンドを指定
+CMD bundle exec sidekiq -e development -C config/sidekiq.yml -r ./config/boot.rb -r ./config/schedule.rb
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh

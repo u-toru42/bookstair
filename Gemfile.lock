@@ -244,8 +244,7 @@ GEM
       activesupport (>= 6.1.5)
       i18n
     redcarpet (3.6.0)
-    redis-client (0.14.1)
-      connection_pool
+    redis (4.8.1)
     reline (0.3.3)
       io-console (~> 0.5)
     request_store (1.5.1)
@@ -265,11 +264,10 @@ GEM
     seed-fu (2.3.9)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
-    sidekiq (7.0.8)
-      concurrent-ruby (< 2)
-      connection_pool (>= 2.3.0)
-      rack (>= 2.2.4)
-      redis-client (>= 0.11.0)
+    sidekiq (6.5.8)
+      connection_pool (>= 2.2.5, < 3)
+      rack (~> 2.0)
+      redis (>= 4.5.0, < 5)
     sidekiq-cron (1.10.0)
       fugit (~> 1.8)
       globalid (>= 1.0.1)
@@ -305,6 +303,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    yaml-lint (0.1.2)
     zeitwerk (2.6.7)
 
 PLATFORMS
@@ -344,13 +343,14 @@ DEPENDENCIES
   rouge
   rss
   seed-fu
-  sidekiq
+  sidekiq (< 7)
   sidekiq-cron
   sprockets-rails
   stimulus-rails
   turbo-rails
   tzinfo-data
   web-console
+  yaml-lint
 
 RUBY VERSION
    ruby 3.1.4p223

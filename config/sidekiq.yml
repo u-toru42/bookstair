@@ -1,0 +1,16 @@
+---
+:concurrency: 25
+:pidfile: ./tmp/pids/sidekiq.pid
+:queues:
+  - [critical, 4]
+  - [default, 3]
+  - [low, 2]
+  - [mailers, 1]
+
+:logfile: ./log/sidekiq.log
+:timeout: 30
+:verbose: false
+:environment: development
+
+:redis:
+  url: redis://redis:6379/0
