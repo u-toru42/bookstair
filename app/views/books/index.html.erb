@@ -1,7 +1,7 @@
 <% content_for(:title, '本棚') %>
 
 <section>
-  <div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl bg-[url('shelf.png')] bg-repeat-y z-0 ">
+  <div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 bg-[url('shelf.png')] bg-repeat-y z-0">
     <div class="grid w-full grid-cols-1 gap-6 mx-auto lg:grid-cols-3">
       <% if @books.present? %>
         <% @books&.each do |book| %>
