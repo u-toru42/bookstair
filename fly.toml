@@ -10,6 +10,7 @@ processes = []
 
 [experimental]
   auto_rollback = true
+  entrypoint = ["worker"] 
 
 [[services]]
   http_checks = []
