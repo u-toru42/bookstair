@@ -11,6 +11,7 @@
 :timeout: 30
 :verbose: false
 :environment: development
+:schedule: config/schedule.yml
 
 :redis:
   url: redis://redis:6379/0
