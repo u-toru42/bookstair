@@ -19,12 +19,11 @@
     <% else %>
       <%= render 'shared/before_login_header' %>
     <% end %>
+    <div class="container mx-auto">
+      <%= render "flash" %>
+    </div>
     <div class="flex">
-
       <main class="content">
-        <div class="container mx-auto">
-          <%= render "flash" %>
-        </div>
         <!-- メインのコンテンツをここに配置 -->
         <%= yield %>
         <%= javascript_tag 'application' %>
