@@ -14,7 +14,7 @@ processes = []
 [[services]]
   http_checks = []
   internal_port = 3000
-  processes = ["app"]
+  processes = ["web"]
   protocol = "tcp"
   script_checks = []
   [services.concurrency]
@@ -38,5 +38,5 @@ processes = []
     timeout = "2s"
 
 [processes]
-  app = ""
-  cron = "cron -f"
+  web = "bin/rails server"
+  worker = "bundle exec sidekiq"

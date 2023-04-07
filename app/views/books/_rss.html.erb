@@ -1,8 +1,9 @@
 <div class="rounded"></div>
-  <div class="p-2 text-white bg-green-600 flex justify-center items-center">はてブ・技術評論社の<br>人気エントリー</div>
+  <div class="gap-2 text-slate-50">
+    <div class="flex justify-content items-center p-2 bg-green-600">はてブ・技術評論社の<br>人気エントリー</div>
     <div id="popular-items" class="bg-slate-50 max-h-screen overflow-y-auto p-3 text-xs">
       <% @feeds.each do |feed| %>
-        <h2><%= link_to feed.title, feed.url, target: '_blank' %></h2>
+        <h2><%= link_to truncate((feed.title), length: 25), feed.url, target: '_blank' %></h2>
       <% end %>
     </div>
   <div>

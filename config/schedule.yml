@@ -1,0 +1,10 @@
+cron:
+  fetch_feeds_job:
+    cron: "1 5 * * *"
+    class: "FetchFeedsJob"
+    args: ["https://b.hatena.ne.jp/hotentry/it.rss",
+    "https://gihyo.jp/dev/feed/rss2"]
+  update_feeds_job:
+    cron: "1 17 * * *"
+    class: "UpdateFeedsJob"
+    args: []

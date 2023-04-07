@@ -33,19 +33,21 @@ class BooksController < ApplicationController
     @search.sorts = 'created_at desc' if @search.sorts.empty?
     @books = @search.result
     # ニュースフィード
-    @feeds = Feed.all
+    @feeds = Feed.all.order(updated_at: :asc)
     @show_feeds = true
+    # FetchFeedsJob.perform_now
+    # UpdateFeedsJob.perform_now
 
     # ニュースフィード
-    @feed = Feed.where("title LIKE ?", "%#{@search}%")
+    # @feed = Feed.where("title LIKE ?", "%#{@search}%")
     
     # トレンド
-    @trend_books = []
-    @books.each do |book|
-      if @feed.any? { |feed| feed.title.include?(book.title) }
-        @trend_books << book
-      end
-    end
+    # @trend_books = []
+    # @books.each do |book|
+    #   if @feed.any? { |feed| feed.title.include?(book.title) }
+    #     @trend_books << book
+    #   end
+    # end
     @bookmark_counts = {}
     @books.each do |book|
       @bookmark_counts[book.id] = book.bookmarks.count
