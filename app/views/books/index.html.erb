@@ -1,24 +1,26 @@
 <% content_for(:title, '本棚') %>
 
-<section>
-  <div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 bg-[url('shelf.png')] bg-repeat-y z-0">
-    <div class="grid w-full grid-cols-1 gap-6 mx-auto lg:grid-cols-3">
-      <% if @books.present? %>
-        <% @books&.each do |book| %>
-          <div class="p-6 border-2 border-gray-200 bg-slate-50">
-            <%= link_to (image_tag(book.large_image_url)), book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl mb-1 flex justify-center items-center" %>
-            <h2 class="mt-1 mb-1 text-xs font-semibold tracking-widest text-blue-600 uppercase"><%= truncate(set_rakuten_book_params(book.title), length: 36) %></h2>
-            <p class="mx-auto text-xs leading-relaxed text-gray-500">著者: <%= set_rakuten_book_params(book.author) %></p>
-            <p class="mx-auto text-xs leading-relaxed"><%= truncate(set_rakuten_book_params(book.item_caption), length: 100) %></p>
-            <div class="mt-4">
-              <%= link_to book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "flex items-center" do %>
-                <%= image_tag asset_path("bookmark_icon.png"), class: "h-4 mr-1" %>
-                <span class="text-xs font-medium"><%= @bookmark_counts[book.id] %></span>
-              <% end %>
+
+
+  <section>
+    <div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 bg-[url('shelf.png')] bg-repeat-y z-0">
+      <div class="grid w-full grid-cols-1 gap-6 mx-auto lg:grid-cols-3">
+        <% if @books.present? %>
+          <% @books&.each do |book| %>
+            <div class="p-6 border-2 border-gray-200 bg-slate-50">
+              <%= link_to (image_tag(book.large_image_url)), book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl mb-1 flex justify-center items-center" %>
+              <h2 class="mt-1 mb-1 text-xs font-semibold tracking-widest text-blue-600 uppercase"><%= truncate(set_rakuten_book_params(book.title), length: 36) %></h2>
+              <p class="mx-auto text-xs leading-relaxed text-gray-500">著者: <%= set_rakuten_book_params(book.author) %></p>
+              <p class="mx-auto text-xs leading-relaxed"><%= truncate(set_rakuten_book_params(book.item_caption), length: 100) %></p>
+              <div class="mt-4">
+                <%= link_to book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "flex items-center" do %>
+                  <%= image_tag asset_path("bookmark_icon.png"), class: "h-4 mr-1" %>
+                  <span class="text-xs font-medium"><%= @bookmark_counts[book.id] %></span>
+                <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
-</section>
+  </section>

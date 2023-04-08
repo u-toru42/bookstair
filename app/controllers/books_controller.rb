@@ -5,6 +5,7 @@ class BooksController < ApplicationController
   require 'faraday'
   require 'oj'
   require 'feedjira'
+  require 'rss'
 
   def new
     @book = Book.new
@@ -52,6 +53,11 @@ class BooksController < ApplicationController
     @books.each do |book|
       @bookmark_counts[book.id] = book.bookmarks.count
     end
+    @bookmarks = Bookmark.all
+  end
+  
+  def bookmark_index
+    @bookmarks = Bookmark.all
   end
 
   def search
@@ -107,8 +113,6 @@ class BooksController < ApplicationController
     # screenshot = ScreenshotCapture::Screenshot.new(url: book_url(@book))
     # @screenshot_url = screenshot.url
   end
-
-  require 'rss'
 
   
   private

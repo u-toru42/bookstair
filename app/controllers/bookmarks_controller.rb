@@ -1,5 +1,9 @@
 class BookmarksController < ApplicationController
 
+  def index
+    @bookmarks = Bookmark.includes(:book).all
+  end
+
   def create
     bookmark = current_user.bookmarks.new(bookmark_params)
     if bookmark.save_with_tags(tag_names: params.dig(:bookmark, :tag_names).split(',').uniq)
