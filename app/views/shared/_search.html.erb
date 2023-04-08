@@ -1,28 +1,13 @@
-<div class="flex justify-center items-center bg-slate-50">
-
-  <form class="p-1 transition duration-500 ease-in-out transform border2 bg-sky-100 rounded-xl sm:max-w-lg sm:flex" action="/books/search" method="get" data-controller="autocomplete">
-    <%= form_with url: nil, method: :get, data: { controller: "autocomplete" } do |f| %>
-      <div class="">
-        <label for="Bookname" class="block px-3 py-2 overflow-hidden rounded-md shadow-sm focus-within:border-blue-600">
-          <%= f.search_field :title_search, value: params[:title_search], placeholder: "検索: 書籍名", class:"", type: "text", data: { target: "autocomplete.input" } %>
-        </label>
-      </div>
-      <!--
-      <div class="">
-        <label
-          for="Bookauthor"
-          class="block px-3 py-2 overflow-hidden rounded-md shadow-sm focus-within:border-blue-600"
-        >
-          <%= f.search_field :author_search, value: params[:author_search], placeholder: "検索: 著者名", type: "text" %>
-        </label>
-      </div> 
-      -->
-      <div class="">
-        <%= f.button class: "bg-slate bg-no-repeat bg-center w-8 h-8 border border-slate-300 rounded-full", type: "submit" do %>
-          <%= image_tag("search_button.png", alt: "検索") %>
-        <% end %>
-      </div>
-      <ul data-autocomplete-target="results"></ul>
-    <% end %>
-  </form>
-</div>  
+<form class="p-1 border-2 bg-sky-100 rounded flex" action="/books/search" method="get" data-controller="autocomplete">
+  <%= form_with url: nil, method: :get, data: { controller: "autocomplete" } do |f| %>
+    <div class="w-full flex justify-center items-center">
+      <label for="Bookname" class="w-full px-3 py-2 rounded shadow focus-within:border-blue-600">
+        <%= f.search_field :title_search, value: params[:title_search], placeholder: "書籍名: 登録したい書籍名を検索してください", class: "w-full", type: "text", data: { target: "autocomplete.input" } %>
+      </label>
+      <%= f.button class: "bg-slate w-8 h-8 border border-slate-300 rounded ml-1", type: "submit" do %>
+        <%= image_tag("search_button.png", alt: "検索") %>
+      <% end %>
+    </div>
+    <ul data-autocomplete-target="results"></ul>
+  <% end %>
+</form>
