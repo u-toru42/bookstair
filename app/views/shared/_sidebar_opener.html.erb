@@ -4,5 +4,15 @@
     xmark.classList.toggle('hidden');
     bars.classList.toggle('hidden');
     menu.classList.toggle('-translate-x-full');
+  
+  if (!sidebar.classList.contains('hidden')) {
+    svgIcons.forEach(icon => {
+      icon.classList.add('text-white');
+    });
+  } else {
+    svgIcons.forEach(icon => {
+      icon.classList.remove('text-white');
+    });
+  }
   });
 </script>
