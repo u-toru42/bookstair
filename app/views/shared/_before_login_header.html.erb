@@ -35,25 +35,6 @@
               -->
               <!--<div class="inline-flex items-center gap-2 list-none lg:ml-auto">-->
               
-              <div class="flex justify-centent items-content">
-
-                <form class="p-1 transition duration-500 ease-in-out transform border2 bg-gray-50 rounded-xl sm:max-w-lg sm:flex" action="/books/search" method="get" data-controller="autocomplete">
-                  <%= form_with url: nil, method: :get, data: { controller: "autocomplete" } do |f| %>
-                    <div class="flex-1 min-w-0 revue-form-group">
-                      <label for="Bookname" class="block px-3 py-2 overflow-hidden rounded-md shadow-sm focus-within:border-blue-600">
-                        <%= f.search_field :title_search, value: params[:title_search], placeholder: "検索: 書籍名", class:"", type: "text", data: { target: "autocomplete.input" } %>
-                      </label>
-                    </div>
-
-                    <div class="mt-4 sm:mt-0 sm:ml-3 revue-form-actions">
-                      <%= f.button class: "bg-slate bg-no-repeat bg-center w-8 h-8 border border-slate-300 rounded-full", type: "submit" do %>
-                        <%= image_tag("search_button.png", alt: "検索") %>
-                      <% end %>
-                    </div>
-                    <ul data-autocomplete-target="results"></ul>
-                  <% end %>
-                </form>
-              </div>  
 
 
           </nav>
