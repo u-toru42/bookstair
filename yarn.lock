@@ -166,6 +166,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hotwired/stimulus-webpack-helpers@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "@hotwired/stimulus-webpack-helpers@npm:1.0.1"
+  peerDependencies:
+    "@hotwired/stimulus": ">= 3.0"
+  checksum: 300b3b41464c8fb126c28f84731a04b10c0cfa4eb727eac4968a140856f746589a688c82803b55ba14c8c8628c5f069a114911556132197003ad790d82816ee5
+  languageName: node
+  linkType: hard
+
 "@hotwired/stimulus@npm:>=3.0.0, @hotwired/stimulus@npm:^3.2.1":
   version: 3.2.1
   resolution: "@hotwired/stimulus@npm:3.2.1"
@@ -351,6 +360,7 @@ __metadata:
     esbuild: "npm:^0.17.11"
     postcss: "npm:^8.4.21"
     sass: "npm:^1.57.1"
+    stimulus: "npm:^3.2.1"
     tailwindcss: "npm:^3.2.7"
     tailwindcss-stimulus-components: "npm:^3.0.4"
   languageName: unknown
@@ -1771,6 +1781,16 @@ __metadata:
   dependencies:
     minipass: "npm:^3.1.1"
   checksum: ec9e6fbb74ccb030391fc33aa1a8373014f1cdde570e389cf25f201604d6889035fc8b4409a6e8e787d75ddad892839c0e5a4ea6b67e7ab91f3c619e5e6e087a
+  languageName: node
+  linkType: hard
+
+"stimulus@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "stimulus@npm:3.2.1"
+  dependencies:
+    "@hotwired/stimulus": "npm:^3.2.1"
+    "@hotwired/stimulus-webpack-helpers": "npm:^1.0.0"
+  checksum: 7ad3c578271592d6c2d4983545a057d4c122ab74f892224b54924a60ff6f57e780a7208357218647d1022fa653aa42a8a45ed04e95b4d1b1319dbb3ccb3919f8
   languageName: node
   linkType: hard
 

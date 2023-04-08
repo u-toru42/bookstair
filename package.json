@@ -9,6 +9,7 @@
     "esbuild": "^0.17.11",
     "postcss": "^8.4.21",
     "sass": "^1.57.1",
+    "stimulus": "^3.2.1",
     "tailwindcss": "^3.2.7",
     "tailwindcss-stimulus-components": "^3.0.4"
   },
