@@ -28,7 +28,7 @@
                 <div class="flex flex-row justify-center items-center">
                   <div class="flex flex-1">
                     <% if Book.exists?(isbn: book.isbn) %>
-                      <p class="rounded border border-yellow-600 bg-yellow-600 px-3 py-3 font-medium text-white hover:bg-transparent hover:text-yellow-600 focus:outline-none focus:ring active:text-blue-500 m-3 mt-auto">登録済み</p>
+                      <a href="/" class="rounded border border-yellow-600 bg-yellow-600 px-3 py-3 font-medium text-white hover:bg-transparent hover:text-yellow-600 focus:outline-none focus:ring active:text-blue-500 m-3 mt-auto">登録済み</a>
                     <% else %>
                       <p class="text-xs text-gray-700 underline mr-2">
                         <%= form_with model: @book, url: books_path, local: true do |f| %>
