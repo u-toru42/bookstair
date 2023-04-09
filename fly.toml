@@ -38,5 +38,5 @@ processes = []
     timeout = "2s"
 
 [processes]
-  web = "bin/rails server"
-  worker = "bundle exec sidekiq"
+web = "bin/rails server"
+worker = "bundle exec sidekiq"
