@@ -54,6 +54,7 @@ class BooksController < ApplicationController
       @bookmark_counts[book.id] = book.bookmarks.count
     end
     @bookmarks = Bookmark.all
+    # @word_count = Feed.word_count
   end
   
   def bookmark_index

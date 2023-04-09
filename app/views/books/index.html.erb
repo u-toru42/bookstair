@@ -7,7 +7,15 @@
   before:inline-block before:w-6 before:h-6 before:bg-white checked:before:bg-blue-200 before:translate-x-0 checked:before:translate-x-full before:shadow before:rounded-full before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-gray-400 dark:checked:before:bg-blue-200" data-action="click->bookmarks#toggle">
   <label class="text-sm text-gray-500 ml-3 dark:text-gray-400">しおり一覧</label>
 </div>
+
+<h2>Word Ranking</h2>
+<ol>
+  <%# @word_count.each do |word, count| %>
+    <li><%#= "#{word}: #{count}" %></li>
+  <%# end %>
+</ol>
 -->
+
 <%= render partial: 'bookmarks', locals: { bookmarks: @bookmarks } %>
 
 <div data-controller="toggle-content">
