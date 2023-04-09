@@ -53,8 +53,14 @@ COPY yarn.lock /$APP_NAME/yarn.lock
 COPY package.json /$APP_NAME/package.json
 COPY tailwind.config.js /$APP_NAME/tailwind.config.js
 
+# Cronジョブの設定ファイルを追加する
+ADD config/schedule.yml /app/config/schedule.yml
 # Sidekiqを起動するためのコマンドを指定
 CMD bundle exec sidekiq -e development -C config/sidekiq.yml -r ./config/boot.rb -r ./config/schedule.rb
+# ジョブ実行のために必要な設定を追加する
+ENV JOBS_WORKERS_COUNT=1
+ENV JOBS_POOL_SIZE=10
+
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
