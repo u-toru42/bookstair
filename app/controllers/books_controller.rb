@@ -107,6 +107,7 @@ class BooksController < ApplicationController
       Bookmark.all
     end
     @bookmarks = @book.bookmarks.includes(:user).order(chapter: :asc)
+    @bookmark_counts = @book.bookmarks.count
     # ニュースフィード
     @feeds = Feed.all
     @show_feeds = true
