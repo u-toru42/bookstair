@@ -30,7 +30,7 @@
       <% end %>
     </div>
     <div class="p-3">
-      <%= bookmark.tags %>
+      <%= render bookmark.tags %>
     </div>
     <div class="flex justify-center items-center gap-4">
       <% if current_user && current_user.own?(bookmark) %>
