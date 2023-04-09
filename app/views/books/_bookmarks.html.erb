@@ -6,24 +6,24 @@
     <li>
       <section class="flex flex-col justify-between bg-slate-50 rounded border-2 border-gray-200 p-4 h-full">
         <div>
-          <div class="flex justify-center item-center">
+          <div class="flex justify-center item-center mb-2">
             <%= link_to (image_tag(bookmark.book.large_image_url)), book_path(bookmark.book) %>
           </div>
-            <%= bookmark.book.title %>
+          <h2 class="mt-2 mb-2 text-xs font-semibold tracking-widest text-blue-600 uppercase"><%= truncate(set_rakuten_book_params(bookmark.book.title), length: 36) %></h2>
+          <cite class="inline-flex items-center not-italic mb-2">
+            <svg class="w-4 h-4 mr-2" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path>
+            </svg>
+            <p class="text-sm text-gray-500 uppercase">
+              <strong><%= bookmark.user.decorate.user_name %></strong>
+            </p>
+          </cite>
           <div class="text-base font-semibold text-blue-500 overflow-ellipsis overflow-hidden mb-2">
             <%= bookmark.headline %>
           </div>
           <div class="text-sm break-words max-w-[80ch] mb-2">
             <%= simple_format(bookmark.body) %>
           </div>
-          <cite class="inline-flex items-center not-italic mb-2">
-            <span class="hidden w-6 h-px bg-gray-400 sm:inline-block"></span>
-            <p class="text-sm text-gray-500 uppercase sm:ml-3">
-              <strong>
-                <%= bookmark.user.decorate.user_name %>
-              </strong>
-            </p>
-          </cite>
           <div class="flex justify-between items-center mb-2 text-sm">
             <div>
               <% if bookmark.chapter.blank? %>
@@ -44,6 +44,14 @@
             <%= render bookmark.tags %>
           </div>
           <div class="flex gap-4">
+            <div class="flex justify-center items-center">
+              <a href="<%= book_path(bookmark.book) %>">
+                <svg class="w-7 h-7"data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
+                </svg>
+              </a>
+            </div>
+
             <% if current_user && current_user.own?(bookmark) %>
               <%= link_to bookmark, method: :delete, remote: :true, data: { turbo_method: :delete, turbo_confirm: "「#{bookmark.headline}」を削除しますか?" }, class: "w-8 h-8" do %>
                 <%= image_tag "delete.png", class: "w-full h-full object-cover" %>
@@ -52,7 +60,7 @@
 
             <%= link_to "https://twitter.com/share?url=#{request.url}%0a%0a&text=BOOKSTAIRに投稿しました！%0a『#{ bookmark.book.title.truncate(40) }』%0a%0a&hashtags=BOOKSTAIR",
                 target: '_blank', class: "w-6 h-6" do %>
-              <%= image_tag "twitter_icon.png", class: "w-full h-full object-cover" %>
+              <%= image_tag "twitter_icon.png", class: "mt-1 w-full h-full object-cover" %>
             <% end %>
           </div>
         </div>
