@@ -12,30 +12,36 @@ processes = []
   auto_rollback = true
 
 [[services]]
-  name = "web"
+  http_checks = []
   internal_port = 3000
+  processes = ["web"]
   protocol = "tcp"
-
+  script_checks = []
   [services.concurrency]
     hard_limit = 25
     soft_limit = 20
+    type = "connections"
 
-  [services.http_checks]
-    path = "/"
-    interval = 10000
-    timeout = 2000
-    tls_skip_verify = false
+  [[services.ports]]
+    force_https = true
+    handlers = ["http"]
+    port = 80
 
-[[services]]
-  name = "worker"
-  internal_port = 3000
-  protocol = "tcp"
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
 
-  [services.concurrency]
-    hard_limit = 25
-    soft_limit = 20
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    restart_limit = 0
+    timeout = "2s"
 
-  [services.args]
+  [[services.args]]
     command = "bundle exec sidekiq -c 5 -r ./config/environment.rb -e production"
     config = "config/sidekiq.yml"
     schedule = "config/schedule.yml"
+
+[processes]
+web = "bin/rails server"
+worker = "bundle exec sidekiq"
