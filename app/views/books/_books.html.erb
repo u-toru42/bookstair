@@ -4,6 +4,19 @@
       <% if @books.present? %>
         <% @books&.each do |book| %>
           <div class="p-4 border-2 border-gray-200 bg-slate-50">
+            <div class="flex justify-start items-center">
+              <!--
+              <%# if @qiita_tags.find { |tag| book.title.include?(tag.name) } %>
+                <div class="flex items-center space-x-2">
+                  <svg class="w-6 h-6 text-yellow-500">
+                    <path fill="currentColor" d="M16.392 16.271c-.347 0-.694-.132-.957-.395l-4.435-4.435a1.35 1.35 0 00-1.914 0l-4.435 4.435a1.35 1.35 0 000 1.914 1.35 1.35 0 001.914 0l3.478-3.478 3.478 3.478a1.35 1.35 0 001.914 0 1.348 1.348 0 00.396-.957 1.348 1.348 0 00-.396-.957l-3.478-3.478a1.348 1.348 0 00-.957-.396z"/>
+                    <path fill="currentColor" d="M7.608 7.729c.347 0 .694.132.957.395l4.435 4.435a1.35 1.35 0 001.914 0l4.435-4.435a1.35 1.35 0 000-1.914 1.35 1.35 0 00-1.914 0l-3.478 3.478-3.478-3.478a1.35 1.35 0 00-1.914 0 1.348 1.348 0 00-.396.957c0 .347.132.694.396.957l3.478 3.478a1.348 1.348 0 00.957.396z"/>
+                  </svg>
+                  <span class="text-md font-semibold text-yellow-500 mb-1">トレンド</span>
+                </div>
+              <%# end %>
+              -->
+            </div>
             <%= link_to (image_tag(book.large_image_url)), book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl mb-1 flex justify-center items-center" %>
             <h2 class="mt-1 mb-1 text-xs font-semibold tracking-widest text-blue-600 uppercase"><%= truncate(set_rakuten_book_params(book.title), length: 36) %></h2>
             <p class="mx-auto text-xs leading-relaxed text-gray-500">著者: <%= set_rakuten_book_params(book.author) %></p>
@@ -15,8 +28,6 @@
                 </svg>
                 <span class="text-md font-medium"><%= @bookmark_counts[book.id] %></span>
               <% end %>
-            </div>
-            <div class="mt-4">
             </div>
           </div>
         <% end %>
