@@ -3,15 +3,17 @@
     <div class="grid w-full grid-cols-1 gap-6 mx-auto lg:grid-cols-3">
       <% if @books.present? %>
         <% @books&.each do |book| %>
-          <div class="p-6 border-2 border-gray-200 bg-slate-50">
+          <div class="p-4 border-2 border-gray-200 bg-slate-50">
             <%= link_to (image_tag(book.large_image_url)), book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl mb-1 flex justify-center items-center" %>
             <h2 class="mt-1 mb-1 text-xs font-semibold tracking-widest text-blue-600 uppercase"><%= truncate(set_rakuten_book_params(book.title), length: 36) %></h2>
             <p class="mx-auto text-xs leading-relaxed text-gray-500">著者: <%= set_rakuten_book_params(book.author) %></p>
             <p class="mx-auto text-xs leading-relaxed"><%= truncate(set_rakuten_book_params(book.item_caption), length: 100) %></p>
-            <div class="mt-4">
+            <div class="mt-2 flex justify-end">
               <%= link_to book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "flex items-center" do %>
-                <%= image_tag asset_path("bookmark_icon.png"), class: "h-4 mr-1" %>
-                <span class="text-xs font-medium"><%= @bookmark_counts[book.id] %></span>
+                <svg class="w-5 h-5 mr-1" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"></path>
+                </svg>
+                <span class="text-md font-medium"><%= @bookmark_counts[book.id] %></span>
               <% end %>
             </div>
             <div class="mt-4">
