@@ -6,12 +6,13 @@ class BookmarksController < ApplicationController
 
   def create
     bookmark = current_user.bookmarks.new(bookmark_params)
-    if bookmark.save_with_tags(tag_names: params.dig(:bookmark, :tag_names).split(',').uniq)
+    if bookmark.save
       redirect_to bookmark_path(bookmark), notice: 'しおりを作成しました'
     else
-      flash.now[:notice] = 'しおりの作成に失敗しました'
-      # @book = Book.find_by!(isbn: params[:isbn])
-      return
+      flash.now[:danger] = 'しおりの作成に失敗しました'
+      flash.keep(:danger)
+      @book = Book.find_by(isbn: params[:isbn])
+      redirect_back(fallback_location: root_path)
     end
   end
 
