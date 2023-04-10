@@ -1,0 +1,10 @@
+---
+# ジョブ1
+FetchFeedsJob:
+  cron: "*/30 * * * *"
+  class: "FetchFeedsJob"
+
+# ジョブ2
+UpdateFeedsJob:
+  cron: "59 4 * * *"
+  class: "UpdateFeedsJob"

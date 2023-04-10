@@ -7,7 +7,7 @@
       <section class="flex flex-col justify-between bg-slate-50 rounded border-2 border-gray-200 p-4 h-full">
         <div>
           <div class="flex justify-center item-center mb-2">
-            <%= link_to (image_tag(bookmark.book.large_image_url)), book_path(bookmark.book) %>
+            <%= link_to (image_tag(bookmark.book.large_image_url, width: 100, height: 100)), book_path(bookmark.book) %>
           </div>
           <h2 class="mt-2 mb-2 text-xs font-semibold tracking-widest text-blue-600 uppercase"><%= truncate(set_rakuten_book_params(bookmark.book.title), length: 36) %></h2>
           <cite class="inline-flex items-center not-italic mb-2">
