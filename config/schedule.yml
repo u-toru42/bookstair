@@ -1,7 +1,7 @@
 ---
 # ジョブ1
 FetchFeedsJob:
-  cron: "*/30 * * * *"
+  cron: "1 5,17 * * *"
   class: "FetchFeedsJob"
   queue: default
 

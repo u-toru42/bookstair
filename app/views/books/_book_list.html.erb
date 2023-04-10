@@ -28,7 +28,7 @@
                 <div class="flex flex-row justify-center items-center">
                   <div class="flex flex-1">
                     <% if Book.exists?(isbn: book.isbn) %>
-                      <a href="/" class="rounded border border-yellow-600 bg-yellow-600 px-3 py-3 font-medium text-white hover:bg-transparent hover:text-yellow-600 focus:outline-none focus:ring active:text-blue-500 m-3 mt-auto">登録済み</a>
+                      <a href="/" class="rounded border border-yellow-600 bg-yellow-600 px-3 py-3 font-medium text-white hover:bg-transparent hover:text-yellow-600 focus:outline-none focus:ring active:text-blue-500 m-3 mt-auto sm:m-auto md:mx-auto lg:mx-0">登録済み</a>
                     <% else %>
                       <p class="text-xs text-gray-700 underline mr-2">
                         <%= form_with model: @book, url: books_path, local: true do |f| %>
@@ -40,7 +40,7 @@
                           <%= f.hidden_field :isbn, value: set_rakuten_book_params(book.isbn) %>
                           <%= f.hidden_field :item_caption, value: set_rakuten_book_params(book.item_caption) %>
                           <%= f.hidden_field :item_price, value: book.item_price %>
-                          <button><%= f.submit "本棚に登録する", class: "rounded border border-blue-600 bg-blue-600 px-3 py-3 font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 m-3 mt-auto" %></button>
+                          <button class="rounded border border-blue-600 bg-blue-600 px-3 py-3 font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 m-3 mt-auto sm:m-auto md:mx-auto lg:mx-0"><%= f.submit "本棚に登録する" %></button>
                         <% end %>
                       </p>
                     <% end %>
