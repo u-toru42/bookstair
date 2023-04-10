@@ -2,6 +2,18 @@
 
 <div class="p-4 bg-[url('shelf.png')] flex justify-center border-2 border-gray-200 text-sm min-h-screen">
   <section class="max-w-5xl p-6 rounded bg-[url('wood.png')]">
+    <div class="card-footer">
+      <% if @bookmark.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@bookmark.errors.count, "error") %> prohibited this bookmark from being saved:</h2>
+          <ul>
+            <% @bookmark.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 sm:items-center">
       <div class="flex justify-center item-center">
         <%= image_tag @book.large_image_url, style: "width: 200px; height: 250px; object-fit: contain;", class:"m-2" %>
@@ -34,11 +46,6 @@
           </div>
         </div>
 
-        <div>
-          <div class="card-footer">
-            <%#= render @bookmark.tags %>
-          </div>
-        </div>
       </blockquote>
       <!-- しおりエリア -->
       <%#= render 'bookmarks/bookmarks', { bookmarks: @bookmarks } %>

@@ -9,7 +9,7 @@
               <div>
 
                 <h2 class="mt-2 mb-1 text-xs font-semibold tracking-widest text-blue-600 uppercase">
-                  <%= truncate(set_rakuten_book_params(bookmark.book.title), length: 36) %>
+                  <%= link_to truncate(set_rakuten_book_params(bookmark.book.title), length: 36), book_path(bookmark.book) %>
                 </h2>
                 <cite class="inline-flex items-center not-italic mb-1">
                   <svg class="w-4 h-4 mr-2" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -41,7 +41,7 @@
                 <% end %>
               </div>
             </div>
-          <div class="flex justify-between items-center mt-1">
+          <div class="flex justify-end items-center mt-1">
             <div class="flex gap-2">
               <div class="flex justify-center items-center">
                 <a href="<%= book_path(bookmark.book) %>">
