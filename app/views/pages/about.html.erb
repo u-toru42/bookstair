@@ -1,70 +1,32 @@
 <section class="body-font bg-[url('shelf.jpg')]">
   <div class="container px-5 py-24 mx-auto bg-shelf break-words">
-    <div class="flex flex-col items-center pb-10 mx-auto mb-10 border-b border-gray-200 lg:w-3/5 sm:flex-row bg-[url('wood.png')] p-10 rounded-lg">
+    <div class="flex flex-col items-center pb-10 mx-auto mb-10 border-b border-gray-200 lg:w-3/5 sm:flex-row p-10 bg-slate-50 rounded-lg">
       <div class="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 text-indigo-500 bg-indigo-100 rounded-full sm:w-32 sm:h-32 sm:mr-10">
         <div fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 sm:w-16 sm:h-16" viewBox="0 0 24 24" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;">
-          <%= image_tag asset_path("pen_and_paper.png") %>
+          <%= image_tag asset_path("search.png") %>
         </div>
       </div>
       <div class="flex-grow mt-6 text-center sm:text-left sm:mt-0">
-        <h2 class="mb-2 text-lg font-medium text-gray-900 title-font font-bold">BOOKSTAIRはコンピュータ・ITの書籍専門の投稿サービスです。</h2>
-        <p class="text-base leading-relaxed">感想や見どころ、参考書籍やお気に入りのコードを、しおりとして投稿できます。</p>
+        <h2 class="mb-2 text-lg font-medium text-gray-900 title-font font-bold">BOOKSTAIRの使い方</h2>
+        <p class="text-base leading-relaxed">BOOKSTAIRはサービス共有の本棚でコンピュータ・IT書籍の投稿ができます。</p>
       </div>
     </div>
-    <div class="flex flex-col items-center pb-10 mx-auto mb-10 border-b border-gray-200 lg:w-3/5 sm:flex-row bg-[url('wood.png')] p-10 rounded-lg">
+    <div class="flex flex-col items-center pb-10 mx-auto mb-10 border-b border-gray-200 lg:w-3/5 sm:flex-row bg-slate-50 p-10 rounded-lg">
       <div class="flex-grow mt-6 text-center sm:text-left sm:mt-0">
-        <h2 class="mb-2 text-lg font-medium text-gray-900 title-font">投稿は書籍詳細ページの下に、チャプター順で並びます。</h2>
-        <p class="text-base leading-relaxed">疑問に思った箇所があれば投稿してみましょう。アドバイスや参考書籍も投稿できます。</p>
+        <h2 class="mb-2 text-lg font-medium text-gray-900 title-font">気になる本を共有本棚に追加してみましょう。</h2>
+        <p class="text-base leading-relaxed">追加した書籍に自由な投稿ができます。</p>
       </div>
       <div class="inline-flex items-center justify-center flex-shrink-0 order-first w-20 h-20 text-indigo-500 bg-indigo-100 rounded-full sm:w-32 sm:order-none sm:h-32 sm:ml-10">
-        <div fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 sm:w-16 sm:h-16" viewBox="0 0 24 24" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;">
-          <%= image_tag asset_path("question.png") %>
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-col items-center mx-auto lg:w-3/5 sm:flex-row bg-[url('wood.png')] p-10 rounded-lg">
-      <div class="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 text-indigo-500 bg-indigo-100 rounded-full sm:w-32 sm:h-32 sm:mr-10">
         <div fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 sm:w-16 sm:h-16" viewBox="0 0 24 24" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;">
           <%= image_tag asset_path("book_on_the_man.png") %>
         </div>
       </div>
-      <div class="flex-grow mt-6 text-center sm:text-left sm:mt-0">
-        <h2 class="mb-2 text-lg font-medium text-gray-900 title-font">ステップアップの手助けになれば。</h2>
-        <p class="text-base leading-relaxed">難しすぎればちょっと簡単な技術書へ、十分に内容を理解できれば次のステップへ。気になった技術書から、ステップアップを手助けするサービスにしたいと思っています。</p>
-      </div>
-    </div>
-
-
-    <div class="gap-4 mt-12 md:grid-cols-3 md:gap-8 flex justify-center items-center">
-      <blockquote class="p-8 bg-[url('wood.png')] rounded-lg">
-        <div class="flex items-center gap-4 justify-center">
-          <div class="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 text-indigo-500 bg-indigo-100 rounded-full sm:w-32 sm:h-32 sm:mr-10">
-            <div fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 sm:w-16 sm:h-16" viewBox="0 0 24 24" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;">
-              <%= image_tag asset_path("search.png") %>
-            </div>
-          </div>
-
-          <div>
-            <p class="mt-1 text-lg font-medium text-black-700">気になるワードを検索</p>
-          </div>
-        </div>
-
-        <p class="mt-4 text-black-500 line-clamp-2 sm:line-clamp-none">
-          まずは技術書の題名や著者、気になる言語や技術を調べてみましょう。<button class="block px-8 py-3 text-sm font-medium text-white bg-blue-600 rounded shadow hover:bg-blue-700 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto">「本棚に登録する」</button>を押せば、サービス共有の本棚に書籍が登録されます。<br>
-          本棚の気になる本の
-          <button class="block px-8 py-3 text-sm font-medium text-white bg-blue-600 rounded shadow hover:bg-blue-700 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto">「しおりを見てみる」</button>を押せば、投稿一覧画面が見れます。
-        </p>
-        <p class="text-base leading-relaxed font-semibold">また、サービス内の各技術書のサムネイルは楽天とリンクしておりますので、気になった本はすぐ買えます。</p><br>
-        <p class="flex justify-center items-center font-bold">Bon Voyage!<br>
-      </blockquote>
     </div>
 
     <div class="flex flex-wrap justify-center gap-4 mt-8">
-      <button>
+      <button class="text-center rounded shadow py-2 px-4 nomal-btn mr-3">
         <%= link_to 'ゲストログインしてみる', users_guest_sign_in_path, data: { turbo_method: :post }, class: "block w-full px-12 py-3 text-sm font-medium text-white bg-blue-600 rounded shadow hover:bg-blue-700 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto" %>
       </button>
     </div>
-    
-    
   </div>
 </section>

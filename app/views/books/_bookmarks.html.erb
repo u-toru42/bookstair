@@ -1,4 +1,4 @@
-<div class="p-4 bg-[url('shelf.png')] flex justify-center border-2 border-gray-200 text-sm min-h-screen">
+<div class="p-4 bg-amber-50 flex justify-center border-2 border-gray-200 text-sm min-h-screen">
   <section class="w-full p-6 rounded">
     <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <% @bookmarks.each do |bookmark| %>
@@ -8,7 +8,7 @@
               <%= link_to (image_tag(bookmark.book.large_image_url, style: "width: 100px; height: 100px; object-fit: contain;")), book_path(bookmark.book), class: "mr-2" %>
               <div>
 
-                <h2 class="mt-2 mb-1 text-xs font-semibold tracking-widest text-blue-600 uppercase">
+                <h2 class="mt-2 mb-1 text-xs font-semibold tracking-widest text-blue-600">
                   <%= link_to truncate(set_rakuten_book_params(bookmark.book.title), length: 36), book_path(bookmark.book) %>
                 </h2>
                 <cite class="inline-flex items-center not-italic mb-1">
@@ -57,10 +57,10 @@
                 <% end %>
               <% end %>
 
-              <%= link_to "https://twitter.com/share?url=#{request.url}%0a%0a&text=BOOKSTAIRに投稿しました！%0a『#{ bookmark.book.title.truncate(40) }』%0a%0a&hashtags=BOOKSTAIR",
-                  target: '_blank', class: "w-6 h-6" do %>
-                <%= image_tag "twitter_icon.png", class: "w-full h-full object-cover" %>
-              <% end %>
+              <%#= link_to "https://twitter.com/share?url=#{request.url}%0a%0a&text=理解度星○の投稿です。%0a『#{bookmark.book.title.truncate(40)}』%0a%0a&hashtags=BOOKSTAIR",
+                target: '_blank', class: "w-6 h-6" do %>
+                <%#= image_tag bookmark.screenshot_url, class: "w-full h-full object-cover" %>
+              <%# end %>
             </div>
           </div>
         </li>
