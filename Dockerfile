@@ -63,7 +63,7 @@ ENV JOBS_POOL_SIZE=10
 # Redisを起動する
 CMD redis-server --daemonize yes && \
 # Sidekiq-cronを起動する
-  bundle exec sidekiq-cron -c 1 -r ./app.rb -s ./config/sidekiq-cron.yml -L /dev/stdout & \
+  bundle exec sidekiq-cron -c 1 -r ./app.rb -s ./config/sidekiq-cron.yml -L /dev/stdout && \
 # Sidekiqを起動する
   bundle exec sidekiq -C ./config/sidekiq.yml -L /dev/stdout
 
