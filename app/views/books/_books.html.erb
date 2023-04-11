@@ -1,5 +1,6 @@
 <section>
   <div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 bg-[url('shelf.png')] bg-repeat-y z-0">
+    <h1 class="bg-[url('wood.png')] text-lg flex justify-center items-center mb-2 p-1 rounded">共有本棚</h1>
     <div class="grid w-full grid-cols-1 gap-6 mx-auto lg:grid-cols-3">
       <% if @books.present? %>
         <% @books&.each do |book| %>
