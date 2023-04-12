@@ -9,8 +9,8 @@ class BookmarksController < ApplicationController
     if bookmark.save
       redirect_to bookmark_path(bookmark), notice: 'しおりを作成しました'
     else
-      flash.now[:danger] = 'しおりの作成に失敗しました'
-      flash.keep(:danger)
+      flash[:danger] = 'しおりの作成に失敗しました'
+      # flash.keep(:danger)
       @book = Book.find_by(isbn: params[:isbn])
       redirect_back(fallback_location: root_path)
     end

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     end
     resources :bookmarks, only: %i[create destroy edit update], shallow: true
   end
+  resources :bookmarks, only: %i[index] 
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'

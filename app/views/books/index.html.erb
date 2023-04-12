@@ -25,15 +25,4 @@
 </div>
 -->
 
-<%= render partial: 'bookmarks', locals: { bookmarks: @bookmarks } %>
-
-<div data-controller="toggle-content">
-  <div data-target="toggle-content.bookmarksSection" class="hidden">
-    <%#= render partial: 'bookmarks', locals: { bookmarks: @bookmarks } %>
-  </div>
-  <div data-target="toggle-content.booksSection">
-    <%= render partial: 'books', locals: { books: @books } %>
-  </div>
-</div>
-
-
+<%= render partial: 'books', locals: { books: @books } %>
