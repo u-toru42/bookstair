@@ -25,14 +25,14 @@
               </div>
 
               <div class="mt-2">
-                <div class="flex flex-row justify-center items-center">
-                  <div class="flex flex-1 gap-2">
+                <div class="flex justify-end">
+                  <div class="gap-2">
                     <% if Book.exists?(isbn: book.isbn) %>
-                      <%= link_to book_path(book.isbn), class: "mr-2 inline-flex items-center justify-center space-x-2 font-semibold text-yellow-500" do %>
+                      <%= link_to book_path(book.isbn), class: "mr-1 inline-flex space-x-2 font-semibold text-yellow-500" do %>
                         <svg data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-8 h-8">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0120.25 6v12A2.25 2.25 0 0118 20.25H6A2.25 2.25 0 013.75 18V6A2.25 2.25 0 016 3.75h1.5m9 0h-9"></path>
                         </svg>
-                        <span>登録済</span>
+                        <span class="mt-1">登録済</span>
                       <% end %>
                     <% else %>
                       <p class="text-xs">
@@ -49,11 +49,13 @@
                         <% end %>
                       </p>
                     <% end %>
-                    <div class="flex flex-col sm:flex-row items-center justify-end">
-                      <%= link_to book.item_url, target: '_blank', class: "flex flex-col items-center mr-2 sm:mt-0 sm:flex-row" do %>
-                        <%= image_tag "rakuten_shop.png", class: "w-8 h-8 object-cover flex-shrink-0", title: "楽天で購入" %>
+                    <!--
+                    <div class="mt-1">
+                      <%= link_to book.item_url, target: '_blank', class: "sm:mt-0" do %>
+                        <%= image_tag "rakuten_shop.png", class: "w-8 h-8", title: "楽天で購入" %>
                       <% end %>
                     </div>
+                    -->
                   </div>
                 </div>
               </div>
