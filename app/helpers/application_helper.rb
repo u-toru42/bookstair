@@ -28,10 +28,10 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'BOOKSTAIR',
-      title: 'IT・コンピュータの書籍好きに',
+      title: 'IT・コンピュータの書籍好きのあなたに',
       reverse: true,
       separator: '|',
-      description: 'BOOKSTAIRはIT・コンピュータの書籍の専門サービスです。',
+      description: 'BOOKSTAIRはIT・コンピュータの書籍専門の投稿サービスです。',
       keywords: 'IT, コンピュータ, プログラミング',
       charset: 'UTF-8',
       canonical: request.original_url,
