@@ -47,7 +47,7 @@ RUN yarn install \
 && yarn cache clean \
 && rm -rf /$APP_NAME/node_modules /$APP_NAME/tmp/cache
 RUN apt-get install libmecab2 libmecab-dev mecab mecab-ipadic mecab-ipadic-utf8 mecab-utils
-RUN bundle install && bundle lock --add-platform x86_64-linux && bundle exec rails css:install:tailwind && bundle exec rails javascript:install:esbuild
+RUN bundle install && bundle lock --add-platform x86_64-linux && bundle exec rails css:install:tailwind && bundle exec rails javascript:install:esbuild && RAILS_ENV=production bundle exec rake assets:precompile && bundle exec rails s -e production
 
 COPY yarn.lock /$APP_NAME/yarn.lock
 COPY package.json /$APP_NAME/package.json
