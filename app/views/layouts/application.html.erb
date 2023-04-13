@@ -11,11 +11,11 @@
     <%= javascript_include_tag "/assets/application.js", "data-turbo-track": "reload", defer: true %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
-    <% if content_for?(:twitter_card) %>
-      <%= yield(:twitter_card) %>
-    <% else %>
-      <%= twitter_card %>
-    <% end %> 
+    <%# if content_for?(:twitter_card) %>
+      <%#= yield(:twitter_card) %>
+    <%# else %>
+      <%#= twitter_card %>
+    <%# end %> 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J4F0HY30Q0"></script>
     <script>
