@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-shelf-pattern {
+background-image: url('shelf.png');
+background-repeat: repeat-y;
+}
