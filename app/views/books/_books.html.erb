@@ -1,8 +1,8 @@
-<section>
-  <div class="relative w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-h-full bg-cover bg-repeat md:max-h-screen bg-amber-50 ">
-    <div class="z-0 absolute inset-0 bg-[url('shelf.png')] bg-cover bg-repeat"></div>
-    <h1 class="text-2xl text-center bg-emerald-500 text-white font-bold py-3 rounded-lg mb-1 relative z-10">共有本棚</h1>
-    <div class="grid w-full grid-cols- gap-6 mx-auto lg:grid-cols-3 relative z-10">
+<section class="bg-amber-50">
+  <div class="relative w-full px-12 mx-auto md:px-12 lg:px-24 max-h-full z-0">
+    <div class="bg-shelf-pattern top-0 left-0 w-full h-full z-0"></div>
+    <h1 class="text-2xl text-center bg-emerald-500 text-white font-bold py-3 rounded-lg mb-1 z-10 mt-1">共有本棚</h1>
+    <div class="grid w-full grid-cols-1 gap-6 mx-auto lg:grid-cols-3 z-10">
       <% if @books.present? %>
         <% @books&.each do |book| %>
           <div class="p-4 border-2 border-gray-200 bg-slate-50">
