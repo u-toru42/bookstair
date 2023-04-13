@@ -1,9 +1,16 @@
 class BookmarksController < ApplicationController
 
+  before_action :set_rss
+  require 'faraday'
+  require 'oj'
+  require 'feedjira'
+  require 'rss' 
+
   def index
     @bookmarks = Bookmark.includes(:book).all.order(updated_at: :desc)
-    # @feeds = Feed.all.order(updated_at: :asc)
-    # @show_feeds = true
+    # ニュースフィード
+    @feeds = Feed.all.order(updated_at: :asc)
+    @show_feeds = true
   end
 
   def create
@@ -41,6 +48,10 @@ class BookmarksController < ApplicationController
 
   def bookmark_params
     params.require(:bookmark).permit(:headline, :body, :chapter, :link, :review_star, :created_at).merge(book_isbn: params[:book_isbn])
+  end
+
+  def set_rss
+    @feeds = Feed.all
   end
 
 end

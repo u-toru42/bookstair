@@ -132,7 +132,7 @@
 
       <li> 
         <% if user_signed_in? && @show_feeds %>
-          <%= render partial: 'rss', locales: { populat_items: @popular_items } %>
+          <%= render partial: 'books/rss', locales: { populat_items: @popular_items } %>
         <% end %>
       </li>
     </ul>
