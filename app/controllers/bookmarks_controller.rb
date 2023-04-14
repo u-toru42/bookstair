@@ -28,12 +28,15 @@ class BookmarksController < ApplicationController
   def edit
     @bookmark = current_user.bookmarks.find(params[:id])
   end
-  
+
+
   def update
-    if @bookmark.update(bookmark_params)
-      @bookmark.save_with_tags(tag_names: params.dig(:bookmark, :tag_names).split(',').uniq)
-      redirect_to @bookmark, notice: 'しおりを作成しました'
+    @bookmark = current_user.bookmarks.find(params[:id])
+    if @bookmark.update!(bookmark_params.merge(book: @bookmark.book))
+      # redirect_to bookmark_path(@bookmark), notice: 'しおりを更新しました'
+      redirect_to @bookmark.book, notice: 'しおりを更新しました'
     else
+      flash[:danger] = 'しおりの更新に失敗しました'
       render :edit
     end
   end
@@ -47,7 +50,7 @@ class BookmarksController < ApplicationController
   private
 
   def bookmark_params
-    params.require(:bookmark).permit(:headline, :body, :chapter, :link, :review_star, :created_at).merge(book_isbn: params[:book_isbn])
+    params.require(:bookmark).permit(:headline, :body, :chapter, :link, :review_star).merge(book_isbn: params[:book_isbn])
   end
 
   def set_rss

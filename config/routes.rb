@@ -30,9 +30,9 @@ Rails.application.routes.draw do
       get :search
       get :autocomplete
     end
-    resources :bookmarks, only: %i[create destroy edit update], shallow: true
+    resources :bookmarks, only: %i[create destroy], shallow: true
   end
-  resources :bookmarks, only: %i[index] 
+  resources :bookmarks, only: %i[index edit update] 
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
