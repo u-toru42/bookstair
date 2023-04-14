@@ -33,6 +33,8 @@ class Bookmark < ApplicationRecord
   validates :body, presence: true, length: { maximum: 3000 }
   validates :chapter, allow_blank: true, length: { maximum: 9999 }, numericality: {only_integer: true}
   validates :link, allow_blank: true, length: { maximum: 100 }
+  
+  before_validation :detect_negative_expressions
 
   scope :with_tag, ->(tag_name) { joins(:tags).where(tags: { name: tag_name }) }
 
@@ -53,6 +55,23 @@ class Bookmark < ApplicationRecord
   def tag_names
     # NOTE: pluckだと新規作成失敗時に値が残らない(返り値がnilになる)
     tags.map(&:name).join(',')
+  end
+
+  private
+
+  def detect_negative_expressions
+    language_service = Google::Cloud::Language.language_service
+
+    # 言語の設定
+    document = { content: body, type: :PLAIN_TEXT, language: "ja" }
+
+    # センチメント分析のリクエストを作成
+    response = language_service.analyze_sentiment document: document
+
+    # ネガティブな表現が含まれている場合は、エラーを追加
+    if response.document_sentiment.score < 0
+      errors.add(:content, "ネガティブな表現が含まれています")
+    end
   end
 
 end

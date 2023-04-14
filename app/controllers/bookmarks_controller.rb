@@ -16,9 +16,13 @@ class BookmarksController < ApplicationController
   def create
     bookmark = current_user.bookmarks.new(bookmark_params)
     if bookmark.save
-      redirect_to bookmark_path(bookmark), notice: 'しおりを作成しました'
+      redirect_to bookmark_path(bookmark), notice: '投稿を作成しました'
     else
-      flash[:danger] = 'しおりの作成に失敗しました'
+      if bookmark.errors[:content].include?("contains negative sentiment")
+        flash[:danger] = "ネガティブな表現が含まれています"
+      else
+        flash[:danger] = '投稿に失敗しました'
+      end
       # flash.keep(:danger)
       @book = Book.find_by(isbn: params[:isbn])
       redirect_back(fallback_location: root_path)
@@ -34,9 +38,13 @@ class BookmarksController < ApplicationController
     @bookmark = current_user.bookmarks.find(params[:id])
     if @bookmark.update!(bookmark_params.merge(book: @bookmark.book))
       # redirect_to bookmark_path(@bookmark), notice: 'しおりを更新しました'
-      redirect_to @bookmark.book, notice: 'しおりを更新しました'
+      redirect_to @bookmark.book, notice: '投稿を更新しました'
     else
-      flash[:danger] = 'しおりの更新に失敗しました'
+      if bookmark.errors[:content].include?("contains negative sentiment")
+        flash[:danger] = "ネガティブな表現が含まれています"
+      else
+        flash[:danger] = '投稿の更新に失敗しました'
+      end
       render :edit
     end
   end
