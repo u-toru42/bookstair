@@ -12,7 +12,7 @@ ja:
         created_at: 本棚登録日順
 
       bookmark:
-        headline: しおりの題名(必須)
+        headline: 題名(必須)
         body: 本文(必須)
         page: 該当ページ(任意)
         review_star: 理解度チェック(必須)
