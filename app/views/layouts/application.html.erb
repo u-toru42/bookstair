@@ -25,7 +25,11 @@
 
       gtag('config', 'G-J4F0HY30Q0');
     </script> 
-    <%= display_meta_tags(default_meta_tags) %>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="IT・コンピュータの書籍好きのあなたに">
+    <meta name="twitter:description" content="BOOKSTAIRはIT・コンピュータの書籍専門の投稿サービスです。">
+    <meta name="twitter:image" content="#{<%= image_url('og_image.png') %>}"> 
+    <%#= display_meta_tags(default_meta_tags) %>
   </head>
 
   <body data-turbolinks="false" class="max-h-screen">
