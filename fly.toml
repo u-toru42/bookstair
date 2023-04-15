@@ -43,5 +43,5 @@ processes = []
     schedule = "config/schedule.yml"
 
 [processes]
-  web = "bin/rails fly:server"
-  worker = "bundle exec sidekiq"
+web = "bin/rails fly:server"
+worker = "bundle exec sidekiq"
