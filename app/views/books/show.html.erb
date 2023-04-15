@@ -36,8 +36,9 @@
           </div>
         </div>
         <div class="flex justify-end gap-2 mt-2">
-          <%= link_to @book.item_url, target: '_blank', class: "flex flex-row" do %>
+          <%= link_to @book.item_url, target: '_blank', class: "flex flex-col items-center" do %>
             <%= image_tag "rakuten_shop.png", class: "w-8 h-8 object-cover", title: "楽天で購入" %>
+            <span class="text-sm mt-1">楽天リンク</span>
           <% end %>
           <%= render 'bookmarks/modal', { book: @book, bookmark: @bookmark } %>
         </div>
