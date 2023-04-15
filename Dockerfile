@@ -54,18 +54,23 @@ COPY package.json /$APP_NAME/package.json
 COPY tailwind.config.js /$APP_NAME/tailwind.config.js
 
 # Cronジョブの設定ファイルを追加する
-ADD config/schedule.yml /app/config/schedule.yml
+COPY config/schedule.yml /$APP_NAME/config/schedule.yml
+COPY config/sidekiq-cron.yml /$APP_NAME/config/sidekiq-cron.yml
 
 # ジョブ実行のために必要な環境変数を設定する
 ENV JOBS_WORKERS_COUNT=1
 ENV JOBS_POOL_SIZE=10
+ENV JOBS_QUEUE=jobs
+ENV JOBS_LOG_LEVEL=info
+ENV JOBS_LOG_FILE=/dev/stdout
 
 # Redisを起動する
 CMD redis-server --daemonize yes && \
-# Sidekiq-cronを起動する
-  bundle exec sidekiq-cron -c 1 -r ./app.rb -s ./config/sidekiq-cron.yml -L /dev/stdout && \
-# Sidekiqを起動する
-  bundle exec sidekiq -C ./config/sidekiq.yml -L /dev/stdout
+# Sidekiqを設定する
+bundle exec sidekiq -c 1 -r ./app.rb -L /dev/stdout && \
+# sidekiq-cronを設定する
+RUN bundle exec sidekiq-cron -c 1 -r ./app.rb -s ./config/sidekiq-cron.yml -L /dev/stdout
+
 
 
 COPY entrypoint.sh /usr/bin/
