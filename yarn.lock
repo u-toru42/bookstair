@@ -358,6 +358,7 @@ __metadata:
     autoprefixer: "npm:^10.4.13"
     daisyui: "npm:^2.50.2"
     esbuild: "npm:^0.17.11"
+    intro.js: "npm:^7.0.1"
     postcss: "npm:^8.4.21"
     sass: "npm:^1.57.1"
     stimulus: "npm:^3.2.1"
@@ -1070,6 +1071,13 @@ __metadata:
   version: 2.0.4
   resolution: "inherits@npm:2.0.4"
   checksum: ca76c7e45ec715bfe6c1dd67b780b9a15068f37b37ab56cf8b773537b2654238469a42950f5f4d301212755e7512be888f627752e778e1863d95cfedefc8b8bd
+  languageName: node
+  linkType: hard
+
+"intro.js@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "intro.js@npm:7.0.1"
+  checksum: c22955c561b7c0b6ed940df92165bc1f880176af4718f746b165b66395626cd511253f95769b95c839c656b146774075dae487a13195fbfba61d59b7bd0bf43a
   languageName: node
   linkType: hard
 

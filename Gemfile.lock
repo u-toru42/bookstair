@@ -408,6 +408,7 @@ DEPENDENCIES
   rakuten_web_service
   ransack
   redcarpet
+  redis (~> 4.0)
   ridgepole
   rouge
   rss
