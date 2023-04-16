@@ -5,7 +5,9 @@
         <%= f.search_field :title_search, value: params[:title_search], placeholder: "検索: 書籍名", class: "w-full p-4 pr-12 text-sm border-sky-400 rounded-lg bg-slate-50 border-2", type: "text", data: { target: "autocomplete.input" } %>
       </label>
       <%= f.button class: "bg-slate w-8 h-8 rounded ml-1", type: "submit" do %>
-        <%= image_tag("search_button.png", alt: "検索") %>
+        <svg class="h-8 w-8 outline outline-offset-1 outline-sky-500 bg-sky-500 rounded" fill="white" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+        </svg>
       <% end %>
     </div>
     <ul data-autocomplete-target="results"></ul>
