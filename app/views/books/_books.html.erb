@@ -16,8 +16,20 @@
               <svg class="w-5 h-5 mr-1" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"></path>
               </svg>
+              <span class="text-sm ml-1 mr-1">投稿数</span>
               <span class="text-md font-medium"><%= @bookmark_counts[book.id] %></span>
             <% end %>
+            <%= link_to book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "flex items-center" do %>
+              <svg class="w-5 h-5 ml-2 mr-1" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              <span class="text-sm ml-1 mr-1">注目度</span>
+              <span class="text-md font-medium"><%= Click.find_by(book_isbn: book.id)&.clicks || 0 %></span>
+            <% end %>
+          </div>
+
+          <div class="mt-2 flex items-center justify-end">
           </div>
           <!-- likes機能 -->
           <%# if current_user.own?(book) %>

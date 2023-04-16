@@ -101,6 +101,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find_by(isbn: params[:isbn])
+    update_click_count(@book.isbn)
     @bookmark = Bookmark.new
     bookmarks = if (tag_name = params[:tag_name])
       Bookmark.with_tag(tag_name)
@@ -114,6 +115,12 @@ class BooksController < ApplicationController
     @show_feeds = true
     # screenshot = ScreenshotCapture::Screenshot.new(url: book_url(@book))
     # @screenshot_url = screenshot.url
+
+  end
+
+  def update_click_count(book_isbn)
+    click = Click.find_or_initialize_by(book_isbn: book_isbn)
+    click.update(clicks: click.clicks + 1)
   end
 
   
