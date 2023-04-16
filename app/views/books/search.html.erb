@@ -1,8 +1,9 @@
 <% content_for(:title, '検索/本棚に登録') %>
 
+<div class="bg-amber-50 text-sm min-h-screen pb-4">
 <%= render partial: 'shared/search' %>
-<div class="min-h-screen bg-[url('shelf.png')] bg-repeat-y">
   <div id='book_list' class='book_list'>
     <%= render partial: 'book_list' %>
   </div>
 </div>
+

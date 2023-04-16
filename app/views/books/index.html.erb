@@ -25,18 +25,17 @@
 </div>
 -->
 
-<div class="bg-amber-50 border-2 border-gray-200 text-sm min-h-screen pb-4">
+<div class="bg-[url('shelf.png')] border-2 border-gray-200 text-sm min-h-screen pb-4">
   <div class="mx-auto text-center card p-3 rounded">
     <form class="max-w-md mx-auto mt-2 space-y-4 rounded">
       <%= search_form_for @search do |f| %>
         <div>
           <%= f.search_field :title_cont, placeholder: "本棚内検索: タイトル、言語", class: "w-full p-4 pr-12 text-sm border-sky-400 rounded-lg shadow-sm bg-slate-50 border-2", type: "text" %> 
-          <%#= f.search_field :title_cont, placeholder: "本棚内検索: タイトル、言語", class: "w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm", type: "text" %>
         </div>
 
         <div class="flex items-center justify-end gap-4">
           <%= link_to books_path, class: "clear-button" do %>
-            <svg class="w-6 h-6" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <svg class="w-8 h-8" fill="white" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 9.75L14.25 12m0 0l2.25 2.25M14.25 12l2.25-2.25M14.25 12L12 14.25m-2.58 4.92l-6.375-6.375a1.125 1.125 0 010-1.59L9.42 4.83c.211-.211.498-.33.796-.33H19.5a2.25 2.25 0 012.25 2.25v10.5a2.25 2.25 0 01-2.25 2.25h-9.284c-.298 0-.585-.119-.796-.33z"></path>
             </svg>
           <% end %>

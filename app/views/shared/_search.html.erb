@@ -1,10 +1,10 @@
-<form class="p-1 border-2 bg-sky-100 rounded flex" action="/books/search" method="get" data-controller="autocomplete">
+<form class="p-1 flex justify-center items-center" action="/books/search" method="get" data-controller="autocomplete">
   <%= form_with url: nil, method: :get, data: { controller: "autocomplete" } do |f| %>
-    <div class="w-full flex justify-center items-center">
-      <label for="Bookname" class="w-full px-3 py-2 rounded shadow focus-within:border-blue-600">
-        <%= f.search_field :title_search, value: params[:title_search], placeholder: "書籍名: 登録したい書籍名を検索してください", class: "w-full", type: "text", data: { target: "autocomplete.input" } %>
+    <div class="flex items-center justify-end">
+      <label for="Bookname" class="w-full px-3 py-2 rounded focus-within:border-blue-600">
+        <%= f.search_field :title_search, value: params[:title_search], placeholder: "検索: 書籍名", class: "w-full p-4 pr-12 text-sm border-sky-400 rounded-lg bg-slate-50 border-2", type: "text", data: { target: "autocomplete.input" } %>
       </label>
-      <%= f.button class: "bg-slate w-8 h-8 border border-slate-300 rounded ml-1", type: "submit" do %>
+      <%= f.button class: "bg-slate w-8 h-8 rounded ml-1", type: "submit" do %>
         <%= image_tag("search_button.png", alt: "検索") %>
       <% end %>
     </div>
