@@ -29,10 +29,13 @@ class BooksController < ApplicationController
   end
   
   def index
-    # @books = Book.all.order(created_at: :desc)
-    @search = Book.ransack(params[:q])
-    @search.sorts = 'created_at desc' if @search.sorts.empty?
-    @books = @search.result
+    # 従来の検索
+    # @search = Book.ransack(params[:q])
+    # 投稿の並び順で変更
+    @search = Book.includes(:bookmarks).ransack(params[:q])
+    @search.sorts = 'bookmarks.updated_at desc' if @search.sorts.empty?
+    @books = @search.result.order('bookmarks.updated_at desc')
+
     # ニュースフィード
     @feeds = Feed.all.order(updated_at: :asc)
     @show_feeds = true

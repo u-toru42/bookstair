@@ -24,8 +24,14 @@ class Book < ApplicationRecord
     isbn.to_s
   end
 
+  # 投稿の並び順なし
   def self.ransackable_attributes(auth_object = nil)
-    ["author", "created_at", "isbn", "item_caption", "item_price", "item_url", "large_image_url", "sales_date", "title", "updated_at"]
+    %w[author created_at isbn item_caption item_price item_url large_image_url sales_date title updated_at]
+  end
+
+  # 投稿の並び順あり
+  def self.ransackable_associations(auth_object = nil)
+    %w[bookmarks]
   end
   
 end
