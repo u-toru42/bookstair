@@ -33,8 +33,18 @@ class BooksController < ApplicationController
     # @search = Book.ransack(params[:q])
     # 投稿の並び順で変更
     @search = Book.includes(:bookmarks).ransack(params[:q])
-    @search.sorts = 'bookmarks.updated_at desc' if @search.sorts.empty?
-    @books = @search.result.order('bookmarks.updated_at desc')
+    if @search.sorts.empty?
+      @search.sorts = 'bookmarks.updated_at desc NULLS LAST'
+    else
+      @search.sorts = @search.sorts.map do |sort|
+        if sort.name == 'bookmarks.updated_at'
+          "#{sort.name} #{sort.dir} NULLS LAST"
+        else
+          sort
+        end
+      end
+    end
+    @books = @search.result.order('bookmarks.updated_at desc NULLS LAST')
 
     # ニュースフィード
     @feeds = Feed.all.order(updated_at: :asc)

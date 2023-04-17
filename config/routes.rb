@@ -2,6 +2,8 @@
 #
 
 Rails.application.routes.draw do
+  get 'likes/create'
+  get 'likes/destroy'
   # devise_for :users
   # get 'books/search'
   # get 'bookmarks/create'
