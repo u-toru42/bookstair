@@ -1,7 +1,7 @@
 <div class="relative w-full px-12 mx-auto md:px-12 lg:px-24 h-full z-0 pb-4">
   <h1 class="text-2xl text-center bg-emerald-500 text-white font-bold py-3 rounded-lg mb-1 relative z-10">共有本棚</h1>
   <% if !@books.present? %>
-    <h1 class="w-full h-full text-2xl flex justify-center items-center text-slate-50 mt-4 font-bold">お探しの本がありません...</h1>
+    <h1 class="w-full h-full text-2xl flex justify-center items-center text-slate-600 mt-4 font-bold">お探しの本がありません...</h1>
   <% end %>
   <div class="grid w-full grid-cols-1 gap-6 mx-auto lg:grid-cols-3 relative z-10">
       <% @books&.each do |book| %>

@@ -34,22 +34,18 @@
   </head>
 
   <body data-turbolinks="false" class="max-h-screen">
-    <% if user_signed_in? %>
-      <%= render 'shared/header' %>
-    <% else %>
-      <%= render 'shared/before_login_header' %>
-    <% end %>
-    <div class="w-full">
+    <div>
+      <%# if user_signed_in? %>
+        <%= render 'shared/header' %>
+      <%# else %>
+        <%#= render 'shared/before_login_header' %>
+      <%# end %>
       <%= render "flash" %>
-    </div>
-    <div class="flex">
       <main class="w-full">
-        <!-- メインのコンテンツをここに配置 -->
         <%= yield %>
         <%= javascript_tag 'application' %>
-        <%= render partial: 'shared/sidebar_opener' %>
-        <%#= render partial: 'shared/sidebar' %>
       </main>
+      <%= render 'shared/footer' %>
     </div>
   </body>
 </html>
