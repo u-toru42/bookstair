@@ -51,4 +51,7 @@
   </div>
 
   <%= render partial: 'books', locals: { books: @books } %>
+  <div class="mt-2 flex items-center justify-center">
+    <%= paginate @books %>
+  </div>
 </div>

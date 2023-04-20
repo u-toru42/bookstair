@@ -44,7 +44,7 @@ class BooksController < ApplicationController
         end
       end
     end
-    @books = @search.result.order('bookmarks.updated_at desc NULLS LAST')
+    @books = @search.result.order('bookmarks.updated_at desc NULLS LAST').page(params[:page])
 
     # ニュースフィード
     @feeds = Feed.all.order(updated_at: :asc)
