@@ -31,17 +31,17 @@ class BooksController < ApplicationController
   def index
     @search = Book.includes(:bookmarks).ransack(params[:q])
     if @search.sorts.empty?
-      @search.sorts = 'bookmarks.updated_at desc NULLS LAST'
+      @search.sorts = 'bookmarks.updated_at asc'
     else
       @search.sorts = @search.sorts.map do |sort|
-        if sort.name == 'bookmarks.updated_at'
-          "#{sort.name} #{sort.dir} NULLS LAST"
+        if sort.name == 'bookmarks.updated_at asc'
+          "#{sort.name} #{sort.dir}"
         else
           sort
         end
       end
     end
-    @books = @search.result.order('bookmarks.updated_at desc NULLS LAST, books.created_at desc').page(params[:page])
+    @books = @search.result.order('bookmarks.updated_at asc').page(params[:page])
 
     # ニュースフィード
     @feeds = Feed.all.order(updated_at: :asc)
