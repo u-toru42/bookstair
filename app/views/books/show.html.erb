@@ -15,11 +15,11 @@
       <% end %>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 sm:items-center">
-      <div class="flex justify-center item-center">
+      <div class="flex justify-center item-center card mr-2">
         <%= image_tag @book.large_image_url, style: "width: 200px; height: 250px; object-fit: contain;", class:"m-2" %>
       </div>
 
-      <blockquote class="sm:col-span-2 bg-slate-50 rounded p-3">
+      <blockquote class="sm:col-span-2 bg-slate-50 rounded p-3 card">
         <h1 class="text-lg font-semibold sm:text-md">
           <%= set_rakuten_book_params(@book.title) %>
         </h1>
