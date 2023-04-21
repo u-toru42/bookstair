@@ -27,6 +27,9 @@
             <% end %>
           </div>
         </div>
+        <div class="flex text-xs justify-start mb-1">
+          <%= l bookmark.updated_at, format: :short %>
+        </div>
         <% if !bookmark.link.blank? %>
           <div class="text-xs">
             おすすめ書籍・参考書籍など: <%= bookmark.link %>
