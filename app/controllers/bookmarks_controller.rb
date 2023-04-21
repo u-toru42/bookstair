@@ -7,7 +7,7 @@ class BookmarksController < ApplicationController
   require 'rss' 
 
   def index
-    @bookmarks = Bookmark.includes(:book).all.order(updated_at: :desc).page(params[:page]).per(10)
+    @bookmarks = Bookmark.includes(:book).all.order(updated_at: :desc).page(params[:page]).per(9)
     # ニュースフィード
     @feeds = Feed.all.order(updated_at: :asc)
     @show_feeds = true
