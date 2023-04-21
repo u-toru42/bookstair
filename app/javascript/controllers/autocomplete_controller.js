@@ -8,7 +8,7 @@ export default class extends Controller {
   }
 
   async search() {
-    const url = this.data.get("autocompleteUrl") + "/autocomplete";
+    const url = "/books/autocomplete"; // Qiita APIのエンドポイントに変更する
     const res = await fetch(url);
     const tags = await res.json();
     const input = this.inputTarget;
@@ -45,6 +45,7 @@ export default class extends Controller {
     }
   }
 
+
   select(event) {
     const input = this.inputTarget;
     const result = event.target;
@@ -58,7 +59,9 @@ export default class extends Controller {
     const input = this.inputTarget;
     const value = input.value;
     if (value !== "") {
-      input.form.submit();
+      const form = input.closest("form");
+      form.action = "/books/search?title_search=" + encodeURIComponent(value);
+      form.submit();
     }
   }
 }
