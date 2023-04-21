@@ -14,7 +14,7 @@
 :schedule: config/schedule.yml
 
 :redis:
-  url: redis://redis:6379/0
+  url: Rails.application.credentials.redis[:url].to_s
 
 :schedule:
   fetch_feeds:
