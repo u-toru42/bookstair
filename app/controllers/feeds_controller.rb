@@ -1,5 +1,7 @@
 class FeedsController < ApplicationController
   def index
-    @feeds = Feed.all.order(published_at: :desc)
+    # ニュースフィード
+    @feeds = Feed.all.order(updated_at: :asc)
+    @show_feeds = true
   end
 end

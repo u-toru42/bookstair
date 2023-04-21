@@ -39,8 +39,6 @@ class BooksController < ApplicationController
     # ニュースフィード
     @feeds = Feed.all.order(updated_at: :asc)
     @show_feeds = true
-    # FetchFeedsJob.perform_now
-    # UpdateFeedsJob.perform_now
 
     # ニュースフィード
     # @feed = Feed.where("title LIKE ?", "%#{@search}%")

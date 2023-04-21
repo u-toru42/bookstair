@@ -2,8 +2,8 @@
 #
 
 Rails.application.routes.draw do
-  require 'sidekiq/web'
-  require 'sidekiq-scheduler/web'
+  # require 'sidekiq/web'
+  # require 'sidekiq-scheduler/web'
   
   get 'likes/create'
   get 'likes/destroy'
@@ -26,13 +26,13 @@ Rails.application.routes.draw do
   # }
   devise_for :users
   
-  Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
-    [user, password] == ['admin', Rails.application.credentials.basic[:user_password].to_s]
-  end
+  # Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
+  #   [user, password] == ['admin', Rails.application.credentials.basic[:user_password].to_s]
+  # end
 
-  authenticate :user do #authenticate
-    mount Sidekiq::Web => '/sidekiq'
-  end
+  # authenticate :user do #authenticate
+  #   mount Sidekiq::Web => '/sidekiq'
+  # end
   
   resources :books, param: :isbn, constraints: { code: /\d+/ } do
     collection do 
@@ -43,9 +43,11 @@ Rails.application.routes.draw do
   end
   resources :bookmarks, only: %i[index edit update] 
 
-  Sidekiq::Web.use(Rack::Auth::Basic) do |user_id, password|
-    [user_id, password] == [ENV['USER_ID'], ENV['USER_PASSWORD']]
-  end
-  mount Sidekiq::Web, at: '/sidekiq'
+  resources :feeds, only: %i[index]
+
+  # Sidekiq::Web.use(Rack::Auth::Basic) do |user_id, password|
+  #   [user_id, password] == [ENV['USER_ID'], ENV['USER_PASSWORD']]
+  # end
+  # mount Sidekiq::Web, at: '/sidekiq'
 
 end

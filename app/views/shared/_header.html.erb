@@ -41,15 +41,26 @@
               <span>本を登録</span>
             <% end %>
           </div>
+          
+          <% if user_signed_in? %> 
+            <div class="flex flex-col items-center">
+              <%= link_to bookmarks_path, class: "flex flex-col items-center text-xs" do %>
+                <svg class="w-8 h-8" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"></path>
+                </svg>
+                <span>投稿一覧</span>
+              <% end %>
+            </div>
+          <% end %>
 
           <div class="flex flex-col items-center">
-            <%= link_to bookmarks_path, class: "flex flex-col items-center text-xs" do %>
+            <%= link_to feeds_path, class: "flex flex-col items-center text-xs" do %>
               <svg class="w-8 h-8" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path>
               </svg>
-              <span>投稿一覧</span>
+              <span>本日のトレンド</span>
             <% end %>
-          </div>
+          </div> 
 
           <% if user_signed_in? %>
             <div class="flex flex-col items-center">

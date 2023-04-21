@@ -1,0 +1,12 @@
+<div class="rounded"></div>
+  <div class="gap-2">
+    <div class="flex justify-center items-center p-2 bg-green-600">
+      <span class="text-slate-50 font-semibold">はてブ・技術評論社の人気エントリー</span>
+    </div>
+    <div id="popular-items" class="bg-slate-50 max-h-screen overflow-y-auto p-3 text-xs">
+      <% @feeds.each do |feed| %>
+        <h2><%= link_to (feed.title), feed.url, target: '_blank' %></h2>
+      <% end %>
+    </div>
+  <div>
+<div>
