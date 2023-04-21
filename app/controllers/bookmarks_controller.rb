@@ -19,7 +19,7 @@ class BookmarksController < ApplicationController
       redirect_to bookmark_path(bookmark), notice: '投稿を作成しました'
     else
       if bookmark.errors[:content].include?("contains negative sentiment")
-        flash[:danger] = "ネガティブな表現が含まれています"
+        flash[:danger] = "不適切な表現が含まれています"
       else
         flash[:danger] = '投稿に失敗しました'
       end
@@ -41,7 +41,7 @@ class BookmarksController < ApplicationController
       redirect_to @bookmark.book, notice: '投稿を更新しました'
     else
       if bookmark.errors[:content].include?("contains negative sentiment")
-        flash[:danger] = "ネガティブな表現が含まれています"
+        flash[:danger] = "不適切な表現が含まれています"
       else
         flash[:danger] = '投稿の更新に失敗しました'
       end
