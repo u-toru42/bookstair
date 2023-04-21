@@ -42,5 +42,12 @@ module Bookstair
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     config.booksGenreId = "001005"
+
+    # 下記を追加
+    config.active_job.queue_adapter = :sidekiq
+    
+    # タイムゾーンの設定をしていない場合は下記2行を追加
+    config.active_record.default_timezone = :local
+    config.time_zone = 'Tokyo'
   end
 end

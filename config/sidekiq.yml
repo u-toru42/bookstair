@@ -15,3 +15,13 @@
 
 :redis:
   url: redis://redis:6379/0
+
+:schedule:
+  fetch_feeds:
+  cron: '1 5,17 * * *'
+  class: FetchFeedsJob
+
+  # ジョブ2
+  update_feeds:
+    cron: '59 4 * * *'
+    class: UpdateFeedsJob
