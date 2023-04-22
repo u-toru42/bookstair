@@ -44,17 +44,32 @@
                         <%= f.hidden_field :isbn, value: set_rakuten_book_params(book.isbn) %>
                         <%= f.hidden_field :item_caption, value: set_rakuten_book_params(book.item_caption) %>
                         <%= f.hidden_field :item_price, value: book.item_price %>
-                        <button class="rounded border border-blue-600 bg-blue-600 mr-2 p-1 font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 mt-auto sm:m-auto md:mx-auto lg:mx-0"><%= f.submit "本棚に登録" %></button>
+                        <button class="rounded border border-blue-600 bg-blue-600 mr-2 p-1 font-medium text-white hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 mt-auto sm:m-auto md:mx-auto lg:mx-0" type="button" id="submit-button"><%= f.submit "本棚に登録" %></button>
                       <% end %>
                     </p>
                   <% end %>
-                  <!--
-                  <div class="mt-1">
-                    <%= link_to book.item_url, target: '_blank', class: "sm:mt-0" do %>
-                      <%= image_tag "rakuten_shop.png", class: "w-8 h-8", title: "楽天で購入" %>
-                    <% end %>
-                  </div>
-                  -->
+
+                  <script>
+                    $(document).ready(function() {
+                      $('#submit-button').click(function() {
+                        $('form').submit(function(event) {
+                          event.preventDefault();
+                          var formData = $(this).serialize();
+                          $.ajax({
+                            type: 'POST',
+                            url: $(this).attr('action'),
+                            data: formData,
+                            success: function(data) {
+                              console.log(data);
+                            },
+                            error: function(xhr, status, error) {
+                              console.log(xhr.responseText);
+                            }
+                          });
+                        });
+                      });
+                    });
+                  </script>
                 </div>
               </div>
             </div>

@@ -12,12 +12,15 @@ class BooksController < ApplicationController
   end
   
   def create
-    # @book = Book.create(params.permit(:title, :author, :sales_date, :large_image_url, :item_url, :isbn, :item_price, :item_caption))
     @book = Book.create(book_params)
-    if @book.valid?
-      redirect_to books_path, notice: "「#{@book[:title]}」を保存しました"
-    else
-      redirect_to books_path, notice: "「#{@book[:title]}」は既に保存されています"
+    respond_to do |format|
+      if @book.save
+        format.html { redirect_to @book, notice: '本を登録しました。' }
+        format.json { render json: { exists: false } }
+      else
+        format.html { render :new }
+        format.json { render json: { error: @book.errors.full_messages.join(', ') }, status: :unprocessable_entity }
+      end
     end
   end
 
