@@ -30,21 +30,15 @@
     <form class="max-w-md mx-auto mt-2 space-y-4 rounded">
       <%= search_form_for @search do |f| %>
         <div>
-          <%= f.search_field :title_cont, placeholder: "本棚内検索: タイトル、言語", class: "w-full p-4 pr-12 text-sm border-sky-400 rounded-lg shadow-sm bg-slate-50 border-2", type: "text", autocomplete: "on", "data-source": books_path %>
-          <%#= f.search_field :title_cont, placeholder: "本棚内検索: タイトル、言語", class: "w-full p-4 pr-12 text-sm border-sky-400 rounded-lg shadow-sm bg-slate-50 border-2", type: "text" %> 
+          <%= f.label :title_cont, '書籍名 or 言語', class: "sr-only" %>
+          <%= f.search_field :title_cont, placeholder: "本棚内検索: タイトル、言語", value: nil, autocomplete: "on", list: "books", class: "w-full p-4 pr-12 text-sm border-sky-400 rounded-lg shadow-sm bg-slate-50 border-2", type: "text", "data-source": books_path %>
+          <datalist id="books">
+            <% @books.each do |book| %>
+              <option value="<%= "#{book.title}" %>" <%= book.title %>></option>
+            <% end %>
+          </datalist>
         </div>
-        <script>
-          $(document).ready(function() {
-            $('input[data-autocomplete]').autocomplete({
-              source: $('input[data-autocomplete]').data('source'),
-              minLength: 1,
-              select: function(event, ui) {
-                $(this).val(ui.item.label);
-                $(this).closest('form').submit();
-              }
-            });
-          });
-        </script>
+
 
         <div class="flex items-center justify-end gap-4">
           <%= link_to books_path, class: "clear-button" do %>
