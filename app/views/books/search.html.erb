@@ -1,7 +1,9 @@
 <% content_for(:title, '検索/本棚に登録') %>
 
 <div class="bg-slate-50 text-sm min-h-screen pb-4">
-<%= render partial: 'shared/search' %>
+  <div>
+    <%= render partial: 'shared/search' %>
+  </div>
   <div id='book_list' class='book_list'>
     <%= render partial: 'book_list' %>
   </div>
