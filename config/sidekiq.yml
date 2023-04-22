@@ -1,27 +1,54 @@
----
-:concurrency: 25
-:pidfile: ./tmp/pids/sidekiq.pid
-:queues:
-  - [critical, 4]
-  - [default, 3]
-  - [low, 2]
-  - [mailers, 1]
+app = "bookstair"
+kill_signal = "SIGINT"
+kill_timeout = 5
+primary_region = "nrt"
 
-:logfile: ./log/sidekiq.log
-:timeout: 30
-:verbose: false
-:environment: development
-:schedule: config/schedule.yml
+[env]
 
-:redis:
-  url: Rails.application.credentials.redis[:url].to_s
+[experimental]
+  auto_rollback = true
 
-:schedule:
-  fetch_feeds:
-  cron: '1 5,17 * * *'
-  class: FetchFeedsJob
+[[services]]
+  http_checks = []
+  internal_port = 3000
+  processes = ["web"]
+  protocol = "tcp"
+  script_checks = []
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
 
-  # ジョブ2
-  update_feeds:
-    cron: '59 4 * * *'
-    class: UpdateFeedsJob
+  [[services.ports]]
+    force_https = true
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    restart_limit = 0
+    timeout = "2s"
+
+[[services]]
+  args = ["bundle", "exec", "sidekiq", "-c", "5", "-r", "./config/environment.rb", "-e", "production"]
+  command = "bundle exec sidekiq"
+  config = "config/sidekiq.yml"
+  internal_port = 3000
+  processes = ["worker"]
+  protocol = "tcp"
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+[processes]
+web = "bin/rails fly:server"
+worker = "bundle exec sidekiq"
+  [processes.concurrency]
+    hard_limit = 10
+    soft_limit = 5

@@ -1,5 +1,3 @@
-# fly.toml file generated for bookstair on 2023-03-09T22:29:28+09:00
-
 app = "bookstair"
 kill_signal = "SIGINT"
 kill_timeout = 5
@@ -36,11 +34,21 @@ primary_region = "nrt"
     restart_limit = 0
     timeout = "2s"
 
-  [[services.args]]
-    command = "bundle exec sidekiq -c 5 -r ./config/environment.rb -e production"
-    config = "config/sidekiq.yml"
-    schedule = "config/schedule.yml"
+[[services]]
+  args = ["bundle", "exec", "sidekiq", "-c", "5", "-r", "./config/environment.rb", "-e", "production"]
+  command = "bundle exec sidekiq"
+  config = "config/sidekiq.yml"
+  internal_port = 3000
+  processes = ["worker"]
+  protocol = "tcp"
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
 
 [processes]
 web = "bin/rails fly:server"
 worker = "bundle exec sidekiq"
+  [processes.concurrency]
+    hard_limit = 10
+    soft_limit = 5

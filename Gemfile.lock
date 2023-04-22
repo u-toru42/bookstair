@@ -336,10 +336,6 @@ GEM
       connection_pool (>= 2.2.5, < 3)
       rack (~> 2.0)
       redis (>= 4.5.0, < 5)
-    sidekiq-cron (1.10.0)
-      fugit (~> 1.8)
-      globalid (>= 1.0.1)
-      sidekiq (>= 6)
     sidekiq-scheduler (5.0.2)
       rufus-scheduler (~> 3.2)
       sidekiq (>= 6, < 8)
@@ -429,7 +425,6 @@ DEPENDENCIES
   rss
   seed-fu
   sidekiq (< 7)
-  sidekiq-cron
   sidekiq-scheduler
   sprockets-rails
   stimulus-rails
