@@ -3,13 +3,15 @@
     <div class="flex mb-2 pr-4">
     <%#= image_tag "bookmark.png", style: "width: 100px; height: 100px; object-fit: contain;", class: "mr-4 border-2 border-gray-200" %>
     <div> 
-    <cite class="inline-flex items-center mt-2 not-italic mb-2">
-      <span class="hidden w-6 h-px bg-gray-400 sm:inline-block"></span>
-      <p class="text-sm text-gray-500 uppercase sm:ml-3">
-        <strong>
-          <%= simple_format('投稿者名です。') %>
-        </strong>
-      </p>
+    <cite class="inline-flex items-center mt-2 not-italic">
+      <cite class="inline-flex items-center not-italic mb-1">
+          <svg class="w-4 h-4" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path>
+          </svg>
+          <p class="text-sm text-gray-500">
+            <strong><%= simple_format('投稿者名です。') %></strong>
+          </p>
+        </cite>
     </cite>
     <div class="text-base font-semibold text-blue-500 overflow-wrap break-words max-w-[80ch]">
       <%= simple_format('投稿の題名です。') %>
