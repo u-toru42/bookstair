@@ -8,17 +8,6 @@ primary_region = "nrt"
 [experimental]
   auto_rollback = true
 
-[components.redis]
-  image = "redis"
-  [components.redis.services]
-    ports = ["redis"]
-
-[components.worker]
-  image = "bookstair:latest"
-  command = "bundle exec sidekiq -C config/sidekiq.yml"
-  [components.worker.services]
-    ports = ["http"]
-
 [[services]]
   http_checks = []
   internal_port = 3000
