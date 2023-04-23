@@ -13,15 +13,11 @@ primary_region = "nrt"
   [components.redis.services]
     ports = ["redis"]
 
-[https]
-  crt = "/path/to/cert.crt"
-  key = "/path/to/cert.key"
-
 [components.worker]
   image = "bookstair:latest"
   command = "bundle exec sidekiq -C config/sidekiq.yml"
   [components.worker.services]
-    ports = ["https"]
+    ports = ["http"]
 
 [[services]]
   http_checks = []
@@ -36,11 +32,11 @@ primary_region = "nrt"
 
   [[services.ports]]
     force_https = true
-    handlers = ["https", "http"]
+    handlers = ["http"]
     port = 80
 
   [[services.ports]]
-    handlers = ["tls", "https"]
+    handlers = ["tls", "http"]
     port = 443
 
   [[services.tcp_checks]]
