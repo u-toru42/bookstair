@@ -8,6 +8,7 @@
     "daisyui": "^2.50.2",
     "esbuild": "^0.17.11",
     "intro.js": "^7.0.1",
+    "introjs": "^0.2.2",
     "postcss": "^8.4.21",
     "sass": "^1.57.1",
     "stimulus": "^3.2.1",
