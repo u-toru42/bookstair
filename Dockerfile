@@ -67,7 +67,8 @@ ENV JOBS_LOG_FILE=/dev/stdout
 # Redisを起動する
 CMD redis-server --daemonize yes && \
 # Sidekiqを設定する
-bundle exec sidekiq -c 1 -r ./app.rb -L /dev/stdout
+bundle exec sidekiq -e production -C config/sidekiq.yml -L /dev/stdout
+# bundle exec sidekiq -c 1 -r ./app.rb -L /dev/stdout
 # sidekiq-cronを設定する
 # RUN bundle exec sidekiq-cron -c 1 -r ./app.rb -s ./config/sidekiq-cron.yml -L /dev/stdout
 
