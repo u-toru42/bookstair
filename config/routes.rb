@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   #   confirmations: "users/confirmations"
   # }
   devise_for :users
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
   
   # Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
   #   [user, password] == ['admin', Rails.application.credentials.basic[:user_password].to_s]
