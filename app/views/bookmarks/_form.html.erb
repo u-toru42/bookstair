@@ -2,11 +2,11 @@
 
   <%= render 'shared/error_messages', object: f.object %>
   <section class="bg-slate-100">
-    <div class="max-w-screen px-4 py-16 mx-auto sm:px-6 lg:px-8">
-      <form class="grid grid-cols-6 gap-6 mt-8">
+    <div class="max-w-screen px-2 py-2 mx-auto sm:px-6 lg:px-8">
+      <form class="grid grid-cols-1 gap-1 mt-1">
             
-        <div class="col-span-6 sm:col-span-3">
-          <%= f.label :headline, class:"py-2 block font-medium text-gray-700 flex justify-center items-center" %>
+        <div class="col-span-1 sm:col-span-1">
+          <%= f.label :headline, class:"block font-medium text-gray-700 flex justify-center items-center" %>
           <%= f.text_field :headline, placeholder: "300文字まで書けます。例: DevOps、JavaScript、Ruby何もわからない…", id: 'js-new-bookmark-body', class: "w-full rounded-lg border-gray-200 p-3 text-sm", size: "100" %>
         </div>
 
