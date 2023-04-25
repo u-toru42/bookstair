@@ -1,6 +1,14 @@
 <section class="body-font bg-slate-50 min-h-screen">
   <div class="container px-5 py-24 mx-auto break-words">
     <div class="flex flex-col items-center pb-10 mx-auto mb-10 border-b border-gray-200 lg:w-3/5 sm:flex-row p-10 bg-slate-50 rounded-lg">
+      <div class="m-auto pt-16 pb-4 w-80">
+        <%= image_tag asset_path("bookstair_logo.png") %>
+      </div>
+    </div>
+    <div class="mb-10">
+      <div class="text-center text-xl font-bold">コンピュータ・ITの技術書を投稿サービス</div>
+    </div>
+    <div class="flex flex-col items-center pb-10 mx-auto mb-10 border-b border-gray-200 lg:w-3/5 sm:flex-row p-10 bg-slate-50 rounded-lg">
       <div class="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 text-indigo-500 bg-indigo-100 rounded-full sm:w-32 sm:h-32 sm:mr-10">
         <div fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 sm:w-16 sm:h-16" viewBox="0 0 24 24" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;">
           <%= image_tag asset_path("search.png") %>
@@ -8,19 +16,22 @@
       </div>
       <div class="flex-grow mt-6 text-center sm:text-left sm:mt-0">
         <h2 class="mb-2 text-lg font-medium text-gray-900 title-font font-bold">BOOKSTAIRの使い方</h2>
-        <p class="text-base leading-relaxed">BOOKSTAIRはサービス共有の本棚でコンピュータ・IT書籍の投稿ができます。</p>
+        <p class="text-base leading-relaxed">共有の本棚でコンピュータ・IT書籍の意見の投稿ができます。</p>
       </div>
     </div>
     <div class="flex flex-col items-center pb-10 mx-auto mb-10 border-b border-gray-200 lg:w-3/5 sm:flex-row bg-slate-50 p-10 rounded-lg">
       <div class="flex-grow mt-6 text-center sm:text-left sm:mt-0">
         <h2 class="mb-2 text-lg font-medium text-gray-900 title-font">気になる本を共有本棚に追加してみましょう。</h2>
-        <p class="text-base leading-relaxed">追加した書籍に自由な投稿ができます。</p>
+        <p class="text-base leading-relaxed">追加した書籍に自由な投稿ができます。後から編集が可能なので、気軽に投稿してみましょう！</p>
       </div>
       <div class="inline-flex items-center justify-center flex-shrink-0 order-first w-20 h-20 text-indigo-500 bg-indigo-100 rounded-full sm:w-32 sm:order-none sm:h-32 sm:ml-10">
         <div fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 sm:w-16 sm:h-16" viewBox="0 0 24 24" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;">
           <%= image_tag asset_path("book_on_the_man.png") %>
         </div>
       </div>
+    </div>
+    <div class="flex justify-center mt-8">
+    
     </div>
     <% if !user_signed_in? %>
       <div class="flex flex-wrap justify-center gap-4 mt-8">
