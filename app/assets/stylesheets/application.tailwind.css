@@ -9,3 +9,17 @@
 background-image: url('shelf.png');
 background-repeat: repeat-y;
 }
+
+.like {
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
+  color: #808080; 
+}
+
+.unlike {
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
+  color: #e54747;
+}

@@ -1,6 +1,15 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @favorite_books = current_user.favorites.map(&:book)
+    @bookmark_counts = {}
+    @favorite_books.each do |book|
+      @bookmark_counts[book.id] = book.bookmarks.count
+    end
+    @bookmarks = Bookmark.all
+  end
+
   def create
     @book = Book.find_by(isbn: params[:book_isbn])
     favorite = @book.favorites.new(user_id: current_user.id)

@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i[index edit update]
   get 'bookmarks/my_bookmarks', to: 'bookmarks#my_bookmarks'
   delete '/books/:book_isbn/favorites', to: 'favorites#destroy', as: 'favorite'
+  resources :favorites, only: %i[index]
   
   resources :feeds, only: %i[index]
 
