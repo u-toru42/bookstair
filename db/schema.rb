@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_16_045039) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_25_041450) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,6 +58,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_045039) do
     t.index ["book_isbn"], name: "index_clicks_on_book_isbn"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "book_isbn", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_isbn"], name: "index_favorites_on_book_isbn"
+    t.index ["user_id", "book_isbn"], name: "index_favorites_on_user_id_and_book_isbn", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "feeds", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -98,4 +108,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_045039) do
   add_foreign_key "bookmarks", "books", column: "book_isbn", primary_key: "isbn"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "clicks", "books", column: "book_isbn", primary_key: "isbn"
+  add_foreign_key "favorites", "books", column: "book_isbn", primary_key: "isbn"
+  add_foreign_key "favorites", "users"
 end

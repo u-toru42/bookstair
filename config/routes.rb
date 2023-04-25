@@ -2,11 +2,13 @@
 #
 
 Rails.application.routes.draw do
+  get 'favorites/create'
+  get 'favorites/destroy'
   # require 'sidekiq/web'
   # require 'sidekiq-scheduler/web'
   
-  get 'likes/create'
-  get 'likes/destroy'
+  # get 'likes/create'
+  # get 'likes/destroy'
   # devise_for :users
   # get 'books/search'
   # get 'bookmarks/create'
@@ -40,15 +42,18 @@ Rails.application.routes.draw do
     post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
   
-  resources :books, param: :isbn, constraints: { code: /\d+/ } do
+  resources :books, param: :isbn do
     collection do 
       get :search
       get :autocomplete
     end
     resources :bookmarks, only: %i[create destroy], shallow: true
+    resources :favorites, only: %i[create]
   end
-  resources :bookmarks, only: %i[index edit update] 
-
+  resources :bookmarks, only: %i[index edit update]
+  get 'bookmarks/my_bookmarks', to: 'bookmarks#my_bookmarks'
+  delete '/books/:book_isbn/favorites', to: 'favorites#destroy', as: 'favorite'
+  
   resources :feeds, only: %i[index]
 
   # Sidekiq::Web.use(Rack::Auth::Basic) do |user_id, password|

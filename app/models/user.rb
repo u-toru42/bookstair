@@ -30,6 +30,7 @@ class User < ApplicationRecord
   end
 
   has_many :bookmarks, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   
   def my_bookmark?(bookmark)
     self == bookmark.user

@@ -1,0 +1,67 @@
+<div class="relative w-full h-full bg-slate-50 px-2 mx-auto md:px-2 lg:px-2 z-0 pb-4">
+  <h1 class="text-2xl text-center bg-emerald-500 text-white font-bold py-2 rounded-lg mb-1 relative z-10">自分の投稿一覧</h1>
+  <% if !@bookmarks.present? %>
+    <h1 class="w-full h-full text-2xl flex justify-center items-center text-slate-600 mt-4 font-bold">お探しの本がありません...</h1>
+  <% end %>
+  <div class="grid w-full h-full grid-cols-1 gap-2 mx-auto lg:grid-cols-3 relative z-10">
+    <% @bookmarks.each do |bookmark| %>
+      <div class="p-4 border-2 border-gray-200 card">
+        <h2 class="mt-1 mb-1 text-xs font-semibold tracking-widest text-blue-600"><%= link_to truncate(set_rakuten_book_params(bookmark.book.title), length: 36), book_path(bookmark.book) %></h2>
+        <div class="flex items-center">
+          <svg class="w-4 h-4" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path>
+          </svg>
+          <p class="text-sm leading-relaxed"><%= bookmark.user.decorate.user_name %></p>
+        </div>
+
+        <p class="mx-auto font-semibold text-blue-500"><%= link_to truncate(bookmark.headline), book_path(bookmark.book) %></p>
+        <div class="flex justify-start mb-1">
+          <%= truncate(set_rakuten_book_params(bookmark.body)) %>
+        </div>
+        <div class="flex justify-between items-center mb-1 text-xs">
+          <div>
+            <% if bookmark.chapter.blank? %>
+            チャプター指定なし
+            <% else %>
+            チャプター/第<%= bookmark.chapter %>章
+            <% end %>
+          </div>
+        </div>
+        <div class="flex text-xs justify-start mb-1">
+          <%= l bookmark.updated_at, format: :short %>
+        </div>
+        <% if !bookmark.link.blank? %>
+          <div class="text-xs">
+            おすすめ書籍・参考書籍など: <%= bookmark.link %>
+          </div>
+        <% end %>
+        <div class="flex justify-end items-center mt-1">
+          <div class="flex gap-2">
+            <div class="flex justify-center items-center">
+              <a href="<%= book_path(bookmark.book) %>">
+                <svg class="w-6 h-6"data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
+                </svg>
+              </a>
+            </div>
+
+            <% if current_user && current_user.own?(bookmark) %>
+              <%= link_to bookmark, method: :delete, remote: :true, data: { turbo_method: :delete, turbo_confirm: "「#{bookmark.headline}」を削除しますか?" }, class: "w-6 h-6" do %>
+                <%= image_tag "delete.png", class: "w-full h-full object-cover" %>
+              <% end %>
+            <% end %>
+
+            <%#= link_to "https://twitter.com/share?url=#{request.url}%0a%0a&text=理解度星○の投稿です。%0a『#{bookmark.book.title.truncate(40)}』%0a%0a&hashtags=BOOKSTAIR",
+              target: '_blank', class: "w-6 h-6" do %>
+              <%#= image_tag bookmark.screenshot_url, class: "w-full h-full object-cover" %>
+            <%# end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="flex items-center justify-center">
+  <%= paginate @bookmarks %>
+</div>

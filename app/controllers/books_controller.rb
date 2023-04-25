@@ -127,7 +127,6 @@ class BooksController < ApplicationController
     click.update(clicks: click.clicks + 1)
   end
 
-  
   private
 
   def set_rss

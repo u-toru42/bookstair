@@ -17,6 +17,8 @@ class Book < ApplicationRecord
   self.primary_key = :isbn
   
   has_many :bookmarks, primary_key: 'isbn', foreign_key: 'book_isbn', dependent: :destroy
+  has_many :favorites, primary_key: 'isbn', foreign_key: 'book_isbn', dependent: :destroy
+  has_many :users, through: :favorites
 
   validates :isbn, uniqueness: { scope: :isbn }
   
@@ -32,6 +34,10 @@ class Book < ApplicationRecord
   # 投稿の並び順あり
   def self.ransackable_associations(auth_object = nil)
     %w[bookmarks]
+  end
+
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
   end
   
 end

@@ -33,7 +33,6 @@ class BookmarksController < ApplicationController
     @bookmark = current_user.bookmarks.find(params[:id])
   end
 
-
   def update
     @bookmark = current_user.bookmarks.find(params[:id])
     if @bookmark.update!(bookmark_params.merge(book: @bookmark.book))
@@ -53,6 +52,10 @@ class BookmarksController < ApplicationController
     bookmark = Bookmark.find(params[:id])
     bookmark.destroy
     redirect_to bookmark.book, danger: 'しおりが削除されました'
+  end
+
+  def my_bookmarks
+    @bookmarks = Bookmark.where(user_id: current_user.id).order(updated_at: :desc).page(params[:page]).per(9)
   end
 
   private
