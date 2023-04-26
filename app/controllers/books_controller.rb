@@ -12,14 +12,15 @@ class BooksController < ApplicationController
   end
   
   def create
-    @book = Book.create(book_params)
+    @book = Book.new(book_params)
+
     respond_to do |format|
       if @book.save
-        format.html { redirect_to @book, notice: '本を登録しました。' }
-        format.json { render json: { exists: false } }
+        format.html { redirect_to @book, notice: '書籍を登録しました。' }
+        format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
-        format.json { render json: { error: @book.errors.full_messages.join(', ') }, status: :unprocessable_entity }
+        format.json { render json: @book.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,16 +44,6 @@ class BooksController < ApplicationController
     @feeds = Feed.all.order(updated_at: :asc)
     @show_feeds = true
 
-    # ニュースフィード
-    # @feed = Feed.where("title LIKE ?", "%#{@search}%")
-    
-    # トレンド
-    # @trend_books = []
-    # @books.each do |book|
-    #   if @feed.any? { |feed| feed.title.include?(book.title) }
-    #     @trend_books << book
-    #   end
-    # end
     @bookmark_counts = {}
     @books.each do |book|
       @bookmark_counts[book.id] = book.bookmarks.count

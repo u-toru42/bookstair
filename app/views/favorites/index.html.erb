@@ -1,7 +1,9 @@
+<% content_for(:title, 'お気に入りの本棚') %>
+
 <div class="relative w-full px-2 mx-auto md:px-2 lg:px-2 h-full z-0 pb-2">
   <h1 class="text-2xl text-center bg-emerald-500 text-white font-bold py-2 rounded-lg mb-1 relative z-10">お気に入りの本棚</h1>
   <% if !@favorite_books.present? %>
-    <h1 class="w-full h-full text-2xl flex justify-center items-center text-slate-600 mt-4 font-bold">お探しの本がありません...</h1>
+    <h1 class="w-full h-full text-2xl flex justify-center items-center text-slate-600 mt-4 font-bold">まだお気に入りの本がありません。お気に入りの本を探してみましょう！</h1>
   <% end %>
   <div class="grid w-full grid-cols-1 gap-2 mx-auto lg:grid-cols-3 relative z-10">
     <% @favorite_books&.each do |book| %>

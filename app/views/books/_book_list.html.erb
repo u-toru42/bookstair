@@ -35,7 +35,7 @@
                     <% end %>
                   <% else %>
                     <p class="text-xs">
-                      <%= form_with model: @book, url: books_path, local: true, data: { controller: "book", action: "submit" } do |f| %>
+                      <%= form_with model: @book, url: books_path, local: false, data: { controller: "books" }, class:"js-form" do |f| %>
                         <%= f.hidden_field :title, value: set_rakuten_book_params(book.title) %>
                         <%= f.hidden_field :author, value: set_rakuten_book_author_params(book.author) %>
                         <%= f.hidden_field :sales_date, value: set_rakuten_book_params(book.sales_date) %>

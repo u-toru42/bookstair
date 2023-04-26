@@ -1,9 +1,1 @@
-<% if @book_exists %>
-  document.querySelector('[data-target="ajax.button"]').innerText = '本棚に登録済みです';
-  document.querySelector('[data-target="ajax.button"]').classList.remove('bg-blue-600', 'hover:bg-transparent', 'hover:text-blue-600', 'active:text-blue-500');
-  document.querySelector('[data-target="ajax.button"]').classList.add('bg-green-600');
-<% else %>
-  document.querySelector('[data-target="ajax.button"]').innerText = '本棚に登録する';
-  document.querySelector('[data-target="ajax.button"]').classList.remove('bg-green-600');
-  document.querySelector('[data-target="ajax.button"]').classList.add('bg-blue-600', 'hover:bg-transparent', 'hover:text-blue-600', 'active:text-blue-500');
-<% end %>
+console.log("create.js.erbファイルが呼び出されました！");

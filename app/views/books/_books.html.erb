@@ -1,3 +1,4 @@
+
 <div class="relative w-full px-2 mx-auto md:px-2 lg:px-2 h-full z-0 pb-2">
   <h1 class="text-2xl text-center bg-emerald-500 text-white font-bold py-2 rounded-lg mb-1 relative z-10">共有本棚</h1>
   <% if !@books.present? %>
@@ -7,14 +8,19 @@
     <% @books&.each do |book| %>
       <div class="p-4 border-2 border-gray-200 bg-slate-50 card">
         <div class="flex justify-start items-center">
-          <%= link_to (image_tag(book.large_image_url)), book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl mb-1 flex justify-center items-center" %>
+          <!-- Bulmaの機能で縦ディスプレイ表示の場合書籍画像がはみ出るのを防ぐ is-hidden-tablet-only -->
+          <%= link_to (image_tag(book.large_image_url)), book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "object-cover object-center w-full mb-8 lg:h-48 md:h-36 rounded-xl mb-1 flex justify-center items-center is-hidden-tablet-only" %>
         </div>
-        <h2 class="mt-1 mb-1 text-xs font-semibold tracking-widest text-blue-600"><%= truncate(set_rakuten_book_params(book.title), length: 36) %></h2>
+        <h2 class="mt-1 mb-1 text-xs font-semibold tracking-widest text-blue-600">
+          <%= link_to book, method: :get, params: {isbn: book.isbn}, remote: true, class: "flex items-center", "data-action": "click->click-count#update" do %>
+            <%= truncate(set_rakuten_book_params(book.title), length: 36) %>
+          <% end %>
+        </h2>
         <p class="mx-auto text-xs leading-relaxed text-gray-500">著者: <%= set_rakuten_book_params(book.author) %></p>
         <p class="mx-auto text-xs leading-relaxed"><%= truncate(set_rakuten_book_params(book.item_caption), length: 100) %></p>
         
         <div class="mt-2 flex justify-end" data-controller="click-count">
-          <%= link_to book, method: :get, params: {isbn: book.isbn}, remote: true, class: "flex items-center", "data-action": "click->click-count#update" do %>
+          <%= link_to book, method: :get, params: {isbn: book.isbn}, class: "flex items-center", "data-action": "click->click-count#update" do %>
             <span class="text-xs">投稿数</span>
             <svg class="w-5 h-5" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"></path>

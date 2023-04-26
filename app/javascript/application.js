@@ -7,3 +7,4 @@ Turbo.session.drive = false;
 
 const application = Application.start()
 application.register("toggle", ToggleController)
+
