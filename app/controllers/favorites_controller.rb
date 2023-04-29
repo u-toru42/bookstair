@@ -2,12 +2,16 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @books = Book.all
     @favorite_books = current_user.favorites.map(&:book).sort_by { |book| book.bookmarks.count }.reverse
     @bookmark_counts = {}
     @favorite_books.each do |book|
       @bookmark_counts[book.id] = book.bookmarks.count
     end
     @bookmarks = Bookmark.all
+    # if @favorites.nil?
+    @favorites = Favorite.where(book_isbn: @books.pluck(:isbn), user_id: current_user.id)
+    # end
   end
 
   def create

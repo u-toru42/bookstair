@@ -35,9 +35,7 @@ class BooksController < ApplicationController
   def index
     # 従来の検索
     @search = Book.ransack(params[:q])
-
     @search.sorts = 'created_at desc' if @search.sorts.empty?
-
     @books = @search.result.page(params[:page])
 
     # ニュースフィード
@@ -50,12 +48,9 @@ class BooksController < ApplicationController
     end
     @bookmarks = Bookmark.all
     # お気に入り処理に必要なインスタンス変数
-    # @favorites = Favorite.where(book_isbn: @books.pluck(:isbn), user_id: current_user.id)
     if @favorites.nil?
       @favorites = Favorite.where(book_isbn: @books.pluck(:isbn), user_id: current_user.id)
     end
-
-    # favorite = @favorites.find_by(book_isbn: book.isbn)
   end
   
   def bookmark_index
@@ -112,10 +107,12 @@ class BooksController < ApplicationController
     @bookmarks = @book.bookmarks.includes(:user).order(chapter: :asc)
     @bookmark_counts = @book.bookmarks.count
     # ニュースフィード
-    @feeds = Feed.all
-    @show_feeds = true
-    # screenshot = ScreenshotCapture::Screenshot.new(url: book_url(@book))
-    # @screenshot_url = screenshot.url
+    # @feeds = Feed.all
+    # @show_feeds = true
+    # お気に入り処理に必要なインスタンス変数
+    if @favorites.nil?
+      @favorites = Favorite.where(book_isbn: @book.isbn, user_id: current_user.id)
+    end
 
   end
 
