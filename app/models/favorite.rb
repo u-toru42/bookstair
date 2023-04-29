@@ -24,4 +24,5 @@ class Favorite < ApplicationRecord
   belongs_to :book, foreign_key: 'book_isbn'
 
   validates :user_id, uniqueness: { scope: :book_isbn }
+
 end

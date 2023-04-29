@@ -49,7 +49,8 @@ class BooksController < ApplicationController
       @bookmark_counts[book.id] = book.bookmarks.count
     end
     @bookmarks = Bookmark.all
-    # @word_count = Feed.word_count
+    # お気に入り処理に必要なインスタンス変数
+    @favorites = Favorite.where(book_isbn: @books.pluck(:isbn), user_id: current_user.id)
   end
   
   def bookmark_index
@@ -116,6 +117,18 @@ class BooksController < ApplicationController
   def update_click_count(book_isbn)
     click = Click.find_or_initialize_by(book_isbn: book_isbn)
     click.update(clicks: click.clicks + 1)
+  end
+
+  def favorite
+    @favorite_books = current_user.favorite_books.includes(:user).order(created_at: :desc)
+  end
+
+  def unfavorite
+    @book = Book.find_by(isbn: params[:book_isbn])
+    favorite = Favorite.find(params[:id])
+    current_user.unfavorite(@book)
+
+    render turbo_stream: turbo_stream.replace("favorite-button-#{params[:book_isbn]}", partial: 'books/favorite', locals: { book: @book })
   end
 
   private

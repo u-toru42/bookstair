@@ -31,6 +31,7 @@ class User < ApplicationRecord
 
   has_many :bookmarks, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_books, through: :favorites, source: :book
   
   def my_bookmark?(bookmark)
     self == bookmark.user
@@ -38,5 +39,22 @@ class User < ApplicationRecord
 
   def own?(object)
     object.user_id == id
+  end
+
+  # お気に入りをする
+  def favorite(book)
+    favorite_books << book
+  end
+
+  #  お気に入りを解除する
+  def unfavorite(book)
+    # favorite_books.delete(book)
+    book = Book.find_by(isbn: :book_isbn)
+    favorites.find_by(book: book)&.destroy if book.present?
+  end
+
+  # お気に入りしているかどうかを判定する
+  def favorited_by?(book)
+    favorite_books.include?(book)
   end
 end

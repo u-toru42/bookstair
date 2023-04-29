@@ -1,1 +1,1 @@
-console.log("create.js.erbファイルが呼び出されました！");
+$("#js-favorite-<%= @book.isbn %>").html("<%= j(render('books/unfavorite', book: @book)) %>");

@@ -48,13 +48,12 @@ Rails.application.routes.draw do
       get :autocomplete
     end
     resources :bookmarks, only: %i[create destroy], shallow: true
-    resources :favorites, only: %i[create]
+    resources :favorites, only: %i[create destroy]
   end
   resources :bookmarks, only: %i[index edit update]
   get 'bookmarks/my_bookmarks', to: 'bookmarks#my_bookmarks'
-  delete '/books/:book_isbn/favorites', to: 'favorites#destroy', as: 'favorite'
-  resources :favorites, only: %i[index]
-  
+  resources :favorites, only: %i[index destroy]
+
   resources :feeds, only: %i[index]
 
   # Sidekiq::Web.use(Rack::Auth::Basic) do |user_id, password|

@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @favorite_books = current_user.favorites.map(&:book)
+    @favorite_books = current_user.favorites.map(&:book).sort_by { |book| book.bookmarks.count }.reverse
     @bookmark_counts = {}
     @favorite_books.each do |book|
       @bookmark_counts[book.id] = book.bookmarks.count
@@ -12,22 +12,17 @@ class FavoritesController < ApplicationController
 
   def create
     @book = Book.find_by(isbn: params[:book_isbn])
-    favorite = @book.favorites.new(user_id: current_user.id)
-    if favorite.save
-      redirect_to request.referer
-    else
-      redirect_to request.referer
-    end
+    current_user.favorite(@book)
+
+    render turbo_stream: turbo_stream.replace("favorite-button-#{@book.isbn}", partial: 'books/unfavorite', locals: { book: @book })
   end
 
   def destroy
-    @book = Book.find_by(isbn: params[:book_isbn])
-    favorite = @book.favorites.find_by(user_id: current_user.id)
-    if favorite.present?
-        favorite.destroy
-        redirect_to request.referer
-    else
-        redirect_to request.referer
-    end
+    @book = Book.find_by(isbn: params[:isbn])
+    current_user.unfavorite(@book)
+
+    render turbo_stream: turbo_stream.replace("favorite-button-#{@book.isbn}", 
+                                              partial: 'books/favorite', 
+                                              locals: { book: @book })
   end
 end
