@@ -1,0 +1,11 @@
+<turbo-frame id="favorite-button-<%= book.isbn %>">
+  <% favorite = @favorites.find_by(book_isbn: book.isbn) %>
+  <%= button_to book_favorite_path(book_isbn: book.isbn, id: favorite.id),
+                id: "js-favorite-button-for-book-#{book.isbn}-#{favorite.id}",
+                method: :delete,
+                data: { turbo_method: :delete },
+                local: false,
+                data: { type: :script } do %>
+    ★
+  <% end %>
+</turbo-frame>

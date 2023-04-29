@@ -1,0 +1,5 @@
+<% if current_user.favorited_by?(book) %>
+  <%= render 'books/unfavorite', book: book %>
+<% else %>
+  <%= render 'books/favorite', book: book %>
+<% end %>
