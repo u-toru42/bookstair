@@ -50,7 +50,12 @@ class BooksController < ApplicationController
     end
     @bookmarks = Bookmark.all
     # お気に入り処理に必要なインスタンス変数
-    @favorites = Favorite.where(book_isbn: @books.pluck(:isbn), user_id: current_user.id)
+    # @favorites = Favorite.where(book_isbn: @books.pluck(:isbn), user_id: current_user.id)
+    if @favorites.nil?
+      @favorites = Favorite.where(book_isbn: @books.pluck(:isbn), user_id: current_user.id)
+    end
+
+    # favorite = @favorites.find_by(book_isbn: book.isbn)
   end
   
   def bookmark_index
