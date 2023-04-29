@@ -48,9 +48,7 @@ class User < ApplicationRecord
 
   #  お気に入りを解除する
   def unfavorite(book)
-    # favorite_books.delete(book)
-    book = Book.find_by(isbn: :book_isbn)
-    favorites.find_by(book: book)&.destroy if book.present?
+    favorite_books.delete(book)
   end
 
   # お気に入りしているかどうかを判定する

@@ -2,8 +2,8 @@
   <%= button_to book_favorites_path(book),
     id: "js-favorite-button-for-book-#{book.isbn}",
     method: :post,
-    remote: true,
+    local: false,
     data: { type: :script } do %>
-    ☆
+    お気に入りに追加☆
   <% end %>
 </turbo-frame>
