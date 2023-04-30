@@ -1,34 +1,17 @@
 <% content_for(:title, 'プロフィール編集') %>
 
-<%= form_with model: @user do |f| %>
-  <section class="bg-slate-100 text-gray-600 body-font lg:min-h-screen">
-    <div class="container px-5 py-5 mx-auto">
-      <div class="text-center mb-20">
-        <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">ユーザー登録情報</h1>
-        <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500s"></p>
-        <div class="flex mt-6 justify-center">
-          <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
-        </div>
-      </div>
-        <div class="p-4 md:w-1/3 flex flex-col text-center items-center">
-          <div class="w-20 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10" viewBox="0 0 24 24" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;">
-              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-          </div>
-          <div class="flex-grow">
-            <h2 class="text-gray-900 text-lg title-font font-medium mb-3">
-            <div class="col-span-6 sm:col-span-3 mt-1 mb-2">
-              <%= f.label :name, class: "mb-1" %>
-              <%= f.text_field :name, class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm"  %>
-              <%= f.label :email, class: "mt-1 mb-1" %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "hogehoge@example.com", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
-            </div>
-            <div><%= f.submit "保存", class: "button is-info" %></div></h2>
-          </div>
-        </div>
+<%= form_with(model: @user, local: true) do |f| %>
+  <div class="bg-slate-100 text-gray-600 body-font lg:min-h-screen">
+    <h1 class="flex jusitfy-center items-center sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">ユーザー登録情報</h1>
+    <div class="p-4">
+      <div class="gap-y-2 mt-1 mb-2 card">
+        <%= f.label :name, class: "col-span-6 sm:col-span-3 mb-1" %>
+        <%= f.text_field :name, class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm"  %>
+        <%= f.label :email, class: "col-span-6 sm:col-span-3 mt-1 mb-1" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "hogehoge@example.com", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
       </div>
     </div>
-  </section>
+    <div><%= f.submit "保存", class: "button is-info" %></div>
+  </div>
 <% end %>
+
