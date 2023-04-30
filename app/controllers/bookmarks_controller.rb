@@ -51,7 +51,7 @@ class BookmarksController < ApplicationController
   def destroy
     bookmark = Bookmark.find(params[:id])
     bookmark.destroy
-    redirect_to bookmark.book, danger: 'しおりが削除されました'
+    redirect_to bookmark.book, danger: '投稿が削除されました'
   end
 
   def my_bookmarks
