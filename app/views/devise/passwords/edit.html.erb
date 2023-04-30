@@ -1,25 +1,48 @@
-<h2>Change your password</h2>
+<% content_for(:title, 'パスワード変更') %>
 
 <%= form_with model: @user, url: password_path(resource_name), local: true do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
+<section class="bg-slate-100">
+  <div class="lg:min-h-screen">
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <main
+      aria-label="Main"
+      class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6"
+    >
+      <div class="max-w-xl lg:max-w-3xl">
+        <h1
+          class="p-3 mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl flex justify-center items-center"
+        >
+          パスワードの変更
+        </h1>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
+        <form action="#" class="gap-6 mt-8 m-6" style="margin: 0 auto;">
+          
+          <div class="col-span-6 sm:col-span-3 mt-1">
+            <%= f.label :password, "新しいパスワード" %><br />
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> 文字以上)</em><br />
+            <% end %>
+            <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
+          </div>
+
+          <div class="col-span-6 mt-1">
+            <%= f.label :password_confirmation, "パスワード確認" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
+          </div>
+
+          <div class="flex justify-center col-span-6 sm:col-span-3 mt-2">
+            <%= f.submit "パスワード変更", class:"button is-info" %>
+          </div>
+
+        </form>
+      </div>
+    </main>
   </div>
+</section>
+
 <% end %>
 
 <%= render "devise/shared/links" %>

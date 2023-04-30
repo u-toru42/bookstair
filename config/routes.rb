@@ -2,13 +2,9 @@
 #
 
 Rails.application.routes.draw do
-  get 'favorites/create'
-  get 'favorites/destroy'
   # require 'sidekiq/web'
   # require 'sidekiq-scheduler/web'
   
-  # get 'likes/create'
-  # get 'likes/destroy'
   # devise_for :users
   # get 'books/search'
   # get 'bookmarks/create'
@@ -41,6 +37,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
+  # mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+
+  resources :users, only: %i[show edit update]
   
   resources :books, param: :isbn do
     collection do 
@@ -53,6 +52,8 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i[index edit update]
   get 'bookmarks/my_bookmarks', to: 'bookmarks#my_bookmarks'
   resources :favorites, only: %i[index destroy]
+  # get 'favorites/create'
+  # get 'favorites/destroy'
 
   resources :feeds, only: %i[index]
 

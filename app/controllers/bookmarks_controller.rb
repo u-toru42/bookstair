@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-
+  before_action :move_to_signed_in
   before_action :set_rss
   require 'faraday'
   require 'oj'
@@ -66,6 +66,12 @@ class BookmarksController < ApplicationController
 
   def set_rss
     @feeds = Feed.all
+  end
+
+  def move_to_signed_in
+    unless user_signed_in?
+      redirect_to page_path('about'), info: "ログイン後に使える機能です"
+    end
   end
 
 end

@@ -1,16 +1,41 @@
-<h2>Forgot your password?</h2>
+
+
+<% content_for(:title, 'パスワードリセット') %>
 
 <%= form_with model: @user, url: password_path(resource_name), local: true do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<section class="bg-slate-100">
+  <div class="lg:min-h-screen">
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <main
+      aria-label="Main"
+      class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6"
+    >
+      <div class="max-w-xl lg:max-w-3xl">
+        <h1
+          class="p-3 mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl flex justify-center items-center"
+        >
+          パスワードを忘れましたか？
+        </h1>
+
+        <form action="#" class="gap-6 mt-8 m-6" style="margin: 0 auto;">
+          
+          <div class="col-span-6 sm:col-span-3 mt-1">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "test@example.com", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
+          </div>
+
+          <div class="flex justify-center items-center col-span-6 mt-1">
+            <div class="button is-info">
+              <%= f.submit "パスワードリセット手続き" %>
+            </div>
+          </div>
+              <%= render "devise/shared/links" %>
+        </form>
+      </div>
+    </main>
   </div>
+</section>
+
 <% end %>
-
-<%= render "devise/shared/links" %>

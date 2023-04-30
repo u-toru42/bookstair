@@ -51,12 +51,12 @@
 
       <%= form_with model: @user, url: session_path(resource_name), local: true do |f| %>
         <form action="#" class="gap-6 mt-8">
-          <div class="col-span-6 sm:col-span-3">
+          <div class="col-span-6 sm:col-span-3 mt-1">
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "hogehoge@example.com",  class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
           </div>
 
-          <div class="col-span-6 sm:col-span-3">
+          <div class="col-span-6 sm:col-span-3 mt-1">
             <%= f.label :password %><br />
             <%= f.password_field :password, autocomplete: "password", placeholder: "password", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
           </div>

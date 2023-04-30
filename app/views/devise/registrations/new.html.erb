@@ -18,26 +18,26 @@
 
         <form action="#" class="gap-6 mt-8 m-6" style="margin: 0 auto;">
           
-          <div class="col-span-6 sm:col-span-3">
-            <%= f.label :name, class: "block font-medium text-gray-700" %>
+          <div class="col-span-6 sm:col-span-3 mt-1">
+            <%= f.label :name, class: "font-medium text-gray-700" %>
             <%= f.text_field :name, autofocus: true, placeholder: "BookStair", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
           </div>
 
-          <div class="col-span-6">
-            <%= f.label :email, class: "block font-medium text-gray-700" %>
+          <div class="col-span-6 mt-1">
+            <%= f.label :email, class: "font-medium text-gray-700" %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "hogehoge@example.com", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
           </div>
 
-          <div class="col-span-6 sm:col-span-3">
-              <%= f.label :password, class: "block font-medium text-gray-700" %>
+          <div class="col-span-6 sm:col-span-3 mt-1">
+              <%= f.label :password, class: "font-medium text-gray-700" %>
           </div>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> 文字以上で登録してください)</em>
               <% end %><br />
               <%= f.password_field :password, autocomplete: "new-password", placeholder: "password", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
 
-          <div class="col-span-6 sm:col-span-3">
-            <%= f.label :password_confirmation, class: "block font-medium text-gray-700" %>
+          <div class="col-span-6 sm:col-span-3 mt-1">
+            <%= f.label :password_confirmation, class: "font-medium text-gray-700" %>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "password", class: "w-full mt-1 text-border p-3 text-gray-700 bg-white border-gray-200 rounded-md shadow-sm" %>
           </div>
 
