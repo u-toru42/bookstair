@@ -2,7 +2,7 @@
 
 ![BOOKSTAIR](https://user-images.githubusercontent.com/37538568/235348108-38f8046f-dc51-426e-8cb4-813770facd05.png)
 
-## サービスURL [https://www.bookstair.com](https://www.bookstair.com)
+## サービスURL [https://bookstair.com](https://bookstair.com/)
 
 ---
 <br>
