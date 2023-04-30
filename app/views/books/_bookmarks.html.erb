@@ -1,5 +1,11 @@
 <div class="relative w-full h-full bg-slate-50 px-2 mx-auto md:px-2 lg:px-2 z-0 pb-4">
-  <h1 class="text-2xl text-center bg-emerald-500 text-white font-bold py-2 rounded-lg mb-1 relative z-10">投稿一覧</h1>
+  <h1 class="flex items-center justify-center bg-emerald-500 text-white font-bold py-2 rounded-lg mb-1">
+    <svg class="w-8 h-8 mr-2" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"></path>
+    </svg>
+    <span class="text-2xl">投稿一覧</span>
+  </h1>
+  
   <% if !@bookmarks.present? %>
     <h1 class="w-full h-full text-2xl flex justify-center items-center text-slate-600 mt-4 font-bold">お探しの本がありません...</h1>
   <% end %>
