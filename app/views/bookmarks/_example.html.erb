@@ -22,23 +22,12 @@
 
     <div class="flex justify-between items-center mb-2">
       <div class="text-xs">
-        <%# if bookmark.chapter.blank? %>
-          <%= simple_format('チャプター/第hogehoge章') %>
-        <%# else %>
-          <%#= simple_format('チャプター/第 #{なんとか}章') %>
-        <%# end %>
+        <%= simple_format('チャプター/第○章') %>
       </div>
-      <%# if !bookmark.link.blank? %>
-      <%# end %>
     </div>
+    
     <div class="text-xs hover:text-gray-700">
       おすすめ書籍・参考書籍など: <%= simple_format('おすすめの書籍を書けます。') %>
-    </div>
-    <div class="p-3">
-      <%#= simple_format('しおりのタグです。') %>
-    </div>
-    <div class="flex justify-center items-center gap-4">
-
     </div>
   </div>
 </section>
