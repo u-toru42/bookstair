@@ -34,21 +34,3 @@ primary_region = "nrt"
     restart_limit = 0
     timeout = "2s"
 
-[[services]]
-  args = ["bundle", "exec", "sidekiq", "-c", "5", "-r", "./config/environment.rb", "-e", "production"]
-  command = "bundle exec sidekiq"
-  config = "config/sidekiq.yml"
-  internal_port = 3000
-  processes = ["worker"]
-  protocol = "tcp"
-  [services.concurrency]
-    hard_limit = 25
-    soft_limit = 20
-    type = "connections"
-
-[processes]
-web = "bin/rails fly:server"
-worker = "bundle exec sidekiq"
-  [processes.concurrency]
-    hard_limit = 10
-    soft_limit = 5

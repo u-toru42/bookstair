@@ -27,14 +27,14 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
 && apt-get update -qq \
 && apt-get install -y build-essential nodejs yarn \
-&& apt-get install -y cron
+# && apt-get install -y cron
 
 RUN apt install -y --no-install-recommends \
   git \
   vim \ 
-  cron
+  # cron
 
-RUN service cron start
+# RUN service cron start
 
 RUN gem install bundler:$BUNDLER_VERSION
 
@@ -54,20 +54,20 @@ COPY package.json /$APP_NAME/package.json
 COPY tailwind.config.js /$APP_NAME/tailwind.config.js
 
 # Cronジョブの設定ファイルを追加する
-COPY config/schedule.yml /$APP_NAME/config/schedule.yml
+# COPY config/schedule.yml /$APP_NAME/config/schedule.yml
 # COPY config/sidekiq-cron.yml /$APP_NAME/config/sidekiq-cron.yml
 
 # ジョブ実行のために必要な環境変数を設定する
-ENV JOBS_WORKERS_COUNT=1
-ENV JOBS_POOL_SIZE=10
-ENV JOBS_QUEUE=jobs
-ENV JOBS_LOG_LEVEL=info
-ENV JOBS_LOG_FILE=/dev/stdout
+# ENV JOBS_WORKERS_COUNT=1
+# ENV JOBS_POOL_SIZE=10
+# ENV JOBS_QUEUE=jobs
+# ENV JOBS_LOG_LEVEL=info
+# ENV JOBS_LOG_FILE=/dev/stdout
 
 # Redisを起動する
-CMD redis-server --daemonize yes && \
+# CMD redis-server --daemonize yes && \
 # Sidekiqを設定する
-bundle exec sidekiq -e production -C config/sidekiq.yml -L /dev/stdout
+# bundle exec sidekiq -e production -C config/sidekiq.yml -L /dev/stdout
 # bundle exec sidekiq -c 1 -r ./app.rb -L /dev/stdout
 # sidekiq-cronを設定する
 # RUN bundle exec sidekiq-cron -c 1 -r ./app.rb -s ./config/sidekiq-cron.yml -L /dev/stdout
