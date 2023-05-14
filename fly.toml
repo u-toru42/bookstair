@@ -11,7 +11,7 @@ primary_region = "nrt"
 [[services]]
   http_checks = []
   internal_port = 3000
-  processes = ["web"]
+  processes = ["app"]
   protocol = "tcp"
   script_checks = []
   [services.concurrency]
