@@ -101,6 +101,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.11.0)
       devise (>= 4.9.0)
+    diff-lcs (1.5.0)
     diffy (3.4.2)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
@@ -329,6 +330,23 @@ GEM
       activerecord (>= 5.1, < 7.1)
       diffy
     rouge (4.1.0)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.5)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (6.0.3)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.12)
+      rspec-expectations (~> 3.12)
+      rspec-mocks (~> 3.12)
+      rspec-support (~> 3.12)
+    rspec-support (3.12.0)
     rss (0.2.9)
       rexml
     ruby2_keywords (0.0.5)
@@ -430,6 +448,7 @@ DEPENDENCIES
   redis (~> 4.0)
   ridgepole
   rouge
+  rspec-rails
   rss
   seed-fu
   sidekiq (< 7)
