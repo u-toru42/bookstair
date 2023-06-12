@@ -26,6 +26,25 @@ ja:
       password: "パスワード"
       password_confirmation: "パスワード確認"
       login: "ログイン"
+  books:
+    create:
+      success: "書籍を登録しました"
+    destroy:
+      success: "「#{book[:title]}」を削除しました"
+    search:
+      empty: "検索キーワードが入力されていません"
+    move_to_signed_in:
+      info: "ログイン後に使える機能です"
+  bookmarks:
+    create:
+      success: "投稿を作成しました"
+      failure: 
+        negative_sentiment: "不適切な表現が含まれています"
+        else: "投稿内容に不備があります"
+    update:
+      success: "投稿を更新しました"
+    destroy:
+      success: "投稿を削除しました"
   views:
     pagination:
       first: "|<<"
@@ -33,3 +52,10 @@ ja:
       previous: "前のページ"
       next: "次のページ"
       truncate: "..."
+  devise:
+    failure:
+      guest_pass: "ゲストユーザーのパスワード再設定はできません"
+      guest_account: "ゲストユーザーの変更・削除はできません"
+      unauthenticated: "ログイン後に使える機能です"
+    sessions:
+      signed_in: "ゲストユーザーとしてログインしました"

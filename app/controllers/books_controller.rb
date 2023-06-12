@@ -16,7 +16,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to @book, notice: '書籍を登録しました。' }
+        format.html { redirect_to @book, notice: t('books.create.success') }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
@@ -29,7 +29,7 @@ class BooksController < ApplicationController
     # button_toのvalueがidになっているがisbnに変換することは可能か
     book = Book.find_by(isbn: params[:isbn])
     book.delete
-    redirect_to books_path, danger: "「#{book[:title]}」を削除しました", status: :see_other
+    redirect_to books_path, danger: t('books.destroy.success'), status: :see_other 
   end
   
   def index
@@ -73,7 +73,7 @@ class BooksController < ApplicationController
     else
       # どちらも指定されなかった場合
       @books = []
-      flash.now[:notice] = "検索キーワードが入力されていません"
+      flash.now[:notice] = t('books.search.empty')
     end
     # ニュースフィード
     @feeds = Feed.all
@@ -141,7 +141,7 @@ class BooksController < ApplicationController
 
   def move_to_signed_in
     unless user_signed_in?
-      redirect_to page_path('about'), info: "ログイン後に使える機能です"
+      redirect_to page_path('about'), info: t('books.move_to_signed_in.info')
     end
   end
 

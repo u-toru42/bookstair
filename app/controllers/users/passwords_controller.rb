@@ -34,7 +34,7 @@ class Users::PasswordsController < Devise::PasswordsController
 
   def ensure_general_user
     if params[:user][:email].downcase == "guest@example.com"
-      redirect_to new_user_session_path, alert: "ゲストユーザーのパスワード再設定はできません"
+      redirect_to new_user_session_path, alert: t('devise.failure.guest_pass')
     end
   end
 end

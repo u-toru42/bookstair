@@ -16,14 +16,13 @@ class BookmarksController < ApplicationController
   def create
     bookmark = current_user.bookmarks.new(bookmark_params)
     if bookmark.save
-      redirect_to bookmark_path(bookmark), notice: '投稿を作成しました'
+      redirect_to bookmark_path(bookmark), notice: t('bookmarks.create.success')
     else
       if bookmark.errors[:content].include?("contains negative sentiment")
-        flash[:danger] = "不適切な表現が含まれています"
+        flash[:danger] = t('bookmarks.create.failure.negative_sentiment')
       else
-        flash[:danger] = '投稿に失敗しました'
+        flash[:danger] = t('bookmarks.create.failure.else')
       end
-      # flash.keep(:danger)
       @book = Book.find_by(isbn: params[:isbn])
       redirect_back(fallback_location: root_path)
     end
@@ -36,13 +35,12 @@ class BookmarksController < ApplicationController
   def update
     @bookmark = current_user.bookmarks.find(params[:id])
     if @bookmark.update!(bookmark_params.merge(book: @bookmark.book))
-      # redirect_to bookmark_path(@bookmark), notice: 'しおりを更新しました'
-      redirect_to @bookmark.book, notice: '投稿を更新しました'
+      redirect_to @bookmark.book, notice: t('bookmarks.update.success')
     else
       if bookmark.errors[:content].include?("contains negative sentiment")
-        flash[:danger] = "不適切な表現が含まれています"
+        flash[:danger] = t('bookmarks.update.failure.negative_sentiment')
       else
-        flash[:danger] = '投稿の更新に失敗しました'
+        flash[:danger] = t('bookmarks.update.failure.else')
       end
       render :edit
     end
@@ -51,7 +49,7 @@ class BookmarksController < ApplicationController
   def destroy
     bookmark = Bookmark.find(params[:id])
     bookmark.destroy
-    redirect_to bookmark.book, danger: '投稿が削除されました'
+    redirect_to bookmark.book, danger: t('bookmarks.destroy.success')
   end
 
   def my_bookmarks
@@ -70,7 +68,7 @@ class BookmarksController < ApplicationController
 
   def move_to_signed_in
     unless user_signed_in?
-      redirect_to page_path('about'), info: "ログイン後に使える機能です"
+      redirect_to page_path('about'), info: t('bookmarks.move_to_signed_in.failure')
     end
   end
 

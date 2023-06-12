@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def edit
     if current_user.name == "ゲストユーザー"
-      flash[:info] = "「ゲストユーザー」は編集できません。"
+      flash[:info] = t('devise.failure.guest_account')
       redirect_to user_path(current_user)
     elsif @user != current_user
       redirect_to user_path(current_user.id)
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
 
   def move_to_signed_in
     unless user_signed_in?
-      redirect_to page_path('about'), info: "ログイン後に使える機能です"
+      redirect_to page_path('about'), info: t('devise.failure.unauthenticated')
     end
   end
 end

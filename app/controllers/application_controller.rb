@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def handle_record_invalid(exception)
     # バリデーションエラーが含まれる場合はエラーメッセージをセットする
     if exception.message.include?("Contentネガティブな表現が含まれています")
-      flash[:danger] = "ネガティブな表現が含まれています"
+      flash[:danger] = t('errors.messages.negative_content')
     end
 
     redirect_back fallback_location: root_path

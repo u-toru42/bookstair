@@ -17,7 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   def ensure_general_user
     if resource.email == "guest@example.com"
-      redirect_to root_path, alert: "ゲストユーザーの変更・削除はできません"
+      redirect_to root_path, alert: t('devise.failure.guest_account')
     end
   end
 
