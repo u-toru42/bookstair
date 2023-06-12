@@ -30,7 +30,7 @@ ja:
     create:
       success: "書籍を登録しました"
     destroy:
-      success: "「#{book[:title]}」を削除しました"
+      success: "「%{book[:title]}」を削除しました"
     search:
       empty: "検索キーワードが入力されていません"
     move_to_signed_in:
@@ -45,6 +45,12 @@ ja:
       success: "投稿を更新しました"
     destroy:
       success: "投稿を削除しました"
+      check: "「%{headline}」を削除しますか?"
+    index:
+      chapter: 
+        blank: "チャプター指定なし"
+        filled: "チャプター"
+      link: "一緒に読みたい参考書籍"
   views:
     pagination:
       first: "|<<"

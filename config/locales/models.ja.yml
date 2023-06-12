@@ -10,7 +10,6 @@ ja:
       book:
         title: 書籍名順
         created_at: 本棚登録日順
-
       bookmark:
         headline: 題名(必須)
         body: 本文(必須)
