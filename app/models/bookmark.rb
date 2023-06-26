@@ -65,7 +65,7 @@ class Bookmark < ApplicationRecord
     # 言語の設定
     document = { content: body, type: :PLAIN_TEXT, language: "ja" }
 
-    # センチメント分析のリクエストを作成
+    # 感情分析のリクエストを作成
     response = language_service.analyze_sentiment document: document
 
     # ネガティブな表現が含まれている場合は、エラーを追加
