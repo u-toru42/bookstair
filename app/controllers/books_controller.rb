@@ -26,21 +26,20 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    # button_toのvalueがidになっているがisbnに変換することは可能か
     book = Book.find_by(isbn: params[:isbn])
     book.delete
     redirect_to books_path, danger: t('books.destroy.success'), status: :see_other 
   end
   
   def index
-    # 従来の検索
+    # 書籍の検索
     @search = Book.ransack(params[:q])
     @search.sorts = 'created_at desc' if @search.sorts.empty?
     @books = @search.result.page(params[:page])
 
-    # ニュースフィード
-    @feeds = Feed.all.order(updated_at: :asc)
-    @show_feeds = true
+    # ニュースフィード(未完成)
+    # @feeds = Feed.all.order(updated_at: :asc)
+    # @show_feeds = true
 
     @bookmark_counts = {}
     @books.each do |book|
@@ -109,11 +108,11 @@ class BooksController < ApplicationController
     # ニュースフィード
     # @feeds = Feed.all
     # @show_feeds = true
+
     # お気に入り処理に必要なインスタンス変数
     if @favorites.nil?
       @favorites = Favorite.where(book_isbn: @book.isbn, user_id: current_user.id)
     end
-
   end
 
   def update_click_count(book_isbn)
@@ -129,7 +128,6 @@ class BooksController < ApplicationController
     @book = Book.find_by(isbn: params[:book_isbn])
     favorite = Favorite.find(params[:id])
     current_user.unfavorite(@book)
-
     render turbo_stream: turbo_stream.replace("favorite-button-#{params[:book_isbn]}", partial: 'books/favorite', locals: { book: @book })
   end
 
@@ -148,5 +146,4 @@ class BooksController < ApplicationController
   def book_params
     params.permit(:title, :author, :sales_date, :large_image_url, :item_url, :isbn, :item_price, :item_caption)
   end
-
 end

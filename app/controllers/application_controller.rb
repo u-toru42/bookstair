@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def handle_record_invalid(exception)
-    # バリデーションエラーが含まれる場合はエラーメッセージをセットする
+    # 感情分析のバリデーションエラー判定
     if exception.message.include?("Contentネガティブな表現が含まれています")
       flash[:danger] = t('errors.messages.negative_content')
     end

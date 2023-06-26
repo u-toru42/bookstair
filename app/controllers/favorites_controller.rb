@@ -9,9 +9,7 @@ class FavoritesController < ApplicationController
       @bookmark_counts[book.id] = book.bookmarks.count
     end
     @bookmarks = Bookmark.all
-    # if @favorites.nil?
     @favorites = Favorite.where(book_isbn: @books.pluck(:isbn), user_id: current_user.id)
-    # end
   end
 
   def create
@@ -28,7 +26,6 @@ class FavoritesController < ApplicationController
   def destroy
     @book = Book.find_by(isbn: params[:book_isbn])
     current_user.unfavorite(@book)
-    
     render turbo_stream: turbo_stream.replace("favorite-button-#{@book.isbn}", partial: 'books/favorite', locals: { book: @book })
   end
 end
