@@ -1,5 +1,4 @@
 <% content_for(:title, @book.title) %>
-
 <div class="bg-slate-50 flex justify-center border-2 border-gray-200 text-sm min-h-screen">
   <section class="max-w-5xl p-2 rounded">
     <div>
@@ -14,12 +13,10 @@
         </div>
       <% end %>
     </div>
-
     <div class="grid grid-cols-1 sm:grid-cols-3 sm:items-center" data-title="ようこそBOOKSTAIRへ！" data-intro="投稿の方法を説明します！">
       <div class="flex justify-center item-center card mr-2 2xl:mr-2 xl:mr-2 lg:mr-2 md:mr-2 sm:mr-0 mb-1">
         <%= image_tag @book.large_image_url, style: "width: 200px; height: 250px; object-fit: contain;", class:"m-1" %>
       </div>
-
       <blockquote class="sm:col-span-2 bg-slate-50 rounded p-3 card">
         <h1 class="text-lg font-semibold sm:text-md">
           <%= set_rakuten_book_params(@book.title) %>
@@ -28,7 +25,6 @@
         <p class="text-base mb-1">著者: <%= set_rakuten_book_params(@book.author) %></p>
 
         <p class="text-base font-semibold"><%= number_to_currency(@book.item_price, format: "%u%n", unit: "￥") %></p>
-
         <div class="mt-2">
           <div class="prose max-w-none">
             <p>
@@ -36,9 +32,6 @@
             </p>
           </div>
         </div>
-
-
-
         <div class="flex justify-end gap-2 mt-2">
           <p class="flex jusity-center items-center">
             <%= render 'shared/intro_button' %>
@@ -51,21 +44,17 @@
             <%= render 'bookmarks/modal', { book: @book, bookmark: @bookmark } %>
           </div>
           <div class="mt-2 flex justify-end items-center" data-controller="click-count">
-            <%#= link_to @book, method: :get, params: {isbn: @book.isbn}, class: "flex items-center", "data-action": "click->click-count#update" do %>
-              <span class="text-xs">投稿数</span>
-              <svg class="w-5 h-5" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"></path>
-              </svg>
-              <span class="text-md font-medium ml-1" data-target="click-count.count"><%= @bookmark_counts[@book.id] %></span>
-            <%# end %>
-            <%#= link_to @book, method: :get, params: {isbn: @book.isbn}, remote: true, class: "flex items-center", "data-action": "click->click-count#update" do %>
-              <span class="text-xs ml-2">注目数</span>
-              <svg class="w-5 h-5" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              </svg>
-              <span class="text-md font-medium ml-1" data-target="click-count.click"><%= Click.find_by(book_isbn: @book.id)&.clicks || 0 %></span>
-            <%# end %>
+            <span class="text-xs">投稿数</span>
+            <svg class="w-5 h-5" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"></path>
+            </svg>
+            <span class="text-md font-medium ml-1" data-target="click-count.count"><%= @bookmark_counts[@book.id] %></span>
+            <span class="text-xs ml-2">注目数</span>
+            <svg class="w-5 h-5" data-darkreader-inline-stroke="" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+            <span class="text-md font-medium ml-1" data-target="click-count.click"><%= Click.find_by(book_isbn: @book.id)&.clicks || 0 %></span>
             <% if user_signed_in? %>
               <div class="flex justify-end ml-1">
                 <%= render "books/favorite_button", { book: @book } %>

@@ -10,11 +10,8 @@
             <p class="text-md font-semibold text-blue-500 hover:underline">
               <%= set_rakuten_book_params(book.title) %>
             </p>
-
             <p class="text-sm">著者: <%= set_rakuten_book_params(book.author) %></p>
-
             <p class="text-lg font-bold"><%= number_to_currency(book.item_price, format: "%u%n", unit: "￥") %></p>
-
             <div class="text-sm">
               <div class="prose max-w-none">
                 <p class="mb-2">
@@ -22,7 +19,6 @@
                 </p>
               </div>
             </div>
-
             <div class="mt-2">
               <div class="flex justify-end">
                 <div class="gap-2">
@@ -53,9 +49,7 @@
             </div>
           </div>
         </div>
-
       </div>
-
     <% end %>
   </div>
 </section>

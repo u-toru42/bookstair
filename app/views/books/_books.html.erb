@@ -1,4 +1,3 @@
-
 <div class="relative w-full px-2 mx-auto md:px-2 lg:px-2 h-full z-0 pb-2">
   <h1 class="flex items-center justify-center bg-emerald-500 text-white font-bold py-2 rounded-lg mb-1">
     <svg class="w-8 h-8 mr-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -24,7 +23,6 @@
         </h2>
         <p class="mx-auto text-xs leading-relaxed text-gray-500">著者: <%= set_rakuten_book_params(book.author) %></p>
         <p class="mx-auto text-xs leading-relaxed"><%= truncate(set_rakuten_book_params(book.item_caption), length: 100) %></p>
-        
         <div class="mt-2 flex justify-end" data-controller="click-count">
           <%= link_to book, method: :get, params: {isbn: book.isbn}, class: "flex items-center", "data-action": "click->click-count#update" do %>
             <span class="text-xs">投稿数</span>
@@ -48,5 +46,4 @@
       </div>
     <% end %>
   </div>
-
 </div>
