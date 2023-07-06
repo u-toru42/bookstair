@@ -15,7 +15,7 @@
 
 Google Cloud Languageで感情分析を行い、安心してコメントを投稿・閲覧できる、コンピュータ・IT書籍専門の本棚サービスです。
 
-- 「イライラする」が投稿内容のバリデーションで止まりました。<br>
+- 投稿の失敗例:「イライラする」が投稿内容のバリデーションで止まりました。<br>
 <a href="投稿失敗例(「イライラする」が引っ掛かったようです)"><img src="https://i.gyazo.com/fa3aa655aa8a9372c2a8c49563dd5446.gif" alt="Image from Gyazo" width="800"/></a>
 - 投稿の成功例です。<br>
 <a href="投稿成功例"><img src="https://i.gyazo.com/f0bec09b646ceb38eb3843b6dd590a49.gif" alt="Image from Gyazo" width="800"/></a><br>
