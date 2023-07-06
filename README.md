@@ -15,9 +15,9 @@
 
 Google Cloud Languageで感情分析を行い、安心してコメントを投稿・閲覧できる、コンピュータ・IT書籍専門の本棚サービスです。
 
-![投稿失敗例(「イライラする」が引っ掛かったようです)](https://gyazo.com/fa3aa655aa8a9372c2a8c49563dd5446)
-![投稿成功例](https://gyazo.com/f0bec09b646ceb38eb3843b6dd590a49)
-![チュートリアルも用意しています](https://gyazo.com/0c05fcca653c6e9cf402d25089ba9f6b)
+![投稿失敗例(「イライラする」が引っ掛かったようです)](https://i.gyazo.com/f0bec09b646ceb38eb3843b6dd590a49.gif)<br>
+![投稿成功例](https://i.gyazo.com/fa3aa655aa8a9372c2a8c49563dd5446.gif)<br>
+![チュートリアルも用意しています](https://i.gyazo.com/0c05fcca653c6e9cf402d25089ba9f6b.gif)<br>
 
 ## メインのターゲットユーザー
 
