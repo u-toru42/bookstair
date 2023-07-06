@@ -37,7 +37,7 @@ Google Cloud Languageで感情分析を行い、安心してコメントを投�
 - 共有本棚に書籍を登録し、技術や難易度、お気に入りのページや解説、引用を投稿できるサービスを作る。
 - コメント投稿機能にGoogle Cloud Languageの感情分析を実装し、強い言葉や不適切な表現を弾くようにする。
 - 書籍・本棚検索でQiita APIを使用し、トレンド言語やワードをオートコンプリートで表示するようにする。<br>
-- 書籍登録・検索画面でQiita APIのトレンド情報を使い、オートコンプリートが動く例です。
+- このように書籍登録・検索画面でQiita APIのトレンド情報を使い、オートコンプリートが動きます。
 <a href="検索画面のオートコンプリート"><img src="https://i.gyazo.com/ea614eb2681f3578fb4259ed3202abb1.gif" alt="Image from Gyazo" width="800"/></a><br>
 - 本棚画面ではHTML5とQiita APIを2重で処理したオートコンプリートを実装しています。<br>
 <a href="本棚画面のオートコンプリート"><img src="https://i.gyazo.com/dcfe76d8b853acfa33024e9bc99cf987.gif" alt="Image from Gyazo" width="800"/></a><br>
