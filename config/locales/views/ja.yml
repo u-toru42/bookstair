@@ -64,4 +64,4 @@ ja:
       guest_account: "ゲストユーザーの変更・削除はできません"
       unauthenticated: "ログイン後に使える機能です"
     sessions:
-      signed_in: "ゲストユーザーとしてログインしました"
+      signed_in: "ログインしました"

@@ -17,9 +17,9 @@ Rails.application.routes.draw do
   # root "home#top"
   # devise_for :users, controllers: {
   #   # ↓ローカルに追加されたコントローラーを参照する(コントローラー名: "コントローラーの参照先")
-  #   registrations: "users/registrations",
+    # registrations: "users/registrations",
   #   sessions: "users/sessions",
-  #   passwords: "users/passwords",
+    # passwords: "users/passwords",
   #   confirmations: "users/confirmations"
   # }
   devise_for :users
@@ -52,14 +52,7 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i[index edit update]
   get 'bookmarks/my_bookmarks', to: 'bookmarks#my_bookmarks'
   resources :favorites, only: %i[index destroy]
-  # get 'favorites/create'
-  # get 'favorites/destroy'
 
-  resources :feeds, only: %i[index]
-
-  # Sidekiq::Web.use(Rack::Auth::Basic) do |user_id, password|
-  #   [user_id, password] == [ENV['USER_ID'], ENV['USER_PASSWORD']]
-  # end
-  # mount Sidekiq::Web, at: '/sidekiq'
+  # resources :feeds, only: %i[index]
 
 end
