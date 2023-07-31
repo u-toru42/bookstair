@@ -82,11 +82,6 @@ Google Cloud Languageで感情分析を行い、安心してコメントを投�
 - 投稿のチュートリアル機能
 - Natural Languageの感情分析の投稿のバリデーション
 
-## 本リリース後に実装する機能
-- パスワードリセット機能とSend Gridの連携
-- メールアドレス変更機能
-- パスワード変更機能
-
 ## 画面遷移図
 
 [Figma](<https://www.figma.com/file/1SjZ7MiiANkYElYjA7tSHa/%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E5%90%8D%3ABookStair(%E4%BB%AE%E5%90%8D)?node-id=0%3A1&t=xrEuekoiAxH4J1AD-1>)
