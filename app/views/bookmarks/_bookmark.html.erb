@@ -37,8 +37,10 @@
     </div>
     <div class="flex justify-end items-center gap-4">
       <%= link_to "https://twitter.com/share?url=#{request.url}%0a%0a&text=BOOKSTAIRに投稿しました！%0a『#{ bookmark.book.title.truncate(40) }』%0a%0a&hashtags=BOOKSTAIR",
-          target: '_blank', class: "w-6 h-6" do %>
-        <%= image_tag "twitter_icon.png", class: "w-full h-full" %>
+          target: '_blank', class: "w-8 h-8" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
       <% end %>
       <% if current_user && current_user.own?(bookmark) %>
         <%= link_to(edit_bookmark_path(bookmark)) do %>
