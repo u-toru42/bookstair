@@ -39,7 +39,7 @@ ja:
     create:
       success: "投稿を作成しました"
       failure: 
-        negative_sentiment: "不適切な表現が含まれています"
+        negative_sentiment: "NGワードが含まれています"
         else: "投稿内容に不備があります"
     update:
       success: "投稿を更新しました"

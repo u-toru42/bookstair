@@ -70,7 +70,7 @@ class Bookmark < ApplicationRecord
 
     # ネガティブな表現が含まれている場合は、エラーを追加
     if response.document_sentiment.score < 0
-      errors.add(:content, "ネガティブな表現が含まれています")
+      errors.add(:content, "NGワードが含まれています")
     end
   end
 
