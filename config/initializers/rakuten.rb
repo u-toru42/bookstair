@@ -4,5 +4,4 @@ RakutenWebService.configure do |c|
 
   # (任意) 楽天アフィリエイトID
   # c.affiliate_id = Rails.application.credentials.rakuten[:affiliate_id]
-
 end

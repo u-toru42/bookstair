@@ -1,4 +1,4 @@
-require "active_support/core_ext/integer/time"
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -19,13 +19,13 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
-  if Rails.root.join("tmp/caching-dev.txt").exist?
+  if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = false
     config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      "Cache-Control" => "public, max-age=#{2.days.to_i}"
+      'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
   else
     config.action_controller.perform_caching = false
@@ -78,18 +78,17 @@ Rails.application.configure do
   #   enable_starttls_auto: true,
   #   open_timeout:         5,
   #   read_timeout:         5,
-  #   enable_starttls_auto: true, 
+  #   enable_starttls_auto: true,
   # }
 
   # SendGrid の場合
   config.action_mailer.smtp_settings = {
-    :address => 'smtp.sendgrid.net',
-    :port => 587,
-    :domain => 'localhost',
-    :user_name => 'apikey',
-    :password => Rails.application.credentials.sendgrid[:api_key],
-    :authentication => :plain,
-    :enable_starttls_auto => true
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    domain: 'localhost',
+    user_name: 'apikey',
+    password: Rails.application.credentials.sendgrid[:api_key],
+    authentication: :plain,
+    enable_starttls_auto: true
   }
-
 end

@@ -17,5 +17,5 @@
 #  fk_rails_...  (book_isbn => books.isbn)
 #
 class Click < ApplicationRecord
-  belongs_to :book, foreign_key: 'book_isbn' 
+  belongs_to :book, foreign_key: 'book_isbn'
 end

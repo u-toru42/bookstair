@@ -33,8 +33,8 @@ class Users::PasswordsController < Devise::PasswordsController
   # end
 
   def ensure_general_user
-    if params[:user][:email].downcase == "guest@example.com"
-      redirect_to new_user_session_path, alert: t('devise.failure.guest_pass')
-    end
+    return unless params[:user][:email].downcase == 'guest@example.com'
+
+    redirect_to new_user_session_path, alert: t('devise.failure.guest_pass')
   end
 end

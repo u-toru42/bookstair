@@ -31,15 +31,15 @@ class Bookmark < ApplicationRecord
 
   validates :headline, presence: true, length: { maximum: 300 }
   validates :body, presence: true, length: { maximum: 3000 }
-  validates :chapter, allow_blank: true, length: { maximum: 9999 }, numericality: {only_integer: true}
+  validates :chapter, allow_blank: true, length: { maximum: 9999 }, numericality: { only_integer: true }
   validates :link, allow_blank: true, length: { maximum: 100 }
-  
+
   before_validation :detect_negative_expressions
 
   scope :with_tag, ->(tag_name) { joins(:tags).where(tags: { name: tag_name }) }
 
   def is_mine?(current_user)
-    self.user == current_user
+    user == current_user
   end
 
   def save_with_tags(tag_names:)
@@ -63,15 +63,14 @@ class Bookmark < ApplicationRecord
     language_service = Google::Cloud::Language.language_service
 
     # 言語の設定
-    document = { content: body, type: :PLAIN_TEXT, language: "ja" }
+    document = { content: body, type: :PLAIN_TEXT, language: 'ja' }
 
     # 感情分析のリクエストを作成
-    response = language_service.analyze_sentiment document: document
+    response = language_service.analyze_sentiment(document:)
 
     # ネガティブな表現が含まれている場合は、エラーを追加
-    if response.document_sentiment.score < 0
-      errors.add(:content, "NGワードが含まれています")
-    end
-  end
+    return unless response.document_sentiment.score < 0
 
+    errors.add(:content, 'NGワードが含まれています')
+  end
 end

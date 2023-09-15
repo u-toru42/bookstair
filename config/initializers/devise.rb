@@ -310,5 +310,5 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
   # ==> Hotwire/Turbo configuration
   config.responder.error_status = :unprocessable_entity
-  config.responder.redirect_status = :see_other 
+  config.responder.redirect_status = :see_other
 end

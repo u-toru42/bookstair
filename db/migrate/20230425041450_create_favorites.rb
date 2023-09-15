@@ -8,6 +8,6 @@ class CreateFavorites < ActiveRecord::Migration[7.0]
     end
     rename_column :favorites, :book_isbn_id, :book_isbn
     add_foreign_key :favorites, :books, column: :book_isbn, primary_key: 'isbn'
-    add_index :favorites, [:user_id, :book_isbn], unique: true
+    add_index :favorites, %i[user_id book_isbn], unique: true
   end
 end

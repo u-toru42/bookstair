@@ -10,7 +10,7 @@ class BooksController < ApplicationController
   def new
     @book = Book.new
   end
-  
+
   def create
     @book = Book.new(book_params)
 
@@ -28,9 +28,9 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find_by(isbn: params[:isbn])
     book.delete
-    redirect_to books_path, danger: t('books.destroy.success'), status: :see_other 
+    redirect_to books_path, danger: t('books.destroy.success'), status: :see_other
   end
-  
+
   def index
     # 書籍の検索
     @search = Book.ransack(params[:q])
@@ -47,11 +47,11 @@ class BooksController < ApplicationController
     end
     @bookmarks = Bookmark.all
     # お気に入り処理に必要なインスタンス変数
-    if @favorites.nil?
-      @favorites = Favorite.where(book_isbn: @books.pluck(:isbn), user_id: current_user.id)
-    end
+    return unless @favorites.nil?
+
+    @favorites = Favorite.where(book_isbn: @books.pluck(:isbn), user_id: current_user.id)
   end
-  
+
   def bookmark_index
     @bookmarks = Bookmark.all
   end
@@ -99,10 +99,10 @@ class BooksController < ApplicationController
     update_click_count(@book.isbn)
     @bookmark = Bookmark.new
     bookmarks = if (tag_name = params[:tag_name])
-      Bookmark.with_tag(tag_name)
-    else
-      Bookmark.all
-    end
+                  Bookmark.with_tag(tag_name)
+                else
+                  Bookmark.all
+                end
     @bookmarks = @book.bookmarks.includes(:user).order(chapter: :asc)
     @bookmark_counts = @book.bookmarks.count
     # ニュースフィード
@@ -110,13 +110,13 @@ class BooksController < ApplicationController
     # @show_feeds = true
 
     # お気に入り処理に必要なインスタンス変数
-    if @favorites.nil?
-      @favorites = Favorite.where(book_isbn: @book.isbn, user_id: current_user.id)
-    end
+    return unless @favorites.nil?
+
+    @favorites = Favorite.where(book_isbn: @book.isbn, user_id: current_user.id)
   end
 
   def update_click_count(book_isbn)
-    click = Click.find_or_initialize_by(book_isbn: book_isbn)
+    click = Click.find_or_initialize_by(book_isbn:)
     click.update(clicks: click.clicks + 1)
   end
 
@@ -128,7 +128,8 @@ class BooksController < ApplicationController
     @book = Book.find_by(isbn: params[:book_isbn])
     favorite = Favorite.find(params[:id])
     current_user.unfavorite(@book)
-    render turbo_stream: turbo_stream.replace("favorite-button-#{params[:book_isbn]}", partial: 'books/favorite', locals: { book: @book })
+    render turbo_stream: turbo_stream.replace("favorite-button-#{params[:book_isbn]}", partial: 'books/favorite',
+                                                                                       locals: { book: @book })
   end
 
   private
@@ -138,9 +139,9 @@ class BooksController < ApplicationController
   end
 
   def move_to_signed_in
-    unless user_signed_in?
-      redirect_to page_path('about'), info: t('books.move_to_signed_in.info')
-    end
+    return if user_signed_in?
+
+    redirect_to page_path('about'), info: t('books.move_to_signed_in.info')
   end
 
   def book_params

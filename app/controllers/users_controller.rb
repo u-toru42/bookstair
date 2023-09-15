@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :move_to_signed_in
-  before_action :set_user, only: [:show, :edit, :update]
-  
+  before_action :set_user, only: %i[show edit update]
+
   def new
     @user = User.new
   end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   def show; end
 
   def edit
-    if current_user.name == "ゲストユーザー"
+    if current_user.name == 'ゲストユーザー'
       flash[:info] = t('devise.failure.guest_account')
       redirect_to user_path(current_user)
     elsif @user != current_user
@@ -47,8 +47,8 @@ class UsersController < ApplicationController
   end
 
   def move_to_signed_in
-    unless user_signed_in?
-      redirect_to page_path('about'), info: t('devise.failure.unauthenticated')
-    end
+    return if user_signed_in?
+
+    redirect_to page_path('about'), info: t('devise.failure.unauthenticated')
   end
 end

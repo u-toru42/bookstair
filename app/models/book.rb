@@ -15,24 +15,24 @@
 #
 class Book < ApplicationRecord
   self.primary_key = :isbn
-  
+
   has_many :bookmarks, primary_key: 'isbn', foreign_key: 'book_isbn', dependent: :destroy
   has_many :favorites, primary_key: 'isbn', foreign_key: 'book_isbn', dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
 
   validates :isbn, uniqueness: { scope: :isbn }
-  
+
   def to_param
     isbn.to_s
   end
 
   # 投稿の並び順なし
-  def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(_auth_object = nil)
     %w[author created_at isbn item_caption item_price item_url large_image_url sales_date title updated_at]
   end
 
   # 投稿の並び順あり
-  def self.ransackable_associations(auth_object = nil)
+  def self.ransackable_associations(_auth_object = nil)
     %w[bookmarks]
   end
 end

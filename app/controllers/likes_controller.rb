@@ -4,9 +4,9 @@ class LikesController < ApplicationController
   def create
     @like = current_user.likes.build(like_params)
     if @like.save
-      flash[:success] = "Bookmark created!"
+      flash[:success] = 'Bookmark created!'
     else
-      flash[:error] = "Bookmark creation faild!"
+      flash[:error] = 'Bookmark creation faild!'
     end
     redirect_to books_path
   end
