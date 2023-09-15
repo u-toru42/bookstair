@@ -15,13 +15,11 @@
 #
 class Book < ApplicationRecord
   self.primary_key = :isbn
-  
   has_many :bookmarks, primary_key: 'isbn', foreign_key: 'book_isbn', dependent: :destroy
   has_many :favorites, primary_key: 'isbn', foreign_key: 'book_isbn', dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
 
   validates :isbn, uniqueness: { scope: :isbn }
-  
   def to_param
     isbn.to_s
   end

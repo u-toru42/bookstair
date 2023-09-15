@@ -17,10 +17,4 @@ class ApplicationController < ActionController::Base
 
     redirect_back fallback_location: root_path
   end
-
-  # ログイン後のリダイレクト先
-  # def after_sign_in_path_for(resource)
-  #   user_session_path(resource)
-  # end
-
 end

@@ -8,7 +8,6 @@ window.Stimulus   = application
 
 export { application }
 
-
 // Import and register all TailwindCSS Components
 import {
   Alert,

@@ -22,7 +22,6 @@ class FavoritesController < ApplicationController
                                               locals: { book: @book, favorite: favorite })
   end
 
-
   def destroy
     @book = Book.find_by(isbn: params[:book_isbn])
     current_user.unfavorite(@book)

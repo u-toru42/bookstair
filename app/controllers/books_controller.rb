@@ -1,11 +1,8 @@
 class BooksController < ApplicationController
   before_action :move_to_signed_in
-  before_action :set_rss
 
   require 'faraday'
   require 'oj'
-  require 'feedjira'
-  require 'rss'
 
   def new
     @book = Book.new
@@ -28,7 +25,7 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find_by(isbn: params[:isbn])
     book.delete
-    redirect_to books_path, danger: t('books.destroy.success'), status: :see_other 
+    redirect_to books_path, danger: t('books.destroy.success'), status: :see_other
   end
   
   def index
@@ -36,10 +33,6 @@ class BooksController < ApplicationController
     @search = Book.ransack(params[:q])
     @search.sorts = 'created_at desc' if @search.sorts.empty?
     @books = @search.result.page(params[:page])
-
-    # ニュースフィード(未完成)
-    # @feeds = Feed.all.order(updated_at: :asc)
-    # @show_feeds = true
 
     @bookmark_counts = {}
     @books.each do |book|
@@ -74,9 +67,6 @@ class BooksController < ApplicationController
       @books = []
       flash.now[:notice] = t('books.search.empty')
     end
-    # ニュースフィード
-    @feeds = Feed.all
-    @show_feeds = true
   end
 
   def autocomplete
@@ -105,9 +95,6 @@ class BooksController < ApplicationController
     end
     @bookmarks = @book.bookmarks.includes(:user).order(chapter: :asc)
     @bookmark_counts = @book.bookmarks.count
-    # ニュースフィード
-    # @feeds = Feed.all
-    # @show_feeds = true
 
     # お気に入り処理に必要なインスタンス変数
     if @favorites.nil?
@@ -132,10 +119,6 @@ class BooksController < ApplicationController
   end
 
   private
-
-  def set_rss
-    @feeds = Feed.all
-  end
 
   def move_to_signed_in
     unless user_signed_in?

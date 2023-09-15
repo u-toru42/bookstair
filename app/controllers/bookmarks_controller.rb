@@ -1,16 +1,9 @@
 class BookmarksController < ApplicationController
   before_action :move_to_signed_in
-  before_action :set_rss
   require 'faraday'
-  require 'oj'
-  require 'feedjira'
-  require 'rss' 
 
   def index
     @bookmarks = Bookmark.includes(:book).all.order(updated_at: :desc).page(params[:page]).per(9)
-    # ニュースフィード
-    @feeds = Feed.all.order(updated_at: :asc)
-    @show_feeds = true
   end
 
   def create
@@ -62,14 +55,9 @@ class BookmarksController < ApplicationController
     params.require(:bookmark).permit(:headline, :body, :chapter, :link, :review_star).merge(book_isbn: params[:book_isbn])
   end
 
-  def set_rss
-    @feeds = Feed.all
-  end
-
   def move_to_signed_in
     unless user_signed_in?
       redirect_to page_path('about'), info: t('bookmarks.move_to_signed_in.failure')
     end
   end
-
 end

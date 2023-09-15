@@ -45,7 +45,6 @@ export default class extends Controller {
     }
   }
 
-
   select(event) {
     const input = this.inputTarget;
     const result = event.target;
