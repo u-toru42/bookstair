@@ -25,7 +25,7 @@ class FavoritesController < ApplicationController
   def destroy
     @book = Book.find_by(isbn: params[:book_isbn])
     current_user.unfavorite(@book)
-    render turbo_stream: turbo_stream.replace("favorite-button-#{@book.isbn}", partial: 'books/favorite',
-                                                                               locals: { book: @book })
+    render turbo_stream: turbo_stream.replace("favorite-button-#{@book.isbn}",
+      partial: 'books/favorite', locals: { book: @book })
   end
 end

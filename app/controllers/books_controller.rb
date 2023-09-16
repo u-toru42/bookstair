@@ -1,11 +1,10 @@
 class BooksController < ApplicationController
   before_action :move_to_signed_in
-  before_action :set_rss
+  # before_action :set_rss
 
   require 'faraday'
   require 'oj'
   require 'feedjira'
-  require 'rss'
 
   def new
     @book = Book.new
@@ -36,11 +35,6 @@ class BooksController < ApplicationController
     @search = Book.ransack(params[:q])
     @search.sorts = 'created_at desc' if @search.sorts.empty?
     @books = @search.result.page(params[:page])
-
-    # ニュースフィード(未完成)
-    # @feeds = Feed.all.order(updated_at: :asc)
-    # @show_feeds = true
-
     @bookmark_counts = {}
     @books.each do |book|
       @bookmark_counts[book.id] = book.bookmarks.count
@@ -48,7 +42,6 @@ class BooksController < ApplicationController
     @bookmarks = Bookmark.all
     # お気に入り処理に必要なインスタンス変数
     return unless @favorites.nil?
-
     @favorites = Favorite.where(book_isbn: @books.pluck(:isbn), user_id: current_user.id)
   end
 
@@ -74,9 +67,6 @@ class BooksController < ApplicationController
       @books = []
       flash.now[:notice] = t('books.search.empty')
     end
-    # ニュースフィード
-    @feeds = Feed.all
-    @show_feeds = true
   end
 
   def autocomplete
@@ -105,9 +95,6 @@ class BooksController < ApplicationController
                 end
     @bookmarks = @book.bookmarks.includes(:user).order(chapter: :asc)
     @bookmark_counts = @book.bookmarks.count
-    # ニュースフィード
-    # @feeds = Feed.all
-    # @show_feeds = true
 
     # お気に入り処理に必要なインスタンス変数
     return unless @favorites.nil?
@@ -128,8 +115,7 @@ class BooksController < ApplicationController
     @book = Book.find_by(isbn: params[:book_isbn])
     favorite = Favorite.find(params[:id])
     current_user.unfavorite(@book)
-    render turbo_stream: turbo_stream.replace("favorite-button-#{params[:book_isbn]}", partial: 'books/favorite',
-                                                                                       locals: { book: @book })
+    render turbo_stream: turbo_stream.replace("favorite-button-#{params[:book_isbn]}", partial: 'books/favorite',locals: { book: @book })
   end
 
   private
