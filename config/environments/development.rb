@@ -83,28 +83,28 @@ Rails.application.configure do
   # }
 
   # SendGrid の場合
-  # config.action_mailer.smtp_settings = {
-  #   address: 'smtp.sendgrid.net',
-  #   port: 587,
-  #   domain: 'localhost',
-  #   user_name: 'apikey',
-  #   password: Rails.application.credentials.sendgrid[:api_key],
-  #   authentication: :plain,
-  #   enable_starttls_auto: true
-  # }
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    domain: 'localhost',
+    user_name: 'apikey',
+    password: Rails.application.credentials.sendgrid[:api_key],
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
   config.action_mailer.perform_caching = false
-  host = 'localhost:3000'
+  # host = 'localhost:3000'
   config.action_mailer.default_url_options = { host:, protocol: 'http' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   # Gmail の場合
-  config.action_mailer.smtp_settings = {
-    enable_starttls_auto: true,
-    address: 'smtp.gmail.com',
-    port: 587,
-    domain: 'smtp.gmail.com',
-    user_name: Rails.application.credentials.gmail[:user_name],
-    password: Rails.application.credentials.gmail[:api_key],
-    authentication: 'login'
-  }
+  # config.action_mailer.smtp_settings = {
+  #   enable_starttls_auto: true,
+  #   address: 'smtp.gmail.com',
+  #   port: 587,
+  #   domain: 'smtp.gmail.com',
+  #   user_name: Rails.application.credentials.gmail[:user_name],
+  #   password: Rails.application.credentials.gmail[:api_key],
+  #   authentication: 'login'
+  # }
 end
