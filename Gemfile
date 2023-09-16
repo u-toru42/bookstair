@@ -49,10 +49,10 @@ gem 'bootsnap', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'rails-flog', require: 'flog'
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'rails-flog', require: 'flog'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -83,6 +83,8 @@ gem 'ridgepole'
 # gem "dockerfile-rails", ">= 1.2", :group => :development
 gem 'feedjira'
 gem 'httparty'
+gem 'mecab'
+gem 'natto'
 gem 'net-http'
 gem 'nokogiri'
 gem 'oj'
@@ -93,10 +95,8 @@ gem 'rouge'
 gem 'rss'
 gem 'seed-fu'
 gem 'sidekiq', '<7'
-gem 'sidekiq-scheduler'
 gem 'sidekiq-cron'
-gem 'mecab'
-gem 'natto'
+gem 'sidekiq-scheduler'
 gem 'yaml-lint'
 # gem 'auth0'
 # gem 'twitter_cards'

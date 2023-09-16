@@ -15,11 +15,11 @@ class BookmarksController < ApplicationController
       redirect_to bookmark_path(bookmark), notice: t('bookmarks.create.success')
     else
       flash[:danger] = if bookmark.errors[:content].include?('contains negative sentiment')
-        # 投稿内容に不備があるか、空白の場合
-        t('bookmarks.create.failure.negative_sentiment')
-      else
-        t('bookmarks.create.failure.else')
-      end
+                         # 投稿内容に不備があるか、空白の場合
+                         t('bookmarks.create.failure.negative_sentiment')
+                       else
+                         t('bookmarks.create.failure.else')
+                       end
       @book = Book.find_by(isbn: params[:isbn])
       redirect_back(fallback_location: root_path)
     end
@@ -35,10 +35,10 @@ class BookmarksController < ApplicationController
       redirect_to @bookmark.book, notice: t('bookmarks.update.success')
     else
       flash[:danger] = if bookmark.errors[:content].include?('contains negative sentiment')
-                          t('bookmarks.update.failure.else')
-                      else
-                          t('bookmarks.update.failure.negative_sentiment')
-                      end
+                         t('bookmarks.update.failure.else')
+                       else
+                         t('bookmarks.update.failure.negative_sentiment')
+                       end
       render :edit
     end
   end

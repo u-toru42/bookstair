@@ -9,8 +9,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
-  def handle_record_invalid(exception)
+  def handle_record_invalid(_exception)
     redirect_back fallback_location: root_path
   end
-
 end

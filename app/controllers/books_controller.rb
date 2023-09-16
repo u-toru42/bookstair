@@ -42,6 +42,7 @@ class BooksController < ApplicationController
     @bookmarks = Bookmark.all
     # お気に入り処理に必要なインスタンス変数
     return unless @favorites.nil?
+
     @favorites = Favorite.where(book_isbn: @books.pluck(:isbn), user_id: current_user.id)
   end
 
@@ -115,7 +116,8 @@ class BooksController < ApplicationController
     @book = Book.find_by(isbn: params[:book_isbn])
     favorite = Favorite.find(params[:id])
     current_user.unfavorite(@book)
-    render turbo_stream: turbo_stream.replace("favorite-button-#{params[:book_isbn]}", partial: 'books/favorite',locals: { book: @book })
+    render turbo_stream: turbo_stream.replace("favorite-button-#{params[:book_isbn]}", partial: 'books/favorite',
+                                                                                       locals: { book: @book })
   end
 
   private
