@@ -32,6 +32,7 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_books, through: :favorites, source: :book
+  validates :password, presence: true
 
   def my_bookmark?(bookmark)
     self == bookmark.user
