@@ -50,6 +50,9 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rails-flog', require: 'flog'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -91,7 +94,7 @@ gem 'rss'
 gem 'seed-fu'
 gem 'sidekiq', '<7'
 gem 'sidekiq-scheduler'
-# gem 'sidekiq-cron'
+gem 'sidekiq-cron'
 gem 'mecab'
 gem 'natto'
 gem 'yaml-lint'
