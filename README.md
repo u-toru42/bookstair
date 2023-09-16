@@ -57,7 +57,6 @@ Google Cloud Languageで感情分析を行い、安心してコメントを投�
 - PostgreSQL
 ### API
 - 楽天ブックス検索API
-- SendGrid
 - Qiita API
 - Google Cloud Language
 
