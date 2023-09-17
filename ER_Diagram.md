@@ -1,145 +1,88 @@
 ```mermaid
 
 erDiagram
-  users ||--|| bookshelf_boards : "一人のユーザーは一つの本棚掲示板を持つ"
-  bookshelf_boards ||--o{ bookshelf_follows :"一つの本棚掲示板は複数の本棚のフォローを持つ"
+  users ||--o{ favorites :"一人のユーザーは複数のお気に入り書籍を登録する"
+  favorites }o--|| books :"一人のユーザーは複数のお気に入り書籍を持つ"
 
-  users ||--o{ bookmarks :"一人のユーザーは複数のお気に入り書籍を登録する"
-  bookmarks }o--|| books :"一人のユーザーは複数のお気に入り書籍を持つ"
+  users ||--o{ bookmarks :"一人のユーザーは複数の感想を投稿する"
+  bookmarks }o--|| books :"一つの書籍は複数の感想を持つ"
 
-  users ||--o{ comments :"一人のユーザーは複数のコメントを投稿する"
-  comments }o--|| books :"一つの書籍は複数のコメントを持つ"
+  bookmarks ||--o{ bookmark_tag_relations :"一つの感想は複数のタグを投稿する"
+  bookmark_tag_relations }o--|| tags : "一つのタグは複数の感想を持つ"
 
-  users ||--o{ reviews :"一人のユーザーは複数のレビューを投稿する"
-  reviews }o--|| books :"一つの書籍は複数のレビューを持つ"
-  
-  bookshelf_follows }o--|| bookshelves :"一人のユーザーは複数の本棚をフォローする" 
-
-  bookshelves ||--o{ bookshelf_lines : "一つの本棚は複数の棚を持つ"
-  
-  bookshelf_lines ||--o{ bookchecks :"一つの棚は複数の書籍を持つ"
-  bookchecks }o--|| books :"一つの棚は複数の書籍を持つ"
-
-  books ||--o{ book_authors :"一つの書籍は複数の著者を持つ"
-  book_authors }o--|| authors :"一つの書籍は複数の著者を持つ"
-  
-  books ||--o{ taggings :"一つの書籍は複数のタグを持つ"
-  taggings }o--|| tags :"一つの書籍は複数のタグを持つ"
+  books ||--|| clicks: "一つの書籍は一つのクリック数を持つ"
 
   users {
-    integer id "PK"
-    string name "null:false"
-    string email "null:false"
-    string crypted_password
-    string salt
-    timestamp created_at
-    timestamp deleted_at
+    string email "null: false"
+    string encrypted_password "null: false"
+    string name "null: false"
+    string reset_password_token
+    datetime reset_password_sent_at
+    datetime remember_created_at
+    string confirmation_token
+    datetime confirmed_at
+    datetime confirmation_sent_at
+    string unconfirmed_email
+    datetime created_at "null: false"
+    datetime updated_at "null: false"
   }
 
-  bookshelf_boards {
-    integer id "PK"
-    integer user_id "null:false(FK)"
-    integer bookshelf_follow_id "null:false(FK)"
-    timestamp created_at
-    timestamp deleted_at
-  }
-
-  bookshelf_follows {
-    integer id "PK"
-    integer bookshelf_id "null:false(FK)"
-    timestamp created_at
-    timestamp deleted_at
-  }
-
-  bookshelves {
-    integer id "PK"
-    string name "null:false"
-    timestamp created_at
-    timestamp deleted_at
-  }
-
-  bookshelf_lines {
-    integer id "PK"
-    integer bookshelf_id "null:false(FK)"
-    string title "null:false"
-    integer position "null:false"
-    timestamp created_at
-    timestamp deleted_at
-  }
-
-  bookchecks {
-    integer id "PK"
-    integer bookshelf_line_id "null:false(FK)"
-    integer book_id "null:false(FK)"
-    timestamp created_at
-    timestamp deleted_at
-  }
-
-  books {
-    integer id "PK"
-    string title "null:false"
-    text info_link "null:false"
-    string published_date "null:false"
-    string image_link "null:false"
-    timestamp created_at
-    timestamp deleted_at
-  }
-
-  book_authors {
-    integer id "PK"
-    integer book_id "null:false(FK)"
-    integer author_id "null:false(FK)"
-    timestamp created_at
-    timestamp deleted_at
-  }
-
-  authors {
-    integer id "PK"
-    string author "null:false"
-    timestamp created_at
-    timestamp deleted_at
-  }
-
-  reviews {
-    integer id "PK"
-    integer user_id "null:false(FK)"
-    integer book_id "null:false(FK)"
-    integer status "null:false"
-    integer comprehension "null:false"
-    timestamp created_at
-    timestamp deleted_at
+  bookmark_tag_relations {
+    bigint bookmark_id "null: false"
+    bigint tag_id "null: false"
+    datetime created_at "null: false"
+    datetime updated_at "null: false"
   }
 
   bookmarks {
-    integer id "PK"
-    integer user_id "null:false(FK)"
-    integer book_id "null:false(FK)"
-    timestamp created_at
-    timestamp deleted_at
+    bigint user_id "null: false"
+    bigint book_isbn "null: false"
+    text headline "null: false"
+    text body "null: false"
+    text page
+    text chapter
+    text link
+    datetime created_at "null: false"
+    datetime updated_at "null: false"
   }
 
-  taggings {
-    integer id "PK"
-    integer tag_id "null:false(FK)"
-    integer book_id "null:false(FK)"
-    timestamp created_at
-    timestamp deleted_at
+  books {
+    string title
+    string author
+    text sales_date
+    text large_image_url
+    text item_url
+    text item_caption
+    string item_price
+    datetime created_at "null: false"
+    datetime updated_at "null: false"
+  }
+
+  clicks {
+    bigint book_isbn "null: false"
+    integer clicks "null: false"
+    datetime created_at "null: false"
+    datetime updated_at "null: false"
+  }
+
+  favorites {
+    bigint user_id "null: false"
+    bigint book_isbn "null: false"
+    datetime created_at "null: false"
+    datetime updated_at "null: false"
+  }
+
+  qiita_tags {
+    string name
+    integer count
+    datetime created_at "null: false"
+    datetime updated_at "null: false"
   }
 
   tags {
-    integer id "PK"
-    string name "null:false"
-    timestamp created_at
-    timestamp deleted_at
-  }
-
-  comments {
-    integer id "PK"
-    integer user_id "null:false(FK)"
-    integer book_id "null:false(FK)"
-    text content
-    timestamp created_at
-    timestamp deleted_at
+    string name "null: false"
+    datetime created_at "null: false"
+    datetime updated_at "null: false"
   }
 
 ```
