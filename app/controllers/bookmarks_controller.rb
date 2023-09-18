@@ -15,7 +15,6 @@ class BookmarksController < ApplicationController
       redirect_to bookmark_path(bookmark), notice: t('bookmarks.create.success')
     else
       flash[:danger] = if bookmark.errors[:content].include?('contains negative sentiment')
-                         # 投稿内容に不備があるか、空白の場合
                          t('bookmarks.create.failure.negative_sentiment')
                        else
                          t('bookmarks.create.failure.else')
@@ -31,14 +30,10 @@ class BookmarksController < ApplicationController
 
   def update
     @bookmark = current_user.bookmarks.find(params[:id])
-    if @bookmark.update!(bookmark_params.merge(book: @bookmark.book))
+    if @bookmark.update(bookmark_params.merge(book: @bookmark.book))
       redirect_to @bookmark.book, notice: t('bookmarks.update.success')
     else
-      flash[:danger] = if bookmark.errors[:content].include?('contains negative sentiment')
-                         t('bookmarks.update.failure.else')
-                       else
-                         t('bookmarks.update.failure.negative_sentiment')
-                       end
+      handle_failure(@bookmark)
       render :edit
     end
   end
@@ -64,5 +59,13 @@ class BookmarksController < ApplicationController
     return if user_signed_in?
 
     redirect_to page_path('about'), info: t('bookmarks.move_to_signed_in.failure')
+  end
+
+  def handle_failure(bookmark)
+    flash[:danger] = if bookmark.errors[:content].include?('contains negative sentiment')
+      t('bookmarks.update.failure.negative_sentiment')
+    else
+      t('bookmarks.update.failure.else')
+    end
   end
 end

@@ -21,7 +21,7 @@ FactoryBot.define do
     sales_date { Faker::Date.backward(days: 14) }
     large_image_url { Faker::Internet.url }
     item_url { Faker::Internet.url }
-    item_caption { "Sample caption" }
+    item_caption { 'Sample caption' }
     item_price { Faker::Commerce.price(range: 10..100.0).to_s }
   end
 end

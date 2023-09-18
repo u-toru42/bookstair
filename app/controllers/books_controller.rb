@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
   before_action :move_to_signed_in
-  # before_action :set_rss
 
   require 'faraday'
   require 'oj'

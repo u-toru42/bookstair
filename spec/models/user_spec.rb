@@ -46,18 +46,18 @@ RSpec.describe User, type: :model do
 
   describe '.guest' do
     it 'creates a guest user if one does not already exist' do
-      expect {
+      expect do
         User.guest
-      }.to change(User, :count).by(1)
+      end.to change(User, :count).by(1)
       expect(User.last.email).to eq('guest@example.com')
       expect(User.last.name).to eq('ゲストユーザー')
     end
 
     it 'retrieves an existing guest user if one already exists' do
       guest_user = User.guest
-      expect {
+      expect do
         User.guest
-      }.to_not change(User, :count)
+      end.to_not change(User, :count)
     end
   end
 end
