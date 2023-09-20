@@ -6,7 +6,6 @@ class BookmarksController < ApplicationController
 
   def index
     @bookmarks = Bookmark.includes(:book).all.order(updated_at: :desc).page(params[:page]).per(9)
-    # ニュースフィード
   end
 
   def create
