@@ -8,7 +8,7 @@ export default class extends Controller {
   }
 
   async search() {
-    const url = "/books/autocomplete"; // Qiita APIのエンドポイントに変更する
+    const url = "/books/autocomplete"; // books_controller.rbのautocompleteアクションをfetchで繋げて呼び出す
     const res = await fetch(url);
     const tags = await res.json();
     const input = this.inputTarget;
