@@ -14,7 +14,7 @@ class FavoritesController < ApplicationController
 
   def create
     @book = Book.find_by(isbn: params[:book_isbn])
-  favorite_action(@book)
+    favorite_action(@book)
   end
 
   def destroy
