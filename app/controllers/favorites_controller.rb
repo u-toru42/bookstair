@@ -14,18 +14,27 @@ class FavoritesController < ApplicationController
 
   def create
     @book = Book.find_by(isbn: params[:book_isbn])
-    favorite = current_user.favorites.find_or_initialize_by(book_isbn: @book.isbn)
-    favorite.save!
-
-    render turbo_stream: turbo_stream.replace("favorite-button-#{@book.isbn}",
-                                              partial: 'books/unfavorite',
-                                              locals: { book: @book, favorite: })
+  favorite_action(@book)
   end
 
   def destroy
     @book = Book.find_by(isbn: params[:book_isbn])
-    current_user.unfavorite(@book)
-    render turbo_stream: turbo_stream.replace("favorite-button-#{@book.isbn}",
-                                              partial: 'books/favorite', locals: { book: @book })
+    favorite_action(@book)
+  end
+
+  private
+
+  def favorite_action(book)
+    favorite = current_user.favorites.find_or_initialize_by(book_isbn: book.isbn)
+    if favorite.new_record?
+      favorite.save!
+    else
+      current_user.unfavorite(book)
+    end
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace("favorite-button-#{book.isbn}", partial: 'books/favorite_button', locals: { book: book, favorite: favorite })
+      end
+    end
   end
 end
