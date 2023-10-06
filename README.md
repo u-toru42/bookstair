@@ -1,6 +1,6 @@
 ## サービス名
 
-![BOOKSTAIR](https://user-images.githubusercontent.com/37538568/235348108-38f8046f-dc51-426e-8cb4-813770facd05.png)
+![見出しを追加](https://github.com/u-toru42/bookstair/assets/37538568/9257c5b2-7fc9-4499-8b57-353df3cf5f58)
 
 ## サービスURL [https://bookstair.com](https://bookstair.com/)
 
