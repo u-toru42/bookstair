@@ -27,7 +27,7 @@
                   </span>
                   <span class="text-gray-400 inline-flex items-center leading-none text-sm">
                     <%= link_to book, method: :get, params: {isbn: book.isbn}, remote: :true, class: "flex items-center" do %>
-                      <%= image_tag asset_path("bookmark_icon.png"), class: "h-4 mr-1" %>
+                      <%= image_tag asset_path("bookmark_icon.webp"), class: "h-4 mr-1" %>
                       <span class="text-xs font-medium"><%= @bookmark_counts[book.id] %></span>
                     <% end %>
                   </span>
