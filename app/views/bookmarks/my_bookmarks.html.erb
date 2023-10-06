@@ -54,7 +54,7 @@
 
             <% if current_user && current_user.own?(bookmark) %>
               <%= link_to bookmark, method: :delete, remote: :true, data: { turbo_method: :delete, turbo_confirm: "「#{bookmark.headline}」を削除しますか?" }, class: "w-6 h-6" do %>
-                <%= image_tag "delete.png", class: "w-full h-full object-cover" %>
+                <%= image_tag "delete.webp", class: "w-full h-full object-cover" %>
               <% end %>
             <% end %>
           </div>

@@ -1,14 +1,9 @@
 <section class="body-font bg-slate-50 min-h-screen">
-  <div class="container px-5 py-24 mx-auto break-words">
-    <div class="flex flex-col items-center mx-auto mb-10 border-b border-gray-200 lg:w-3/5 sm:flex-row p-10 bg-slate-50 rounded-lg card">
-      <div class="m-auto pt-10 pb-10">
-        <%= image_tag asset_path("bookstair_logo.png") %>
-      </div>
+  <div class="container px-5 py-12 mx-auto break-words">
+    <div class="flex flex-col items-center mx-auto mb-3 border-b border-gray-200 lg:w-3/5 sm:flex-row p-1 bg-slate-50 rounded-lg card">
+      <%= image_tag asset_path("summary.webp") %>
     </div>
-    <div class="mb-10">
-      <div class="text-center text-xl font-bold">BOOKSTAIRはIT・コンピュータの書籍専門の投稿サービスです。</div>
-    </div>
-    <div class="flex flex-col items-center pb-10 mx-auto mb-10 border-b border-gray-200 lg:w-3/5 sm:flex-row p-10 bg-slate-50 rounded-lg card">
+    <div class="flex flex-col items-center pb-5 mx-auto mb-3 border-b border-gray-200 lg:w-3/5 sm:flex-row p-5 bg-slate-50 rounded-lg card">
       <div class="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 text-indigo-500 bg-indigo-100 rounded-full sm:w-32 sm:h-32 sm:mr-10">
         <div fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 sm:w-16 sm:h-16" viewBox="0 0 24 24" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;">
           <%= image_tag asset_path("search.png") %>
@@ -19,10 +14,10 @@
         <p class="text-base leading-relaxed">共有の本棚でコンピュータ・IT書籍に関する投稿ができます。</p>
       </div>
     </div>
-    <div class="flex flex-col items-center pb-10 mx-auto mb-10 border-b border-gray-200 lg:w-3/5 sm:flex-row p-10 bg-slate-50 rounded-lg card">
+    <div class="flex flex-col items-center pb-5 mx-auto mb-5 border-b border-gray-200 lg:w-3/5 sm:flex-row p-5 bg-slate-50 rounded-lg card">
       <div class="inline-flex items-center justify-center flex-shrink-0 w-20 h-20 text-indigo-500 bg-indigo-100 rounded-full sm:w-32 sm:h-32 sm:mr-10">
         <div fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 sm:w-16 sm:h-16" viewBox="0 0 24 24" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;">
-          <%= image_tag asset_path("book_on_the_man.png") %>
+          <%= image_tag asset_path("book_on_the_man.webp") %>
         </div>
       </div>
       <div class="flex-grow text-center sm:text-left sm:mt-0">
@@ -30,12 +25,9 @@
         <p class="text-base leading-relaxed">追加した書籍に感想や見どころを投稿できます。不適切な投稿内容は自動で精査されますので、安心して閲覧できるサービスです。</p>
       </div>
     </div>
-    <div class="flex justify-center mt-8">
-    
-    </div>
     <% if !user_signed_in? %>
-      <div class="flex flex-wrap justify-center gap-4 mt-8">
-        <button class="text-center rounded shadow py-2 px-4 nomal-btn mr-3">
+      <div class="flex flex-wrap justify-center gap-2 pb-3">
+        <button class="text-center rounded shadow px-4 nomal-btn mr-3">
           <%= link_to 'ゲストログインしてみる', users_guest_sign_in_path, data: { turbo_method: :post }, class: "block w-full px-12 py-3 text-sm font-medium text-white bg-blue-600 rounded shadow hover:bg-blue-700 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto" %>
         </button>
       </div>
