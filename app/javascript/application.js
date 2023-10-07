@@ -7,3 +7,4 @@ import "./controllers"
 const application = Application.start()
 application.register("toggle", ToggleController)
 
+import "./channels"

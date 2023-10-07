@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   rescue_from ActiveRecord::RecordInvalid, with: :handle_record_invalid
 
+  def test
+    render json: { message: 'This is a test message from Rails' }
+  end
+
   private
 
   def configure_permitted_parameters

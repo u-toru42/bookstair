@@ -2,6 +2,8 @@
 #
 
 Rails.application.routes.draw do
+  resources :messages
+  get 'chatroom/show'
   # require 'sidekiq/web'
   # require 'sidekiq-scheduler/web'
 
@@ -52,4 +54,5 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i[index edit update]
   get 'bookmarks/my_bookmarks', to: 'bookmarks#my_bookmarks'
   resources :favorites, only: %i[index destroy]
+  get '/api/test', to: 'application#test'
 end
